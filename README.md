@@ -1,6 +1,6 @@
 ### Config Example
-    <?php 'aliases' => array(
-            // assumed the use of yiistrap and yiiwheels extensions
+    <?php
+    'aliases' => array(
             'bootstrap' => 'application.modules.bootstrap',
     ),
     'modules' => array(
