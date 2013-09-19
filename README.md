@@ -62,11 +62,11 @@
 
 ### Alert
 
- <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_DANGER, "Sorry, it seems like a(n)  error has occured during your request."); ?>
- <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_INFO, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
- <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_DEFAULT, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
- <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_WARNING, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
- <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_SUCCESS, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
+     <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_DANGER, "Sorry, it seems like a(n)  error has occured during your request."); ?>
+     <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_INFO, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
+     <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_DEFAULT, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
+     <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_WARNING, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
+     <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_SUCCESS, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
 
 
 ### Yii-Buttons
