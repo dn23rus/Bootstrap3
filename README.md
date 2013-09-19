@@ -247,6 +247,32 @@
     <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK,'size' => BSHtml::BUTTON_SIZE_MINI)); ?>
 
 ### Progress
+    BSHtml::PROGRESS\_COLOR\_INFO
+    )
+    ); ?\>
+
+    BSHtml::PROGRESS\_COLOR\_SUCCESS
+    )
+    ); ?\>
+
+    BSHtml::PROGRESS\_COLOR\_DEFAULT
+    )
+    ); ?\>
+
+    BSHtml::PROGRESS\_COLOR\_WARNING
+    )
+    ); ?\>
+
+    BSHtml::PROGRESS\_COLOR\_DANGER
+    )
+    ); ?\>
+
+    BSHtml::PROGRESS\_COLOR\_SUCCESS, 'width' =\> 35),
+    array('color' =\> BSHtml::PROGRESS\_COLOR\_WARNING, 'width' =\> 20),
+    array('color' =\> BSHtml::PROGRESS\_COLOR\_DANGER, 'width' =\> 10),
+    )
+    ); ?\>
+
 ### Pagination
 
         <?php echo BSHtml::pagination(
