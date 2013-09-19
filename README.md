@@ -330,12 +330,12 @@
 
 ### GridView
 
-<?php $this->widget('bootstrap.widgets.BsGridView', array(
-    'dataProvider' => $gridDataProvider,
-    'template' => "{summary}{items}{pager}",
-    'columns' => $gridColumns,
-    'type' => BSHtml::GRID_TYPE_STRIPED,
-)); ?>
+    <?php $this->widget('bootstrap.widgets.BsGridView', array(
+        'dataProvider' => $gridDataProvider,
+        'template' => "{summary}{items}{pager}",
+        'columns' => $gridColumns,
+        'type' => BSHtml::GRID_TYPE_STRIPED,
+    )); ?>
 
 ### Extension MiddleNav
     <?php Yii::import('bootstrap.extensions.middlenav.MNav') ?>
