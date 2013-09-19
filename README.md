@@ -1,33 +1,4 @@
-* [bootstrap][0]
-* Base
-
-* [__][1]
-* [__][2] **8**
-* [__][2]
-* [__][2]
-
-* [__test ][3]
-* [__test ][3]
-**8**
-* [__test ][3]
-* [__test ][3]
-
-* [__][3]
-* [__][3]
-**8**
-* [__][3]
-* [__][3]
-
-* [__test ][2] **42**
-* [__test ][2] **8**
-* [__test ][2] **8**
-* [__test ][2] **8**
-* [__test ][2] **8**
-* [__test ][2] **42**
-* [__test ][2] **8**
-* [__test ][2] **8**
-* [__test ][2] **8**
-
+### Extension MiddleNav
             <?php Yii::import('bootstrap.extensions.middlenav.MNav') ?>
             <?php $this->widget('bootstrap.extensions.middlenav.MNav',
                 array(
@@ -89,29 +60,7 @@
             ) ?>
 
 
-# Charts
-
 ### Charts
-
-* [__
-Line Chart
-][4]
-* [__
-Radar Chart
-][5]
-* [__
-Polar Chart
-][6]
-* [__
-Bar Chart
-][7]
-* [__
-Pie Chart
-][8]
-* [__
-Doughnut Chart
-][9]
-
 
         <?php $this->widget('chartjs.widgets.ChLine',
         array(
@@ -169,7 +118,7 @@ Doughnut Chart
 
 
 
-HundeKatzenVögelMäuse
+
 
 
         <?php $this->widget('chartjs.widgets.ChPolar',
@@ -227,7 +176,7 @@ HundeKatzenVögelMäuse
 
 
 
-HundeKatzenVögelMäuse
+
 
 
         <?php
@@ -267,7 +216,7 @@ HundeKatzenVögelMäuse
 
 
 
-HundeKatzenVögelMäuse
+
 
 
         <?php
@@ -307,21 +256,8 @@ HundeKatzenVögelMäuse
 
 
 
-# Forms
 
 ### Forms
-
-Legend
-
-First Name
-
-In addition to freeform text, any HTML5 text-based input appears like
-so.
-
-Last Name
-
-In addition to freeform text, any HTML5 text-based input appears like
-so.
 
             <?php $form = $this->beginWidget('bootstrap.widgets.BsActiveForm', array(
                 'layout' => BsHtml::FORM_LAYOUTHORIZONTAL,
@@ -367,21 +303,7 @@ so.
             <?php $this->endWidget(); ?>
 
 
-# Alert
-
 ### Alert
-
-[×][10]Sorry,
-it seems like a(n) error has occured during your request.
-
-[×][10]**Message:**
-Lorem Ipsum Dolor
-
-[×][10]**Message:** Lorem Ipsum Dolor
-
-[×][10]**Message:** Lorem Ipsum Dolor
-
-[×][10]**Message:** Lorem Ipsum Dolor
 
              <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_DANGER, "Sorry, it seems like a(n)  error has occured during your request."); ?>
              <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_INFO, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
@@ -390,19 +312,8 @@ Lorem Ipsum Dolor
              <?php echo BSHtml::alert(BSHtml::ALERT_COLOR_SUCCESS, "<strong>Message:</strong> Lorem Ipsum Dolor"); ?>
 
 
-# Buttons
+### Yii-Buttons
 
-* [__
-Yii-Feature Buttons
-][11]
-* [__
-Button Groups
-][12]
-* [__Button Sizes
-][13]
-
-[Google][14]
-[__ BSHtml::ajaxLink][10]
 
                             <?php echo BSHtml::linkButton('Google',array(
                                 'url' => 'http://www.google.de',
@@ -455,57 +366,7 @@ Button Groups
                             ); ?>
 
 
-OFF
-
-ON
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-* [Action][10]
-* [Another action][10]
-* [Something else here][10]
-* * [Separate link][10]
-
-[__ ][10][2][10][3][10][4][10]
-
-[5][10][6][10][7][10]
-
-[1][10][2][10][3][10][4][10]
-
-[Left][10][Middle][10][Right][10]
+### Dropdowns Switch Groups SIZES
 
         <?php echo BSHtml::checkBox('test',true,array()); ?>
         <?php $this->widget('bootstrap.extensions.ibutton.IButton', array(
@@ -631,45 +492,10 @@ ON
             <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK,'size' => BSHtml::BUTTON_SIZE_MINI)); ?>
 
 
-# Progress
+
 
 ### Progress
-
-25%
-
-50%
-
-75%
-
-100%
-
-# Pagination
-
 ### Pagination
-
-* [Previous][10]
-* [1][10]
-* [2][10]
-* [3][10]
-* [4][10]
-* [5][10]
-* [Next][10]
-
-* [Previous][10]
-* [1][10]
-* [2][10]
-* [3][10]
-* [4][10]
-* [5][10]
-* [Next][10]
-
-* [Previous][10]
-* [1][10]
-* [2][10]
-* [3][10]
-* [4][10]
-* [5][10]
-* [Next][10]
 
             <?php echo BSHtml::pagination(
             array(
@@ -709,56 +535,8 @@ ON
 
 
 
-# GridView
 
-###### GridView
-
-Displaying 1-5 of 50 results.
-[id][15]
-firstName
-lastName
-language
-hours
-
-1
-Stu
-Dent
-HTML
-41
-
-2
-Stu
-Dent
-HTML
-53
-
-3
-Mark
-Otto
-CSS
-72
-
-4
-Stu
-Dent
-HTML
-38
-
-5
-Stu
-Dent
-HTML
-8
-
-* [start][16]
-* [prev][16]
-* [1][16]
-* [2][17]
-* [3][18]
-* [4][19]
-* [5][20]
-* [next][17]
-* [end][21]
+### GridView
 
         <?php $this->widget('bootstrap.widgets.BsGridView', array(
             'dataProvider' => $gridDataProvider,
@@ -766,30 +544,3 @@ HTML
             'columns' => $gridColumns,
             'type' => BSHtml::GRID_TYPE_STRIPED,
         )); ?>
-
-
-
-[0]: bootstrap
-[1]: http://admin.presentage.dev/bootstrap/default
-[2]: test
-[3]: test "test"
-[4]: #1test_523b621405b8f
-[5]: #2test_523b621405b8f
-[6]: #3test_523b621405b8f
-[7]: #4test_523b621405b8f
-[8]: #5test_523b621405b8f
-[9]: #6test_523b621405b8f
-[10]: #
-[11]: #home_test_523b62140a423
-[12]: #button_groupstest_523b62140a423
-[13]: #profile_test_523b62140a423
-[14]: http://www.google.de
-[15]: /bootstrap/default/index/buyers_list_sort/id
-[16]: /bootstrap/default/index
-[17]: /bootstrap/default/index/buyers_list_page/2
-[18]: /bootstrap/default/index/buyers_list_page/3
-[19]: /bootstrap/default/index/buyers_list_page/4
-[20]: /bootstrap/default/index/buyers_list_page/5
-[21]: /bootstrap/default/index/buyers_list_page/10
-[22]: #home_test_523b621411f05
-[23]: #profile_test_523b621411f05
