@@ -1,3 +1,19 @@
+### Config Example
+            'aliases' => array(
+            		// assumed the use of yiistrap and yiiwheels extensions
+                    'bootstrap' => 'application.modules.bootstrap',
+            ),
+            'modules' => array(
+                    'bootstrap' => array(
+                        'class' => 'bootstrap.BootStrapModule'
+                    ),
+            ),
+            'components' => array(
+                    'bsHtml' => array(
+                        'class' => 'bootstrap.components.BSHtml'
+                    ),
+            )
+
 ### Extension MiddleNav
             <?php Yii::import('bootstrap.extensions.middlenav.MNav') ?>
             <?php $this->widget('bootstrap.extensions.middlenav.MNav',
