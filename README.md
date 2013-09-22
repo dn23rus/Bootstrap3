@@ -564,3 +564,7 @@
         )
     );
     ?>
+### Code
+[Bitbucket][0]
+
+[0]: https://bitbucket.org/DrMabuse/yii-bootstrap-3-module
