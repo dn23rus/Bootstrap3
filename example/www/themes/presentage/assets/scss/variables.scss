@@ -1,0 +1,85 @@
+$blackGrey:#000;
+$colorSuccess: #97af32;
+$colorDanger: #c8514e;
+$colorPrimary: #7b7b7b;
+$colorWarning: #d28346;
+$colorInfo: #5f9fce;
+$gray-light:#666;
+
+$alert-success-bg:            $colorSuccess;
+$alert-success-text:          $blackGrey;
+$alert-success-border:        $blackGrey;
+
+$alert-info-bg:               $colorInfo;
+$alert-info-text:             $blackGrey;
+$alert-info-border:           $blackGrey;
+
+$alert-warning-bg:            $colorWarning;
+$alert-warning-text:          $blackGrey;
+$alert-warning-border:        $blackGrey;
+
+$alert-danger-bg:             $colorDanger;
+$alert-danger-text:           $blackGrey;
+$alert-danger-border:        $blackGrey;
+// Buttons
+// -------------------------
+
+$btn-font-weight:                normal;
+
+$btn-default-color:              #333;
+$btn-default-bg:                 #fff;
+$btn-default-border:             #ccc;
+
+$btn-primary-color:              #fff;
+$btn-primary-bg:                 $colorPrimary;
+$btn-primary-border:             darken($btn-primary-bg, 5%);
+
+$btn-success-color:              #fff;
+$btn-success-bg:                 $colorSuccess;
+$btn-success-border:             darken($btn-success-bg, 5%);
+
+$btn-warning-color:              #fff;
+$btn-warning-bg:                 $colorWarning;
+$btn-warning-border:             darken($btn-warning-bg, 5%);
+
+$btn-danger-color:               #fff;
+$btn-danger-bg:                  $colorDanger;
+$btn-danger-border:              darken($btn-danger-bg, 5%);
+
+$btn-info-color:                 #fff;
+$btn-info-bg:                    $colorInfo;
+$btn-info-border:                darken($btn-info-bg, 5%);
+
+$btn-link-disabled-color:        $gray-light;
+
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+$screen-xs:                  480px;
+$screen-xs-min:              $screen-xs;
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated $screen-sm and $screen-tablet as of v3.0.1
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+$screen-tablet:              $screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated $screen-md and $screen-desktop as of v3.0.1
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated $screen-lg and $screen-lg-desktop as of v3.0.1
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+$screen-lg-desktop:          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);

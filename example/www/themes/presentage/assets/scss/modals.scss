@@ -1,0 +1,13 @@
+.modal-content{
+  background: url("../img/bg/side2.jpg") 0 0 repeat transparent;
+}
+// Scale up the modal
+@media screen and (min-width: 768px){
+  .modal-dialog {
+    left: 10%;
+    right: auto;
+    width: 80%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}

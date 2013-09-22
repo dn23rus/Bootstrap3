@@ -1,0 +1,31 @@
+.breadcrumb{
+  position: fixed;
+  z-index: 100;
+  top:48px;
+  width: 100%;
+  display: block;
+  height: 28px;
+  box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
+  -webkit-box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
+  -moz-box-shadow: 0 1px 0 #fff, 0 1px 0 #fff inset;
+  background: url(../img/bg/breadcrumbs.png) repeat-x;
+  border-bottom: 1px solid #c3c3c3;
+  font-size: 11px;
+  padding: 0 15px;
+  border-radius: 0 0 0 0;
+  margin:0 -20px;
+  //@include shadow(raised);
+    &>li{
+      text-transform: uppercase;
+
+      &>a{
+        text-transform: uppercase;
+      }
+    }
+  }
+.breadcrumb>li+li:before {
+  font-family: "Glyphicons Halflings";
+  content: "\e080";
+  padding: 4px 5px;
+  color: $blackGrey;
+}
