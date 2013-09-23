@@ -22,17 +22,17 @@ switch
 index
 
 # runtime and cache directories
-/example/app/runtime
-/example/www/assets
+/app/runtime
+/www/assets
 
 # yiinitializr env.lock
-/example/app/lib/Yiinitializr/config/env.lock
+/app/lib/Yiinitializr/config/env.lock
 
 # env files and testdrive database
-/example/app/config/env.php
-/example/app/data/testdrive.db
+/app/config/env.php
+/app/data/testdrive.db
 
 # composer
-/example/app/lib/vendor
-/example/composer.lock
+/app/lib/vendor
+composer.lock
 

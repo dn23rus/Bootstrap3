@@ -9,7 +9,7 @@
 $id = uniqid('test_');
 if(!isset($code))
     $code = false;
-Yii::import('chartjs.widgets.ChLine');
+Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChLine');
 ?>
 <ul id="<?php echo $id ?>" class="nav nav-tabs">
     <li class="active">
@@ -53,7 +53,7 @@ Yii::import('chartjs.widgets.ChLine');
     <div class="tab-pane fade in active" id="1<?php echo $id ?>">
         <?php
             $this->widget(
-                'chartjs.widgets.ChLine',
+                'bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChLine',
                 array(
                     'width' => 300,
                     'height' => 200,
@@ -82,7 +82,7 @@ Yii::import('chartjs.widgets.ChLine');
         <?php if ($code) : ?>
         <pre class="pre-scrollable">
             <code>
-                &lt;?php $this-&gt;widget('chartjs.widgets.ChLine',
+                &lt;?php $this-&gt;widget('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChLine',
                     array(
                         'width' =&gt; 600,
                         'height' =&gt; 300,
@@ -115,7 +115,7 @@ Yii::import('chartjs.widgets.ChLine');
         <p>
             <?php
             $this->widget(
-                'chartjs.widgets.ChRadar',
+                'bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChRadar',
                 array(
                     'width' => 300,
                     'height' => 300,
@@ -145,7 +145,7 @@ Yii::import('chartjs.widgets.ChLine');
         <?php if ($code) : ?>
             <pre class="pre-scrollable">
             <code>
-                &lt;?php $this-&gt;widget('chartjs.widgets.ChRadar',
+                &lt;?php $this-&gt;widget('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChRadar',
                     array(
                         'width' =&gt; 600,
                         'height' =&gt; 300,
@@ -176,7 +176,7 @@ Yii::import('chartjs.widgets.ChLine');
     <div class="tab-pane fade" id="3<?php echo $id ?>">
         <?php
         $this->widget(
-            'chartjs.widgets.ChPolar',
+            'bootstrap.extensions.yii-chartjs-master.widgets.ChPolar',
             array(
                 'width' => 300,
                 'height' => 300,
@@ -211,7 +211,7 @@ Yii::import('chartjs.widgets.ChLine');
         <?php if ($code) : ?>
             <pre class="pre-scrollable">
             <code>
-                &lt;?php $this-&gt;widget('chartjs.widgets.ChPolar',
+                &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChPolar',
                     array(
                         'width' =&gt; 600,
                         'height' =&gt; 300,
@@ -251,7 +251,7 @@ Yii::import('chartjs.widgets.ChLine');
         <p>
             <?php
                 $this->widget(
-                    'chartjs.widgets.ChBars',
+                    'bootstrap.extensions.yii-chartjs-master.widgets.ChBars',
                     array(
                         'width' => 300,
                         'height' => 300,
@@ -271,7 +271,7 @@ Yii::import('chartjs.widgets.ChLine');
             <?php if ($code) : ?>
             <pre class="pre-scrollable">
                 <code>
-                    &lt;?php $this-&gt;widget('chartjs.widgets.ChBars',
+                    &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChBars',
                             array(
                             'width' =&gt; 600,
                             'height' =&gt; 300,
@@ -296,7 +296,7 @@ Yii::import('chartjs.widgets.ChLine');
         <p>
             <?php
             $this->widget(
-                'chartjs.widgets.ChPie',
+                'bootstrap.extensions.yii-chartjs-master.widgets.ChPie',
                 array(
                     'width' => 300,
                     'height' => 300,
@@ -333,7 +333,7 @@ Yii::import('chartjs.widgets.ChLine');
                     <code>
                         &lt;?php
                         $this->widget(
-                            'chartjs.widgets.ChPie',
+                            'bootstrap.extensions.yii-chartjs-master.widgets.ChPie',
                             array(
                                 'width' => 300,
                                 'height' => 300,
@@ -374,7 +374,7 @@ Yii::import('chartjs.widgets.ChLine');
         <p>
             <?php
             $this->widget(
-                'chartjs.widgets.ChDoughnut',
+                'bootstrap.extensions.yii-chartjs-master.widgets.ChDoughnut',
                 array(
                     'width' => 300,
                     'height' => 300,
@@ -411,7 +411,7 @@ Yii::import('chartjs.widgets.ChLine');
                     <code>
                         &lt;?php
                         $this->widget(
-                            'chartjs.widgets.ChDoughnut',
+                            'bootstrap.extensions.yii-chartjs-master.widgets.ChDoughnut',
                             array(
                                 'width' => 300,
                                 'height' => 300,
