@@ -58,7 +58,7 @@
             ),
             array(
                 'color' => BSHtml::BUTTON_COLOR_INFO,
-                'icon' => BSHtml::GLYPHGLYPHICON_BELL
+                'icon' => BSHtml::GLYPHICON_BELL
             )
         ); ?>
         <?php echo BSHtml::ajaxLink('BSHtml::ajaxLink',
