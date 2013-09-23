@@ -58,7 +58,7 @@
             ),
             array(
                 'color' => BSHtml::BUTTON_COLOR_INFO,
-                'icon' => BSHtml::ICON_BELL
+                'icon' => BSHtml::GLYPHGLYPHICON_BELL
             )
         ); ?>
         <?php echo BSHtml::ajaxLink('BSHtml::ajaxLink',
@@ -76,7 +76,7 @@
                 }',
             ),
             array(
-                'icon' => BSHtml::ICON_BELL
+                'icon' => BSHtml::GLYPHICON_BELL
             )
         ); ?>
         <?php if ($code) : ?>
@@ -111,7 +111,7 @@
                             ),
                             array(
                                 'color' => BSHtml::BUTTON_COLOR_INFO,
-                                'icon' => BSHtml::ICON_BELL
+                                'icon' => BSHtml::GLYPHICON_BELL
                             )
                         ); ?&gt;
                         &lt;?php echo BSHtml::ajaxLink('BSHtml::ajaxLink',
@@ -127,7 +127,7 @@
                                 }',
                             ),
                             array(
-                                'icon' => BSHtml::ICON_BELL
+                                'icon' => BSHtml::GLYPHICON_BELL
                             )
                         ); ?&gt;
                     </pre>
