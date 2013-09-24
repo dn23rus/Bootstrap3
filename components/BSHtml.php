@@ -2755,7 +2755,8 @@ EOD;
             if (strpos($icon, 'glyphicon') === false) {
                 $icon = 'glyphicon-' . implode(' glyphicon-', explode(' ', $icon));
             }
-            self::addCssClass($icon, $htmlOptions);
+            self::addCssClass('glyphicon '.$icon, $htmlOptions);
+//            CVarDumper::dump($htmlOptions,10,true);
 
 
             return self::openTag($tagName, $htmlOptions) . parent::closeTag($tagName); // tag won't work in this case
