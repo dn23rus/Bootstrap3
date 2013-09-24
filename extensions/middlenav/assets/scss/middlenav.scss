@@ -105,10 +105,11 @@
     transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -webkit-transition: all 0.1s ease-in-out;
-  }
-  .glyphicon {
-    font-size: 32px;
-    color: #808080;
+    .glyphicon {
+      font-size: 22px;
+      color: #808080;
+      padding-top: 18px;
+    }
   }
 }
 .middleNavR li a > img,
@@ -147,9 +148,10 @@
     transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -webkit-transition: all 0.1s ease-in-out;
-    &> .glyphicon {
-      font-size: 32px;
+    .glyphicon {
+      font-size: 22px;
       color: #808080;
+      padding-top: 18px;
     }
   }
 }
@@ -206,9 +208,10 @@
       padding-top: 4px;
       font-weight: bold;
     }
-    &> .glyphicon {
-      font-size: 32px;
+    .glyphicon {
+      font-size: 22px;
       color: #808080;
+      padding-bottom: 10px;
     }
   }
 }
@@ -235,9 +238,10 @@
         display: block;
         text-shadow: 0 1px 1px #707070;
       }
-      &> .glyphicon {
-        font-size: 32px;
-        color: #808080;
+      .glyphicon {
+        font-size: 22px;
+        color: white;
+        padding-bottom: 10px;
       }
     }
     &> strong {
