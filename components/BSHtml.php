@@ -2749,17 +2749,15 @@ EOD;
      * @param string $tagName the icon HTML tag.
      * @return string the generated icon.
      */
-    public static function icon($icon, $htmlOptions = array(), $tagName = 'i')
+    public static function icon($icon, $htmlOptions = array(), $tagName = 'span')
     {
         if (is_string($icon)) {
-            if (strpos($icon, 'icon') === false) {
-                $icon = 'icon-' . implode(' icon-', explode(' ', $icon));
+            if (strpos($icon, 'glyphicon') === false) {
+                $icon = 'glyphicon-' . implode(' glyphicon-', explode(' ', $icon));
             }
             self::addCssClass($icon, $htmlOptions);
-            $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-            if (!empty($color) && $color === self::ICON_COLOR_WHITE) {
-                self::addCssClass('icon-white', $htmlOptions);
-            }
+
+
             return self::openTag($tagName, $htmlOptions) . parent::closeTag($tagName); // tag won't work in this case
         }
         return '';
