@@ -64,7 +64,7 @@ $model->hours = 20;
 
 <?php $this->endWidget(); ?>
 <?php if ($code): ?>
-    <pre class="pre-scrollable">
+    <pre class="pre-scrollable linenums prettyprint lang-py prettyprint lang-py">
         &lt;?php $form = $this->beginWidget('bootstrap.widgets.BsActiveForm', array(
             'layout' => BsHtml::FORM_LAYOUTHORIZONTAL,
         )); ?>

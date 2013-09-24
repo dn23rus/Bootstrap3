@@ -82,7 +82,7 @@ $gridColumns=array(
     </div>
 </div>
 <?php if($code) :?>
-    <pre class="pre-scrollable">
+    <pre class="pre-scrollable linenums prettyprint lang-py">
     &lt;?php $this->widget('bootstrap.widgets.BsGridView', array(
         'dataProvider' => $gridDataProvider,
         'template' => "{summary}{items}{pager}",

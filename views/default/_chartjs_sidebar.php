@@ -80,7 +80,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
             );
         ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChLine',
                     array(
@@ -143,7 +143,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
             ?>
         </p>
         <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.widgets.ChRadar',
                     array(
@@ -209,7 +209,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
         );
         ?>
         <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChPolar',
                     array(
@@ -269,7 +269,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
                 );
             ?>
             <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
                 <code>
                     &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChBars',
                             array(
@@ -329,7 +329,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
             );
             ?>
             <?php if ($code) : ?>
-                <pre class="pre-scrollable">
+                <pre class="pre-scrollable linenums prettyprint lang-py">
                     <code>
                         &lt;?php
                         $this->widget(
@@ -407,7 +407,7 @@ Yii::import('bootstrap.extensions.yii-bootstrap.extensions.yii-chartjs-master.wi
             );
             ?>
             <?php if ($code) : ?>
-                <pre class="pre-scrollable">
+                <pre class="pre-scrollable linenums prettyprint lang-py">
                     <code>
                         &lt;?php
                         $this->widget(

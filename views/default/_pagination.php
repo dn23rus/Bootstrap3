@@ -23,7 +23,7 @@ $list = array(
     <?php echo BSHtml::pagination($list, array('size' => BSHtml::PAGINATION_SIZE_SMALL)); ?>
 </div>
 <?php if($code) : ?>
-    <pre class="pre-scrollable">
+    <pre class="pre-scrollable linenums prettyprint lang-py">
         &lt;?php echo BSHtml::pagination(
         array(
             array('label' => 'Previous', 'url' => '#'),

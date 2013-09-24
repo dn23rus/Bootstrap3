@@ -87,7 +87,7 @@
             )
         ); ?>
         <?php if ($code) : ?>
-                    <pre class="pre-scrollable">
+                    <pre class="pre-scrollable linenums prettyprint lang-py">
                         &lt;?php echo BSHtml::linkButton('Google',array(
                             'url' => 'http://www.google.de',
                             'target' => '_blank',
@@ -164,7 +164,7 @@
         <?php echo BSHtml::button('Default', array('size' => BSHtml::BUTTON_SIZE_LARGE)); ?>
         <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK, 'size' => BSHtml::BUTTON_SIZE_LARGE)); ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
         &lt;?php echo BSHtml::button(
             'Primary',
             array(
@@ -200,7 +200,7 @@
         <?php echo BSHtml::button('Default'); ?>
         <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK)); ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
         &lt;?php echo BSHtml::button(
             'Primary',
             array(
@@ -236,7 +236,7 @@
         <?php echo BSHtml::button('Default', array('size' => BSHtml::BUTTON_SIZE_SMALL)); ?>
         <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK, 'size' => BSHtml::BUTTON_SIZE_SMALL)); ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
         &lt;?php echo BSHtml::button(
             'Primary',
             array(
@@ -272,7 +272,7 @@
         <?php echo BSHtml::button('Default', array('size' => BSHtml::BUTTON_SIZE_MINI)); ?>
         <?php echo BSHtml::button('Link', array('color' => BSHtml::BUTTON_COLOR_LINK, 'size' => BSHtml::BUTTON_SIZE_MINI)); ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
         &lt;?php echo BSHtml::button(
             'Primary',
             array(

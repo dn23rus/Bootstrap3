@@ -81,7 +81,7 @@ Yii::app()->chartjs->registerScript();
             );
         ?>
         <?php if ($code) : ?>
-        <pre class="pre-scrollable">
+        <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChLine',
                     array(
@@ -144,7 +144,7 @@ Yii::app()->chartjs->registerScript();
             ?>
         </p>
         <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChRadar',
                     array(
@@ -210,7 +210,7 @@ Yii::app()->chartjs->registerScript();
         );
         ?>
         <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
             <code>
                 &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChPolar',
                     array(
@@ -270,7 +270,7 @@ Yii::app()->chartjs->registerScript();
                 );
             ?>
             <?php if ($code) : ?>
-            <pre class="pre-scrollable">
+            <pre class="pre-scrollable linenums prettyprint lang-py">
                 <code>
                     &lt;?php $this-&gt;widget('bootstrap.extensions.yii-chartjs-master.widgets.ChBars',
                             array(
@@ -330,7 +330,7 @@ Yii::app()->chartjs->registerScript();
             );
             ?>
             <?php if ($code) : ?>
-                <pre class="pre-scrollable">
+                <pre class="pre-scrollable linenums prettyprint lang-py">
                     <code>
                         &lt;?php
                         $this->widget(
@@ -408,7 +408,7 @@ Yii::app()->chartjs->registerScript();
             );
             ?>
             <?php if ($code) : ?>
-                <pre class="pre-scrollable">
+                <pre class="pre-scrollable linenums prettyprint lang-py">
                     <code>
                         &lt;?php
                         $this->widget(
