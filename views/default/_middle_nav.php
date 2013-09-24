@@ -34,7 +34,7 @@
                 ),
             ),
             array(
-                'icon' =>'icon-paint-format ',
+                'icon' =>BSHtml::GLYPHICON_ASTERISK,
                 'url' => 'test',
                 'label' => 'test',
                 'tooltip' => array(
@@ -66,7 +66,7 @@
                 'label' => 'test'
             ),
             array(
-                'icon' =>'icon-paint-format ',
+                'icon' =>BSHtml::GLYPHICON_BOOK,
                 'url' => 'test',
                 'label' => 'test'
             )
@@ -94,7 +94,7 @@
                 'label' => 'test'
             ),
             array(
-                'icon' =>'icon-paint-format ',
+                'icon' =>BSHtml::GLYPHICON_ALIGN_CENTER,
                 'url' => 'test',
                 'label' => 'test'
             )
@@ -106,7 +106,7 @@
         'type' => MNav::MIDDLE_NAV_FREE,
         'items' => array(
             array(
-                'icon' =>'icon-paint-format ',
+                'icon' =>BSHtml::GLYPHICON_BOOKMARK,
                 'url' => 'test',
                 'label' => 'test',
                 'badge' => 42,

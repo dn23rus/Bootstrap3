@@ -49,7 +49,7 @@ class MNav extends CInputWidget {
         foreach($this->items as $item){
             $label = '';
             if(isset($item['icon'])){
-                $label .= BSHtml::icon($item['icon'].' iconb');
+                $label .= BSHtml::icon($item['icon'].' glyphicon iconb');
             }
 
 

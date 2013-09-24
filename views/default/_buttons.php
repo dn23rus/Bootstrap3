@@ -35,6 +35,13 @@
 
         ))
         ?>
+        <?php echo BSHtml::linkButton('Google', array(
+            'url' => 'http://www.google.de',
+            'target' => '_blank',
+            'size' => BSHtml::BUTTON_SIZE_SMALL,
+            'data-toggle' => 'popover'
+        ))
+        ?>
         <?php echo BSHtml::submitButton('BSHtml::submitButton',
             array(
                 'color' => BSHtml::BUTTON_COLOR_INFO,
