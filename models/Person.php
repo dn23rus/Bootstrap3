@@ -14,6 +14,7 @@ public $firstName;
 public $lastName;
 public $language;
 public $hours ;
+public $cssClass ;
     /**
      * Returns the list of attribute names of the model.
      * @return array list of attribute names.
@@ -27,7 +28,8 @@ public $hours ;
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
             'language' => $this->language,
-            'hours' => $this->hours
+            'hours' => $this->hours,
+            'cssClass' => $this->cssClass
         );
     }
 

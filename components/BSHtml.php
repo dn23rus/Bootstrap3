@@ -18,13 +18,18 @@ class BSHtml extends CHtml {
     const TEXT_ALIGN_RIGHT = 'right';
 
     const TEXT_COLOR_DEFAULT = '';
-    const TEXT_COLOR_WARNING = 'warning';
-    const TEXT_COLOR_ERROR = 'error';
-    const TEXT_COLOR_INFO = 'info';
+    const TEXT_COLOR_MUTED = 'muted';
+    const TEXT_COLOR_PRIMARY = 'primary';
     const TEXT_COLOR_SUCCESS = 'success';
+    const TEXT_COLOR_INFO = 'info';
+    const TEXT_COLOR_WARNING = 'warning';
+    const TEXT_COLOR_DANGER = 'danger';
+    const TEXT_ABBR_INITIALISM = 'initialism';
 
     const HELP_TYPE_INLINE = 'inline';
     const HELP_TYPE_BLOCK = 'block';
+
+
 
     //
     // FORM
@@ -241,6 +246,11 @@ class BSHtml extends CHtml {
     const GRID_TYPE_BORDERED = 'bordered';
     const GRID_TYPE_CONDENSED = 'condensed';
     const GRID_TYPE_HOVER = 'hover';
+    const GRID_TYPE_RESPONSIVE = 'responsive';
+    const GRID_TYPE_COLUMN_SUCCESS = 'success';
+    const GRID_TYPE_COLUMN_ACTIVE = 'active';
+    const GRID_TYPE_COLUMN_WARNING = 'warning';
+    const GRID_TYPE_COLUMN_DANGER = 'danger';
 
     //
     // AFFIX
@@ -498,7 +508,7 @@ class BSHtml extends CHtml {
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated text.
      */
-    public static function b($text, $htmlOptions = array())
+    public static function bold($text, $htmlOptions = array())
     {
         return self::tag('strong', $htmlOptions, $text);
     }
@@ -509,7 +519,7 @@ class BSHtml extends CHtml {
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated text.
      */
-    public static function i($text, $htmlOptions = array())
+    public static function italics($text, $htmlOptions = array())
     {
         return self::tag('em', $htmlOptions, $text);
     }
@@ -542,12 +552,14 @@ class BSHtml extends CHtml {
      * @param string $tag the HTML tag.
      * @return string the generated text block.
      */
-    public static function muted($text, $htmlOptions = array(), $tag = 'p')
+    public static function emphasis($text, $htmlOptions = array(), $tag = 'p')
     {
-        $htmlOptions['muted'] = true;
-        return self::em($text, $htmlOptions, $tag);
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        if (!empty($color)) {
+            self::addCssClass('text-' . $color, $htmlOptions);
+        }
+        return parent::tag($tag,$htmlOptions, $text);
     }
-
     /**
      * Generates a muted span.
      * @param string $text the text.
@@ -557,7 +569,8 @@ class BSHtml extends CHtml {
      */
     public static function mutedSpan($text, $htmlOptions = array())
     {
-        return self::muted($text, $htmlOptions, 'span');
+
+        return self::textMuted($text, $htmlOptions, 'span');
     }
 
     /**
@@ -567,26 +580,14 @@ class BSHtml extends CHtml {
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated abbreviation.
      */
-    public static function abbr($text, $word, $htmlOptions = array())
+    public static function abbr($text, $word ='', $htmlOptions = array())
     {
-        if (\bootstrap\helpers\BSArray::popValue('small', $htmlOptions, false)) {
+        $htmlOptions['title'] = $word;
+        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
+        if (!empty($type) && $type === BSHtml::TEXT_ABBR_INITIALISM) {
             self::addCssClass('initialism', $htmlOptions);
         }
-        $htmlOptions['title'] = $word;
         return self::tag('abbr', $htmlOptions, $text);
-    }
-
-    /**
-     * Generates a small abbreviation with a help text.
-     * @param string $text the abbreviation.
-     * @param string $word the word the abbreviation is for.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated abbreviation.
-     */
-    public static function smallAbbr($text, $word, $htmlOptions = array())
-    {
-        $htmlOptions['small'] = true;
-        return self::abbr($text, $word, $htmlOptions);
     }
 
     /**
@@ -609,12 +610,12 @@ class BSHtml extends CHtml {
     public static function quote($text, $htmlOptions = array())
     {
         $paragraphOptions = \bootstrap\helpers\BSArray::popValue('paragraphOptions', $htmlOptions, array());
-        $source = \bootstrap\helpers\BSArray::popValue('source', $htmlOptions);
-        $sourceOptions = \bootstrap\helpers\BSArray::popValue('sourceOptions', $htmlOptions, array());
+        $small = \bootstrap\helpers\BSArray::popValue('small', $htmlOptions);
+        $smallOptions = \bootstrap\helpers\BSArray::popValue('smallOptions', $htmlOptions, array());
         $cite = \bootstrap\helpers\BSArray::popValue('cite', $htmlOptions);
         $citeOptions = \bootstrap\helpers\BSArray::popValue('citeOptions', $htmlOptions, array());
         $cite = isset($cite) ? ' ' . self::tag('cite', $citeOptions, $cite) : '';
-        $source = isset($source) ? self::tag('small', $sourceOptions, $source . $cite) : '';
+        $source = isset($small) ? self::tag('small', $smallOptions, $small . $cite) : '';
         $text = self::tag('p', $paragraphOptions, $text) . $source;
         return self::tag('blockquote', $htmlOptions, $text);
     }
@@ -2351,7 +2352,8 @@ EOD;
      */
     public static function controls($controls, $htmlOptions = array())
     {
-        self::addCssClass('col-lg-10', $htmlOptions);
+
+        self::addCssClass('form-group', $htmlOptions);
         if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
             self::addCssClass('controls-row', $htmlOptions);
         }

@@ -25,11 +25,11 @@ class BsActiveForm extends CActiveForm
     /**
      * @var string the CSS class name for error messages.
      */
-    public $errorMessageCssClass = 'error';
+    public $errorMessageCssClass = 'has-error';
     /**
      * @var string the CSS class name for success messages.
      */
-    public $successMessageCssClass = 'success';
+    public $successMessageCssClass = 'has-success';
 
     /**
      * @var boolean whether to hide inline errors. Defaults to false.
@@ -86,7 +86,9 @@ class BsActiveForm extends CActiveForm
             'model' => get_class($model),
             'name' => $attribute,
             'enableAjaxValidation' => $enableAjaxValidation,
-            'inputContainer' => 'div.control-group', // Bootstrap requires this
+            'inputContainer' => 'div.form-group', // Bootstrap requires this,
+            'errorCssClass' => $this->errorMessageCssClass,
+            'successCssClass' => $this->successMessageCssClass
         );
         $optionNames = array(
             'validationDelay',
@@ -105,6 +107,7 @@ class BsActiveForm extends CActiveForm
                 $option[$name] = \bootstrap\helpers\BSArray::popValue($name, $htmlOptions);
             }
         }
+
         if ($model instanceof CActiveRecord && !$model->isNewRecord) {
             $option['status'] = 1;
         }
@@ -176,6 +179,10 @@ class BsActiveForm extends CActiveForm
      */
     public function textField($model, $attribute, $htmlOptions = array())
     {
+        if($this->layout === BSHtml::FORM_LAYOUT_INLINE)
+        {
+
+        }
         return BSHtml::activeTextField($model, $attribute, $htmlOptions);
     }
 

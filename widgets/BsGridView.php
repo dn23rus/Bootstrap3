@@ -1,6 +1,6 @@
 <?php
 /**
- * TbGridView class file.
+ * BsGridView class file.
  * @author Pascal Brewing
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @package bootstrap.widgets
@@ -39,7 +39,9 @@ class BsGridView extends CGridView
     /**
      * @var string the template to be used to control the layout of various sections in the view.
      */
-    public $template = "{items}\n<div class=\"row-fluid\"><div class=\"span6\">{pager}</div><div class=\"span6\">{summary}</div></div>";
+    public $template = "{items}\n{pager}{summary}";
+
+    private $responsive = false;
 
     /**
      * Initializes the widget.
@@ -47,7 +49,7 @@ class BsGridView extends CGridView
     public function init()
     {
         parent::init();
-        $classes = array('table table-responsive ');
+        $classes = array('table');
         if (isset($this->type) && !empty($this->type)) {
             if (is_string($this->type)) {
                 $this->type = explode(' ', $this->type);
@@ -55,6 +57,9 @@ class BsGridView extends CGridView
 
             foreach ($this->type as $type) {
                 $classes[] = 'table-' . $type;
+                if($type === BSHtml::GRID_TYPE_RESPONSIVE){
+                    $this->responsive  = true;
+                }
             }
         }
         if (!empty($classes)) {
@@ -103,5 +108,39 @@ class BsGridView extends CGridView
             $column->header = $matches[5];
         }
         return $column;
+    }
+    /**
+     * Renders the data items for the grid view.
+     */
+    public function renderItems()
+    {
+        if($this->dataProvider->getItemCount()>0 || $this->showTableOnEmpty)
+        {
+            echo $this->checkResponsiveHeader();
+            $this->renderTableHeader();
+            ob_start();
+            $this->renderTableBody();
+            $body=ob_get_clean();
+            $this->renderTableFooter();
+            echo $body; // TFOOT must appear before TBODY according to the standard.
+            echo $this->checkResponsiveFooter();
+        }
+        else
+            $this->renderEmptyText();
+    }
+
+    private function checkResponsiveHeader(){
+
+        if($this->responsive)
+            return "<div class='table-responsive'><table class=\"{$this->itemsCssClass}\">\n";
+
+        return "<table class=\"{$this->itemsCssClass}\">\n";
+    }
+
+    private function checkResponsiveFooter(){
+        if($this->responsive)
+            return "</table></div>";
+
+        return "</table>";
     }
 }
