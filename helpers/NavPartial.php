@@ -20,7 +20,8 @@ class NavPartial extends CModel {
     }
 
     /**
-     * @param mixed $view
+     * @param $view
+     * @return mixed
      */
     public static  function setView($view)
     {
@@ -28,7 +29,9 @@ class NavPartial extends CModel {
     }
 
     /**
-     * @return mixed
+     * @param $view
+     * @param array $params
+     * @return array
      */
     public static function getView($view,array $params = array())
     {
