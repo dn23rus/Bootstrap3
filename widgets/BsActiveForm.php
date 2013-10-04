@@ -723,6 +723,7 @@ class BsActiveForm extends CActiveForm
         $helpOptions['type'] = $this->helpType;
         $options['helpOptions'] = $helpOptions;
         $options['labelOptions'] = $this->setLabelOptionsByLayout();
+        $options['formLayout'] = $this->layout;
         return $options;
     }
 
@@ -739,4 +740,5 @@ class BsActiveForm extends CActiveForm
 
         return array('class' => 'col-lg-2 control-label');
     }
+
 }
