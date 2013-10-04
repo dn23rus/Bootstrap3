@@ -972,7 +972,7 @@ class BSHtml extends CHtml {
             $htmlOptions['id'] = $baseID . '_' . $id++;
             if ($inline) {
                 $htmlOptions['label'] = $label;
-                self::addCssClass('inline', $labelOptions);
+                self::addCssClass('radio-inline', $labelOptions);
                 $htmlOptions['labelOptions'] = $labelOptions;
                 $items[] = self::radioButton($name, $checked, $htmlOptions);
             } else {
@@ -1010,6 +1010,7 @@ class BSHtml extends CHtml {
      */
     public static function checkBoxList($name, $select, $data, $htmlOptions = array())
     {
+//        CVarDumper::dump($htmlOptions,10,true);
         $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
         $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
         $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions, 'span');
@@ -1039,7 +1040,7 @@ class BSHtml extends CHtml {
             $htmlOptions['id'] = $baseID . '_' . $id++;
             if ($inline) {
                 $htmlOptions['label'] = $label;
-                self::addCssClass('inline', $labelOptions);
+                self::addCssClass('checkbox-inline', $labelOptions);
                 $htmlOptions['labelOptions'] = $labelOptions;
                 $items[] = self::checkBox($name, $checked, $htmlOptions);
             } else {
@@ -1259,7 +1260,25 @@ EOD;
      */
     public static function checkBoxControlGroup($name, $checked = false, $htmlOptions = array())
     {
-        return self::controlGroup(self::INPUT_TYPE_CHECKBOX, $name, $checked, $htmlOptions);
+        $type = self::INPUT_TYPE_CHECKBOX;
+
+        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
+        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        if (!empty($help)) {
+            $help = self::inputHelp($help, $helpOptions);
+        }
+
+        $input = isset($htmlOptions['input'])
+            ? $htmlOptions['input']
+            : self::createInput($type, $name, $checked, $htmlOptions);
+
+        $output = '<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="checkbox"><label>';
+        $output .= $input;
+        $output .= $name;
+        $output.= '</label></div></div></div>';
+        CVarDumper::dump($output,10,true);
+        return $output;
+
     }
 
     /**
@@ -1941,7 +1960,25 @@ EOD;
      */
     public static function activeRadioButtonControlGroup($model, $attribute, $htmlOptions = array())
     {
-        return self::activeControlGroup(self::INPUT_TYPE_RADIOBUTTON, $model, $attribute, $htmlOptions);
+        $type = self::INPUT_TYPE_RADIOBUTTON;
+
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
+        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
+        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        if (!empty($help)) {
+            $help = self::inputHelp($help, $helpOptions);
+        }
+
+        $input = isset($htmlOptions['input'])
+            ? $htmlOptions['input']
+            : self::createActiveInput($type, $model, $attribute, $htmlOptions);
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="radio"><label>':'<div class="radio"><label>';
+        $output = $header;
+        $output .= $input;
+        $output .= $model->getAttributeLabel($attribute);
+        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'</label></div></div></div>':'</label></div>';
+        $output.= $footer;
+        return $output;
     }
 
     /**
@@ -1954,7 +1991,24 @@ EOD;
      */
     public static function activeCheckBoxControlGroup($model, $attribute, $htmlOptions = array())
     {
-        return self::activeControlGroup(self::INPUT_TYPE_CHECKBOX, $model, $attribute, $htmlOptions);
+        $type = self::INPUT_TYPE_CHECKBOX;
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
+        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
+        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        if (!empty($help)) {
+            $help = self::inputHelp($help, $helpOptions);
+        }
+
+        $input = isset($htmlOptions['input'])
+            ? $htmlOptions['input']
+            : self::createActiveInput($type, $model, $attribute, $htmlOptions);
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="checkbox"><label>':'<div class="checkbox"><label>';
+        $output = $header;
+        $output .= $input;
+        $output .= $model->getAttributeLabel($attribute);
+        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'</label></div></div></div>':'</label></div>';
+        $output.= $footer;
+        return $output;
     }
 
     /**
@@ -2304,10 +2358,10 @@ EOD;
     {
         $classes = array();
         if (\bootstrap\helpers\BSArray::getValue('append', $htmlOptions)) {
-            $classes[] = 'input-append';
+            $classes[] = 'input-group';
         }
         if (\bootstrap\helpers\BSArray::getValue('prepend', $htmlOptions)) {
-            $classes[] = 'input-prepend';
+            $classes[] = 'input-group';
         }
         return !empty($classes) ? implode(' ', $classes) : $classes;
     }
@@ -2321,7 +2375,7 @@ EOD;
     protected static function inputAddOn($addOn, $htmlOptions)
     {
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
-        self::addCssClass('add-on', $addOnOptions);
+        self::addCssClass('input-group-addon', $addOnOptions);
         return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
             ? self::tag('span', $addOnOptions, $addOn)
             : $addOn;

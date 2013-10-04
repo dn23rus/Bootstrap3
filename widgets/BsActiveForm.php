@@ -401,7 +401,7 @@ class BsActiveForm extends CActiveForm
      */
     public function inlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -581,7 +581,7 @@ class BsActiveForm extends CActiveForm
     public function dropDownListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeDropDownListControlGroup($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeDropDownListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -595,7 +595,7 @@ class BsActiveForm extends CActiveForm
     public function listBoxControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeListBoxControlGroup($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeListBoxControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -624,7 +624,7 @@ class BsActiveForm extends CActiveForm
     public function radioButtonListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -639,7 +639,7 @@ class BsActiveForm extends CActiveForm
     public function inlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeInlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeInlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -654,7 +654,7 @@ class BsActiveForm extends CActiveForm
     public function checkBoxListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions,$this->type);
+        return BSHtml::activeCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
