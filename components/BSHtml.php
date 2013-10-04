@@ -2101,6 +2101,7 @@ EOD;
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
         $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
         $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions);
 
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = $model->getAttributeLabel($attribute);
@@ -2118,8 +2119,15 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions, $data);
-
         self::addCssClass('form-group', $groupOptions);
+
+        if(!empty($layout))
+        {
+            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+                self::addCssClass('col-lg-10', $controlOptions);
+            }
+
+        }
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
@@ -2128,6 +2136,9 @@ EOD;
             // todo: consider adding support for overriding the label with plain text.
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
         }
+//        CVarDumper::dump($controlOptions,10,true);
+//        CVarDumper::dump($groupOptions,10,true);
+//        CVarDumper::dump($htmlOptions,10,true);
         $output .= self::controls($input . $error . $help, $controlOptions);
         $output .= '</div>';
         return $output;
@@ -2247,14 +2258,15 @@ EOD;
         parent::clientChange('change', $htmlOptions);
 
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
-
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+
         $htmlOptions['class'] = 'form-control';
         $attributesLabel = $model->attributeLabels();
         $htmlOptions['placeholder'] = isset($attributesLabel[$attribute])?$attributesLabel[$attribute]:'';
         $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
-        if($placeHolder){
+
+        if(!empty($placeHolder)){
             $htmlOptions['placeholder'] = $placeHolder;
         }
 
@@ -2357,7 +2369,6 @@ EOD;
      */
     public static function controls($controls, $htmlOptions = array())
     {
-
         self::addCssClass('form-group', $htmlOptions);
         if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
             self::addCssClass('controls-row', $htmlOptions);
