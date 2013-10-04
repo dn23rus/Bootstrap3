@@ -4,10 +4,9 @@
  * Date: 11.09.13
  * Time: 11:22
 
- * @package bootstrap.components
+ * @package bootstrap/components
  * Class BSHtml
  */
-
 class BSHtml extends CHtml {
     //
     // TYPOGRAPHY
@@ -2124,7 +2123,6 @@ EOD;
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
-        self::addCssClass('col-lg-2 control-label', $labelOptions);
         $output = self::openTag('div', $groupOptions);
         if ($label !== false) {
             // todo: consider adding support for overriding the label with plain text.
@@ -2253,6 +2251,13 @@ EOD;
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
         $htmlOptions['class'] = 'form-control';
+        $attributesLabel = $model->attributeLabels();
+        $htmlOptions['placeholder'] = isset($attributesLabel[$attribute])?$attributesLabel[$attribute]:'';
+        $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
+        if($placeHolder){
+            $htmlOptions['placeholder'] = $placeHolder;
+        }
+
         self::addCssClass($addOnClasses, $addOnOptions);
 
         $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');

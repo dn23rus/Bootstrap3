@@ -6,8 +6,9 @@
  * @package bootstrap.helpers
  * Class MainNavPartial
  */
+namespace bootstrap\helpers;
 
-class NavPartial extends CModel {
+class NavPartial extends \CModel {
     public static $view;
     public static $params;
 
