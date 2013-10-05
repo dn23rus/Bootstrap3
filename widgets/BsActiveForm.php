@@ -712,6 +712,7 @@ class BsActiveForm extends CActiveForm
         $errorOptions = \bootstrap\helpers\BSArray::popValue('errorOptions', $options, array());
         $errorOptions['type'] = $this->helpType;
         $error = $this->error($model, $attribute, $errorOptions);
+
         // kind of a hack for ajax forms but this works for now.
         if (!empty($error) && strpos($error, 'display:none') === false) {
             $options['color'] = BSHtml::INPUT_COLOR_ERROR;

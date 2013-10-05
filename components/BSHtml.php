@@ -60,6 +60,9 @@ class BSHtml extends CHtml {
     const INPUT_TYPE_SEARCH = 'searchQuery';
     const INPUT_TYPE_CUSTOM = 'widget';
 
+    const INPUT_SIZE_LG = 'input-lg';
+    const INPUT_SIZE_SM = 'input-sm';
+
     const INPUT_SIZE_MINI = 'mini';
     const INPUT_SIZE_SMALL = 'small';
     const INPUT_SIZE_DEFAULT = '';
@@ -1272,7 +1275,7 @@ EOD;
             ? $htmlOptions['input']
             : self::createInput($type, $name, $checked, $htmlOptions);
 
-        $output = '<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="checkbox"><label>';
+        $output = '<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>';
         $output .= $input;
         $output .= $name;
         $output.= '</label></div></div></div>';
@@ -1714,11 +1717,11 @@ EOD;
      */
     public static function activeDropDownList($model, $attribute, $data, $htmlOptions = array())
     {
-        $displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
-        $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        if (!empty($displaySize)) {
-            $htmlOptions['size'] = $displaySize;
-        }
+        //$displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
+        //$htmlOptions = self::normalizeInputOptions($htmlOptions);
+//        if (!empty($displaySize)) {
+//            $htmlOptions['size'] = $displaySize;
+//        }
         return parent::activeDropDownList($model, $attribute, $data, $htmlOptions);
     }
 
@@ -1972,7 +1975,7 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="radio"><label>':'<div class="radio"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2"><div class="radio"><label>':'<div class="radio"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
@@ -2002,7 +2005,7 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2 col-lg-10"><div class="checkbox"><label>':'<div class="checkbox"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>':'<div class="checkbox"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
@@ -2022,6 +2025,7 @@ EOD;
      */
     public static function activeDropDownListControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
     {
+        self::addCssClass('form-control',$htmlOptions);
         return self::activeControlGroup(self::INPUT_TYPE_DROPDOWNLIST, $model, $attribute, $htmlOptions, $data);
     }
 
@@ -2177,7 +2181,7 @@ EOD;
 
         if(!empty($layout))
         {
-            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL && !isset($controlOptions['class'])){
                 self::addCssClass('col-lg-10', $controlOptions);
             }
 
@@ -2310,18 +2314,25 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         parent::clientChange('change', $htmlOptions);
-
+//        CVarDumper::dump($htmlOptions,10,true);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        self::addCssClass('form-control',$htmlOptions);
+//        if(isset($htmlOptions['class']) && !empty($htmlOptions['class'])){
+//            $htmlOptions['class'] = $htmlOptions['class'].' form-control';
+//        }else{
+//            $htmlOptions['class'] = ' form-control';
+//        }
 
-        $htmlOptions['class'] = 'form-control';
         $attributesLabel = $model->attributeLabels();
-        $htmlOptions['placeholder'] = isset($attributesLabel[$attribute])?$attributesLabel[$attribute]:'';
         $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
+
 
         if(!empty($placeHolder)){
             $htmlOptions['placeholder'] = $placeHolder;
+        }else{
+            $htmlOptions['placeholder'] = isset($attributesLabel[$attribute])?$attributesLabel[$attribute]:'';
         }
 
         self::addCssClass($addOnClasses, $addOnOptions);
@@ -2460,7 +2471,7 @@ EOD;
         if (is_array($actions)) {
             $actions = implode(' ', $actions);
         }
-        $outPut = parent::openTag('div',array('class' => 'col-lg-offset-2 col-lg-10'),array());
+        $outPut = parent::openTag('div',array('class' => 'col-lg-offset-2'),array());
         $outPut .= self::tag('div', $htmlOptions, $actions);
         $outPut .= parent::closeTag('div');
         return $outPut;
