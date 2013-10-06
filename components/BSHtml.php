@@ -2549,6 +2549,26 @@ EOD;
     {
         return self::btn(self::BUTTON_TYPE_SUBMIT, $label, $htmlOptions);
     }
+    /**
+     * Generates a submit button.
+     * @param string $label the button label
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function inputButton($label = 'Submit', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_INPUTBUTTON, $label, $htmlOptions);
+    }
+    /**
+     * Generates a submit button.
+     * @param string $label the button label
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function inputSubmitButton($label = 'Submit', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_INPUTSUBMIT, $label, $htmlOptions);
+    }
 
     /**
      * Generates a reset button.
