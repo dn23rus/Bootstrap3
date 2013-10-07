@@ -4,5 +4,6 @@ Thumbs.db
 
 #phpstorm project files
 .idea
+.sass-cache
 node_modules
 npm-debug.log

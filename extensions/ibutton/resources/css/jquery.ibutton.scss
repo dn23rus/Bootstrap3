@@ -13,21 +13,22 @@
   -moz-user-input: disabled;
   /* set default width based on ON/OFF labels */
   width: 89px;
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* hide the element */
+    filter:alpha(opacity=0);
+    -moz-opacity: 0.0;
+    opacity: 0.0;
+
+    /* allow checking of input if visible */
+    -moz-user-input: enabled  !important;
+  }
 }
 
-.ibutton-container input {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  /* hide the element */
-  filter:alpha(opacity=0);
-  -moz-opacity: 0.0;
-  opacity: 0.0;
-
-  /* allow checking of input if visible */
-  -moz-user-input: enabled  !important;
-}
 
 .ibutton-handle {
   display: block;
@@ -83,11 +84,12 @@ div.ibutton-label-on {
   left: 0;
   padding-top: 5px;
   z-index: 1;
+
+  span {
+    padding-left: 5px;
+  }
 }
 
-div.ibutton-label-on span {
-  padding-left: 5px;
-}
 
 div.ibutton-label-off {
   color: #7c7c7c;
@@ -99,11 +101,12 @@ div.ibutton-label-off {
    * it just needs to be close enough that it won't show under the handle if dragged to the left
    */
   width: 95%;
+
+  span {
+    padding-right: 5px;
+  }
 }
 
-div.ibutton-label-off span {
-  padding-right: 5px;
-}
 
 /* create an outline when button gets focus via keyboard */
 .ibutton-container label {
@@ -113,16 +116,18 @@ div.ibutton-label-off span {
   display: inline !important;
 }
 
-.ibutton-focus label {
-  /* we must use border, since outline doesn't work in IE */
-  border: 1px dotted #666 !important;
-  padding: 0 2px;
+.ibutton-focus{
+  label {
+    /* we must use border, since outline doesn't work in IE */
+    border: 1px dotted #666 !important;
+    padding: 0 2px;
+  }
+  div.ibutton-label-on span label {
+    /* use white for more contrast */
+    border-color: #fff !important;
+  }
 }
 
-.ibutton-focus div.ibutton-label-on span label {
-  /* use white for more contrast */
-  border-color: #fff !important;
-}
 
 /* add padding to right/left so that text gets clipped before absolute edge */
 .ibutton-padding-left, .ibutton-padding-right {
@@ -144,38 +149,41 @@ div.ibutton-label-off span {
 }
 
 /* change the styles of the handle when being dragged */
-.ibutton-active-handle .ibutton-handle {
-  background-position: 0 -108px;
+.ibutton-active-handle{
+
+  .ibutton-handle {
+    background-position: 0 -108px;
+  }
+  .ibutton-handle-right {
+    background-position: 100% -108px;
+  }
+  .ibutton-handle-middle {
+    background-position: 50% -108px;
+  }
 }
 
-.ibutton-active-handle .ibutton-handle-right {
-  background-position: 100% -108px;
-}
 
-.ibutton-active-handle .ibutton-handle-middle {
-  background-position: 50% -108px;
-}
 
 /* styles to use when the button is disabled */
 .ibutton-disabled {
   cursor: not-allowed !important; /* cursor options: default or not-allowed */
+  .ibutton-handle {
+    background-position: 0 -81px;
+  }
+  .ibutton-handle-right {
+    background-position: 100% -81px;
+  }
+  .ibutton-handle-middle {
+    background-position: 50% -81px;
+  }
+  div.ibutton-label-on {
+    background-position: 0 -27px;
+  }
 }
 
-.ibutton-disabled .ibutton-handle {
-  background-position: 0 -81px;
-}
 
-.ibutton-disabled .ibutton-handle-right {
-  background-position: 100% -81px;
-}
 
-.ibutton-disabled .ibutton-handle-middle {
-  background-position: 50% -81px;
-}
 
-.ibutton-disabled div.ibutton-label-on {
-  background-position: 0 -27px;
-}
 
 .ibutton-disabled div.ibutton-label-off {
   background-position: 100% -27px;
