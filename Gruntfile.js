@@ -35,6 +35,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
 
     // Default task(s).
-    grunt.registerTask('default', ['text-replace', 'release']);
+    grunt.registerTask('default', ['replace', 'release']);
 
 };
