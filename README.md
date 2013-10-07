@@ -1,6 +1,6 @@
-### Yii Bootstrap 3 Module
+# Yii Bootstrap 3 Module
 
-Version 0.0.4
+#### Version 0.0.4
 
 ### Code
 [Bitbucket][0]
@@ -104,8 +104,4 @@ with
 ## [Demo-Page](http://bootstrap3.pascal-brewing.de/ "")
 ### [Class Reference](http://bootstrap3.pascal-brewing.de/doc "")
 ### [Demo-Page-Example Bitbucket](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example "")
-
-## Changes
-- 04.10.2013 fix Forms add Documentation
-- 23.09.2013 added GlyphIcons as const
-- 24.09.2013 remove views and Defaultcontroller from Module
+### [Changes](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/commits/all "")
