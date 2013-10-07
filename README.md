@@ -1,3 +1,7 @@
+### Yii Bootstrap 3 Module
+
+Version 0.0.4
+
 ### Config Example
     <?php
     'aliases' => array(
