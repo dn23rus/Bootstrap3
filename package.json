@@ -1,6 +1,6 @@
 {
     "name": "bootstrap",
-    "version": "0.0.4",
+    "version": "1.0.0",
     "private": true,
     "description": "Yii Bootstrap3 Module",
     "main": "index.js",
