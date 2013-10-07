@@ -18,8 +18,8 @@ class BsGridView extends CGridView
 {
     /**
      * @var string|array the table style.
-     * Valid values are TbHtml::GRID_TYPE_STRIPED, TbHtml::GRID_TYPE_BORDERED, TbHtml::GRID_TYPE_CONDENSED and/or
-     * TbHtml::GRID_TYPE_HOVER.
+     * Valid values are BSHtml::GRID_TYPE_STRIPED, BSHtml::GRID_TYPE_BORDERED, BSHtml::GRID_TYPE_CONDENSED and/or
+     * BSHtml::GRID_TYPE_HOVER.
      */
     public $type;
     /**

@@ -13,14 +13,8 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 * using two-column layout. See 'protected/views/layouts/column2.php'.
 */
-public $layout='//layouts/column2';
-/**
-* set tHeme
-*/
-public function init(){
-Yii::app()->theme = 'presentage';
-$this->layout = '//layouts/layout_column_2';
-}
+public $layout='//layouts/column_2';
+
 /**
 * @return array action filters
 */

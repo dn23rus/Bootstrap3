@@ -19,15 +19,15 @@ class BsButtonColumn extends CButtonColumn
     /**
      * @var string the view button icon (defaults to BSHtml::ICON_EYE_OPEN).
      */
-    public $viewButtonIcon = BSHtml::ICON_EYE_OPEN;
+    public $viewButtonIcon = BSHtml::GLYPHICON_EYE_OPEN;
     /**
      * @var string the update button icon (defaults to BSHtml::ICON_PENCIL).
      */
-    public $updateButtonIcon = BSHtml::ICON_PENCIL;
+    public $updateButtonIcon = BSHtml::GLYPHICON_PENCIL;
     /**
      * @var string the delete button icon (defaults to BSHtml::ICON_TRASH).
      */
-    public $deleteButtonIcon = BSHtml::ICON_TRASH;
+    public $deleteButtonIcon = BSHtml::GLYPHICON_TRASH;
 
     /**
      * Initializes the default buttons (view, update and delete).

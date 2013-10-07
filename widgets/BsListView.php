@@ -1,6 +1,6 @@
 <?php
 /**
- * TbListView class file.
+ * BsListView class file.
  * @author Pascal Brewing
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @package bootstrap/widgets
@@ -19,7 +19,7 @@ class BsListView extends CListView
     public $pagerCssClass = 'pagination';
     /**
      * @var array the configuration for the pager.
-     * Defaults to <code>array('class'=>'ext.bootstrap.widgets.TbPager')</code>.
+     * Defaults to <code>array('class'=>'ext.bootstrap.widgets.BsPager')</code>.
      */
     public $pager = array('class' => 'bootstrap.widgets.BsPager');
     /**
