@@ -3348,6 +3348,17 @@ EOD;
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
+    /**
+     * Generates a menu header.
+     * @param string $label the header text.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated header.
+     */
+    public static function dropDownHeader($label, $htmlOptions = array())
+    {
+        self::addCssClass('dropdown-header', $htmlOptions);
+        return self::tag('li', $htmlOptions, $label);
+    }
 
     /**
      * Generates a menu divider.

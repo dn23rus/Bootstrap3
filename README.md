@@ -1,6 +1,6 @@
 # Yii Bootstrap 3 Module
 
-#### Version 0.0.4
+#### Version 0.0.5
 
 ### Code
 [Bitbucket][0]
