@@ -2956,11 +2956,16 @@ EOD;
      */
     public static function buttonGroup(array $buttons, $htmlOptions = array())
     {
+//        CVarDumper::dump($buttons,10,true);
         if (!empty($buttons)) {
             self::addCssClass('btn-group', $htmlOptions);
+
+
+
             if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
                 self::addCssClass('btn-group-vertical', $htmlOptions);
             }
+
             $toggle = \bootstrap\helpers\BSArray::popValue('toggle', $htmlOptions);
             if (!empty($toggle)) {
                 $htmlOptions['data-toggle'] = 'buttons-' . $toggle;
@@ -2972,9 +2977,15 @@ EOD;
             );
             $output = self::openTag('div', $htmlOptions);
             foreach ($buttons as $buttonOptions) {
+                $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
                 if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
                     continue;
                 }
+                if(!empty($own)){
+                    $output .= $own;
+                    continue;
+                }
+                $type = \bootstrap\helpers\BSArray::popValue('type', $buttonOptions, false);
                 // todo: consider removing the support for htmlOptions.
                 $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $buttonOptions, array());
                 if (!empty($options)) {
@@ -2986,7 +2997,11 @@ EOD;
                 if (!empty($items)) {
                     $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
                 } else {
-                    $output .= self::linkButton($buttonLabel, $buttonOptions);
+
+                    if(!empty($type) && $type = self::BUTTON_TYPE_LINK)
+                        $output .= self::linkButton($buttonLabel, $buttonOptions);
+                    else
+                        $output .= self::button($buttonLabel, $buttonOptions);
                 }
             }
             $output .= '</div>';
