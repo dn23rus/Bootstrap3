@@ -6,7 +6,7 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.helpers.BSHtml');
+Yii::import('bootstrap.components.BSHtml');
 Yii::import('bootstrap.helpers.BSArray');
 Yii::import('bootstrap.widgets.BsPager');
 Yii::import('zii.widgets.grid.CButtonColumn');
