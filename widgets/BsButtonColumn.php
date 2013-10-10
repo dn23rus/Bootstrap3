@@ -17,15 +17,15 @@ Yii::import('zii.widgets.grid.CButtonColumn');
 class BsButtonColumn extends CButtonColumn
 {
     /**
-     * @var string the view button icon (defaults to BSHtml::ICON_EYE_OPEN).
+     * @var string the view button icon (defaults to BSHtml::GLYPHICON_EYE_OPEN).
      */
     public $viewButtonIcon = BSHtml::GLYPHICON_EYE_OPEN;
     /**
-     * @var string the update button icon (defaults to BSHtml::ICON_PENCIL).
+     * @var string the update button icon (defaults to BSHtml::GLYPHICON_PENCIL).
      */
     public $updateButtonIcon = BSHtml::GLYPHICON_PENCIL;
     /**
-     * @var string the delete button icon (defaults to BSHtml::ICON_TRASH).
+     * @var string the delete button icon (defaults to BSHtml::GLYPHICON_TRASH).
      */
     public $deleteButtonIcon = BSHtml::GLYPHICON_TRASH;
 
@@ -56,6 +56,7 @@ class BsButtonColumn extends CButtonColumn
      */
     protected function renderButton($id, $button, $row, $data)
     {
+
         if (isset($button['visible']) && !$this->evaluateExpression(
                 $button['visible'],
                 array('row' => $row, 'data' => $data)
@@ -73,8 +74,9 @@ class BsButtonColumn extends CButtonColumn
         $label = \bootstrap\helpers\BSArray::popValue('label', $button, $id);
         $options = \bootstrap\helpers\BSArray::popValue('options', $button, array());
 
+        \bootstrap\helpers\BSArray::defaultValue('data-title', $label, $options);
         \bootstrap\helpers\BSArray::defaultValue('title', $label, $options);
-        \bootstrap\helpers\BSArray::defaultValue('rel', 'tooltip', $options);
+        \bootstrap\helpers\BSArray::defaultValue('data-toggle', 'tooltip', $options);
 
         if ($icon = \bootstrap\helpers\BSArray::popValue('icon', $button, false)) {
             echo CHtml::link(BSHtml::icon($icon), $url, $options);
