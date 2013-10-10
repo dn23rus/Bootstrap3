@@ -27,7 +27,7 @@ array('icon' => 'glyphicon glyphicon-minus-sign','label'=>'Delete <?php echo $th
 );
 ?>
 
-<h1>View <?php echo $this->modelClass . " #<?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
+<?php echo "<?php echo BSHtml::pageHeader('View','$this->modelClass '.\$model->{$this->tableSchema->primaryKey}) ?>\n"; ?>
 
 <?php echo "<?php"; ?> $this->widget('zii.widgets.CDetailView',array(
 'htmlOptions' => array(

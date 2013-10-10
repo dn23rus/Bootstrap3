@@ -26,7 +26,5 @@ echo "\$this->breadcrumbs=array(
     array('icon' => 'glyphicon glyphicon-minus-sign','label'=>'Delete <?php echo $this->modelClass; ?>', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>),'confirm'=>'Are you sure you want to delete this item?')),
     );
     ?>
-
-    <h1>Update <?php echo $this->modelClass . " <?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
-
+<?php echo "<?php echo BSHtml::pageHeader('Update','$this->modelClass '.\$model->{$this->tableSchema->primaryKey}) ?>\n"; ?>
 <?php echo "<?php \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>

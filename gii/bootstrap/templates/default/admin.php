@@ -15,31 +15,32 @@ echo "\$this->breadcrumbs=array(
 	'$label'=>array('index'),
 	'Manage',
 );\n";
+
 ?>
 
 $this->menu=array(
-    array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
-    array('icon' => 'glyphicon glyphicon-plus-sign','label'=>'Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
+array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+array('icon' => 'glyphicon glyphicon-plus-sign','label'=>'Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
-});
-$('.search-form form').submit(function(){
-$('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
-data: $(this).serialize()
-});
-return false;
-});
-");
+Yii::app()->clientScript->registerScript('search',
+    "
+    $('.search-button').click(function(){
+        $('.search-form').toggle();
+            return false;
+        });
+        $('.search-form form').submit(function(){
+            $('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
+            data: $(this).serialize()
+        });
+        return false;
+    });"
+);
 ?>
-
-<h1 class="page-header">Manage <?php echo $this->pluralize($this->class2name($this->modelClass)); ?></h1>
+<?php echo "<?php echo BSHtml::pageHeader('Manage','$label') ?>\n"; ?>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><?php echo "<?php echo BSHtml::button('Advanced search',array('icon' => BSHtml::GLYPHICON_SEARCH,'color' => BSHtml::BUTTON_COLOR_PRIMARY), '#'); ?>"; ?></h3>
+        <h3 class="panel-title"><?php echo "<?php echo BSHtml::button('Advanced search',array('class' =>'search-button', 'icon' => BSHtml::GLYPHICON_SEARCH,'color' => BSHtml::BUTTON_COLOR_PRIMARY), '#'); ?>"; ?></h3>
     </div>
     <div class="panel-body">
         <p>

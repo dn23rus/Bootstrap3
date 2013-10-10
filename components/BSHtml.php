@@ -3790,7 +3790,7 @@ EOD;
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated pager header.
      */
-    public static function pageHeader($heading, $subtext, $htmlOptions = array())
+    public static function pageHeader($heading, $subtext= '', $htmlOptions = array())
     {
         self::addCssClass('page-header', $htmlOptions);
         $headerOptions = \bootstrap\helpers\BSArray::popValue('headerOptions', $htmlOptions, array());

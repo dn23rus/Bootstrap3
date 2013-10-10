@@ -22,7 +22,6 @@ echo "\$this->breadcrumbs=array(
         array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
     );
     ?>
-
-    <h1>Create <?php echo $this->modelClass; ?></h1>
+<?php echo "<?php echo BSHtml::pageHeader('Create','$this->modelClass') ?>\n"; ?>
 
 <?php echo "<?php \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>
