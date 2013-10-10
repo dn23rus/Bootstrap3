@@ -115,7 +115,7 @@ class BSHtml extends CHtml {
 
     const IMAGE_TYPE_ROUNDED = 'rounded';
     const IMAGE_TYPE_CIRCLE = 'circle';
-    const IMAGE_TYPE_POLAROID = 'polaroid';
+    const IMAGE_TYPE_THUMBNAIL = 'thumbnail';
 
     //
     // NAV
@@ -2819,9 +2819,9 @@ EOD;
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated image tag.
      */
-    public static function imagePolaroid($src, $alt = '', $htmlOptions = array())
+    public static function imageThumbnail($src, $alt = '', $htmlOptions = array())
     {
-        $htmlOptions['type'] = self::IMAGE_TYPE_POLAROID;
+        $htmlOptions['type'] = self::IMAGE_TYPE_THUMBNAIL;
         return self::image($src, $alt, $htmlOptions);
     }
 
