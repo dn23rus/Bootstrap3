@@ -2962,7 +2962,7 @@ EOD;
             self::addCssClass('btn-group', $htmlOptions);
 
             if (\bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false)) {
-                self::addCssClass('btn-group-justified', $groupOptions);
+                self::addCssClass('btn-group-justified', $htmlOptions);
             }
 
             if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
