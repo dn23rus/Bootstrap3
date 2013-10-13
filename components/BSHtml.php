@@ -2716,10 +2716,11 @@ EOD;
         if (\bootstrap\helpers\BSArray::popValue('dropup', $htmlOptions, false)) {
             self::addCssClass('dropup', $groupOptions);
         }
+
         $output = self::openTag('div', $groupOptions);
         if (\bootstrap\helpers\BSArray::popValue('split', $htmlOptions, false)) {
-            //$output .= self::createButton($type, $label, $htmlOptions);
-            $output .= self::dropdownToggleButton($label, $htmlOptions);
+            $output .= self::createButton($type, $label, $htmlOptions);
+            $output .= self::dropdownToggleButton('', $htmlOptions);
 
         } else {
             $output .= self::dropdownToggleLink($label, $htmlOptions);
@@ -2956,11 +2957,13 @@ EOD;
      */
     public static function buttonGroup(array $buttons, $htmlOptions = array())
     {
-//        CVarDumper::dump($buttons,10,true);
+//        CVarDumper::dump($htmlOptions,10,true);
         if (!empty($buttons)) {
             self::addCssClass('btn-group', $htmlOptions);
 
-
+            if (\bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false)) {
+                self::addCssClass('btn-group-justified', $groupOptions);
+            }
 
             if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
                 self::addCssClass('btn-group-vertical', $htmlOptions);
@@ -2977,7 +2980,10 @@ EOD;
             );
             $output = self::openTag('div', $htmlOptions);
             foreach ($buttons as $buttonOptions) {
+
+
                 $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
+//                CVarDumper::dump($buttonOptions,10,true);
                 if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
                     continue;
                 }
