@@ -3182,6 +3182,10 @@ EOD;
         if (!empty($type)) {
             self::addCssClass('nav-' . $type, $htmlOptions);
         }
+        $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
+        if($justified){
+            self::addCssClass('nav-justified',$htmlOptions);
+        }
         if ($type !== self::NAV_TYPE_LIST && \bootstrap\helpers\BSArray::popValue('stacked', $htmlOptions, false)) {
             self::addCssClass('nav-stacked', $htmlOptions);
         }
