@@ -2,12 +2,11 @@
 /**
  * CBreadcrumbs class file.
  * bootstrap only extend to configure the run
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @link http://www.yiiframework.com/doc/api/1.1/CBreadcrumbs
- * @copyright 2008-2013 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- *
+ * @author Pascal Brewing
+ * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @package bootstrap/widgets
  */
+
 Yii::import('zii.widgets.CBreadcrumbs');
 class BsBreadcrumb extends CBreadcrumbs
 {
