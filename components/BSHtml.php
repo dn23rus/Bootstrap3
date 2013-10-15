@@ -3597,32 +3597,19 @@ EOD;
     }
 
     // Breadcrumbs
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#breadcrumbs
+    // http://getbootstrap.com/components/#breadcrumbs
     // --------------------------------------------------
-
     /**
      * Generates a breadcrumb menu.
+     * @link http://www.yiiframework.com/doc/api/1.1/CBreadcrumbs
      * @param array $links the breadcrumb links.
-     * @param array $htmlOptions additional HTML attributes.
      * @return string the generated breadcrumb.
      */
-    public static function breadcrumbs($links, $htmlOptions = array())
+    public static function breadcrumbs($links)
     {
-        $divider = \bootstrap\helpers\BSArray::popValue('divider', $htmlOptions);
-        self::addCssClass('breadcrumb', $htmlOptions);
-        $output = self::openTag('ul', $htmlOptions);
-        foreach ($links as $label => $url) {
-            if (is_string($label)) {
-                $output .= self::openTag('li');
-                $output .= self::link($label, $url);
-//                $output .= self::tag('span', array('class' => 'divider'), $divider);
-                $output .= '</li>';
-            } else {
-                $output .= self::tag('li', array('class' => 'active'), $url);
-            }
-        }
-        $output .= '</ul>';
-        return $output;
+        $breadCrumbWidget = new BsBreadcrumb();
+        $breadCrumbWidget->links = $links;
+        return $breadCrumbWidget->run();
     }
 
     // Pagination
