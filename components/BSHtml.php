@@ -3,11 +3,11 @@
  * User: Pascal Brewing
  * Date: 11.09.13
  * Time: 11:22
-
  * @package bootstrap/components
  * Class BSHtml
  */
-class BSHtml extends CHtml {
+class BSHtml extends CHtml
+{
     //
     // TYPOGRAPHY
     // --------------------------------------------------
@@ -15,7 +15,6 @@ class BSHtml extends CHtml {
     const TEXT_ALIGN_LEFT = 'left';
     const TEXT_ALIGN_CENTER = 'center';
     const TEXT_ALIGN_RIGHT = 'right';
-
     const TEXT_COLOR_DEFAULT = '';
     const TEXT_COLOR_MUTED = 'muted';
     const TEXT_COLOR_PRIMARY = 'primary';
@@ -24,21 +23,17 @@ class BSHtml extends CHtml {
     const TEXT_COLOR_WARNING = 'warning';
     const TEXT_COLOR_DANGER = 'danger';
     const TEXT_ABBR_INITIALISM = 'initialism';
-
     const HELP_TYPE_INLINE = 'inline';
     const HELP_TYPE_BLOCK = 'block';
-
 
 
     //
     // FORM
     // --------------------------------------------------
-
     const FORM_LAYOUT_VERTICAL = 'vertical';
     const FORM_LAYOUT_HORIZONTAL = 'horizontal';
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
-
     const INPUT_TYPE_TEXT = 'textField';
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
@@ -59,10 +54,8 @@ class BSHtml extends CHtml {
     const INPUT_TYPE_UNEDITABLE = 'uneditableField';
     const INPUT_TYPE_SEARCH = 'searchQuery';
     const INPUT_TYPE_CUSTOM = 'widget';
-
     const INPUT_SIZE_LG = 'input-lg';
     const INPUT_SIZE_SM = 'input-sm';
-
     const INPUT_SIZE_MINI = 'mini';
     const INPUT_SIZE_SMALL = 'small';
     const INPUT_SIZE_DEFAULT = '';
@@ -70,7 +63,6 @@ class BSHtml extends CHtml {
     const INPUT_SIZE_LARGE = 'large';
     const INPUT_SIZE_XLARGE = 'xlarge';
     const INPUT_SIZE_XXLARGE = 'xxlarge';
-
     const INPUT_COLOR_DEFAULT = '';
     const INPUT_COLOR_WARNING = 'warning';
     const INPUT_COLOR_ERROR = 'error';
@@ -80,7 +72,6 @@ class BSHtml extends CHtml {
     //
     // BUTTONS
     // --------------------------------------------------
-
     const BUTTON_TYPE_LINK = 'link';
     const BUTTON_TYPE_HTML = 'htmlButton';
     const BUTTON_TYPE_SUBMIT = 'submitButton';
@@ -91,7 +82,6 @@ class BSHtml extends CHtml {
     const BUTTON_TYPE_AJAXBUTTON = 'ajaxButton';
     const BUTTON_TYPE_INPUTBUTTON = 'inputButton';
     const BUTTON_TYPE_INPUTSUBMIT = 'inputSubmit';
-
     const BUTTON_COLOR_DEFAULT = 'default';
     const BUTTON_COLOR_PRIMARY = 'primary';
     const BUTTON_COLOR_INFO = 'info';
@@ -100,19 +90,16 @@ class BSHtml extends CHtml {
     const BUTTON_COLOR_DANGER = 'danger';
     const BUTTON_COLOR_INVERSE = 'inverse';
     const BUTTON_COLOR_LINK = 'link';
-
     const BUTTON_SIZE_MINI = 'xs';
     const BUTTON_SIZE_SMALL = 'sm';
     const BUTTON_SIZE_DEFAULT = '';
     const BUTTON_SIZE_LARGE = 'lg';
-
     const BUTTON_TOGGLE_CHECKBOX = 'checkbox';
     const BUTTON_TOGGLE_RADIO = 'radio';
 
     //
     // IMAGES
     // --------------------------------------------------
-
     const IMAGE_TYPE_ROUNDED = 'rounded';
     const IMAGE_TYPE_CIRCLE = 'circle';
     const IMAGE_TYPE_THUMBNAIL = 'thumbnail';
@@ -120,12 +107,10 @@ class BSHtml extends CHtml {
     //
     // NAV
     // --------------------------------------------------
-
     const NAV_TYPE_NONE = '';
     const NAV_TYPE_TABS = 'tabs';
     const NAV_TYPE_PILLS = 'pills';
     const NAV_TYPE_LIST = 'list';
-
     const TABS_PLACEMENT_ABOVE = '';
     const TABS_PLACEMENT_BELOW = 'below';
     const TABS_PLACEMENT_LEFT = 'left';
@@ -134,22 +119,18 @@ class BSHtml extends CHtml {
     //
     // NAVBAR
     // --------------------------------------------------
-
     const NAVBAR_DISPLAY_NONE = '';
     const NAVBAR_DISPLAY_FIXEDTOP = 'fixed-top';
     const NAVBAR_DISPLAY_FIXEDBOTTOM = 'fixed-bottom';
     const NAVBAR_DISPLAY_STATICTOP = 'static-top';
-
     const NAVBAR_COLOR_INVERSE = 'inverse';
 
     //
     // PAGINATION
     // --------------------------------------------------
-
     const PAGINATION_SIZE_SMALL = 'sm';
     const PAGINATION_SIZE_DEFAULT = '';
     const PAGINATION_SIZE_LARGE = 'lg';
-
     const PAGINATION_ALIGN_LEFT = 'left';
     const PAGINATION_ALIGN_CENTER = 'centered';
     const PAGINATION_ALIGN_RIGHT = 'right';
@@ -157,14 +138,13 @@ class BSHtml extends CHtml {
     //
     // LABELS AND BADGES
     // --------------------------------------------------
-
     const LABEL_COLOR_DEFAULT = '';
+    const LABEL_COLOR_PRIMARY = 'primary';
     const LABEL_COLOR_SUCCESS = 'success';
     const LABEL_COLOR_WARNING = 'warning';
     const LABEL_COLOR_IMPORTANT = 'important';
     const LABEL_COLOR_INFO = 'info';
-    const LABEL_COLOR_INVERSE = 'inverse';
-
+    const LABEL_COLOR_DANGER = 'danger';
     const BADGE_COLOR_DEFAULT = '';
     const BADGE_COLOR_SUCCESS = 'success';
     const BADGE_COLOR_WARNING = 'warning';
@@ -175,22 +155,18 @@ class BSHtml extends CHtml {
     //
     // TOOLTIPS AND POPOVERS
     // --------------------------------------------------
-
     const TOOLTIP_PLACEMENT_TOP = 'top';
     const TOOLTIP_PLACEMENT_BOTTOM = 'bottom';
     const TOOLTIP_PLACEMENT_LEFT = 'left';
     const TOOLTIP_PLACEMENT_RIGHT = 'right';
-
     const TOOLTIP_TRIGGER_CLICK = 'click';
     const TOOLTIP_TRIGGER_HOVER = 'hover';
     const TOOLTIP_TRIGGER_FOCUS = 'focus';
     const TOOLTIP_TRIGGER_MANUAL = 'manual';
-
     const POPOVER_PLACEMENT_TOP = 'top';
     const POPOVER_PLACEMENT_BOTTOM = 'bottom';
     const POPOVER_PLACEMENT_LEFT = 'left';
     const POPOVER_PLACEMENT_RIGHT = 'right';
-
     const POPOVER_TRIGGER_CLICK = 'click';
     const POPOVER_TRIGGER_HOVER = 'hover';
     const POPOVER_TRIGGER_FOCUS = 'focus';
@@ -199,7 +175,6 @@ class BSHtml extends CHtml {
     //
     // ALERT
     // --------------------------------------------------
-
     const ALERT_COLOR_DEFAULT = '';
     const ALERT_COLOR_INFO = 'info';
     const ALERT_COLOR_SUCCESS = 'success';
@@ -210,7 +185,6 @@ class BSHtml extends CHtml {
     //
     // PROGRESS BARS
     // --------------------------------------------------
-
     const PROGRESS_COLOR_DEFAULT = '';
     const PROGRESS_COLOR_INFO = 'info';
     const PROGRESS_COLOR_SUCCESS = 'success';
@@ -220,21 +194,17 @@ class BSHtml extends CHtml {
     //
     // MISC
     // --------------------------------------------------
-
     const WELL_SIZE_SMALL = 'small';
     const WELL_SIZE_DEFAULT = '';
     const WELL_SIZE_LARGE = 'large';
-
     const PULL_LEFT = 'left';
     const PULL_RIGHT = 'right';
-
     const CLOSE_DISMISS_ALERT = 'alert';
     const CLOSE_DISMISS_MODAL = 'modal';
 
     //
     // DETAIL VIEW
     // --------------------------------------------------
-
     const DETAIL_TYPE_STRIPED = 'striped';
     const DETAIL_TYPE_BORDERED = 'bordered';
     const DETAIL_TYPE_CONDENSED = 'condensed';
@@ -243,7 +213,6 @@ class BSHtml extends CHtml {
     //
     // GRID VIEW
     // --------------------------------------------------
-
     const GRID_TYPE_STRIPED = 'striped';
     const GRID_TYPE_BORDERED = 'bordered';
     const GRID_TYPE_CONDENSED = 'condensed';
@@ -257,217 +226,214 @@ class BSHtml extends CHtml {
     //
     // AFFIX
     // --------------------------------------------------
-
     const AFFIX_POSITION_TOP = 'top';
     const AFFIX_POSITION_BOTTOM = 'bottom';
 
     //
     // ICON
     // --------------------------------------------------
-
-    const GLYPHICON_ADJUST='glyphicon-adjust';
-    const GLYPHICON_ALIGN_CENTER='glyphicon-align-center';
-    const GLYPHICON_ALIGN_JUSTIFY='glyphicon-align-justify';
-    const GLYPHICON_ALIGN_LEFT='glyphicon-align-left';
-    const GLYPHICON_ALIGN_RIGHT='glyphicon-align-right';
-    const GLYPHICON_ARROW_DOWN='glyphicon-arrow-down';
-    const GLYPHICON_ARROW_LEFT='glyphicon-arrow-left';
-    const GLYPHICON_ARROW_RIGHT='glyphicon-arrow-right';
-    const GLYPHICON_ARROW_UP='glyphicon-arrow-up';
-    const GLYPHICON_ASTERISK='glyphicon-asterisk';
-    const GLYPHICON_BACKWARD='glyphicon-backward';
-    const GLYPHICON_BAN_CIRCLE='glyphicon-ban-circle';
-    const GLYPHICON_BARCODE='glyphicon-barcode';
-    const GLYPHICON_BELL='glyphicon-bell';
-    const GLYPHICON_BOLD='glyphicon-bold';
-    const GLYPHICON_BOOK='glyphicon-book';
-    const GLYPHICON_BOOKMARK='glyphicon-bookmark';
-    const GLYPHICON_BRIEFCASE='glyphicon-briefcase';
-    const GLYPHICON_BULLHORN='glyphicon-bullhorn';
-    const GLYPHICON_CALENDAR='glyphicon-calendar';
-    const GLYPHICON_CAMERA='glyphicon-camera';
-    const GLYPHICON_CERTIFICATE='glyphicon-certificate';
-    const GLYPHICON_CHECK='glyphicon-check';
-    const GLYPHICON_CHEVRON_DOWN='glyphicon-chevron-down';
-    const GLYPHICON_CHEVRON_LEFT='glyphicon-chevron-left';
-    const GLYPHICON_CHEVRON_RIGHT='glyphicon-chevron-right';
-    const GLYPHICON_CHEVRON_UP='glyphicon-chevron-up';
-    const GLYPHICON_CIRCLE_ARROW_DOWN='glyphicon-circle-arrow-down';
-    const GLYPHICON_CIRCLE_ARROW_LEFT='glyphicon-circle-arrow-left';
-    const GLYPHICON_CIRCLE_ARROW_RIGHT='glyphicon-circle-arrow-right';
-    const GLYPHICON_CIRCLE_ARROW_UP='glyphicon-circle-arrow-up';
-    const GLYPHICON_CLOUD='glyphicon-cloud';
-    const GLYPHICON_CLOUD_DOWNLOAD='glyphicon-cloud-download';
-    const GLYPHICON_CLOUD_UPLOAD='glyphicon-cloud-upload';
-    const GLYPHICON_COG='glyphicon-cog';
-    const GLYPHICON_COLLAPSE_DOWN='glyphicon-collapse-down';
-    const GLYPHICON_COLLAPSE_UP='glyphicon-collapse-up';
-    const GLYPHICON_COMMENT='glyphicon-comment';
-    const GLYPHICON_COMPRESSED='glyphicon-compressed';
-    const GLYPHICON_COPYRIGHT_MARK='glyphicon-copyright-mark';
-    const GLYPHICON_CREDIT_CARD='glyphicon-credit-card';
-    const GLYPHICON_CUTLERY='glyphicon-cutlery';
-    const GLYPHICON_DASHBOARD='glyphicon-dashboard';
-    const GLYPHICON_DOWNLOAD='glyphicon-download';
-    const GLYPHICON_DOWNLOAD_ALT='glyphicon-download-alt';
-    const GLYPHICON_EARPHONE='glyphicon-earphone';
-    const GLYPHICON_EDIT='glyphicon-edit';
-    const GLYPHICON_EJECT='glyphicon-eject';
-    const GLYPHICON_ENVELOPE='glyphicon-envelope';
-    const GLYPHICON_EURO='glyphicon-euro';
-    const GLYPHICON_EXCLAMATION_SIGN='glyphicon-exclamation-sign';
-    const GLYPHICON_EXPAND='glyphicon-expand';
-    const GLYPHICON_EXPORT='glyphicon-export';
-    const GLYPHICON_EYE_CLOSE='glyphicon-eye-close';
-    const GLYPHICON_EYE_OPEN='glyphicon-eye-open';
-    const GLYPHICON_FACETIME_VIDEO='glyphicon-facetime-video';
-    const GLYPHICON_FAST_BACKWARD='glyphicon-fast-backward';
-    const GLYPHICON_FAST_FORWARD='glyphicon-fast-forward';
-    const GLYPHICON_FILE='glyphicon-file';
-    const GLYPHICON_FILM='glyphicon-film';
-    const GLYPHICON_FILTER='glyphicon-filter';
-    const GLYPHICON_FIRE='glyphicon-fire';
-    const GLYPHICON_FLAG='glyphicon-flag';
-    const GLYPHICON_FLASH='glyphicon-flash';
-    const GLYPHICON_FLOPPY_DISK='glyphicon-floppy-disk';
-    const GLYPHICON_FLOPPY_OPEN='glyphicon-floppy-open';
-    const GLYPHICON_FLOPPY_REMOVE='glyphicon-floppy-remove';
-    const GLYPHICON_FLOPPY_SAVE='glyphicon-floppy-save';
-    const GLYPHICON_FLOPPY_SAVED='glyphicon-floppy-saved';
-    const GLYPHICON_FOLDER_CLOSE='glyphicon-folder-close';
-    const GLYPHICON_FOLDER_OPEN='glyphicon-folder-open';
-    const GLYPHICON_FONT='glyphicon-font';
-    const GLYPHICON_FORWARD='glyphicon-forward';
-    const GLYPHICON_FULLSCREEN='glyphicon-fullscreen';
-    const GLYPHICON_GBP='glyphicon-gbp';
-    const GLYPHICON_GIFT='glyphicon-gift';
-    const GLYPHICON_GLASS='glyphicon-glass';
-    const GLYPHICON_GLOBE='glyphicon-globe';
-    const GLYPHICON_HAND_DOWN='glyphicon-hand-down';
-    const GLYPHICON_HAND_LEFT='glyphicon-hand-left';
-    const GLYPHICON_HAND_RIGHT='glyphicon-hand-right';
-    const GLYPHICON_HAND_UP='glyphicon-hand-up';
-    const GLYPHICON_HD_VIDEO='glyphicon-hd-video';
-    const GLYPHICON_HDD='glyphicon-hdd';
-    const GLYPHICON_HEADER='glyphicon-header';
-    const GLYPHICON_HEADPHONES='glyphicon-headphones';
-    const GLYPHICON_HEART='glyphicon-heart';
-    const GLYPHICON_HEART_EMPTY='glyphicon-heart-empty';
-    const GLYPHICON_HOME='glyphicon-home';
-    const GLYPHICON_IMPORT='glyphicon-import';
-    const GLYPHICON_INBOX='glyphicon-inbox';
-    const GLYPHICON_INDENT_LEFT='glyphicon-indent-left';
-    const GLYPHICON_INDENT_RIGHT='glyphicon-indent-right';
-    const GLYPHICON_INFO_SIGN='glyphicon-info-sign';
-    const GLYPHICON_ITALIC='glyphicon-italic';
-    const GLYPHICON_LEAF='glyphicon-leaf';
-    const GLYPHICON_LINK='glyphicon-link';
-    const GLYPHICON_LIST='glyphicon-list';
-    const GLYPHICON_LIST_ALT='glyphicon-list-alt';
-    const GLYPHICON_LOCK='glyphicon-lock';
-    const GLYPHICON_LOG_IN='glyphicon-log-in';
-    const GLYPHICON_LOG_OUT='glyphicon-log-out';
-    const GLYPHICON_MAGNET='glyphicon-magnet';
-    const GLYPHICON_MAP_MARKER='glyphicon-map-marker';
-    const GLYPHICON_MINUS='glyphicon-minus';
-    const GLYPHICON_MINUS_SIGN='glyphicon-minus-sign';
-    const GLYPHICON_MOVE='glyphicon-move';
-    const GLYPHICON_MUSIC='glyphicon-music';
-    const GLYPHICON_NEW_WINDOW='glyphicon-new-window';
-    const GLYPHICON_OFF='glyphicon-off';
-    const GLYPHICON_OK='glyphicon-ok';
-    const GLYPHICON_OK_CIRCLE='glyphicon-ok-circle';
-    const GLYPHICON_OK_SIGN='glyphicon-ok-sign';
-    const GLYPHICON_OPEN='glyphicon-open';
-    const GLYPHICON_PAPERCLIP='glyphicon-paperclip';
-    const GLYPHICON_PAUSE='glyphicon-pause';
-    const GLYPHICON_PENCIL='glyphicon-pencil';
-    const GLYPHICON_PHONE='glyphicon-phone';
-    const GLYPHICON_PHONE_ALT='glyphicon-phone-alt';
-    const GLYPHICON_PICTURE='glyphicon-picture';
-    const GLYPHICON_PLANE='glyphicon-plane';
-    const GLYPHICON_PLAY='glyphicon-play';
-    const GLYPHICON_PLAY_CIRCLE='glyphicon-play-circle';
-    const GLYPHICON_PLUS='glyphicon-plus';
-    const GLYPHICON_PLUS_SIGN='glyphicon-plus-sign';
-    const GLYPHICON_PRINT='glyphicon-print';
-    const GLYPHICON_PUSHPIN='glyphicon-pushpin';
-    const GLYPHICON_QRCODE='glyphicon-qrcode';
-    const GLYPHICON_QUESTION_SIGN='glyphicon-question-sign';
-    const GLYPHICON_RANDOM='glyphicon-random';
-    const GLYPHICON_RECORD='glyphicon-record';
-    const GLYPHICON_REFRESH='glyphicon-refresh';
-    const GLYPHICON_REGISTRATION_MARK='glyphicon-registration-mark';
-    const GLYPHICON_REMOVE='glyphicon-remove';
-    const GLYPHICON_REMOVE_CIRCLE='glyphicon-remove-circle';
-    const GLYPHICON_REMOVE_SIGN='glyphicon-remove-sign';
-    const GLYPHICON_REPEAT='glyphicon-repeat';
-    const GLYPHICON_RESIZE_FULL='glyphicon-resize-full';
-    const GLYPHICON_RESIZE_HORIZONTAL='glyphicon-resize-horizontal';
-    const GLYPHICON_RESIZE_SMALL='glyphicon-resize-small';
-    const GLYPHICON_RESIZE_VERTICAL='glyphicon-resize-vertical';
-    const GLYPHICON_RETWEET='glyphicon-retweet';
-    const GLYPHICON_ROAD='glyphicon-road';
-    const GLYPHICON_SAVE='glyphicon-save';
-    const GLYPHICON_SAVED='glyphicon-saved';
-    const GLYPHICON_SCREENSHOT='glyphicon-screenshot';
-    const GLYPHICON_SD_VIDEO='glyphicon-sd-video';
-    const GLYPHICON_SEARCH='glyphicon-search';
-    const GLYPHICON_SEND='glyphicon-send';
-    const GLYPHICON_SHARE='glyphicon-share';
-    const GLYPHICON_SHARE_ALT='glyphicon-share-alt';
-    const GLYPHICON_SHOPPING_CART='glyphicon-shopping-cart';
-    const GLYPHICON_SIGNAL='glyphicon-signal';
-    const GLYPHICON_SORT='glyphicon-sort';
-    const GLYPHICON_SORT_BY_ALPHABET='glyphicon-sort-by-alphabet';
-    const GLYPHICON_SORT_BY_ALPHABET_ALT='glyphicon-sort-by-alphabet-alt';
-    const GLYPHICON_SORT_BY_ATTRIBUTES='glyphicon-sort-by-attributes';
-    const GLYPHICON_SORT_BY_ATTRIBUTES_ALT='glyphicon-sort-by-attributes-alt';
-    const GLYPHICON_SORT_BY_ORDER='glyphicon-sort-by-order';
-    const GLYPHICON_SORT_BY_ORDER_ALT='glyphicon-sort-by-order-alt';
-    const GLYPHICON_SOUND_5_1='glyphicon-sound-5-1';
-    const GLYPHICON_SOUND_6_1='glyphicon-sound-6-1';
-    const GLYPHICON_SOUND_7_1='glyphicon-sound-7-1';
-    const GLYPHICON_SOUND_DOLBY='glyphicon-sound-dolby';
-    const GLYPHICON_SOUND_STEREO='glyphicon-sound-stereo';
-    const GLYPHICON_STAR='glyphicon-star';
-    const GLYPHICON_STAR_EMPTY='glyphicon-star-empty';
-    const GLYPHICON_STATS='glyphicon-stats';
-    const GLYPHICON_STEP_BACKWARD='glyphicon-step-backward';
-    const GLYPHICON_STEP_FORWARD='glyphicon-step-forward';
-    const GLYPHICON_STOP='glyphicon-stop';
-    const GLYPHICON_SUBTITLES='glyphicon-subtitles';
-    const GLYPHICON_TAG='glyphicon-tag';
-    const GLYPHICON_TAGS='glyphicon-tags';
-    const GLYPHICON_TASKS='glyphicon-tasks';
-    const GLYPHICON_TEXT_HEIGHT='glyphicon-text-height';
-    const GLYPHICON_TEXT_WIDTH='glyphicon-text-width';
-    const GLYPHICON_TH='glyphicon-th';
-    const GLYPHICON_TH_LARGE='glyphicon-th-large';
-    const GLYPHICON_TH_LIST='glyphicon-th-list';
-    const GLYPHICON_THUMBS_DOWN='glyphicon-thumbs-down';
-    const GLYPHICON_THUMBS_UP='glyphicon-thumbs-up';
-    const GLYPHICON_TIME='glyphicon-time';
-    const GLYPHICON_TINT='glyphicon-tint';
-    const GLYPHICON_TOWER='glyphicon-tower';
-    const GLYPHICON_TRANSFER='glyphicon-transfer';
-    const GLYPHICON_TRASH='glyphicon-trash';
-    const GLYPHICON_TREE_CONIFER='glyphicon-tree-conifer';
-    const GLYPHICON_TREE_DECIDUOUS='glyphicon-tree-deciduous';
-    const GLYPHICON_UNCHECKED='glyphicon-unchecked';
-    const GLYPHICON_UPLOAD='glyphicon-upload';
-    const GLYPHICON_USD='glyphicon-usd';
-    const GLYPHICON_USER='glyphicon-user';
-    const GLYPHICON_VOLUME_DOWN='glyphicon-volume-down';
-    const GLYPHICON_VOLUME_OFF='glyphicon-volume-off';
-    const GLYPHICON_VOLUME_UP='glyphicon-volume-up';
-    const GLYPHICON_WARNING_SIGN='glyphicon-warning-sign';
-    const GLYPHICON_WRENCH='glyphicon-wrench';
-    const GLYPHICON_ZOOM_IN='glyphicon-zoom-in';
-    const GLYPHICON_ZOOM_OUT='glyphicon-zoom-out';
+    const GLYPHICON_ADJUST = 'glyphicon-adjust';
+    const GLYPHICON_ALIGN_CENTER = 'glyphicon-align-center';
+    const GLYPHICON_ALIGN_JUSTIFY = 'glyphicon-align-justify';
+    const GLYPHICON_ALIGN_LEFT = 'glyphicon-align-left';
+    const GLYPHICON_ALIGN_RIGHT = 'glyphicon-align-right';
+    const GLYPHICON_ARROW_DOWN = 'glyphicon-arrow-down';
+    const GLYPHICON_ARROW_LEFT = 'glyphicon-arrow-left';
+    const GLYPHICON_ARROW_RIGHT = 'glyphicon-arrow-right';
+    const GLYPHICON_ARROW_UP = 'glyphicon-arrow-up';
+    const GLYPHICON_ASTERISK = 'glyphicon-asterisk';
+    const GLYPHICON_BACKWARD = 'glyphicon-backward';
+    const GLYPHICON_BAN_CIRCLE = 'glyphicon-ban-circle';
+    const GLYPHICON_BARCODE = 'glyphicon-barcode';
+    const GLYPHICON_BELL = 'glyphicon-bell';
+    const GLYPHICON_BOLD = 'glyphicon-bold';
+    const GLYPHICON_BOOK = 'glyphicon-book';
+    const GLYPHICON_BOOKMARK = 'glyphicon-bookmark';
+    const GLYPHICON_BRIEFCASE = 'glyphicon-briefcase';
+    const GLYPHICON_BULLHORN = 'glyphicon-bullhorn';
+    const GLYPHICON_CALENDAR = 'glyphicon-calendar';
+    const GLYPHICON_CAMERA = 'glyphicon-camera';
+    const GLYPHICON_CERTIFICATE = 'glyphicon-certificate';
+    const GLYPHICON_CHECK = 'glyphicon-check';
+    const GLYPHICON_CHEVRON_DOWN = 'glyphicon-chevron-down';
+    const GLYPHICON_CHEVRON_LEFT = 'glyphicon-chevron-left';
+    const GLYPHICON_CHEVRON_RIGHT = 'glyphicon-chevron-right';
+    const GLYPHICON_CHEVRON_UP = 'glyphicon-chevron-up';
+    const GLYPHICON_CIRCLE_ARROW_DOWN = 'glyphicon-circle-arrow-down';
+    const GLYPHICON_CIRCLE_ARROW_LEFT = 'glyphicon-circle-arrow-left';
+    const GLYPHICON_CIRCLE_ARROW_RIGHT = 'glyphicon-circle-arrow-right';
+    const GLYPHICON_CIRCLE_ARROW_UP = 'glyphicon-circle-arrow-up';
+    const GLYPHICON_CLOUD = 'glyphicon-cloud';
+    const GLYPHICON_CLOUD_DOWNLOAD = 'glyphicon-cloud-download';
+    const GLYPHICON_CLOUD_UPLOAD = 'glyphicon-cloud-upload';
+    const GLYPHICON_COG = 'glyphicon-cog';
+    const GLYPHICON_COLLAPSE_DOWN = 'glyphicon-collapse-down';
+    const GLYPHICON_COLLAPSE_UP = 'glyphicon-collapse-up';
+    const GLYPHICON_COMMENT = 'glyphicon-comment';
+    const GLYPHICON_COMPRESSED = 'glyphicon-compressed';
+    const GLYPHICON_COPYRIGHT_MARK = 'glyphicon-copyright-mark';
+    const GLYPHICON_CREDIT_CARD = 'glyphicon-credit-card';
+    const GLYPHICON_CUTLERY = 'glyphicon-cutlery';
+    const GLYPHICON_DASHBOARD = 'glyphicon-dashboard';
+    const GLYPHICON_DOWNLOAD = 'glyphicon-download';
+    const GLYPHICON_DOWNLOAD_ALT = 'glyphicon-download-alt';
+    const GLYPHICON_EARPHONE = 'glyphicon-earphone';
+    const GLYPHICON_EDIT = 'glyphicon-edit';
+    const GLYPHICON_EJECT = 'glyphicon-eject';
+    const GLYPHICON_ENVELOPE = 'glyphicon-envelope';
+    const GLYPHICON_EURO = 'glyphicon-euro';
+    const GLYPHICON_EXCLAMATION_SIGN = 'glyphicon-exclamation-sign';
+    const GLYPHICON_EXPAND = 'glyphicon-expand';
+    const GLYPHICON_EXPORT = 'glyphicon-export';
+    const GLYPHICON_EYE_CLOSE = 'glyphicon-eye-close';
+    const GLYPHICON_EYE_OPEN = 'glyphicon-eye-open';
+    const GLYPHICON_FACETIME_VIDEO = 'glyphicon-facetime-video';
+    const GLYPHICON_FAST_BACKWARD = 'glyphicon-fast-backward';
+    const GLYPHICON_FAST_FORWARD = 'glyphicon-fast-forward';
+    const GLYPHICON_FILE = 'glyphicon-file';
+    const GLYPHICON_FILM = 'glyphicon-film';
+    const GLYPHICON_FILTER = 'glyphicon-filter';
+    const GLYPHICON_FIRE = 'glyphicon-fire';
+    const GLYPHICON_FLAG = 'glyphicon-flag';
+    const GLYPHICON_FLASH = 'glyphicon-flash';
+    const GLYPHICON_FLOPPY_DISK = 'glyphicon-floppy-disk';
+    const GLYPHICON_FLOPPY_OPEN = 'glyphicon-floppy-open';
+    const GLYPHICON_FLOPPY_REMOVE = 'glyphicon-floppy-remove';
+    const GLYPHICON_FLOPPY_SAVE = 'glyphicon-floppy-save';
+    const GLYPHICON_FLOPPY_SAVED = 'glyphicon-floppy-saved';
+    const GLYPHICON_FOLDER_CLOSE = 'glyphicon-folder-close';
+    const GLYPHICON_FOLDER_OPEN = 'glyphicon-folder-open';
+    const GLYPHICON_FONT = 'glyphicon-font';
+    const GLYPHICON_FORWARD = 'glyphicon-forward';
+    const GLYPHICON_FULLSCREEN = 'glyphicon-fullscreen';
+    const GLYPHICON_GBP = 'glyphicon-gbp';
+    const GLYPHICON_GIFT = 'glyphicon-gift';
+    const GLYPHICON_GLASS = 'glyphicon-glass';
+    const GLYPHICON_GLOBE = 'glyphicon-globe';
+    const GLYPHICON_HAND_DOWN = 'glyphicon-hand-down';
+    const GLYPHICON_HAND_LEFT = 'glyphicon-hand-left';
+    const GLYPHICON_HAND_RIGHT = 'glyphicon-hand-right';
+    const GLYPHICON_HAND_UP = 'glyphicon-hand-up';
+    const GLYPHICON_HD_VIDEO = 'glyphicon-hd-video';
+    const GLYPHICON_HDD = 'glyphicon-hdd';
+    const GLYPHICON_HEADER = 'glyphicon-header';
+    const GLYPHICON_HEADPHONES = 'glyphicon-headphones';
+    const GLYPHICON_HEART = 'glyphicon-heart';
+    const GLYPHICON_HEART_EMPTY = 'glyphicon-heart-empty';
+    const GLYPHICON_HOME = 'glyphicon-home';
+    const GLYPHICON_IMPORT = 'glyphicon-import';
+    const GLYPHICON_INBOX = 'glyphicon-inbox';
+    const GLYPHICON_INDENT_LEFT = 'glyphicon-indent-left';
+    const GLYPHICON_INDENT_RIGHT = 'glyphicon-indent-right';
+    const GLYPHICON_INFO_SIGN = 'glyphicon-info-sign';
+    const GLYPHICON_ITALIC = 'glyphicon-italic';
+    const GLYPHICON_LEAF = 'glyphicon-leaf';
+    const GLYPHICON_LINK = 'glyphicon-link';
+    const GLYPHICON_LIST = 'glyphicon-list';
+    const GLYPHICON_LIST_ALT = 'glyphicon-list-alt';
+    const GLYPHICON_LOCK = 'glyphicon-lock';
+    const GLYPHICON_LOG_IN = 'glyphicon-log-in';
+    const GLYPHICON_LOG_OUT = 'glyphicon-log-out';
+    const GLYPHICON_MAGNET = 'glyphicon-magnet';
+    const GLYPHICON_MAP_MARKER = 'glyphicon-map-marker';
+    const GLYPHICON_MINUS = 'glyphicon-minus';
+    const GLYPHICON_MINUS_SIGN = 'glyphicon-minus-sign';
+    const GLYPHICON_MOVE = 'glyphicon-move';
+    const GLYPHICON_MUSIC = 'glyphicon-music';
+    const GLYPHICON_NEW_WINDOW = 'glyphicon-new-window';
+    const GLYPHICON_OFF = 'glyphicon-off';
+    const GLYPHICON_OK = 'glyphicon-ok';
+    const GLYPHICON_OK_CIRCLE = 'glyphicon-ok-circle';
+    const GLYPHICON_OK_SIGN = 'glyphicon-ok-sign';
+    const GLYPHICON_OPEN = 'glyphicon-open';
+    const GLYPHICON_PAPERCLIP = 'glyphicon-paperclip';
+    const GLYPHICON_PAUSE = 'glyphicon-pause';
+    const GLYPHICON_PENCIL = 'glyphicon-pencil';
+    const GLYPHICON_PHONE = 'glyphicon-phone';
+    const GLYPHICON_PHONE_ALT = 'glyphicon-phone-alt';
+    const GLYPHICON_PICTURE = 'glyphicon-picture';
+    const GLYPHICON_PLANE = 'glyphicon-plane';
+    const GLYPHICON_PLAY = 'glyphicon-play';
+    const GLYPHICON_PLAY_CIRCLE = 'glyphicon-play-circle';
+    const GLYPHICON_PLUS = 'glyphicon-plus';
+    const GLYPHICON_PLUS_SIGN = 'glyphicon-plus-sign';
+    const GLYPHICON_PRINT = 'glyphicon-print';
+    const GLYPHICON_PUSHPIN = 'glyphicon-pushpin';
+    const GLYPHICON_QRCODE = 'glyphicon-qrcode';
+    const GLYPHICON_QUESTION_SIGN = 'glyphicon-question-sign';
+    const GLYPHICON_RANDOM = 'glyphicon-random';
+    const GLYPHICON_RECORD = 'glyphicon-record';
+    const GLYPHICON_REFRESH = 'glyphicon-refresh';
+    const GLYPHICON_REGISTRATION_MARK = 'glyphicon-registration-mark';
+    const GLYPHICON_REMOVE = 'glyphicon-remove';
+    const GLYPHICON_REMOVE_CIRCLE = 'glyphicon-remove-circle';
+    const GLYPHICON_REMOVE_SIGN = 'glyphicon-remove-sign';
+    const GLYPHICON_REPEAT = 'glyphicon-repeat';
+    const GLYPHICON_RESIZE_FULL = 'glyphicon-resize-full';
+    const GLYPHICON_RESIZE_HORIZONTAL = 'glyphicon-resize-horizontal';
+    const GLYPHICON_RESIZE_SMALL = 'glyphicon-resize-small';
+    const GLYPHICON_RESIZE_VERTICAL = 'glyphicon-resize-vertical';
+    const GLYPHICON_RETWEET = 'glyphicon-retweet';
+    const GLYPHICON_ROAD = 'glyphicon-road';
+    const GLYPHICON_SAVE = 'glyphicon-save';
+    const GLYPHICON_SAVED = 'glyphicon-saved';
+    const GLYPHICON_SCREENSHOT = 'glyphicon-screenshot';
+    const GLYPHICON_SD_VIDEO = 'glyphicon-sd-video';
+    const GLYPHICON_SEARCH = 'glyphicon-search';
+    const GLYPHICON_SEND = 'glyphicon-send';
+    const GLYPHICON_SHARE = 'glyphicon-share';
+    const GLYPHICON_SHARE_ALT = 'glyphicon-share-alt';
+    const GLYPHICON_SHOPPING_CART = 'glyphicon-shopping-cart';
+    const GLYPHICON_SIGNAL = 'glyphicon-signal';
+    const GLYPHICON_SORT = 'glyphicon-sort';
+    const GLYPHICON_SORT_BY_ALPHABET = 'glyphicon-sort-by-alphabet';
+    const GLYPHICON_SORT_BY_ALPHABET_ALT = 'glyphicon-sort-by-alphabet-alt';
+    const GLYPHICON_SORT_BY_ATTRIBUTES = 'glyphicon-sort-by-attributes';
+    const GLYPHICON_SORT_BY_ATTRIBUTES_ALT = 'glyphicon-sort-by-attributes-alt';
+    const GLYPHICON_SORT_BY_ORDER = 'glyphicon-sort-by-order';
+    const GLYPHICON_SORT_BY_ORDER_ALT = 'glyphicon-sort-by-order-alt';
+    const GLYPHICON_SOUND_5_1 = 'glyphicon-sound-5-1';
+    const GLYPHICON_SOUND_6_1 = 'glyphicon-sound-6-1';
+    const GLYPHICON_SOUND_7_1 = 'glyphicon-sound-7-1';
+    const GLYPHICON_SOUND_DOLBY = 'glyphicon-sound-dolby';
+    const GLYPHICON_SOUND_STEREO = 'glyphicon-sound-stereo';
+    const GLYPHICON_STAR = 'glyphicon-star';
+    const GLYPHICON_STAR_EMPTY = 'glyphicon-star-empty';
+    const GLYPHICON_STATS = 'glyphicon-stats';
+    const GLYPHICON_STEP_BACKWARD = 'glyphicon-step-backward';
+    const GLYPHICON_STEP_FORWARD = 'glyphicon-step-forward';
+    const GLYPHICON_STOP = 'glyphicon-stop';
+    const GLYPHICON_SUBTITLES = 'glyphicon-subtitles';
+    const GLYPHICON_TAG = 'glyphicon-tag';
+    const GLYPHICON_TAGS = 'glyphicon-tags';
+    const GLYPHICON_TASKS = 'glyphicon-tasks';
+    const GLYPHICON_TEXT_HEIGHT = 'glyphicon-text-height';
+    const GLYPHICON_TEXT_WIDTH = 'glyphicon-text-width';
+    const GLYPHICON_TH = 'glyphicon-th';
+    const GLYPHICON_TH_LARGE = 'glyphicon-th-large';
+    const GLYPHICON_TH_LIST = 'glyphicon-th-list';
+    const GLYPHICON_THUMBS_DOWN = 'glyphicon-thumbs-down';
+    const GLYPHICON_THUMBS_UP = 'glyphicon-thumbs-up';
+    const GLYPHICON_TIME = 'glyphicon-time';
+    const GLYPHICON_TINT = 'glyphicon-tint';
+    const GLYPHICON_TOWER = 'glyphicon-tower';
+    const GLYPHICON_TRANSFER = 'glyphicon-transfer';
+    const GLYPHICON_TRASH = 'glyphicon-trash';
+    const GLYPHICON_TREE_CONIFER = 'glyphicon-tree-conifer';
+    const GLYPHICON_TREE_DECIDUOUS = 'glyphicon-tree-deciduous';
+    const GLYPHICON_UNCHECKED = 'glyphicon-unchecked';
+    const GLYPHICON_UPLOAD = 'glyphicon-upload';
+    const GLYPHICON_USD = 'glyphicon-usd';
+    const GLYPHICON_USER = 'glyphicon-user';
+    const GLYPHICON_VOLUME_DOWN = 'glyphicon-volume-down';
+    const GLYPHICON_VOLUME_OFF = 'glyphicon-volume-off';
+    const GLYPHICON_VOLUME_UP = 'glyphicon-volume-up';
+    const GLYPHICON_WARNING_SIGN = 'glyphicon-warning-sign';
+    const GLYPHICON_WRENCH = 'glyphicon-wrench';
+    const GLYPHICON_ZOOM_IN = 'glyphicon-zoom-in';
+    const GLYPHICON_ZOOM_OUT = 'glyphicon-zoom-out';
     // Default close text.
     const CLOSE_TEXT = '&times;';
-
     /**
      * @var string the CSS class for displaying error summaries.
      */
@@ -491,6 +457,79 @@ class BSHtml extends CHtml {
     {
         self::addCssClass('lead', $htmlOptions);
         return self::tag('p', $htmlOptions, $text);
+    }
+
+    /**
+     * Appends new class names to the given options..
+     * @param mixed $className the class(es) to append.
+     * @param array $htmlOptions the options.
+     * @return array the options.
+     */
+    public static function addCssClass($className, &$htmlOptions)
+    {
+        if (is_array($className)) {
+            $className = implode(' ', $className);
+        }
+        if (isset($htmlOptions['class'])) {
+            // todo: consider throwing an exception if the class exists instead of skipping the class.
+            if (preg_match("/\b{$className}\b/", $htmlOptions['class']) === 0) {
+                $htmlOptions['class'] .= ' ' . $className;
+            }
+        } else {
+            $htmlOptions['class'] = $className;
+        }
+    }
+
+    /**
+     * Generates an HTML element.
+     * @param string $tag the tag name.
+     * @param array $htmlOptions the element attributes.
+     * @param mixed $content the content to be enclosed between open and close element tags.
+     * @param boolean $closeTag whether to generate the close tag.
+     * @return string the generated HTML element tag.
+     */
+    public static function tag($tag, $htmlOptions = array(), $content = false, $closeTag = true)
+    {
+        self::addSpanClass($htmlOptions);
+        self::addPullClass($htmlOptions);
+        self::addTextAlignClass($htmlOptions);
+        return parent::tag($tag, $htmlOptions, $content, $closeTag);
+    }
+
+    /**
+     * Adds the grid span class to the given options is applicable.
+     * @param array $htmlOptions the HTML attributes.
+     */
+    protected static function addSpanClass($htmlOptions=array())
+    {
+        $span = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions);
+        if (!empty($span)) {
+            self::addCssClass('span' . $span, $htmlOptions);
+        }
+    }
+
+    /**
+     * Adds the pull class to the given options is applicable.
+     * @param array $htmlOptions the HTML attributes.
+     */
+    protected static function addPullClass(&$htmlOptions)
+    {
+        $pull = \bootstrap\helpers\BSArray::popValue('pull', $htmlOptions);
+        if (!empty($pull)) {
+            self::addCssClass('pull-' . $pull, $htmlOptions);
+        }
+    }
+
+    /**
+     * Adds the text align class to the given options if applicable.
+     * @param array $htmlOptions the HTML attributes.
+     */
+    protected static function addTextAlignClass(&$htmlOptions)
+    {
+        $align = \bootstrap\helpers\BSArray::popValue('textAlign', $htmlOptions);
+        if (!empty($align)) {
+            self::addCssClass('text-' . $align, $htmlOptions);
+        }
     }
 
     /**
@@ -560,8 +599,9 @@ class BSHtml extends CHtml {
         if (!empty($color)) {
             self::addCssClass('text-' . $color, $htmlOptions);
         }
-        return parent::tag($tag,$htmlOptions, $text);
+        return parent::tag($tag, $htmlOptions, $text);
     }
+
     /**
      * Generates a muted span.
      * @param string $text the text.
@@ -575,6 +615,10 @@ class BSHtml extends CHtml {
         return self::textMuted($text, $htmlOptions, 'span');
     }
 
+    // Code
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#code
+    // --------------------------------------------------
+
     /**
      * Generates an abbreviation with a help text.
      * @param string $text the abbreviation.
@@ -582,7 +626,7 @@ class BSHtml extends CHtml {
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated abbreviation.
      */
-    public static function abbr($text, $word ='', $htmlOptions = array())
+    public static function abbr($text, $word = '', $htmlOptions = array())
     {
         $htmlOptions['title'] = $word;
         $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
@@ -623,35 +667,6 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates a help text.
-     * @param string $text the help text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated text.
-     */
-    public static function help($text, $htmlOptions = array())
-    {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
-        self::addCssClass('help-' . $type, $htmlOptions);
-        return self::tag($type === self::HELP_TYPE_INLINE ? 'span' : 'p', $htmlOptions, $text);
-    }
-
-    /**
-     * Generates a help block.
-     * @param string $text the help text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated block.
-     */
-    public static function helpBlock($text, $htmlOptions = array())
-    {
-        $htmlOptions['type'] = self::HELP_TYPE_BLOCK;
-        return self::help($text, $htmlOptions);
-    }
-
-    // Code
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#code
-    // --------------------------------------------------
-
-    /**
      * Generates inline code.
      * @param string $code the code.
      * @param array $htmlOptions additional HTML attributes.
@@ -661,6 +676,16 @@ class BSHtml extends CHtml {
     {
         return self::tag('code', $htmlOptions, $code);
     }
+
+    // Tables
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#forms
+    // --------------------------------------------------
+
+    // todo: create table methods here.
+
+    // Forms
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#tables
+    // --------------------------------------------------
 
     /**
      * Generates a code block.
@@ -674,41 +699,22 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates an HTML element.
-     * @param string $tag the tag name.
-     * @param array $htmlOptions the element attributes.
-     * @param mixed $content the content to be enclosed between open and close element tags.
-     * @param boolean $closeTag whether to generate the close tag.
-     * @return string the generated HTML element tag.
+     * Generates a stateful form tag.
+     * @param mixed $action the form action URL.
+     * @param string $method form method (e.g. post, get).
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated form tag.
      */
-    public static function tag($tag, $htmlOptions = array(), $content = false, $closeTag = true)
+    public static function statefulFormTb(
+        $layout = self::FORM_LAYOUT_VERTICAL,
+        $action = '',
+        $method = 'post',
+        $htmlOptions = array()
+    )
     {
-        self::addSpanClass($htmlOptions);
-        self::addPullClass($htmlOptions);
-        self::addTextAlignClass($htmlOptions);
-        return parent::tag($tag, $htmlOptions, $content, $closeTag);
+        return self::formTb($layout, $action, $method, $htmlOptions)
+        . self::tag('div', array('style' => 'display: none'), parent::pageStateField(''));
     }
-
-    /**
-     * Generates an open HTML element.
-     * @param string $tag the tag name.
-     * @param array $htmlOptions the element attributes.
-     * @return string the generated HTML element tag.
-     */
-    public static function openTag($tag, $htmlOptions = array())
-    {
-        return self::tag($tag, $htmlOptions, false, false);
-    }
-
-    // Tables
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#forms
-    // --------------------------------------------------
-
-    // todo: create table methods here.
-
-    // Forms
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#tables
-    // --------------------------------------------------
 
     /**
      * Generates a form tag.
@@ -723,7 +729,8 @@ class BSHtml extends CHtml {
         $action = '',
         $method = 'post',
         $htmlOptions = array()
-    ) {
+    )
+    {
         return self::beginFormTb($layout, $action, $method, $htmlOptions);
     }
 
@@ -740,7 +747,8 @@ class BSHtml extends CHtml {
         $action = '',
         $method = 'post',
         $htmlOptions = array()
-    ) {
+    )
+    {
         if (!empty($layout)) {
             self::addCssClass('form-' . $layout, $htmlOptions);
         }
@@ -748,20 +756,158 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates a stateful form tag.
-     * @param mixed $action the form action URL.
-     * @param string $method form method (e.g. post, get).
+     * Generates a control group with a text field.
+     * @param string $name the input name.
+     * @param string $value the input value.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated form tag.
+     * @return string the generated control group.
+     * @see self::controlGroup
      */
-    public static function statefulFormTb(
-        $layout = self::FORM_LAYOUT_VERTICAL,
-        $action = '',
-        $method = 'post',
-        $htmlOptions = array()
-    ) {
-        return self::formTb($layout, $action, $method, $htmlOptions)
-        . self::tag('div', array('style' => 'display: none'), parent::pageStateField(''));
+    public static function textFieldControlGroup($name, $value = '', $htmlOptions = array())
+    {
+        return self::controlGroup(self::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates a form control group.
+     * @param string $type the input type.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param array $data data for multiple select inputs.
+     * @return string the generated control group.
+     */
+    public static function controlGroup($type, $name, $value = '', $htmlOptions = array(), $data = array())
+    {
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
+        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+
+        if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
+            $htmlOptions['label'] = $label;
+            $htmlOptions['labelOptions'] = $labelOptions;
+            $label = false;
+        }
+
+        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
+        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        if (!empty($help)) {
+            $help = self::inputHelp($help, $helpOptions);
+        }
+
+        $input = isset($htmlOptions['input'])
+            ? $htmlOptions['input']
+            : self::createInput($type, $name, $value, $htmlOptions, $data);
+
+        self::addCssClass('control-group', $groupOptions);
+        if (!empty($color)) {
+            self::addCssClass($color, $groupOptions);
+        }
+        self::addCssClass('control-label', $labelOptions);
+        $output = self::openTag('div', $groupOptions);
+        if ($label !== false) {
+            $output .= parent::label($label, $name, $labelOptions);
+        }
+        $output .= self::controls($input . $help, $controlOptions);
+        $output .= '</div>';
+        return $output;
+    }
+
+    /**
+     * Generates a help text for an input field.
+     * @param string $help the help text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated help text.
+     */
+    protected static function inputHelp($help, $htmlOptions)
+    {
+        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
+        return $type === self::HELP_TYPE_INLINE
+            ? self::help($help, $htmlOptions)
+            : self::helpBlock($help, $htmlOptions);
+    }
+
+    /**
+     * Generates a help block.
+     * @param string $text the help text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated block.
+     */
+    public static function helpBlock($text, $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::HELP_TYPE_BLOCK;
+        return self::help($text, $htmlOptions);
+    }
+
+    /**
+     * Generates a help text.
+     * @param string $text the help text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated text.
+     */
+    public static function help($text, $htmlOptions = array())
+    {
+        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
+        self::addCssClass('help-' . $type, $htmlOptions);
+        return self::tag($type === self::HELP_TYPE_INLINE ? 'span' : 'p', $htmlOptions, $text);
+    }
+
+    /**
+     * Creates a form input of the given type.
+     * @param string $type the input type.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param array $data data for multiple select inputs.
+     * @return string the input.
+     * @throws CException if the input type is invalid.
+     */
+    protected static function createInput($type, $name, $value, $htmlOptions = array(), $data = array())
+    {
+        switch ($type) {
+            case self::INPUT_TYPE_TEXT:
+                return self::textField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_PASSWORD:
+                return self::passwordField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_URL:
+                return self::urlField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_EMAIL:
+                return self::emailField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_NUMBER:
+                return self::numberField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_RANGE:
+                return self::rangeField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_DATE:
+                return self::dateField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_TEXTAREA:
+                return self::textArea($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_FILE:
+                return self::fileField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_RADIOBUTTON:
+                return self::radioButton($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_CHECKBOX:
+                return self::checkBox($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_DROPDOWNLIST:
+                return self::dropDownList($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_LISTBOX:
+                return self::listBox($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_CHECKBOXLIST:
+                return self::checkBoxList($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_INLINECHECKBOXLIST:
+                return self::inlineCheckBoxList($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_RADIOBUTTONLIST:
+                return self::radioButtonList($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_INLINERADIOBUTTONLIST:
+                return self::inlineRadioButtonList($name, $value, $data, $htmlOptions);
+            case self::INPUT_TYPE_UNEDITABLE:
+                return self::uneditableField($value, $htmlOptions);
+            case self::INPUT_TYPE_SEARCH:
+                return self::searchQueryField($name, $value, $htmlOptions);
+            default:
+                throw new CException('Invalid input type "' . $type . '".');
+        }
     }
 
     /**
@@ -788,6 +934,111 @@ class BSHtml extends CHtml {
     public static function passwordField($name, $value = '', $htmlOptions = array())
     {
         return self::textInputField('password', $name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates an input HTML tag.
+     * This method generates an input HTML tag based on the given input name and value.
+     * @param string $type the input type.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input tag.
+     */
+    protected static function textInputField($type, $name, $value, $htmlOptions)
+    {
+        parent::clientChange('change', $htmlOptions);
+
+        $htmlOptions = self::normalizeInputOptions($htmlOptions);
+
+        $addOnClasses = self::getAddOnClasses($htmlOptions);
+        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        self::addCssClass($addOnClasses, $addOnOptions);
+
+        $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
+        $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
+        if (!empty($prepend)) {
+            $prepend = self::inputAddOn($prepend, $prependOptions);
+        }
+
+        $append = \bootstrap\helpers\BSArray::popValue('append', $htmlOptions, '');
+        $appendOptions = \bootstrap\helpers\BSArray::popValue('appendOptions', $htmlOptions, array());
+        if (!empty($append)) {
+            $append = self::inputAddOn($append, $appendOptions);
+        }
+
+        $output = '';
+        if (!empty($addOnClasses)) {
+            $output .= self::openTag('div', $addOnOptions);
+        }
+        $output .= $prepend . parent::inputField($type, $name, $value, $htmlOptions) . $append;
+        if (!empty($addOnClasses)) {
+            $output .= '</div>';
+        }
+        return $output;
+    }
+
+    /**
+     * Normalizes input options.
+     * @param array $options the options.
+     * @return array the normalized options.
+     */
+    protected static function normalizeInputOptions($options)
+    {
+        self::addSpanClass($options);
+        self::addTextAlignClass($options);
+        $size = \bootstrap\helpers\BSArray::popValue('size', $options);
+        if (\bootstrap\helpers\BSArray::popValue('block', $options, false)) {
+            self::addCssClass('input-block-level', $options);
+        } else {
+            if (!empty($size)) {
+                self::addCssClass('input-' . $size, $options);
+            }
+        }
+        return $options;
+    }
+
+    /**
+     * Returns the add-on classes based on the given options.
+     * @param array $htmlOptions the options.
+     * @return string the classes.
+     */
+    protected static function getAddOnClasses($htmlOptions)
+    {
+        $classes = array();
+        if (\bootstrap\helpers\BSArray::getValue('append', $htmlOptions)) {
+            $classes[] = 'input-group';
+        }
+        if (\bootstrap\helpers\BSArray::getValue('prepend', $htmlOptions)) {
+            $classes[] = 'input-group';
+        }
+        return !empty($classes) ? implode(' ', $classes) : $classes;
+    }
+
+    /**
+     * Generates an add-on for an input field.
+     * @param string $addOn the add-on.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated add-on.
+     */
+    protected static function inputAddOn($addOn, $htmlOptions)
+    {
+        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        self::addCssClass('input-group-addon', $addOnOptions);
+        return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
+            ? self::tag('span', $addOnOptions, $addOn)
+            : $addOn;
+    }
+
+    /**
+     * Generates an open HTML element.
+     * @param string $tag the tag name.
+     * @param array $htmlOptions the element attributes.
+     * @return string the generated HTML element tag.
+     */
+    public static function openTag($tag, $htmlOptions = array())
+    {
+        return self::tag($tag, $htmlOptions, false, false);
     }
 
     /**
@@ -856,19 +1107,6 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates a file field input.
-     * @param string $name the input name.
-     * @param string $value the input value.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see CHtml::fileField
-     */
-    public static function fileField($name, $value = '', $htmlOptions = array())
-    {
-        return parent::fileField($name, $value, $htmlOptions);
-    }
-
-    /**
      * Generates a text area input.
      * @param string $name the input name.
      * @param string $value the input value.
@@ -882,52 +1120,16 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates a radio button.
+     * Generates a file field input.
      * @param string $name the input name.
-     * @param boolean $checked whether the radio button is checked.
+     * @param string $value the input value.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated radio button.
+     * @return string the generated input field.
+     * @see CHtml::fileField
      */
-    public static function radioButton($name, $checked = false, $htmlOptions = array())
+    public static function fileField($name, $value = '', $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        self::addCssClass('radio', $labelOptions);
-        $radioButton = parent::radioButton($name, $checked, $htmlOptions);
-        return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
-    }
-
-    /**
-     * Generates a check box.
-     * @param string $name the input name.
-     * @param boolean $checked whether the check box is checked.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated check box.
-     */
-    public static function checkBox($name, $checked = false, $htmlOptions = array())
-    {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        self::addCssClass('checkbox', $labelOptions);
-        $checkBox = parent::checkBox($name, $checked, $htmlOptions);
-        return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
-    }
-
-    /**
-     * Generates a drop down list.
-     * @param string $name the input name.
-     * @param string $select the selected value.
-     * @param array $data data for generating the list options (value=>display).
-     * @return string the generated drop down list.
-     */
-    public static function dropDownList($name, $select, $data, $htmlOptions = array())
-    {
-        $displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
-        $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        if (!empty($displaySize)) {
-            $htmlOptions['size'] = $displaySize;
-        }
-        return parent::dropDownList($name, $select, $data, $htmlOptions);
+        return parent::fileField($name, $value, $htmlOptions);
     }
 
     /**
@@ -950,57 +1152,34 @@ class BSHtml extends CHtml {
     }
 
     /**
-     * Generates a radio button list.
-     * @param string $name name of the radio button list.
-     * @param mixed $select selection of the radio buttons.
-     * @param array $data $data value-label pairs used to generate the radio button list.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list.
+     * Generates a drop down list.
+     * @param string $name the input name.
+     * @param string $select the selected value.
+     * @param array $data data for generating the list options (value=>display).
+     * @return string the generated drop down list.
      */
-    public static function radioButtonList($name, $select, $data, $htmlOptions = array())
+    public static function dropDownList($name, $select, $data, $htmlOptions = array())
     {
-        $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
-        $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
-        $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions);
-        $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $htmlOptions, array());
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-
-        $items = array();
-        $baseID = $containerOptions['id'] = \bootstrap\helpers\BSArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
-
-        $id = 0;
-        foreach ($data as $value => $label) {
-            $checked = !strcmp($value, $select);
-            $htmlOptions['value'] = $value;
-            $htmlOptions['id'] = $baseID . '_' . $id++;
-            if ($inline) {
-                $htmlOptions['label'] = $label;
-                self::addCssClass('radio-inline', $labelOptions);
-                $htmlOptions['labelOptions'] = $labelOptions;
-                $items[] = self::radioButton($name, $checked, $htmlOptions);
-            } else {
-                $option = self::radioButton($name, $checked, $htmlOptions);
-                self::addCssClass('radio', $labelOptions);
-                $items[] = self::label($option . ' ' . $label, false, $labelOptions);
-            }
+        $displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
+        $htmlOptions = self::normalizeInputOptions($htmlOptions);
+        if (!empty($displaySize)) {
+            $htmlOptions['size'] = $displaySize;
         }
-
-        $inputs = implode($separator, $items);
-        return !empty($container) ? self::tag($container, $containerOptions, $inputs) : $inputs;
+        return parent::dropDownList($name, $select, $data, $htmlOptions);
     }
 
     /**
-     * Generates an inline radio button list.
-     * @param string $name name of the radio button list.
-     * @param mixed $select selection of the radio buttons.
-     * @param array $data $data value-label pairs used to generate the radio button list.
+     * Generates an inline check box list.
+     * @param string $name name of the check box list.
+     * @param mixed $select selection of the check boxes.
+     * @param array $data $data value-label pairs used to generate the check box list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function inlineRadioButtonList($name, $select, $data, $htmlOptions = array())
+    public static function inlineCheckBoxList($name, $select, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::radioButtonList($name, $select, $data, $htmlOptions);
+        return self::checkBoxList($name, $select, $data, $htmlOptions);
     }
 
     /**
@@ -1084,17 +1263,89 @@ EOD;
     }
 
     /**
-     * Generates an inline check box list.
-     * @param string $name name of the check box list.
-     * @param mixed $select selection of the check boxes.
-     * @param array $data $data value-label pairs used to generate the check box list.
+     * Generates a check box.
+     * @param string $name the input name.
+     * @param boolean $checked whether the check box is checked.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated check box.
+     */
+    public static function checkBox($name, $checked = false, $htmlOptions = array())
+    {
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        self::addCssClass('checkbox', $labelOptions);
+        $checkBox = parent::checkBox($name, $checked, $htmlOptions);
+        return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
+    }
+
+    /**
+     * Generates an inline radio button list.
+     * @param string $name name of the radio button list.
+     * @param mixed $select selection of the radio buttons.
+     * @param array $data $data value-label pairs used to generate the radio button list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function inlineCheckBoxList($name, $select, $data, $htmlOptions = array())
+    public static function inlineRadioButtonList($name, $select, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::checkBoxList($name, $select, $data, $htmlOptions);
+        return self::radioButtonList($name, $select, $data, $htmlOptions);
+    }
+
+    /**
+     * Generates a radio button list.
+     * @param string $name name of the radio button list.
+     * @param mixed $select selection of the radio buttons.
+     * @param array $data $data value-label pairs used to generate the radio button list.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated list.
+     */
+    public static function radioButtonList($name, $select, $data, $htmlOptions = array())
+    {
+        $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
+        $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
+        $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions);
+        $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $htmlOptions, array());
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+
+        $items = array();
+        $baseID = $containerOptions['id'] = \bootstrap\helpers\BSArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
+
+        $id = 0;
+        foreach ($data as $value => $label) {
+            $checked = !strcmp($value, $select);
+            $htmlOptions['value'] = $value;
+            $htmlOptions['id'] = $baseID . '_' . $id++;
+            if ($inline) {
+                $htmlOptions['label'] = $label;
+                self::addCssClass('radio-inline', $labelOptions);
+                $htmlOptions['labelOptions'] = $labelOptions;
+                $items[] = self::radioButton($name, $checked, $htmlOptions);
+            } else {
+                $option = self::radioButton($name, $checked, $htmlOptions);
+                self::addCssClass('radio', $labelOptions);
+                $items[] = self::label($option . ' ' . $label, false, $labelOptions);
+            }
+        }
+
+        $inputs = implode($separator, $items);
+        return !empty($container) ? self::tag($container, $containerOptions, $inputs) : $inputs;
+    }
+
+    /**
+     * Generates a radio button.
+     * @param string $name the input name.
+     * @param boolean $checked whether the radio button is checked.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated radio button.
+     */
+    public static function radioButton($name, $checked = false, $htmlOptions = array())
+    {
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        self::addCssClass('radio', $labelOptions);
+        $radioButton = parent::radioButton($name, $checked, $htmlOptions);
+        return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
     }
 
     /**
@@ -1124,16 +1375,24 @@ EOD;
     }
 
     /**
-     * Generates a control group with a text field.
-     * @param string $name the input name.
-     * @param string $value the input value.
+     * Generates form controls.
+     * @param mixed $controls the controls.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated control group.
-     * @see self::controlGroup
+     * @return string the generated controls.
      */
-    public static function textFieldControlGroup($name, $value = '', $htmlOptions = array())
+    public static function controls($controls, $htmlOptions = array())
     {
-        return self::controlGroup(self::INPUT_TYPE_TEXT, $name, $value, $htmlOptions);
+        self::addCssClass('form-group', $htmlOptions);
+        if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
+            self::addCssClass('controls-row', $htmlOptions);
+        }
+        $before = \bootstrap\helpers\BSArray::popValue('before', $htmlOptions, '');
+        $after = \bootstrap\helpers\BSArray::popValue('after', $htmlOptions, '');
+        if (is_array($controls)) {
+            $controls = implode('', $controls);
+        }
+        $content = $before . $controls . $after;
+        return self::tag('div', $htmlOptions, $content);
     }
 
     /**
@@ -1278,8 +1537,8 @@ EOD;
         $output = '<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>';
         $output .= $input;
         $output .= $name;
-        $output.= '</label></div></div></div>';
-        CVarDumper::dump($output,10,true);
+        $output .= '</label></div></div></div>';
+        CVarDumper::dump($output, 10, true);
         return $output;
 
     }
@@ -1340,7 +1599,8 @@ EOD;
         $select = '',
         $data = array(),
         $htmlOptions = array()
-    ) {
+    )
+    {
         return self::controlGroup(self::INPUT_TYPE_INLINERADIOBUTTONLIST, $name, $select, $htmlOptions, $data);
     }
 
@@ -1398,53 +1658,6 @@ EOD;
     }
 
     /**
-     * Generates a form control group.
-     * @param string $type the input type.
-     * @param string $name the input name.
-     * @param string $value the input value.
-     * @param array $htmlOptions additional HTML attributes.
-     * @param array $data data for multiple select inputs.
-     * @return string the generated control group.
-     */
-    public static function controlGroup($type, $name, $value = '', $htmlOptions = array(), $data = array())
-    {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-
-        if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
-            $htmlOptions['label'] = $label;
-            $htmlOptions['labelOptions'] = $labelOptions;
-            $label = false;
-        }
-
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        if (!empty($help)) {
-            $help = self::inputHelp($help, $helpOptions);
-        }
-
-        $input = isset($htmlOptions['input'])
-            ? $htmlOptions['input']
-            : self::createInput($type, $name, $value, $htmlOptions, $data);
-
-        self::addCssClass('control-group', $groupOptions);
-        if (!empty($color)) {
-            self::addCssClass($color, $groupOptions);
-        }
-        self::addCssClass('control-label', $labelOptions);
-        $output = self::openTag('div', $groupOptions);
-        if ($label !== false) {
-            $output .= parent::label($label, $name, $labelOptions);
-        }
-        $output .= self::controls($input . $help, $controlOptions);
-        $output .= '</div>';
-        return $output;
-    }
-
-    /**
      * Generates a custom (pre-rendered) form control group.
      * @param string $input the rendered input.
      * @param string $name the input name.
@@ -1458,78 +1671,179 @@ EOD;
     }
 
     /**
-     * Creates a form input of the given type.
+     * Generates a control group with a text field for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated control group.
+     * @see self::activeControlGroup
+     */
+    public static function activeTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        return self::activeControlGroup(self::INPUT_TYPE_TEXT, $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Generates an active form row.
      * @param string $type the input type.
-     * @param string $name the input name.
-     * @param string $value the input value.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param array $data data for multiple select inputs.
+     * @return string the generated control group.
+     */
+    public static function activeControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
+    {
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
+        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions);
+
+        if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
+            $htmlOptions['label'] = $model->getAttributeLabel($attribute);
+            $htmlOptions['labelOptions'] = $labelOptions;
+            $label = false;
+        }
+
+        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
+        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        if (!empty($help)) {
+            $help = self::inputHelp($help, $helpOptions);
+        }
+        $error = \bootstrap\helpers\BSArray::popValue('error', $htmlOptions, '');
+
+        $input = isset($htmlOptions['input'])
+            ? $htmlOptions['input']
+            : self::createActiveInput($type, $model, $attribute, $htmlOptions, $data);
+        self::addCssClass('form-group', $groupOptions);
+
+        if (!empty($layout)) {
+            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL && !isset($controlOptions['class'])) {
+                self::addCssClass('col-lg-10', $controlOptions);
+            }
+
+        }
+        if (!empty($color)) {
+            self::addCssClass($color, $groupOptions);
+        }
+        $output = self::openTag('div', $groupOptions);
+        if ($label !== false && !is_null($layout)) {
+            // todo: consider adding support for overriding the label with plain text.
+            $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
+        }
+//        CVarDumper::dump($controlOptions,10,true);
+//        CVarDumper::dump($groupOptions,10,true);
+//        CVarDumper::dump($htmlOptions,10,true);
+        $output .= self::controls($input . $error . $help, $controlOptions);
+        $output .= '</div>';
+        return $output;
+    }
+
+    /**
+     * Creates an active form input of the given type.
+     * @param string $type the input type.
+     * @param CModel $model the model instance.
+     * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @param array $data data for multiple select inputs.
      * @return string the input.
      * @throws CException if the input type is invalid.
      */
-    protected static function createInput($type, $name, $value, $htmlOptions = array(), $data = array())
+    protected static function createActiveInput($type, $model, $attribute, $htmlOptions = array(), $data = array())
     {
         switch ($type) {
             case self::INPUT_TYPE_TEXT:
-                return self::textField($name, $value, $htmlOptions);
+                return self::activeTextField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_PASSWORD:
-                return self::passwordField($name, $value, $htmlOptions);
+                return self::activePasswordField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_URL:
-                return self::urlField($name, $value, $htmlOptions);
+                return self::activeUrlField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_EMAIL:
-                return self::emailField($name, $value, $htmlOptions);
+                return self::activeEmailField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_NUMBER:
-                return self::numberField($name, $value, $htmlOptions);
+                return self::activeNumberField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_RANGE:
-                return self::rangeField($name, $value, $htmlOptions);
+                return self::activeRangeField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_DATE:
-                return self::dateField($name, $value, $htmlOptions);
+                return self::activeDateField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_TEXTAREA:
-                return self::textArea($name, $value, $htmlOptions);
+                return self::activeTextArea($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_FILE:
-                return self::fileField($name, $value, $htmlOptions);
+                return self::activeFileField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_RADIOBUTTON:
-                return self::radioButton($name, $value, $htmlOptions);
+                return self::activeRadioButton($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_CHECKBOX:
-                return self::checkBox($name, $value, $htmlOptions);
+                return self::activeCheckBox($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_DROPDOWNLIST:
-                return self::dropDownList($name, $value, $data, $htmlOptions);
+                return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_LISTBOX:
-                return self::listBox($name, $value, $data, $htmlOptions);
+                return self::activeListBox($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_CHECKBOXLIST:
-                return self::checkBoxList($name, $value, $data, $htmlOptions);
+                return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_INLINECHECKBOXLIST:
-                return self::inlineCheckBoxList($name, $value, $data, $htmlOptions);
+                return self::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_RADIOBUTTONLIST:
-                return self::radioButtonList($name, $value, $data, $htmlOptions);
+                return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_INLINERADIOBUTTONLIST:
-                return self::inlineRadioButtonList($name, $value, $data, $htmlOptions);
+                return self::activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions);
             case self::INPUT_TYPE_UNEDITABLE:
-                return self::uneditableField($value, $htmlOptions);
+                return self::activeUneditableField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_SEARCH:
-                return self::searchQueryField($name, $value, $htmlOptions);
+                return self::activeSearchQueryField($model, $attribute, $htmlOptions);
             default:
                 throw new CException('Invalid input type "' . $type . '".');
         }
     }
 
     /**
-     * Generates an input HTML tag.
+     * Generates a password field input for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see self::activeTextInputField
+     */
+    public static function activePasswordField($model, $attribute, $htmlOptions = array())
+    {
+        return self::activeTextInputField('password', $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Generates an input HTML tag  for a model attribute.
      * This method generates an input HTML tag based on the given input name and value.
      * @param string $type the input type.
-     * @param string $name the input name.
-     * @param string $value the input value.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input tag.
      */
-    protected static function textInputField($type, $name, $value, $htmlOptions)
+    protected static function activeTextInputField($type, $model, $attribute, $htmlOptions)
     {
+        parent::resolveNameID($model, $attribute, $htmlOptions);
         parent::clientChange('change', $htmlOptions);
-
+//        CVarDumper::dump($htmlOptions,10,true);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
-
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        self::addCssClass('form-control', $htmlOptions);
+//        if(isset($htmlOptions['class']) && !empty($htmlOptions['class'])){
+//            $htmlOptions['class'] = $htmlOptions['class'].' form-control';
+//        }else{
+//            $htmlOptions['class'] = ' form-control';
+//        }
+
+        $attributesLabel = $model->attributeLabels();
+        $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
+
+
+        if (!empty($placeHolder)) {
+            $htmlOptions['placeholder'] = $placeHolder;
+        } else {
+            $htmlOptions['placeholder'] = isset($attributesLabel[$attribute]) ? $attributesLabel[$attribute] : '';
+        }
+
         self::addCssClass($addOnClasses, $addOnOptions);
 
         $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
@@ -1548,37 +1862,11 @@ EOD;
         if (!empty($addOnClasses)) {
             $output .= self::openTag('div', $addOnOptions);
         }
-        $output .= $prepend . parent::inputField($type, $name, $value, $htmlOptions) . $append;
+        $output .= $prepend . parent::activeInputField($type, $model, $attribute, $htmlOptions) . $append;
         if (!empty($addOnClasses)) {
             $output .= '</div>';
         }
         return $output;
-    }
-
-    /**
-     * Generates a text field input for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see self::activeTextInputField
-     */
-    public static function activeTextField($model, $attribute, $htmlOptions = array())
-    {
-        return self::activeTextInputField('text', $model, $attribute, $htmlOptions);
-    }
-
-    /**
-     * Generates a password field input for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see self::activeTextInputField
-     */
-    public static function activePasswordField($model, $attribute, $htmlOptions = array())
-    {
-        return self::activeTextInputField('password', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -1647,19 +1935,6 @@ EOD;
     }
 
     /**
-     * Generates a file field input for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see CHtml::activeFileField
-     */
-    public static function activeFileField($model, $attribute, $htmlOptions = array())
-    {
-        return parent::activeFileField($model, $attribute, $htmlOptions);
-    }
-
-    /**
      * Generates a text area input for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
@@ -1674,6 +1949,19 @@ EOD;
 //        CVarDumper::dump($htmlOptions);
 //        exit;
         return parent::activeTextArea($model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Generates a file field input for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see CHtml::activeFileField
+     */
+    public static function activeFileField($model, $attribute, $htmlOptions = array())
+    {
+        return parent::activeFileField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -1709,6 +1997,20 @@ EOD;
     }
 
     /**
+     * Generates a list box for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $data data for generating the list options (value=>display).
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated list box
+     */
+    public static function activeListBox($model, $attribute, $data, $htmlOptions = array())
+    {
+        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
+        return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
+    }
+
+    /**
      * Generates a drop down list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
@@ -1726,50 +2028,17 @@ EOD;
     }
 
     /**
-     * Generates a list box for a model attribute.
+     * Generates an inline check box list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
-     * @param array $data data for generating the list options (value=>display).
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list box
-     */
-    public static function activeListBox($model, $attribute, $data, $htmlOptions = array())
-    {
-        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
-        return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
-    }
-
-    /**
-     * Generates a radio button list for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $data $data value-label pairs used to generate the radio button list.
+     * @param array $data $data value-label pairs used to generate the check box list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function activeRadioButtonList($model, $attribute, $data, $htmlOptions = array())
-    {
-        parent::resolveNameID($model, $attribute, $htmlOptions);
-        $selection = parent::resolveValue($model, $attribute);
-        $name = \bootstrap\helpers\BSArray::popValue('name', $htmlOptions);
-        $unCheck = \bootstrap\helpers\BSArray::popValue('uncheckValue', $htmlOptions, '');
-        $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
-        $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
-        return $hidden . self::radioButtonList($name, $selection, $data, $htmlOptions);
-    }
-
-    /**
-     * Generates an inline radio button list for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $data $data value-label pairs used to generate the radio button list.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list.
-     */
-    public static function activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions = array())
+    public static function activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
+        return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -1795,17 +2064,36 @@ EOD;
     }
 
     /**
-     * Generates an inline check box list for a model attribute.
+     * Generates an inline radio button list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
-     * @param array $data $data value-label pairs used to generate the check box list.
+     * @param array $data $data value-label pairs used to generate the radio button list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
+    public static function activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
+        return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
+    }
+
+    /**
+     * Generates a radio button list for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $data $data value-label pairs used to generate the radio button list.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated list.
+     */
+    public static function activeRadioButtonList($model, $attribute, $data, $htmlOptions = array())
+    {
+        parent::resolveNameID($model, $attribute, $htmlOptions);
+        $selection = parent::resolveValue($model, $attribute);
+        $name = \bootstrap\helpers\BSArray::popValue('name', $htmlOptions);
+        $unCheck = \bootstrap\helpers\BSArray::popValue('uncheckValue', $htmlOptions, '');
+        $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
+        $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
+        return $hidden . self::radioButtonList($name, $selection, $data, $htmlOptions);
     }
 
     /**
@@ -1837,16 +2125,16 @@ EOD;
     }
 
     /**
-     * Generates a control group with a text field for a model attribute.
+     * Generates a text field input for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated control group.
-     * @see self::activeControlGroup
+     * @return string the generated input field.
+     * @see self::activeTextInputField
      */
-    public static function activeTextFieldControlGroup($model, $attribute, $htmlOptions = array())
+    public static function activeTextField($model, $attribute, $htmlOptions = array())
     {
-        return self::activeControlGroup(self::INPUT_TYPE_TEXT, $model, $attribute, $htmlOptions);
+        return self::activeTextInputField('text', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -1975,12 +2263,12 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2"><div class="radio"><label>':'<div class="radio"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="col-lg-offset-2"><div class="radio"><label>' : '<div class="radio"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
-        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'</label></div></div></div>':'</label></div>';
-        $output.= $footer;
+        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '</label></div></div></div>' : '</label></div>';
+        $output .= $footer;
         return $output;
     }
 
@@ -2005,12 +2293,12 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>':'<div class="checkbox"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>' : '<div class="checkbox"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
-        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL?'</label></div></div></div>':'</label></div>';
-        $output.= $footer;
+        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '</label></div></div></div>' : '</label></div>';
+        $output .= $footer;
         return $output;
     }
 
@@ -2025,7 +2313,7 @@ EOD;
      */
     public static function activeDropDownListControlGroup($model, $attribute, $data = array(), $htmlOptions = array())
     {
-        self::addCssClass('form-control',$htmlOptions);
+        self::addCssClass('form-control', $htmlOptions);
         return self::activeControlGroup(self::INPUT_TYPE_DROPDOWNLIST, $model, $attribute, $htmlOptions, $data);
     }
 
@@ -2057,7 +2345,8 @@ EOD;
         $attribute,
         $data = array(),
         $htmlOptions = array()
-    ) {
+    )
+    {
         return self::activeControlGroup(self::INPUT_TYPE_RADIOBUTTONLIST, $model, $attribute, $htmlOptions, $data);
     }
 
@@ -2075,7 +2364,8 @@ EOD;
         $attribute,
         $data = array(),
         $htmlOptions = array()
-    ) {
+    )
+    {
         return self::activeControlGroup(
             self::INPUT_TYPE_INLINERADIOBUTTONLIST,
             $model,
@@ -2113,7 +2403,8 @@ EOD;
         $attribute,
         $data = array(),
         $htmlOptions = array()
-    ) {
+    )
+    {
         return self::activeControlGroup(self::INPUT_TYPE_INLINECHECKBOXLIST, $model, $attribute, $htmlOptions, $data);
     }
 
@@ -2144,65 +2435,6 @@ EOD;
     }
 
     /**
-     * Generates an active form row.
-     * @param string $type the input type.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @param array $data data for multiple select inputs.
-     * @return string the generated control group.
-     */
-    public static function activeControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
-    {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions);
-
-        if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
-            $htmlOptions['label'] = $model->getAttributeLabel($attribute);
-            $htmlOptions['labelOptions'] = $labelOptions;
-            $label = false;
-        }
-
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        if (!empty($help)) {
-            $help = self::inputHelp($help, $helpOptions);
-        }
-        $error = \bootstrap\helpers\BSArray::popValue('error', $htmlOptions, '');
-
-        $input = isset($htmlOptions['input'])
-            ? $htmlOptions['input']
-            : self::createActiveInput($type, $model, $attribute, $htmlOptions, $data);
-        self::addCssClass('form-group', $groupOptions);
-
-        if(!empty($layout))
-        {
-            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL && !isset($controlOptions['class'])){
-                self::addCssClass('col-lg-10', $controlOptions);
-            }
-
-        }
-        if (!empty($color)) {
-            self::addCssClass($color, $groupOptions);
-        }
-        $output = self::openTag('div', $groupOptions);
-        if ($label !== false && !is_null($layout)) {
-            // todo: consider adding support for overriding the label with plain text.
-            $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
-        }
-//        CVarDumper::dump($controlOptions,10,true);
-//        CVarDumper::dump($groupOptions,10,true);
-//        CVarDumper::dump($htmlOptions,10,true);
-        $output .= self::controls($input . $error . $help, $controlOptions);
-        $output .= '</div>';
-        return $output;
-    }
-
-    /**
      * Generates a custom (pre-rendered) active form control group.
      * @param string $input the rendered input.
      * @param CModel $model the data model.
@@ -2214,62 +2446,6 @@ EOD;
     {
         $htmlOptions['input'] = $input;
         return self::activeControlGroup(self::INPUT_TYPE_CUSTOM, $model, $attribute, $htmlOptions);
-    }
-
-    /**
-     * Creates an active form input of the given type.
-     * @param string $type the input type.
-     * @param CModel $model the model instance.
-     * @param string $attribute the attribute name.
-     * @param array $htmlOptions additional HTML attributes.
-     * @param array $data data for multiple select inputs.
-     * @return string the input.
-     * @throws CException if the input type is invalid.
-     */
-    protected static function createActiveInput($type, $model, $attribute, $htmlOptions = array(), $data = array())
-    {
-        switch ($type) {
-            case self::INPUT_TYPE_TEXT:
-                return self::activeTextField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_PASSWORD:
-                return self::activePasswordField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_URL:
-                return self::activeUrlField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_EMAIL:
-                return self::activeEmailField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_NUMBER:
-                return self::activeNumberField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_RANGE:
-                return self::activeRangeField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_DATE:
-                return self::activeDateField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_TEXTAREA:
-                return self::activeTextArea($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_FILE:
-                return self::activeFileField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_RADIOBUTTON:
-                return self::activeRadioButton($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_CHECKBOX:
-                return self::activeCheckBox($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_DROPDOWNLIST:
-                return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_LISTBOX:
-                return self::activeListBox($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_CHECKBOXLIST:
-                return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_INLINECHECKBOXLIST:
-                return self::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_RADIOBUTTONLIST:
-                return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_INLINERADIOBUTTONLIST:
-                return self::activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions);
-            case self::INPUT_TYPE_UNEDITABLE:
-                return self::activeUneditableField($model, $attribute, $htmlOptions);
-            case self::INPUT_TYPE_SEARCH:
-                return self::activeSearchQueryField($model, $attribute, $htmlOptions);
-            default:
-                throw new CException('Invalid input type "' . $type . '".');
-        }
     }
 
     /**
@@ -2287,6 +2463,10 @@ EOD;
         return parent::errorSummary($model, $header, $footer, $htmlOptions);
     }
 
+    // Buttons
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#buttons
+    // --------------------------------------------------
+
     /**
      * Displays the first validation error for a model attribute.
      * @param CModel $model the data model.
@@ -2299,152 +2479,6 @@ EOD;
         parent::resolveName($model, $attribute); // turn [a][b]attr into attr
         $error = $model->getError($attribute);
         return !empty($error) ? self::help($error, $htmlOptions) : '';
-    }
-
-    /**
-     * Generates an input HTML tag  for a model attribute.
-     * This method generates an input HTML tag based on the given input name and value.
-     * @param string $type the input type.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input tag.
-     */
-    protected static function activeTextInputField($type, $model, $attribute, $htmlOptions)
-    {
-        parent::resolveNameID($model, $attribute, $htmlOptions);
-        parent::clientChange('change', $htmlOptions);
-//        CVarDumper::dump($htmlOptions,10,true);
-        $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        $addOnClasses = self::getAddOnClasses($htmlOptions);
-        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
-        self::addCssClass('form-control',$htmlOptions);
-//        if(isset($htmlOptions['class']) && !empty($htmlOptions['class'])){
-//            $htmlOptions['class'] = $htmlOptions['class'].' form-control';
-//        }else{
-//            $htmlOptions['class'] = ' form-control';
-//        }
-
-        $attributesLabel = $model->attributeLabels();
-        $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
-
-
-        if(!empty($placeHolder)){
-            $htmlOptions['placeholder'] = $placeHolder;
-        }else{
-            $htmlOptions['placeholder'] = isset($attributesLabel[$attribute])?$attributesLabel[$attribute]:'';
-        }
-
-        self::addCssClass($addOnClasses, $addOnOptions);
-
-        $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
-        $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
-        if (!empty($prepend)) {
-            $prepend = self::inputAddOn($prepend, $prependOptions);
-        }
-
-        $append = \bootstrap\helpers\BSArray::popValue('append', $htmlOptions, '');
-        $appendOptions = \bootstrap\helpers\BSArray::popValue('appendOptions', $htmlOptions, array());
-        if (!empty($append)) {
-            $append = self::inputAddOn($append, $appendOptions);
-        }
-
-        $output = '';
-        if (!empty($addOnClasses)) {
-            $output .= self::openTag('div', $addOnOptions);
-        }
-        $output .= $prepend . parent::activeInputField($type, $model, $attribute, $htmlOptions) . $append;
-        if (!empty($addOnClasses)) {
-            $output .= '</div>';
-        }
-        return $output;
-    }
-
-    /**
-     * Returns the add-on classes based on the given options.
-     * @param array $htmlOptions the options.
-     * @return string the classes.
-     */
-    protected static function getAddOnClasses($htmlOptions)
-    {
-        $classes = array();
-        if (\bootstrap\helpers\BSArray::getValue('append', $htmlOptions)) {
-            $classes[] = 'input-group';
-        }
-        if (\bootstrap\helpers\BSArray::getValue('prepend', $htmlOptions)) {
-            $classes[] = 'input-group';
-        }
-        return !empty($classes) ? implode(' ', $classes) : $classes;
-    }
-
-    /**
-     * Generates an add-on for an input field.
-     * @param string $addOn the add-on.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated add-on.
-     */
-    protected static function inputAddOn($addOn, $htmlOptions)
-    {
-        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
-        self::addCssClass('input-group-addon', $addOnOptions);
-        return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
-            ? self::tag('span', $addOnOptions, $addOn)
-            : $addOn;
-    }
-
-    /**
-     * Generates a help text for an input field.
-     * @param string $help the help text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated help text.
-     */
-    protected static function inputHelp($help, $htmlOptions)
-    {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
-        return $type === self::HELP_TYPE_INLINE
-            ? self::help($help, $htmlOptions)
-            : self::helpBlock($help, $htmlOptions);
-    }
-
-    /**
-     * Normalizes input options.
-     * @param array $options the options.
-     * @return array the normalized options.
-     */
-    protected static function normalizeInputOptions($options)
-    {
-        self::addSpanClass($options);
-        self::addTextAlignClass($options);
-        $size = \bootstrap\helpers\BSArray::popValue('size', $options);
-        if (\bootstrap\helpers\BSArray::popValue('block', $options, false)) {
-            self::addCssClass('input-block-level', $options);
-        } else {
-            if (!empty($size)) {
-                self::addCssClass('input-' . $size, $options);
-            }
-        }
-        return $options;
-    }
-
-    /**
-     * Generates form controls.
-     * @param mixed $controls the controls.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated controls.
-     */
-    public static function controls($controls, $htmlOptions = array())
-    {
-        self::addCssClass('form-group', $htmlOptions);
-        if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
-            self::addCssClass('controls-row', $htmlOptions);
-        }
-        $before = \bootstrap\helpers\BSArray::popValue('before', $htmlOptions, '');
-        $after = \bootstrap\helpers\BSArray::popValue('after', $htmlOptions, '');
-        if (is_array($controls)) {
-            $controls = implode('', $controls);
-        }
-        $content = $before . $controls . $after;
-        return self::tag('div', $htmlOptions, $content);
     }
 
     /**
@@ -2471,72 +2505,10 @@ EOD;
         if (is_array($actions)) {
             $actions = implode(' ', $actions);
         }
-        $outPut = parent::openTag('div',array('class' => 'col-lg-offset-2'),array());
+        $outPut = parent::openTag('div', array('class' => 'col-lg-offset-2'), array());
         $outPut .= self::tag('div', $htmlOptions, $actions);
         $outPut .= parent::closeTag('div');
         return $outPut;
-    }
-
-    /**
-     * Generates a search form.
-     * @param mixed $action the form action URL.
-     * @param string $method form method (e.g. post, get).
-     * @param array $htmlOptions additional HTML options.
-     * @return string the generated form.
-     */
-    public static function searchForm($action, $method = 'post', $htmlOptions = array())
-    {
-        self::addCssClass('form-search', $htmlOptions);
-        $inputOptions = \bootstrap\helpers\BSArray::popValue('inputOptions', $htmlOptions, array());
-        $inputOptions = \bootstrap\helpers\BSArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
-        $name = \bootstrap\helpers\BSArray::popValue('name', $inputOptions, 'search');
-        $value = \bootstrap\helpers\BSArray::popValue('value', $inputOptions, '');
-        $output = self::beginFormTb(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
-        $output .= self::searchQueryField($name, $value, $inputOptions);
-        $output .= parent::endForm();
-        return $output;
-    }
-
-    // Buttons
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#buttons
-    // --------------------------------------------------
-
-    /**
-     * Generates a hyperlink tag.
-     * @param string $text link body. It will NOT be HTML-encoded.
-     * @param mixed $url a URL or an action route that can be used to create a URL.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated hyperlink
-     */
-    public static function link($text, $url = '#', $htmlOptions = array())
-    {
-        if ($url !== false) {
-            $htmlOptions['href'] = parent::normalizeUrl($url);
-        }
-        self::clientChange('click', $htmlOptions);
-        return self::tag('a', $htmlOptions, $text);
-    }
-
-    /**
-     * Generates an button.
-     * @param string $label the button label text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function button($label = 'Button', $htmlOptions = array())
-    {
-        return self::htmlButton($label, $htmlOptions);
-    }
-
-    /**
-     * Generates an image submit button.
-     * @param string $src the image URL
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function htmlButton($label = 'Button', $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_HTML, $label, $htmlOptions);
     }
 
     /**
@@ -2549,106 +2521,6 @@ EOD;
     {
         return self::btn(self::BUTTON_TYPE_SUBMIT, $label, $htmlOptions);
     }
-    /**
-     * Generates a submit button.
-     * @param string $label the button label
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function inputButton($label = 'Submit', $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_INPUTBUTTON, $label, $htmlOptions);
-    }
-    /**
-     * Generates a submit button.
-     * @param string $label the button label
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function inputSubmitButton($label = 'Submit', $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_INPUTSUBMIT, $label, $htmlOptions);
-    }
-
-    /**
-     * Generates a reset button.
-     * @param string $label the button label
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function resetButton($label = 'Reset', $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_RESET, $label, $htmlOptions);
-    }
-
-    /**
-     * Generates an image submit button.
-     * @param string $src the image URL
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function imageButton($src, $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_IMAGE, $src, $htmlOptions);
-    }
-
-    /**
-     * Generates a link submit button.
-     * @param string $label the button label.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button tag.
-     */
-    public static function linkButton($label = 'Submit', $htmlOptions = array())
-    {
-        return self::btn(self::BUTTON_TYPE_LINK, $label, $htmlOptions);
-    }
-
-    /**
-     * Generates a link that can initiate AJAX requests.
-     * @param string $text the link body (it will NOT be HTML-encoded.)
-     * @param mixed $url the URL for the AJAX request.
-     * @param array $ajaxOptions AJAX options.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated link.
-     */
-    public static function ajaxLink($text, $url, $ajaxOptions = array(), $htmlOptions = array())
-    {
-        $htmlOptions['url'] = $url;
-        $htmlOptions['ajaxOptions'] = $ajaxOptions;
-        return self::btn(self::BUTTON_TYPE_AJAXLINK, $text, $htmlOptions);
-    }
-
-    /**
-     * Generates a push button that can initiate AJAX requests.
-     * @param string $label the button label.
-     * @param mixed $url the URL for the AJAX request.
-     * @param array $ajaxOptions AJAX options.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function ajaxButton($label, $url, $ajaxOptions = array(), $htmlOptions = array())
-    {
-        $ajaxOptions['url'] = $url;
-        $htmlOptions['ajaxOptions'] = $ajaxOptions;
-        return self::btn(self::BUTTON_TYPE_AJAXBUTTON, $label, $htmlOptions);
-    }
-
-    /**
-     * Generates a push button that can submit the current form in POST method.
-     * @param string $label the button label
-     * @param mixed $url the URL for the AJAX request.
-     * @param array $ajaxOptions AJAX options.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function ajaxSubmitButton($label, $url, $ajaxOptions = array(), $htmlOptions = array())
-    {
-        $ajaxOptions['type'] = 'POST';
-        $htmlOptions['type'] = 'submit';
-        return self::ajaxButton($label, $url, $ajaxOptions, $htmlOptions);
-    }
-
-    // todo: add methods for input button and input submit.
 
     /**
      * Generates a button.
@@ -2663,8 +2535,8 @@ EOD;
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('btn-' . $color, $htmlOptions);
-        }else{
-            self::addCssClass('btn-default',$htmlOptions);
+        } else {
+            self::addCssClass('btn-default', $htmlOptions);
         }
         $size = \bootstrap\helpers\BSArray::popValue('size', $htmlOptions);
         if (!empty($size)) {
@@ -2698,6 +2570,25 @@ EOD;
         return isset($items)
             ? self::btnDropdown($type, $label, $items, $dropdownOptions)
             : self::createButton($type, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates an icon.
+     * @param string $icon the icon type.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param string $tagName the icon HTML tag.
+     * @return string the generated icon.
+     */
+    public static function icon($icon, $htmlOptions = array(), $tagName = 'span')
+    {
+        if (is_string($icon)) {
+            if (strpos($icon, 'glyphicon') === false) {
+                $icon = 'glyphicon-' . implode(' glyphicon-', explode(' ', $icon));
+            }
+            self::addCssClass('glyphicon ' . $icon, $htmlOptions);
+            return self::openTag($tagName, $htmlOptions) . parent::closeTag($tagName); // tag won't work in this case
+        }
+        return '';
     }
 
     /**
@@ -2783,117 +2674,20 @@ EOD;
         }
     }
 
-    // Images
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#images
-    // --------------------------------------------------
-
     /**
-     * Generates an image tag with rounded corners.
-     * @param string $src the image URL.
-     * @param string $alt the alternative text display.
+     * Generates a hyperlink tag.
+     * @param string $text link body. It will NOT be HTML-encoded.
+     * @param mixed $url a URL or an action route that can be used to create a URL.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated image tag.
+     * @return string the generated hyperlink
      */
-    public static function imageRounded($src, $alt = '', $htmlOptions = array())
+    public static function link($text, $url = '#', $htmlOptions = array())
     {
-        $htmlOptions['type'] = self::IMAGE_TYPE_ROUNDED;
-        return self::image($src, $alt, $htmlOptions);
-    }
-
-    /**
-     * Generates an image tag with circle.
-     * @param string $src the image URL.
-     * @param string $alt the alternative text display.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated image tag.
-     */
-    public static function imageCircle($src, $alt = '', $htmlOptions = array())
-    {
-        $htmlOptions['type'] = self::IMAGE_TYPE_CIRCLE;
-        return self::image($src, $alt, $htmlOptions);
-    }
-
-    /**
-     * Generates an image tag within polaroid frame.
-     * @param string $src the image URL.
-     * @param string $alt the alternative text display.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated image tag.
-     */
-    public static function imageThumbnail($src, $alt = '', $htmlOptions = array())
-    {
-        $htmlOptions['type'] = self::IMAGE_TYPE_THUMBNAIL;
-        return self::image($src, $alt, $htmlOptions);
-    }
-
-    /**
-     * Generates an image tag.
-     * @param string $src the image URL.
-     * @param string $alt the alternative text display.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated image tag.
-     */
-    public static function image($src, $alt = '', $htmlOptions = array())
-    {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions);
-        if (!empty($type)) {
-            self::addCssClass('img-' . $type, $htmlOptions);
+        if ($url !== false) {
+            $htmlOptions['href'] = parent::normalizeUrl($url);
         }
-        return parent::image($src, $alt, $htmlOptions);
-    }
-
-    // Icons by Glyphicons
-    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#icons
-    // --------------------------------------------------
-
-    /**
-     * Generates an icon.
-     * @param string $icon the icon type.
-     * @param array $htmlOptions additional HTML attributes.
-     * @param string $tagName the icon HTML tag.
-     * @return string the generated icon.
-     */
-    public static function icon($icon, $htmlOptions = array(), $tagName = 'span')
-    {
-        if (is_string($icon)) {
-            if (strpos($icon, 'glyphicon') === false) {
-                $icon = 'glyphicon-' . implode(' glyphicon-', explode(' ', $icon));
-            }
-            self::addCssClass('glyphicon '.$icon, $htmlOptions);
-            return self::openTag($tagName, $htmlOptions) . parent::closeTag($tagName); // tag won't work in this case
-        }
-        return '';
-    }
-
-    //
-    // COMPONENTS
-    // --------------------------------------------------
-
-    // Dropdowns
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#dropdowns
-    // --------------------------------------------------
-
-    /**
-     * Generates a dropdown menu.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    protected static function dropdown($items, $htmlOptions = array())
-    {
-        self::addCssClass('dropdown-menu', $htmlOptions);
-        return self::menu($items, $htmlOptions);
-    }
-
-    /**
-     * Generates a dropdown toggle link.
-     * @param string $label the link label text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated link.
-     */
-    public static function dropdownToggleLink($label, $htmlOptions = array())
-    {
-        return self::dropdownToggle(self::BUTTON_TYPE_HTML, $label, $htmlOptions);
+        self::clientChange('click', $htmlOptions);
+        return self::tag('a', $htmlOptions, $text);
     }
 
     /**
@@ -2919,351 +2713,39 @@ EOD;
         self::addCssClass('dropdown-toggle', $htmlOptions);
         $label .= ' <span class="caret"></span>';
         $htmlOptions['data-toggle'] = 'dropdown';
-        if(!isset($htmlOptions['name']))
-            $htmlOptions['name']=self::ID_PREFIX.self::$count++;
-        if(!isset($htmlOptions['type']))
-            $htmlOptions['type']='button';
-        parent::clientChange('click',$htmlOptions);
-        return parent::tag('button',$htmlOptions,$label);
+        if (!isset($htmlOptions['name']))
+            $htmlOptions['name'] = self::ID_PREFIX . self::$count++;
+        if (!isset($htmlOptions['type']))
+            $htmlOptions['type'] = 'button';
+        parent::clientChange('click', $htmlOptions);
+        return parent::tag('button', $htmlOptions, $label);
     }
 
     /**
-     * Generates a dropdown toggle menu item.
-     * @param string $label the menu item text.
-     * @param string $url the menu item URL.
+     * Generates a dropdown toggle link.
+     * @param string $label the link label text.
      * @param array $htmlOptions additional HTML attributes.
-     * @param int $depth the menu depth at which this link is located
-     * @return string the generated menu item.
+     * @return string the generated link.
      */
-    public static function dropdownToggleMenuLink($label, $url = '#', $htmlOptions = array(), $depth = 0)
+    public static function dropdownToggleLink($label, $htmlOptions = array())
     {
-        self::addCssClass('dropdown-toggle', $htmlOptions);
-        if ($depth === 0) {
-            $label .= ' <b class="caret"></b>';
-        }
-        $htmlOptions['data-toggle'] = 'dropdown';
-        return self::link($label, $url, $htmlOptions);
+        return self::dropdownToggle(self::BUTTON_TYPE_HTML, $label, $htmlOptions);
     }
 
-    // Button groups
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#buttonGroups
-    // --------------------------------------------------
+    // todo: add methods for input button and input submit.
 
     /**
-     * Generates a button group.
-     * @param array $buttons the button configurations.
-     * @param array $htmlOptions additional HTML options.
-     * @return string the generated button group.
-     */
-    public static function buttonGroup(array $buttons, $htmlOptions = array())
-    {
-//        CVarDumper::dump($htmlOptions,10,true);
-        if (!empty($buttons)) {
-            self::addCssClass('btn-group', $htmlOptions);
-
-            if (\bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false)) {
-                self::addCssClass('btn-group-justified', $htmlOptions);
-            }
-
-            if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
-                self::addCssClass('btn-group-vertical', $htmlOptions);
-            }
-
-            $toggle = \bootstrap\helpers\BSArray::popValue('toggle', $htmlOptions);
-            if (!empty($toggle)) {
-                $htmlOptions['data-toggle'] = 'buttons-' . $toggle;
-            }
-            $parentOptions = array(
-                'color' => BSHtml::BUTTON_COLOR_DEFAULT,
-                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
-                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
-            );
-            $output = self::openTag('div', $htmlOptions);
-            foreach ($buttons as $buttonOptions) {
-
-
-                $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
-//                CVarDumper::dump($buttonOptions,10,true);
-                if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
-                    continue;
-                }
-                if(!empty($own)){
-                    $output .= $own;
-                    continue;
-                }
-                $type = \bootstrap\helpers\BSArray::popValue('type', $buttonOptions, false);
-                // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $buttonOptions, array());
-                if (!empty($options)) {
-                    $buttonOptions = \bootstrap\helpers\BSArray::merge($options, $buttonOptions);
-                }
-                $buttonLabel = \bootstrap\helpers\BSArray::popValue('label', $buttonOptions, '');
-                $buttonOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
-                $items = \bootstrap\helpers\BSArray::popValue('items', $buttonOptions, array());
-                if (!empty($items)) {
-                    $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
-                } else {
-
-                    if(!empty($type) && $type = self::BUTTON_TYPE_LINK)
-                        $output .= self::linkButton($buttonLabel, $buttonOptions);
-                    else
-                        $output .= self::button($buttonLabel, $buttonOptions);
-                }
-            }
-            $output .= '</div>';
-            return $output;
-        }
-        return '';
-    }
-
-    /**
-     * Generates a vertical button group.
-     * @param array $buttons the button configurations.
-     * @param array $htmlOptions additional HTML options.
-     * @return string the generated button group.
-     */
-    public static function verticalButtonGroup(array $buttons, $htmlOptions = array())
-    {
-        $htmlOptions['vertical'] = true;
-        return self::buttonGroup($buttons, $htmlOptions);
-    }
-
-    /**
-     * Generates a button toolbar.
-     * @param array $groups the button group configurations.
-     * @param array $htmlOptions additional HTML options.
-     * @return string the generated button toolbar.
-     */
-    public static function buttonToolbar(array $groups, $htmlOptions = array())
-    {
-        if (!empty($groups)) {
-            self::addCssClass('btn-toolbar', $htmlOptions);
-            $parentOptions = array(
-                'color' => \bootstrap\helpers\BSArray::popValue('color', $htmlOptions),
-                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
-                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
-            );
-            $output = self::openTag('div', $htmlOptions);
-            foreach ($groups as $groupOptions) {
-                if (isset($groupOptions['visible']) && $groupOptions['visible'] === false) {
-                    continue;
-                }
-                $items = \bootstrap\helpers\BSArray::popValue('items', $groupOptions, array());
-                if (empty($items)) {
-                    continue;
-                }
-                // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $groupOptions, array());
-                if (!empty($options)) {
-                    $groupOptions = \bootstrap\helpers\BSArray::merge($options, $groupOptions);
-                }
-                $groupOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $groupOptions);
-                $output .= self::buttonGroup($items, $groupOptions);
-            }
-            $output .= '</div>';
-            return $output;
-        }
-        return '';
-    }
-
-    // Button dropdowns
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#buttonDropdowns
-    // --------------------------------------------------
-
-    /**
-     * Generates a button with a dropdown menu.
-     * @param string $label the button label text.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function buttonDropdown($label, $items, $htmlOptions = array())
-    {
-        $htmlOptions['items'] = $items;
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::BUTTON_TYPE_LINKBUTTON);
-        return self::btn($type, $label, $htmlOptions);
-    }
-
-    /**
-     * Generates a button with a split dropdown menu.
-     * @param string $label the button label text.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated button.
-     */
-    public static function splitButtonDropdown($label, $items, $htmlOptions = array())
-    {
-        $htmlOptions['split'] = true;
-        return self::buttonDropdown($label, $items, $htmlOptions);
-    }
-
-    // Navs
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#navs
-    // --------------------------------------------------
-
-    /**
-     * Generates a tab navigation.
+     * Generates a dropdown menu.
      * @param array $items the menu items.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated menu.
      */
-    public static function tabs($items, $htmlOptions = array())
+    protected static function dropdown($items, $htmlOptions = array())
     {
-        return self::nav(self::NAV_TYPE_TABS, $items, $htmlOptions);
-    }
-
-    /**
-     * Generates a stacked tab navigation.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function stackedTabs($items, $htmlOptions = array())
-    {
-        $htmlOptions['stacked'] = true;
-        return self::tabs($items, $htmlOptions);
-    }
-
-    /**
-     * Generates a pills navigation.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function pills($items, $htmlOptions = array())
-    {
-        return self::nav(self::NAV_TYPE_PILLS, $items, $htmlOptions);
-    }
-
-    /**
-     * Generates a stacked pills navigation.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function stackedPills($items, $htmlOptions = array())
-    {
-        $htmlOptions['stacked'] = true;
-        return self::pills($items, $htmlOptions);
-    }
-
-    public static function listGroup($items,$htmlOptions = array()){
-        $htmlOptions['listGroup'] = true;
-        return self::listGroupHeader($items, $htmlOptions);
-    }
-
-    /**
-     * Generates a list navigation.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function navList($items, $htmlOptions = array())
-    {
-        foreach ($items as $i => $itemOptions) {
-            if (!isset($itemOptions['url']) && !isset($itemOptions['items'])) {
-                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
-                $items[$i] = self::menuHeader($label, $itemOptions);
-            }
-        }
-        return self::nav(self::NAV_TYPE_LIST, $items, $htmlOptions);
-    }
-
-    /**
-     * Generates a navigation menu.
-     * @param string $type the menu type.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function nav($type, $items, $htmlOptions = array())
-    {
-        self::addCssClass('nav', $htmlOptions);
-        if (!empty($type)) {
-            self::addCssClass('nav-' . $type, $htmlOptions);
-        }
-        $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
-        if($justified){
-            self::addCssClass('nav-justified',$htmlOptions);
-        }
-        if ($type !== self::NAV_TYPE_LIST && \bootstrap\helpers\BSArray::popValue('stacked', $htmlOptions, false)) {
-            self::addCssClass('nav-stacked', $htmlOptions);
-        }
+        self::addCssClass('dropdown-menu', $htmlOptions);
         return self::menu($items, $htmlOptions);
     }
 
-    /**
-     * Generates a navigation menu.
-     * @param string $type the menu type.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function listGroupHeader($items, $htmlOptions = array())
-    {
-        if (!empty($type)) {
-            self::addCssClass('nav-' . $type, $htmlOptions);
-        }
-        return self::listGroupMenu($items, $htmlOptions);
-    }
-
-    /**
-     * Generates a menu.
-     * @param array $items the menu items.
-     * @param array $htmlOptions additional HTML attributes.
-     * @param integer $depth the current depth.
-     * @return string the generated menu.
-     */
-    public static function listGroupMenu(array $items, $htmlOptions = array(), $depth = 0)
-    {
-        // todo: consider making this method protected.
-        if (!empty($items)) {
-            $htmlOptions['class'] = 'list-group';
-            $output = self::openTag('ul', $htmlOptions);
-            foreach ($items as $itemOptions) {
-                if (is_string($itemOptions)) {
-                    $output .= $itemOptions;
-                } else {
-                    if (isset($itemOptions['visible']) && $itemOptions['visible'] === false) {
-                        continue;
-                    }
-                    // todo: consider removing the support for htmlOptions.
-                    $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
-                    self::addCssClass('list-group-item',$itemOptions);
-                    if (!empty($options)) {
-                        $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
-                    }
-                    $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
-
-                    if (\bootstrap\helpers\BSArray::popValue('active', $itemOptions, false)) {
-                        self::addCssClass('active', $itemOptions);
-                    }
-                    if (\bootstrap\helpers\BSArray::popValue('disabled', $itemOptions, false)) {
-                        self::addCssClass('disabled', $itemOptions);
-                    }
-                    if (!isset($itemOptions['linkOptions'])) {
-                        $itemOptions['linkOptions'] = array();
-                    }
-                    $icon = \bootstrap\helpers\BSArray::popValue('icon', $itemOptions);
-                    if (!empty($icon)) {
-                        $label = self::icon($icon) . ' ' . $label;
-                    }
-                    $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
-                    $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
-                    if (empty($items)) {
-                        $itemOptions['linkOptions']['tabindex'] = -1;
-                        $output .= self::menuLink($label, $url, $itemOptions);
-                    } else {
-                        $output .= self::menuDropdown($label, $url, $items, $itemOptions, $depth);
-                    }
-                }
-            }
-            $output .= '</ul>';
-            return $output;
-        } else {
-            return '';
-        }
-    }
     /**
      * Generates a menu.
      * @param array $items the menu items.
@@ -3334,6 +2816,10 @@ EOD;
         return self::tag('li', $htmlOptions, $content);
     }
 
+    // Images
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#images
+    // --------------------------------------------------
+
     /**
      * Generates a menu dropdown.
      * @param string $label the link label.
@@ -3363,6 +2849,534 @@ EOD;
     }
 
     /**
+     * Generates a dropdown toggle menu item.
+     * @param string $label the menu item text.
+     * @param string $url the menu item URL.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param int $depth the menu depth at which this link is located
+     * @return string the generated menu item.
+     */
+    public static function dropdownToggleMenuLink($label, $url = '#', $htmlOptions = array(), $depth = 0)
+    {
+        self::addCssClass('dropdown-toggle', $htmlOptions);
+        if ($depth === 0) {
+            $label .= ' <b class="caret"></b>';
+        }
+        $htmlOptions['data-toggle'] = 'dropdown';
+        return self::link($label, $url, $htmlOptions);
+    }
+
+    /**
+     * Generates a submit button.
+     * @param string $label the button label
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function inputButton($label = 'Submit', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_INPUTBUTTON, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates a submit button.
+     * @param string $label the button label
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function inputSubmitButton($label = 'Submit', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_INPUTSUBMIT, $label, $htmlOptions);
+    }
+
+    // Icons by Glyphicons
+    // http://twitter.github.io/bootstrap/2.3.2/base-css.html#icons
+    // --------------------------------------------------
+
+    /**
+     * Generates a reset button.
+     * @param string $label the button label
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function resetButton($label = 'Reset', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_RESET, $label, $htmlOptions);
+    }
+
+    //
+    // COMPONENTS
+    // --------------------------------------------------
+
+    // Dropdowns
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#dropdowns
+    // --------------------------------------------------
+
+    /**
+     * Generates an image submit button.
+     * @param string $src the image URL
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function imageButton($src, $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_IMAGE, $src, $htmlOptions);
+    }
+
+    /**
+     * Generates a link that can initiate AJAX requests.
+     * @param string $text the link body (it will NOT be HTML-encoded.)
+     * @param mixed $url the URL for the AJAX request.
+     * @param array $ajaxOptions AJAX options.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated link.
+     */
+    public static function ajaxLink($text, $url, $ajaxOptions = array(), $htmlOptions = array())
+    {
+        $htmlOptions['url'] = $url;
+        $htmlOptions['ajaxOptions'] = $ajaxOptions;
+        return self::btn(self::BUTTON_TYPE_AJAXLINK, $text, $htmlOptions);
+    }
+
+    /**
+     * Generates a push button that can submit the current form in POST method.
+     * @param string $label the button label
+     * @param mixed $url the URL for the AJAX request.
+     * @param array $ajaxOptions AJAX options.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function ajaxSubmitButton($label, $url, $ajaxOptions = array(), $htmlOptions = array())
+    {
+        $ajaxOptions['type'] = 'POST';
+        $htmlOptions['type'] = 'submit';
+        return self::ajaxButton($label, $url, $ajaxOptions, $htmlOptions);
+    }
+
+    /**
+     * Generates a push button that can initiate AJAX requests.
+     * @param string $label the button label.
+     * @param mixed $url the URL for the AJAX request.
+     * @param array $ajaxOptions AJAX options.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function ajaxButton($label, $url, $ajaxOptions = array(), $htmlOptions = array())
+    {
+        $ajaxOptions['url'] = $url;
+        $htmlOptions['ajaxOptions'] = $ajaxOptions;
+        return self::btn(self::BUTTON_TYPE_AJAXBUTTON, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates an image tag with rounded corners.
+     * @param string $src the image URL.
+     * @param string $alt the alternative text display.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated image tag.
+     */
+    public static function imageRounded($src, $alt = '', $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::IMAGE_TYPE_ROUNDED;
+        return self::image($src, $alt, $htmlOptions);
+    }
+
+    // Button groups
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#buttonGroups
+    // --------------------------------------------------
+
+    /**
+     * Generates an image tag.
+     * @param string $src the image URL.
+     * @param string $alt the alternative text display.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated image tag.
+     */
+    public static function image($src, $alt = '', $htmlOptions = array())
+    {
+        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions);
+        if (!empty($type)) {
+            self::addCssClass('img-' . $type, $htmlOptions);
+        }
+        return parent::image($src, $alt, $htmlOptions);
+    }
+
+    /**
+     * Generates an image tag with circle.
+     * @param string $src the image URL.
+     * @param string $alt the alternative text display.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated image tag.
+     */
+    public static function imageCircle($src, $alt = '', $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::IMAGE_TYPE_CIRCLE;
+        return self::image($src, $alt, $htmlOptions);
+    }
+
+    /**
+     * Generates an image tag within polaroid frame.
+     * @param string $src the image URL.
+     * @param string $alt the alternative text display.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated image tag.
+     */
+    public static function imageThumbnail($src, $alt = '', $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::IMAGE_TYPE_THUMBNAIL;
+        return self::image($src, $alt, $htmlOptions);
+    }
+
+    // Button dropdowns
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#buttonDropdowns
+    // --------------------------------------------------
+
+    /**
+     * Generates a vertical button group.
+     * @param array $buttons the button configurations.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated button group.
+     */
+    public static function verticalButtonGroup(array $buttons, $htmlOptions = array())
+    {
+        $htmlOptions['vertical'] = true;
+        return self::buttonGroup($buttons, $htmlOptions);
+    }
+
+    /**
+     * Generates a button group.
+     * @param array $buttons the button configurations.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated button group.
+     */
+    public static function buttonGroup(array $buttons, $htmlOptions = array())
+    {
+//        CVarDumper::dump($htmlOptions,10,true);
+        if (!empty($buttons)) {
+            self::addCssClass('btn-group', $htmlOptions);
+
+            if (\bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false)) {
+                self::addCssClass('btn-group-justified', $htmlOptions);
+            }
+
+            if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
+                self::addCssClass('btn-group-vertical', $htmlOptions);
+            }
+
+            $toggle = \bootstrap\helpers\BSArray::popValue('toggle', $htmlOptions);
+            if (!empty($toggle)) {
+                $htmlOptions['data-toggle'] = 'buttons-' . $toggle;
+            }
+            $parentOptions = array(
+                'color' => BSHtml::BUTTON_COLOR_DEFAULT,
+                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
+                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
+            );
+            $output = self::openTag('div', $htmlOptions);
+            foreach ($buttons as $buttonOptions) {
+
+
+                $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
+//                CVarDumper::dump($buttonOptions,10,true);
+                if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
+                    continue;
+                }
+                if (!empty($own)) {
+                    $output .= $own;
+                    continue;
+                }
+                $type = \bootstrap\helpers\BSArray::popValue('type', $buttonOptions, false);
+                // todo: consider removing the support for htmlOptions.
+                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $buttonOptions, array());
+                if (!empty($options)) {
+                    $buttonOptions = \bootstrap\helpers\BSArray::merge($options, $buttonOptions);
+                }
+                $buttonLabel = \bootstrap\helpers\BSArray::popValue('label', $buttonOptions, '');
+                $buttonOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
+                $items = \bootstrap\helpers\BSArray::popValue('items', $buttonOptions, array());
+                if (!empty($items)) {
+                    $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
+                } else {
+
+                    if (!empty($type) && $type = self::BUTTON_TYPE_LINK)
+                        $output .= self::linkButton($buttonLabel, $buttonOptions);
+                    else
+                        $output .= self::button($buttonLabel, $buttonOptions);
+                }
+            }
+            $output .= '</div>';
+            return $output;
+        }
+        return '';
+    }
+
+    // Navs
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#navs
+    // --------------------------------------------------
+
+    /**
+     * Generates a button with a dropdown menu.
+     * @param string $label the button label text.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function buttonDropdown($label, $items, $htmlOptions = array())
+    {
+        $htmlOptions['items'] = $items;
+        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::BUTTON_TYPE_LINKBUTTON);
+        return self::btn($type, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates a link submit button.
+     * @param string $label the button label.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button tag.
+     */
+    public static function linkButton($label = 'Submit', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_LINK, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates an button.
+     * @param string $label the button label text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function button($label = 'Button', $htmlOptions = array())
+    {
+        return self::htmlButton($label, $htmlOptions);
+    }
+
+    /**
+     * Generates an image submit button.
+     * @param string $src the image URL
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function htmlButton($label = 'Button', $htmlOptions = array())
+    {
+        return self::btn(self::BUTTON_TYPE_HTML, $label, $htmlOptions);
+    }
+
+    /**
+     * Generates a button toolbar.
+     * @param array $groups the button group configurations.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated button toolbar.
+     */
+    public static function buttonToolbar(array $groups, $htmlOptions = array())
+    {
+        if (!empty($groups)) {
+            self::addCssClass('btn-toolbar', $htmlOptions);
+            $parentOptions = array(
+                'color' => \bootstrap\helpers\BSArray::popValue('color', $htmlOptions),
+                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
+                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
+            );
+            $output = self::openTag('div', $htmlOptions);
+            foreach ($groups as $groupOptions) {
+                if (isset($groupOptions['visible']) && $groupOptions['visible'] === false) {
+                    continue;
+                }
+                $items = \bootstrap\helpers\BSArray::popValue('items', $groupOptions, array());
+                if (empty($items)) {
+                    continue;
+                }
+                // todo: consider removing the support for htmlOptions.
+                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $groupOptions, array());
+                if (!empty($options)) {
+                    $groupOptions = \bootstrap\helpers\BSArray::merge($options, $groupOptions);
+                }
+                $groupOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $groupOptions);
+                $output .= self::buttonGroup($items, $groupOptions);
+            }
+            $output .= '</div>';
+            return $output;
+        }
+        return '';
+    }
+
+    /**
+     * Generates a button with a split dropdown menu.
+     * @param string $label the button label text.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated button.
+     */
+    public static function splitButtonDropdown($label, $items, $htmlOptions = array())
+    {
+        $htmlOptions['split'] = true;
+        return self::buttonDropdown($label, $items, $htmlOptions);
+    }
+
+    /**
+     * Generates a stacked tab navigation.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function stackedTabs($items, $htmlOptions = array())
+    {
+        $htmlOptions['stacked'] = true;
+        return self::tabs($items, $htmlOptions);
+    }
+
+    /**
+     * Generates a tab navigation.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function tabs($items, $htmlOptions = array())
+    {
+        return self::nav(self::NAV_TYPE_TABS, $items, $htmlOptions);
+    }
+
+    /**
+     * Generates a navigation menu.
+     * @param string $type the menu type.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function nav($type, $items, $htmlOptions = array())
+    {
+        self::addCssClass('nav', $htmlOptions);
+        if (!empty($type)) {
+            self::addCssClass('nav-' . $type, $htmlOptions);
+        }
+        $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
+        if ($justified) {
+            self::addCssClass('nav-justified', $htmlOptions);
+        }
+        if ($type !== self::NAV_TYPE_LIST && \bootstrap\helpers\BSArray::popValue('stacked', $htmlOptions, false)) {
+            self::addCssClass('nav-stacked', $htmlOptions);
+        }
+        return self::menu($items, $htmlOptions);
+    }
+
+    /**
+     * Generates a stacked pills navigation.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function stackedPills($items, $htmlOptions = array())
+    {
+        $htmlOptions['stacked'] = true;
+        return self::pills($items, $htmlOptions);
+    }
+
+    /**
+     * Generates a pills navigation.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function pills($items, $htmlOptions = array())
+    {
+        return self::nav(self::NAV_TYPE_PILLS, $items, $htmlOptions);
+    }
+
+    public static function listGroup($items, $htmlOptions = array())
+    {
+        $htmlOptions['listGroup'] = true;
+        return self::listGroupHeader($items, $htmlOptions);
+    }
+
+    /**
+     * Generates a navigation menu.
+     * @param string $type the menu type.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function listGroupHeader($items, $htmlOptions = array())
+    {
+        if (!empty($type)) {
+            self::addCssClass('nav-' . $type, $htmlOptions);
+        }
+        return self::listGroupMenu($items, $htmlOptions);
+    }
+
+    /**
+     * Generates a menu.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @param integer $depth the current depth.
+     * @return string the generated menu.
+     */
+    public static function listGroupMenu(array $items, $htmlOptions = array(), $depth = 0)
+    {
+        // todo: consider making this method protected.
+        if (!empty($items)) {
+            $htmlOptions['class'] = 'list-group';
+            $output = self::openTag('ul', $htmlOptions);
+            foreach ($items as $itemOptions) {
+                if (is_string($itemOptions)) {
+                    $output .= $itemOptions;
+                } else {
+                    if (isset($itemOptions['visible']) && $itemOptions['visible'] === false) {
+                        continue;
+                    }
+                    // todo: consider removing the support for htmlOptions.
+                    $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                    self::addCssClass('list-group-item', $itemOptions);
+                    if (!empty($options)) {
+                        $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                    }
+                    $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
+
+                    if (\bootstrap\helpers\BSArray::popValue('active', $itemOptions, false)) {
+                        self::addCssClass('active', $itemOptions);
+                    }
+                    if (\bootstrap\helpers\BSArray::popValue('disabled', $itemOptions, false)) {
+                        self::addCssClass('disabled', $itemOptions);
+                    }
+                    if (!isset($itemOptions['linkOptions'])) {
+                        $itemOptions['linkOptions'] = array();
+                    }
+                    $icon = \bootstrap\helpers\BSArray::popValue('icon', $itemOptions);
+                    if (!empty($icon)) {
+                        $label = self::icon($icon) . ' ' . $label;
+                    }
+                    $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
+                    $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                    if (empty($items)) {
+                        $itemOptions['linkOptions']['tabindex'] = -1;
+                        $output .= self::menuLink($label, $url, $itemOptions);
+                    } else {
+                        $output .= self::menuDropdown($label, $url, $items, $itemOptions, $depth);
+                    }
+                }
+            }
+            $output .= '</ul>';
+            return $output;
+        } else {
+            return '';
+        }
+    }
+
+    /**
+     * Generates a list navigation.
+     * @param array $items the menu items.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function navList($items, $htmlOptions = array())
+    {
+        foreach ($items as $i => $itemOptions) {
+            if (!isset($itemOptions['url']) && !isset($itemOptions['items'])) {
+                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
+                $items[$i] = self::menuHeader($label, $itemOptions);
+            }
+        }
+        return self::nav(self::NAV_TYPE_LIST, $items, $htmlOptions);
+    }
+
+    /**
      * Generates a menu header.
      * @param string $label the header text.
      * @param array $htmlOptions additional HTML options.
@@ -3373,6 +3387,7 @@ EOD;
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
+
     /**
      * Generates a menu header.
      * @param string $label the header text.
@@ -3395,6 +3410,21 @@ EOD;
         self::addCssClass('divider', $htmlOptions);
         return self::tag('li', $htmlOptions);
     }
+
+    /**
+     * Generates a tabbable tabs menu.
+     * @param array $tabs the tab configurations.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function tabbableTabs($tabs, $htmlOptions = array())
+    {
+        return self::tabbable(self::NAV_TYPE_TABS, $tabs, $htmlOptions);
+    }
+
+    // Navbar
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#navbar
+    // --------------------------------------------------
 
     /**
      * Generates a tabbable menu.
@@ -3420,28 +3450,6 @@ EOD;
         $output .= $placement === self::TABS_PLACEMENT_BELOW ? $content . $menu : $menu . $content;
         $output .= '</div>';
         return $output;
-    }
-
-    /**
-     * Generates a tabbable tabs menu.
-     * @param array $tabs the tab configurations.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function tabbableTabs($tabs, $htmlOptions = array())
-    {
-        return self::tabbable(self::NAV_TYPE_TABS, $tabs, $htmlOptions);
-    }
-
-    /**
-     * Generates a tabbable pills menu.
-     * @param array $tabs the tab configurations.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated menu.
-     */
-    public static function tabbablePills($pills, $htmlOptions = array())
-    {
-        return self::tabbable(self::NAV_TYPE_PILLS, $pills, $htmlOptions);
     }
 
     /**
@@ -3489,9 +3497,16 @@ EOD;
         return $menuItems;
     }
 
-    // Navbar
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#navbar
-    // --------------------------------------------------
+    /**
+     * Generates a tabbable pills menu.
+     * @param array $tabs the tab configurations.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated menu.
+     */
+    public static function tabbablePills($pills, $htmlOptions = array())
+    {
+        return self::tabbable(self::NAV_TYPE_PILLS, $pills, $htmlOptions);
+    }
 
     /**
      * Generates a navbar.
@@ -3555,6 +3570,10 @@ EOD;
         return self::tag('li', $htmlOptions);
     }
 
+    // Breadcrumbs
+    // http://getbootstrap.com/components/#breadcrumbs
+    // --------------------------------------------------
+
     /**
      * Generates a navbar form.
      * @param mixed $action the form action URL.
@@ -3568,6 +3587,10 @@ EOD;
         return self::form($action, $method, $htmlOptions);
     }
 
+    // Pagination
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#pagination
+    // --------------------------------------------------
+
     /**
      * Generates a navbar search form.
      * @param mixed $action the form action URL.
@@ -3579,6 +3602,26 @@ EOD;
     {
         self::addCssClass('navbar-search', $htmlOptions);
         return self::searchForm($action, $method, $htmlOptions);
+    }
+
+    /**
+     * Generates a search form.
+     * @param mixed $action the form action URL.
+     * @param string $method form method (e.g. post, get).
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated form.
+     */
+    public static function searchForm($action, $method = 'post', $htmlOptions = array())
+    {
+        self::addCssClass('form-search', $htmlOptions);
+        $inputOptions = \bootstrap\helpers\BSArray::popValue('inputOptions', $htmlOptions, array());
+        $inputOptions = \bootstrap\helpers\BSArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
+        $name = \bootstrap\helpers\BSArray::popValue('name', $inputOptions, 'search');
+        $value = \bootstrap\helpers\BSArray::popValue('value', $inputOptions, '');
+        $output = self::beginFormTb(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
+        $output .= self::searchQueryField($name, $value, $inputOptions);
+        $output .= parent::endForm();
+        return $output;
     }
 
     /**
@@ -3596,9 +3639,6 @@ EOD;
         return self::tag('a', $htmlOptions, $content);
     }
 
-    // Breadcrumbs
-    // http://getbootstrap.com/components/#breadcrumbs
-    // --------------------------------------------------
     /**
      * Generates a breadcrumb menu.
      * @link http://www.yiiframework.com/doc/api/1.1/CBreadcrumbs
@@ -3612,8 +3652,8 @@ EOD;
         return $breadCrumbWidget->run();
     }
 
-    // Pagination
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#pagination
+    // Labels and badges
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#labels-badges
     // --------------------------------------------------
 
     /**
@@ -3635,7 +3675,7 @@ EOD;
                 self::addCssClass('pagination-' . $align, $htmlOptions);
             }
             $listOptions = \bootstrap\helpers\BSArray::popValue('listOptions', $htmlOptions, array());
-            $output = self::openTag('ul', $htmlOptions,$listOptions);
+            $output = self::openTag('ul', $htmlOptions, $listOptions);
             foreach ($items as $itemOptions) {
                 // todo: consider removing the support for htmlOptions.
                 $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
@@ -3663,6 +3703,7 @@ EOD;
     {
         $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
+            $label .= self::tag('span',array('class' => 'sr-only'));
             self::addCssClass('active', $htmlOptions);
         }
         if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
@@ -3671,6 +3712,10 @@ EOD;
         $content = self::link($label, $url, $linkOptions);
         return self::tag('li', $htmlOptions, $content);
     }
+
+    // Typography
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#typography
+    // --------------------------------------------------
 
     /**
      * Generates a pager.
@@ -3722,8 +3767,8 @@ EOD;
         return self::tag('li', $htmlOptions, $content);
     }
 
-    // Labels and badges
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#labels-badges
+    // Thumbnails
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#thumbnails
     // --------------------------------------------------
 
     /**
@@ -3758,10 +3803,6 @@ EOD;
         return self::tag('span', $htmlOptions, $label);
     }
 
-    // Typography
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#typography
-    // --------------------------------------------------
-
     /**
      * Generates a hero unit.
      * @param string $heading the heading text.
@@ -3780,6 +3821,10 @@ EOD;
         return $output;
     }
 
+    // Alerts
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#alerts
+    // --------------------------------------------------
+
     /**
      * Generates a pager header.
      * @param string $heading the heading text.
@@ -3787,7 +3832,7 @@ EOD;
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated pager header.
      */
-    public static function pageHeader($heading, $subtext= '', $htmlOptions = array())
+    public static function pageHeader($heading, $subtext = '', $htmlOptions = array())
     {
         self::addCssClass('page-header', $htmlOptions);
         $headerOptions = \bootstrap\helpers\BSArray::popValue('headerOptions', $htmlOptions, array());
@@ -3799,10 +3844,6 @@ EOD;
         $output .= '</div>';
         return $output;
     }
-
-    // Thumbnails
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#thumbnails
-    // --------------------------------------------------
 
     /**
      * Generates a list of thumbnails.
@@ -3853,6 +3894,25 @@ EOD;
         }
     }
 
+    // Progress bars
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#progress
+    // --------------------------------------------------
+
+    /**
+     * Generates a link thumbnail.
+     * @param string $content the thumbnail content.
+     * @param mixed $url the url that the thumbnail links to.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated thumbnail.
+     */
+    public static function thumbnailLink($content, $url = '#', $htmlOptions = array())
+    {
+        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
+        self::addCssClass('thumbnail', $htmlOptions);
+        $content = self::link($content, $url, $htmlOptions);
+        return self::tag('li', $itemOptions, $content);
+    }
+
     /**
      * Generates a thumbnail.
      * @param string $content the thumbnail content.
@@ -3870,23 +3930,17 @@ EOD;
     }
 
     /**
-     * Generates a link thumbnail.
-     * @param string $content the thumbnail content.
-     * @param mixed $url the url that the thumbnail links to.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated thumbnail.
+     * Generates an alert block.
+     * @param string $color the color of the alert.
+     * @param string $message the message to display.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated alert.
      */
-    public static function thumbnailLink($content, $url = '#', $htmlOptions = array())
+    public static function blockAlert($color, $message, $htmlOptions = array())
     {
-        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
-        self::addCssClass('thumbnail', $htmlOptions);
-        $content = self::link($content, $url, $htmlOptions);
-        return self::tag('li', $itemOptions, $content);
+        $htmlOptions['block'] = true;
+        return self::alert($color, $message, $htmlOptions);
     }
-
-    // Alerts
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#alerts
-    // --------------------------------------------------
 
     /**
      * Generates an alert.
@@ -3921,21 +3975,63 @@ EOD;
     }
 
     /**
-     * Generates an alert block.
-     * @param string $color the color of the alert.
-     * @param string $message the message to display.
-     * @param array $htmlOptions additional HTML options.
-     * @return string the generated alert.
+     * Generates a close link.
+     * @param string $label the link label text.
+     * @param mixed $url the link url.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated link.
      */
-    public static function blockAlert($color, $message, $htmlOptions = array())
+    public static function closeLink($label = self::CLOSE_TEXT, $url = '#', $htmlOptions = array())
     {
-        $htmlOptions['block'] = true;
-        return self::alert($color, $message, $htmlOptions);
+        $htmlOptions['href'] = $url;
+        return self::close('a', $label, $htmlOptions);
     }
 
-    // Progress bars
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#progress
+    /**
+     * Generates a close element.
+     * @param string $tag the tag name.
+     * @param string $label the element label text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated element.
+     */
+    protected static function close($tag, $label, $htmlOptions = array())
+    {
+        self::addCssClass('close', $htmlOptions);
+        $dismiss = \bootstrap\helpers\BSArray::popValue('dismiss', $htmlOptions);
+        if (!empty($dismiss)) {
+            $htmlOptions['data-dismiss'] = $dismiss;
+        }
+        $htmlOptions['type'] = 'button';
+        return self::tag($tag, $htmlOptions, $label);
+    }
+
+    // Media objects
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#media
     // --------------------------------------------------
+
+    /**
+     * Generates an animated progress bar.
+     * @param integer $width the progress in percent.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated progress bar.
+     */
+    public static function animatedProgressBar($width = 0, $htmlOptions = array())
+    {
+        $htmlOptions['animated'] = true;
+        return self::stripedProgressBar($width, $htmlOptions);
+    }
+
+    /**
+     * Generates a striped progress bar.
+     * @param integer $width the progress in percent.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated progress bar.
+     */
+    public static function stripedProgressBar($width = 0, $htmlOptions = array())
+    {
+        $htmlOptions['striped'] = true;
+        return self::progressBar($width, $htmlOptions);
+    }
 
     /**
      * Generates a progress bar.
@@ -3971,28 +4067,62 @@ EOD;
         return self::tag('div', $progressOption, $content);
     }
 
+    // Misc
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#misc
+    // --------------------------------------------------
+
     /**
-     * Generates a striped progress bar.
+     * Generates a progress bar.
      * @param integer $width the progress in percent.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated progress bar.
+     * @return string the generated bar.
      */
-    public static function stripedProgressBar($width = 0, $htmlOptions = array())
+    protected static function bar($width = 0, $htmlOptions = array())
     {
-        $htmlOptions['striped'] = true;
-        return self::progressBar($width, $htmlOptions);
+        self::addCssClass('progress-bar', $htmlOptions);
+
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        if (!empty($color)) {
+            self::addCssClass('progress-bar-' . $color, $htmlOptions);
+        }
+
+        if ($width < 0) {
+            $width = 0;
+        }
+        if ($width > 100) {
+            $width = 100;
+        }
+        $default = array(
+            'role' => 'progressbar',
+            "aria-valuenow" => $width,
+            "aria-valuemin" => 0,
+            "aria-valuemax" => 100
+        );
+        foreach ($default as $key => $item) {
+            $htmlOptions[$key] = $item;
+        }
+//        CVarDumper::dump($htmlOptions,10,true);
+
+        self::addCssStyle("width: {$width}%;", $htmlOptions);
+        $content = \bootstrap\helpers\BSArray::popValue('content', $htmlOptions, '');
+        return self::tag('div', $htmlOptions, $content);
     }
 
     /**
-     * Generates an animated progress bar.
-     * @param integer $width the progress in percent.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated progress bar.
+     * Appends a CSS style string to the given options.
+     * @param string $style the CSS style string.
+     * @param array $htmlOptions the options.
+     * @return array the options.
      */
-    public static function animatedProgressBar($width = 0, $htmlOptions = array())
+    public static function addCssStyle($style, &$htmlOptions)
     {
-        $htmlOptions['animated'] = true;
-        return self::stripedProgressBar($width, $htmlOptions);
+        if (is_array($style)) {
+            $style = implode('; ', $style);
+        }
+        $style = rtrim($style, ';');
+        $htmlOptions['style'] = isset($htmlOptions['style'])
+            ? rtrim($htmlOptions['style'], ';') . '; ' . $style
+            : $style;
     }
 
     /**
@@ -4026,45 +4156,22 @@ EOD;
     }
 
     /**
-     * Generates a progress bar.
-     * @param integer $width the progress in percent.
+     * Generates a label span.
+     * @param string $label the label text.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated bar.
+     * @return string the generated span.
      */
-    protected static function bar($width = 0, $htmlOptions = array())
+    public static function bsLabel($label, $htmlOptions = array())
     {
-        self::addCssClass('progress-bar', $htmlOptions);
-
+//        $htmlOptions = self::addCssClass('label', $htmlOptions);
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        if (!empty($color)) {
-            self::addCssClass('progress-bar-' . $color, $htmlOptions);
-        }
+        if (!empty($color))
+            self::addCssClass('label label-' . $color, $htmlOptions);
+        else
+            self::addCssClass('label label-default', $htmlOptions);
 
-        if ($width < 0) {
-            $width = 0;
-        }
-        if ($width > 100) {
-            $width = 100;
-        }
-        $default = array(
-            'role' => 'progressbar',
-            "aria-valuenow" => $width,
-            "aria-valuemin"  => 0,
-            "aria-valuemax"=> 100
-        );
-        foreach($default as $key => $item){
-            $htmlOptions[$key] =$item;
-        }
-//        CVarDumper::dump($htmlOptions,10,true);
-
-        self::addCssStyle("width: {$width}%;", $htmlOptions);
-        $content = \bootstrap\helpers\BSArray::popValue('content', $htmlOptions, '');
-        return self::tag('div', $htmlOptions, $content);
+        return self::tag('span', $htmlOptions, $label);
     }
-
-    // Media objects
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#media
-    // --------------------------------------------------
 
     /**
      * Generates a list of media objects.
@@ -4084,6 +4191,21 @@ EOD;
         }
         return '';
     }
+
+    //
+    // JAVASCRIPT
+    // --------------------------------------------------
+
+    // Modals
+    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#modals
+    // --------------------------------------------------
+
+    // todo: create modal methods here.
+
+    // Tooltips and Popovers
+    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#tooltips
+    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#popovers
+    // --------------------------------------------------
 
     /**
      * Generates multiple media objects.
@@ -4154,10 +4276,6 @@ EOD;
         return $output;
     }
 
-    // Misc
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#misc
-    // --------------------------------------------------
-
     /**
      * Generates a well element.
      * @param string $content the well content.
@@ -4174,18 +4292,9 @@ EOD;
         return self::tag('div', $htmlOptions, $content);
     }
 
-    /**
-     * Generates a close link.
-     * @param string $label the link label text.
-     * @param mixed $url the link url.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated link.
-     */
-    public static function closeLink($label = self::CLOSE_TEXT, $url = '#', $htmlOptions = array())
-    {
-        $htmlOptions['href'] = $url;
-        return self::close('a', $label, $htmlOptions);
-    }
+    // Carousel
+    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#carousel
+    // --------------------------------------------------
 
     /**
      * Generates a close button.
@@ -4196,24 +4305,6 @@ EOD;
     public static function closeButton($label = self::CLOSE_TEXT, $htmlOptions = array())
     {
         return self::close('button', $label, $htmlOptions);
-    }
-
-    /**
-     * Generates a close element.
-     * @param string $tag the tag name.
-     * @param string $label the element label text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated element.
-     */
-    protected static function close($tag, $label, $htmlOptions = array())
-    {
-        self::addCssClass('close', $htmlOptions);
-        $dismiss = \bootstrap\helpers\BSArray::popValue('dismiss', $htmlOptions);
-        if (!empty($dismiss)) {
-            $htmlOptions['data-dismiss'] = $dismiss;
-        }
-        $htmlOptions['type'] = 'button';
-        return self::tag($tag, $htmlOptions, $label);
     }
 
     /**
@@ -4229,21 +4320,6 @@ EOD;
         return self::link($label, $target, $htmlOptions);
     }
 
-    //
-    // JAVASCRIPT
-    // --------------------------------------------------
-
-    // Modals
-    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#modals
-    // --------------------------------------------------
-
-    // todo: create modal methods here.
-
-    // Tooltips and Popovers
-    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#tooltips
-    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#popovers
-    // --------------------------------------------------
-
     /**
      * Generates a tooltip.
      * @param string $label the tooltip link label text.
@@ -4256,22 +4332,6 @@ EOD;
     {
         $htmlOptions['rel'] = 'tooltip';
         return self::tooltipPopover($label, $url, $content, $htmlOptions);
-    }
-
-    /**
-     * Generates a popover.
-     * @param string $label the popover link label text.
-     * @param string $title the popover title text.
-     * @param string $content the popover content text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated popover.
-     */
-    public static function popover($label, $title, $content, $htmlOptions = array())
-    {
-        $htmlOptions['rel'] = 'popover';
-        $htmlOptions['data-content'] = $content;
-        $htmlOptions['data-toggle'] = 'popover';
-        return self::tooltipPopover($label, '#', $title, $htmlOptions);
     }
 
     /**
@@ -4308,8 +4368,23 @@ EOD;
         return self::link($label, $url, $htmlOptions);
     }
 
-    // Carousel
-    // http://twitter.github.io/bootstrap/2.3.2/javascript.html#carousel
+    /**
+     * Generates a popover.
+     * @param string $label the popover link label text.
+     * @param string $title the popover title text.
+     * @param string $content the popover content text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated popover.
+     */
+    public static function popover($label, $title, $content, $htmlOptions = array())
+    {
+        $htmlOptions['rel'] = 'popover';
+        $htmlOptions['data-content'] = $content;
+        $htmlOptions['data-toggle'] = 'popover';
+        return self::tooltipPopover($label, '#', $title, $htmlOptions);
+    }
+
+    // UTILITIES
     // --------------------------------------------------
 
     /**
@@ -4377,6 +4452,28 @@ EOD;
     }
 
     /**
+     * Generates an indicator for the carousel.
+     * @param string $target the CSS selector for the target element.
+     * @param integer $numSlides the number of slides.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated indicators.
+     */
+    public static function carouselIndicators($target, $numSlides, $htmlOptions = array())
+    {
+        self::addCssClass('carousel-indicators', $htmlOptions);
+        $output = self::openTag('ol', $htmlOptions);
+        for ($i = 0; $i < $numSlides; $i++) {
+            $itemOptions = array('data-target' => $target, 'data-slide-to' => $i);
+            if ($i === 0) {
+                $itemOptions['class'] = 'active';
+            }
+            $output .= self::tag('li', $itemOptions, '', true);
+        }
+        $output .= '</ol>';
+        return $output;
+    }
+
+    /**
      * Generates a carousel item.
      * @param string $content the content.
      * @param string $label the item label text.
@@ -4440,101 +4537,15 @@ EOD;
     }
 
     /**
-     * Generates an indicator for the carousel.
-     * @param string $target the CSS selector for the target element.
-     * @param integer $numSlides the number of slides.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated indicators.
+     * @param $className
+     * @param $htmlOptions
+     * @return mixed
      */
-    public static function carouselIndicators($target, $numSlides, $htmlOptions = array())
+    public static function addClassName($className, $htmlOptions)
     {
-        self::addCssClass('carousel-indicators', $htmlOptions);
-        $output = self::openTag('ol', $htmlOptions);
-        for ($i = 0; $i < $numSlides; $i++) {
-            $itemOptions = array('data-target' => $target, 'data-slide-to' => $i);
-            if ($i === 0) {
-                $itemOptions['class'] = 'active';
-            }
-            $output .= self::tag('li', $itemOptions, '', true);
-        }
-        $output .= '</ol>';
-        return $output;
-    }
-
-    // UTILITIES
-    // --------------------------------------------------
-
-    /**
-     * Appends new class names to the given options..
-     * @param mixed $className the class(es) to append.
-     * @param array $htmlOptions the options.
-     * @return array the options.
-     */
-    public static function addCssClass($className, &$htmlOptions)
-    {
-        if (is_array($className)) {
+        if (is_array($className))
             $className = implode(' ', $className);
-        }
-        if (isset($htmlOptions['class'])) {
-            // todo: consider throwing an exception if the class exists instead of skipping the class.
-            if (preg_match("/\b{$className}\b/", $htmlOptions['class']) === 0) {
-                $htmlOptions['class'] .= ' ' . $className;
-            }
-        } else {
-            $htmlOptions['class'] = $className;
-        }
-    }
-
-    /**
-     * Appends a CSS style string to the given options.
-     * @param string $style the CSS style string.
-     * @param array $htmlOptions the options.
-     * @return array the options.
-     */
-    public static function addCssStyle($style, &$htmlOptions)
-    {
-        if (is_array($style)) {
-            $style = implode('; ', $style);
-        }
-        $style = rtrim($style, ';');
-        $htmlOptions['style'] = isset($htmlOptions['style'])
-            ? rtrim($htmlOptions['style'], ';') . '; ' . $style
-            : $style;
-    }
-
-    /**
-     * Adds the grid span class to the given options is applicable.
-     * @param array $htmlOptions the HTML attributes.
-     */
-    protected static function addSpanClass(&$htmlOptions)
-    {
-        $span = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions);
-        if (!empty($span)) {
-            self::addCssClass('span' . $span, $htmlOptions);
-        }
-    }
-
-    /**
-     * Adds the pull class to the given options is applicable.
-     * @param array $htmlOptions the HTML attributes.
-     */
-    protected static function addPullClass(&$htmlOptions)
-    {
-        $pull = \bootstrap\helpers\BSArray::popValue('pull', $htmlOptions);
-        if (!empty($pull)) {
-            self::addCssClass('pull-' . $pull, $htmlOptions);
-        }
-    }
-
-    /**
-     * Adds the text align class to the given options if applicable.
-     * @param array $htmlOptions the HTML attributes.
-     */
-    protected static function addTextAlignClass(&$htmlOptions)
-    {
-        $align = \bootstrap\helpers\BSArray::popValue('textAlign', $htmlOptions);
-        if (!empty($align)) {
-            self::addCssClass('text-' . $align, $htmlOptions);
-        }
+        $htmlOptions['class'] = isset($htmlOptions['class']) ? $htmlOptions['class'] . ' ' . $className : $className;
+        return $htmlOptions;
     }
 }
