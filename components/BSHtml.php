@@ -1725,6 +1725,9 @@ EOD;
             }
 
         }
+        if($model->hasErrors($attribute))
+            self::addCssClass('has-error',$groupOptions);
+        
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
