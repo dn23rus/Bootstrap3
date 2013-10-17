@@ -3810,13 +3810,15 @@ EOD;
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated hero unit.
      */
-    public static function heroUnit($heading, $content, $htmlOptions = array())
+    public static function jumbotron($heading, $content, $htmlOptions = array())
     {
-        self::addCssClass('hero-unit', $htmlOptions);
+        self::addCssClass('jumbotron', $htmlOptions);
         $headingOptions = \bootstrap\helpers\BSArray::popValue('headingOptions', $htmlOptions, array());
         $output = self::openTag('div', $htmlOptions);
+        $output .= self::openTag('div', array('class' => 'content'));
         $output .= self::tag('h1', $headingOptions, $heading);
         $output .= $content;
+        $output .= '</div>';
         $output .= '</div>';
         return $output;
     }
@@ -3845,6 +3847,46 @@ EOD;
         return $output;
     }
 
+    public static function rowThumbnails(array $thumbnails,$htmlOptions){
+        if(empty($thumbnails))
+            return false;
+
+        $output = self::openTag('div',array('class' => 'row'));
+        $row = \bootstrap\helpers\BSArray::popValue('row',$htmlOptions,false);
+        if(!$row){
+            $row = array(
+                'lg' => '3',
+                'md' => '4',
+                'sm' => '6',
+                'xs' => '12'
+            );
+        }
+        foreach($thumbnails as $timage){
+            $output.=self::openTag('div',array(
+                'class' => self::generateThumbnailRowClass($row)
+            ));
+            if(isset($timage['image'])){
+                $image = $timage['image'];
+            }
+            if(isset($timage['url'])){
+                $url = $timage['url'];
+            }
+            $output .=self::thumbnailLink(parent::tag('img',$image),$url);
+            $output.="</div>";
+        }
+        $output.="</div>";
+//        CVarDumper::dump($output);
+//        exit;
+        return $output;
+    }
+
+    private static function generateThumbnailRowClass($row){
+        $cssCLass = '';
+        foreach($row as $key =>$value){
+            $cssCLass .="col-{$key}-{$value} ";
+        }
+        return $cssCLass;
+    }
     /**
      * Generates a list of thumbnails.
      * @param array $thumbnails the list configuration.
@@ -3910,7 +3952,7 @@ EOD;
         $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
         self::addCssClass('thumbnail', $htmlOptions);
         $content = self::link($content, $url, $htmlOptions);
-        return self::tag('li', $itemOptions, $content);
+        return $content;
     }
 
     /**
@@ -3923,9 +3965,9 @@ EOD;
     {
         $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
         self::addCssClass('thumbnail', $htmlOptions);
-        $output = self::openTag('li', $itemOptions);
-        $output .= self::tag('div', $htmlOptions, $content);
-        $output .= '</li>';
+        //$output = self::openTag('li', $itemOptions);
+        $output = self::tag('div', $htmlOptions, $content);
+//        $output .= '</li>';
         return $output;
     }
 
