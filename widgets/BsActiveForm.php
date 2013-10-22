@@ -226,6 +226,20 @@ class BsActiveForm extends CActiveForm
     }
 
     /**
+     * Renders an telephone field for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see BSHtml::activeEmailField
+     */
+    public function telField($model, $attribute, $htmlOptions = array())
+    {
+
+        return BSHtml::activeTelField($model, $attribute, $htmlOptions);
+    }
+
+    /**
      * Renders a number field for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
@@ -484,6 +498,20 @@ class BsActiveForm extends CActiveForm
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
         return BSHtml::activeEmailFieldControlGroup($model, $attribute, $htmlOptions);
+    }
+
+   /**
+     * Generates a control group with an telephone field for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute name.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated row.
+     * @see BSHtml::activeTelFieldControlGroup
+     */
+    public function telFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
+        return BSHtml::activeTelFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**

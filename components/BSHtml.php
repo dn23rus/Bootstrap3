@@ -38,6 +38,7 @@ class BSHtml extends CHtml
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
     const INPUT_TYPE_EMAIL = 'emailField';
+    const INPUT_TYPE_TEL = 'telField';
     const INPUT_TYPE_NUMBER = 'numberField';
     const INPUT_TYPE_RANGE = 'rangeField';
     const INPUT_TYPE_DATE = 'dateField';
@@ -877,6 +878,8 @@ class BSHtml extends CHtml
                 return self::emailField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_NUMBER:
                 return self::numberField($name, $value, $htmlOptions);
+            case self::INPUT_TYPE_TEL:
+                return self::telField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_RANGE:
                 return self::rangeField($name, $value, $htmlOptions);
             case self::INPUT_TYPE_DATE:
@@ -1104,6 +1107,19 @@ class BSHtml extends CHtml
     public static function dateField($name, $value = '', $htmlOptions = array())
     {
         return self::textInputField('date', $name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates a telephone field input.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see self::textInputField
+     */
+    public static function telField($name, $value = '', $htmlOptions = array())
+    {
+        return self::textInputField('tel', $name, $value, $htmlOptions);
     }
 
     /**
@@ -1432,6 +1448,19 @@ EOD;
     public static function emailFieldControlGroup($name, $value = '', $htmlOptions = array())
     {
         return self::controlGroup(self::INPUT_TYPE_EMAIL, $name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates a control group with a telephone field.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated control group.
+     * @see self::controlGroup
+     */
+    public static function telFieldControlGroup($name, $value = '', $htmlOptions = array())
+    {
+        return self::controlGroup(self::INPUT_TYPE_TEL, $name, $value, $htmlOptions);
     }
 
     /**
@@ -1767,6 +1796,8 @@ EOD;
                 return self::activeEmailField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_NUMBER:
                 return self::activeNumberField($model, $attribute, $htmlOptions);
+            case self::INPUT_TYPE_TEL:
+                return self::activeTelField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_RANGE:
                 return self::activeRangeField($model, $attribute, $htmlOptions);
             case self::INPUT_TYPE_DATE:
@@ -1896,6 +1927,19 @@ EOD;
     public static function activeEmailField($model, $attribute, $htmlOptions = array())
     {
         return self::activeTextInputField('email', $model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Generates a telephone field input for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see self::activeTextInputField
+     */
+    public static function activeTelField($model, $attribute, $htmlOptions = array())
+    {
+        return self::activeTextInputField('tel', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -2177,6 +2221,19 @@ EOD;
     public static function activeEmailFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         return self::activeControlGroup(self::INPUT_TYPE_EMAIL, $model, $attribute, $htmlOptions);
+    }
+
+   /**
+     * Generates a control group with a telephone field for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated control group.
+     * @see self::activeControlGroup
+     */
+    public static function activeTelFieldControlGroup($model, $attribute, $htmlOptions = array())
+    {
+        return self::activeControlGroup(self::INPUT_TYPE_TEL, $model, $attribute, $htmlOptions);
     }
 
     /**
