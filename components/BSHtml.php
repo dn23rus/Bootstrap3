@@ -500,7 +500,7 @@ class BSHtml extends CHtml
      * Adds the grid span class to the given options is applicable.
      * @param array $htmlOptions the HTML attributes.
      */
-    protected static function addSpanClass($htmlOptions = array())
+    protected static function addSpanClass($htmlOptions=array())
     {
         $span = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions);
         if (!empty($span)) {
@@ -830,6 +830,18 @@ class BSHtml extends CHtml
     }
 
     /**
+     * Generates a help block.
+     * @param string $text the help text.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated block.
+     */
+    public static function helpBlock($text, $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::HELP_TYPE_BLOCK;
+        return self::help($text, $htmlOptions);
+    }
+
+    /**
      * Generates a help text.
      * @param string $text the help text.
      * @param array $htmlOptions additional HTML attributes.
@@ -840,18 +852,6 @@ class BSHtml extends CHtml
         $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
         self::addCssClass('help-' . $type, $htmlOptions);
         return self::tag($type === self::HELP_TYPE_INLINE ? 'span' : 'p', $htmlOptions, $text);
-    }
-
-    /**
-     * Generates a help block.
-     * @param string $text the help text.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated block.
-     */
-    public static function helpBlock($text, $htmlOptions = array())
-    {
-        $htmlOptions['type'] = self::HELP_TYPE_BLOCK;
-        return self::help($text, $htmlOptions);
     }
 
     /**
@@ -921,6 +921,19 @@ class BSHtml extends CHtml
     public static function textField($name, $value = '', $htmlOptions = array())
     {
         return self::textInputField('text', $name, $value, $htmlOptions);
+    }
+
+    /**
+     * Generates a password field input.
+     * @param string $name the input name.
+     * @param string $value the input value.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see self::textInputField
+     */
+    public static function passwordField($name, $value = '', $htmlOptions = array())
+    {
+        return self::textInputField('password', $name, $value, $htmlOptions);
     }
 
     /**
@@ -1029,19 +1042,6 @@ class BSHtml extends CHtml
     }
 
     /**
-     * Generates a password field input.
-     * @param string $name the input name.
-     * @param string $value the input value.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see self::textInputField
-     */
-    public static function passwordField($name, $value = '', $htmlOptions = array())
-    {
-        return self::textInputField('password', $name, $value, $htmlOptions);
-    }
-
-    /**
      * Generates an url field input.
      * @param string $name the input name.
      * @param string $value the input value.
@@ -1133,35 +1133,22 @@ class BSHtml extends CHtml
     }
 
     /**
-     * Generates a radio button.
+     * Generates a list box.
      * @param string $name the input name.
-     * @param boolean $checked whether the radio button is checked.
+     * @param mixed $select the selected value(s).
+     * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated radio button.
+     * @return string the generated list box
      */
-    public static function radioButton($name, $checked = false, $htmlOptions = array())
+    public static function listBox($name, $select, $data, $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        self::addCssClass('radio', $labelOptions);
-        $radioButton = parent::radioButton($name, $checked, $htmlOptions);
-        return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
-    }
-
-    /**
-     * Generates a check box.
-     * @param string $name the input name.
-     * @param boolean $checked whether the check box is checked.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated check box.
-     */
-    public static function checkBox($name, $checked = false, $htmlOptions = array())
-    {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        self::addCssClass('checkbox', $labelOptions);
-        $checkBox = parent::checkBox($name, $checked, $htmlOptions);
-        return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
+        if (isset($htmlOptions['multiple'])) {
+            if (substr($name, -2) !== '[]') {
+                $name .= '[]';
+            }
+        }
+        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
+        return self::dropDownList($name, $select, $data, $htmlOptions);
     }
 
     /**
@@ -1182,22 +1169,17 @@ class BSHtml extends CHtml
     }
 
     /**
-     * Generates a list box.
-     * @param string $name the input name.
-     * @param mixed $select the selected value(s).
-     * @param array $data data for generating the list options (value=>display).
+     * Generates an inline check box list.
+     * @param string $name name of the check box list.
+     * @param mixed $select selection of the check boxes.
+     * @param array $data $data value-label pairs used to generate the check box list.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list box
+     * @return string the generated list.
      */
-    public static function listBox($name, $select, $data, $htmlOptions = array())
+    public static function inlineCheckBoxList($name, $select, $data, $htmlOptions = array())
     {
-        if (isset($htmlOptions['multiple'])) {
-            if (substr($name, -2) !== '[]') {
-                $name .= '[]';
-            }
-        }
-        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
-        return self::dropDownList($name, $select, $data, $htmlOptions);
+        $htmlOptions['inline'] = true;
+        return self::checkBoxList($name, $select, $data, $htmlOptions);
     }
 
     /**
@@ -1281,17 +1263,33 @@ EOD;
     }
 
     /**
-     * Generates an inline check box list.
-     * @param string $name name of the check box list.
-     * @param mixed $select selection of the check boxes.
-     * @param array $data $data value-label pairs used to generate the check box list.
+     * Generates a check box.
+     * @param string $name the input name.
+     * @param boolean $checked whether the check box is checked.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated check box.
+     */
+    public static function checkBox($name, $checked = false, $htmlOptions = array())
+    {
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        self::addCssClass('checkbox', $labelOptions);
+        $checkBox = parent::checkBox($name, $checked, $htmlOptions);
+        return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
+    }
+
+    /**
+     * Generates an inline radio button list.
+     * @param string $name name of the radio button list.
+     * @param mixed $select selection of the radio buttons.
+     * @param array $data $data value-label pairs used to generate the radio button list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function inlineCheckBoxList($name, $select, $data, $htmlOptions = array())
+    public static function inlineRadioButtonList($name, $select, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::checkBoxList($name, $select, $data, $htmlOptions);
+        return self::radioButtonList($name, $select, $data, $htmlOptions);
     }
 
     /**
@@ -1335,17 +1333,19 @@ EOD;
     }
 
     /**
-     * Generates an inline radio button list.
-     * @param string $name name of the radio button list.
-     * @param mixed $select selection of the radio buttons.
-     * @param array $data $data value-label pairs used to generate the radio button list.
+     * Generates a radio button.
+     * @param string $name the input name.
+     * @param boolean $checked whether the radio button is checked.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list.
+     * @return string the generated radio button.
      */
-    public static function inlineRadioButtonList($name, $select, $data, $htmlOptions = array())
+    public static function radioButton($name, $checked = false, $htmlOptions = array())
     {
-        $htmlOptions['inline'] = true;
-        return self::radioButtonList($name, $select, $data, $htmlOptions);
+        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        self::addCssClass('radio', $labelOptions);
+        $radioButton = parent::radioButton($name, $checked, $htmlOptions);
+        return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
     }
 
     /**
@@ -1725,9 +1725,6 @@ EOD;
             }
 
         }
-        if ($model->hasErrors($attribute))
-            self::addCssClass('has-error', $groupOptions);
-
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
@@ -1801,16 +1798,16 @@ EOD;
     }
 
     /**
-     * Generates a text field input for a model attribute.
+     * Generates a password field input for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
      * @see self::activeTextInputField
      */
-    public static function activeTextField($model, $attribute, $htmlOptions = array())
+    public static function activePasswordField($model, $attribute, $htmlOptions = array())
     {
-        return self::activeTextInputField('text', $model, $attribute, $htmlOptions);
+        return self::activeTextInputField('password', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -1870,19 +1867,6 @@ EOD;
             $output .= '</div>';
         }
         return $output;
-    }
-
-    /**
-     * Generates a password field input for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated input field.
-     * @see self::activeTextInputField
-     */
-    public static function activePasswordField($model, $attribute, $htmlOptions = array())
-    {
-        return self::activeTextInputField('password', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -2013,6 +1997,20 @@ EOD;
     }
 
     /**
+     * Generates a list box for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $data data for generating the list options (value=>display).
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated list box
+     */
+    public static function activeListBox($model, $attribute, $data, $htmlOptions = array())
+    {
+        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
+        return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
+    }
+
+    /**
      * Generates a drop down list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
@@ -2030,17 +2028,17 @@ EOD;
     }
 
     /**
-     * Generates a list box for a model attribute.
+     * Generates an inline check box list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
-     * @param array $data data for generating the list options (value=>display).
+     * @param array $data $data value-label pairs used to generate the check box list.
      * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list box
+     * @return string the generated list.
      */
-    public static function activeListBox($model, $attribute, $data, $htmlOptions = array())
+    public static function activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
     {
-        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
-        return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
+        $htmlOptions['inline'] = true;
+        return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -2066,17 +2064,17 @@ EOD;
     }
 
     /**
-     * Generates an inline check box list for a model attribute.
+     * Generates an inline radio button list for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
-     * @param array $data $data value-label pairs used to generate the check box list.
+     * @param array $data $data value-label pairs used to generate the radio button list.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list.
      */
-    public static function activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
+    public static function activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions['inline'] = true;
-        return self::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
+        return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -2096,20 +2094,6 @@ EOD;
         $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
         $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
         return $hidden . self::radioButtonList($name, $selection, $data, $htmlOptions);
-    }
-
-    /**
-     * Generates an inline radio button list for a model attribute.
-     * @param CModel $model the data model.
-     * @param string $attribute the attribute.
-     * @param array $data $data value-label pairs used to generate the radio button list.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated list.
-     */
-    public static function activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions = array())
-    {
-        $htmlOptions['inline'] = true;
-        return self::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -2138,6 +2122,19 @@ EOD;
     {
         self::addCssClass('search-query', $htmlOptions);
         return self::activeTextField($model, $attribute, $htmlOptions);
+    }
+
+    /**
+     * Generates a text field input for a model attribute.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated input field.
+     * @see self::activeTextInputField
+     */
+    public static function activeTextField($model, $attribute, $htmlOptions = array())
+    {
+        return self::activeTextInputField('text', $model, $attribute, $htmlOptions);
     }
 
     /**
@@ -3142,6 +3139,16 @@ EOD;
     }
 
     /**
+     * Generates in a alert a link
+     * @param string $label
+     * @param array $htmlOptions
+     * @return string
+     */
+    public static function alertLink($label = '',$htmlOptions = array()){
+        self::addCssClass('alert-link',$htmlOptions);
+        return self::createButton(self::BUTTON_TYPE_LINK,$label, $htmlOptions);
+    }
+    /**
      * Generates an button.
      * @param string $label the button label text.
      * @param array $htmlOptions additional HTML attributes.
@@ -3706,7 +3713,7 @@ EOD;
     {
         $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
-            $label .= self::tag('span', array('class' => 'sr-only'));
+            $label .= self::tag('span',array('class' => 'sr-only'));
             self::addCssClass('active', $htmlOptions);
         }
         if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
@@ -3850,14 +3857,13 @@ EOD;
         return $output;
     }
 
-    public static function rowThumbnails(array $thumbnails, $htmlOptions)
-    {
-        if (empty($thumbnails))
+    public static function rowThumbnails(array $thumbnails,$htmlOptions){
+        if(empty($thumbnails))
             return false;
 
-        $output = self::openTag('div', array('class' => 'row'));
-        $row = \bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false);
-        if (!$row) {
+        $output = self::openTag('div',array('class' => 'row'));
+        $row = \bootstrap\helpers\BSArray::popValue('row',$htmlOptions,false);
+        if(!$row){
             $row = array(
                 'lg' => '3',
                 'md' => '4',
@@ -3865,53 +3871,32 @@ EOD;
                 'xs' => '12'
             );
         }
-        foreach ($thumbnails as $timage) {
-            $output .= self::openTag('div', array(
+        foreach($thumbnails as $timage){
+            $output.=self::openTag('div',array(
                 'class' => self::generateThumbnailRowClass($row)
             ));
-            if (isset($timage['image'])) {
+            if(isset($timage['image'])){
                 $image = $timage['image'];
             }
-            if (isset($timage['url'])) {
+            if(isset($timage['url'])){
                 $url = $timage['url'];
             }
-            $output .= self::thumbnailLink(parent::tag('img', $image), $url);
-            $output .= "</div>";
+            $output .=self::thumbnailLink(parent::tag('img',$image),$url);
+            $output.="</div>";
         }
-        $output .= "</div>";
+        $output.="</div>";
 //        CVarDumper::dump($output);
 //        exit;
         return $output;
     }
 
-    private static function generateThumbnailRowClass($row)
-    {
+    private static function generateThumbnailRowClass($row){
         $cssCLass = '';
-        foreach ($row as $key => $value) {
-            $cssCLass .= "col-{$key}-{$value} ";
+        foreach($row as $key =>$value){
+            $cssCLass .="col-{$key}-{$value} ";
         }
         return $cssCLass;
     }
-
-    /**
-     * Generates a link thumbnail.
-     * @param string $content the thumbnail content.
-     * @param mixed $url the url that the thumbnail links to.
-     * @param array $htmlOptions additional HTML attributes.
-     * @return string the generated thumbnail.
-     */
-    public static function thumbnailLink($content, $url = '#', $htmlOptions = array())
-    {
-        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
-        self::addCssClass('thumbnail', $htmlOptions);
-        $content = self::link($content, $url, $htmlOptions);
-        return $content;
-    }
-
-    // Progress bars
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#progress
-    // --------------------------------------------------
-
     /**
      * Generates a list of thumbnails.
      * @param array $thumbnails the list configuration.
@@ -3959,6 +3944,25 @@ EOD;
         } else {
             return '';
         }
+    }
+
+    // Progress bars
+    // http://twitter.github.io/bootstrap/2.3.2/components.html#progress
+    // --------------------------------------------------
+
+    /**
+     * Generates a link thumbnail.
+     * @param string $content the thumbnail content.
+     * @param mixed $url the url that the thumbnail links to.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated thumbnail.
+     */
+    public static function thumbnailLink($content, $url = '#', $htmlOptions = array())
+    {
+        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
+        self::addCssClass('thumbnail', $htmlOptions);
+        $content = self::link($content, $url, $htmlOptions);
+        return $content;
     }
 
     /**
