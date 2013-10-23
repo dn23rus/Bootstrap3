@@ -7,7 +7,6 @@
  */
 
 Yii::import('zii.widgets.grid.CGridView');
-Yii::import('bootstrap.helpers.BSHtml');
 Yii::import('bootstrap.widgets.BsDataColumn');
 Yii::import('bootstrap.widgets.BsPager');
 

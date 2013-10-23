@@ -7,7 +7,7 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.helpers.BSHtml');
+
 
 /**
  * Bootstrap navbar widget.

@@ -6,7 +6,6 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.helpers.BSHtml');
 Yii::import('zii.widgets.grid.CDataColumn');
 
 /**
