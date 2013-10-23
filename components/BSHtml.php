@@ -435,7 +435,7 @@ class BSHtml extends CHtml
     /**
      * @var string the CSS class for displaying error summaries.
      */
-    public static $errorSummaryCss = 'alert alert-block alert-error';
+    public static $errorSummaryCss = 'alert alert-block alert-danger';
 
     //
     // BASE CSS
