@@ -18,7 +18,7 @@ class BsNavbar extends CWidget
     /**
      * @var string the navbar color.
      */
-    public $color;
+    public $color = BSHtml::NAVBAR_COLOR;
     /**
      * @var string the brand label text.
      */
@@ -34,11 +34,7 @@ class BsNavbar extends CWidget
     /**
      * @var string nanvbar display type.
      */
-    public $display = BSHtml::NAVBAR_DISPLAY_FIXEDTOP;
-    /**
-     * @var boolean whether the navbar spans over the whole page.
-     */
-    public $fluid = false;
+    public $position = BSHtml::NAVBAR_POSITION;
     /**
      * @var boolean whether to enable collapsing of the navbar on narrow screens.
      */
@@ -73,8 +69,8 @@ class BsNavbar extends CWidget
         if (isset($this->color)) {
             \bootstrap\helpers\BSArray::defaultValue('color', $this->color, $this->htmlOptions);
         }
-        if (isset($this->display) && $this->display !== BSHtml::NAVBAR_DISPLAY_NONE) {
-            \bootstrap\helpers\BSArray::defaultValue('display', $this->display, $this->htmlOptions);
+        if (isset($this->position) && $this->position !== BSHtml::NAVBAR_POSITION) {
+            \bootstrap\helpers\BSArray::defaultValue('position', $this->position, $this->htmlOptions);
         }
     }
 
@@ -100,11 +96,11 @@ class BsNavbar extends CWidget
         $items = ob_get_clean();
         ob_start();
         if ($this->collapse !== false) {
-            BSHtml::addCssClass('nav-collapse', $this->collapseOptions);
+            BSHtml::addCssClass('collapse navbar-collapse', $this->collapseOptions);
             ob_start();
-            /* @var TbCollapse $collapseWidget */
+            /* @var BsCollapse $collapseWidget */
             $collapseWidget = $this->controller->widget(
-                'bootstrap.widgets.TbCollapse',
+                'bootstrap.widgets.BsCollapse',
                 array(
                     'toggle' => false, // navbars are collapsed by default
                     'content' => $items,
@@ -112,20 +108,18 @@ class BsNavbar extends CWidget
                 )
             );
             $collapseContent = ob_get_clean();
-            echo BSHtml::navbarCollapseLink('#' . $collapseWidget->getId());
-            echo $brand . $collapseContent;
+            $collapseLink =  BSHtml::navbarCollapseLink('#' . $collapseWidget->getId());
+
+            echo BSHtml::tag('div',array('class'=>'navbar-header'),$collapseLink . $brand) . $collapseContent;
 
         } else {
-            echo $brand . $items;
+            echo BSHtml::tag('div',array('class'=>'navbar-header'),$brand) . $items;
         }
         $containerContent = ob_get_clean();
         $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
-        BSHtml::addCssClass($this->fluid ? 'container-fluid' : 'container', $containerOptions);
-        ob_start();
-        echo BSHtml::openTag('div', $containerOptions);
-        echo $containerContent;
-        echo '</div>';
-        $content = ob_get_clean();
+        BSHtml::addCssClass( 'container', $containerOptions);
+
+        $content = BSHtml::tag('div',$containerOptions,$containerContent);
         echo BSHtml::navbar($content, $this->htmlOptions);
     }
 }
