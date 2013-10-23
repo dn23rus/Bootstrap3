@@ -112,6 +112,7 @@ class BSHtml extends CHtml
     const NAV_TYPE_TABS = 'tabs';
     const NAV_TYPE_PILLS = 'pills';
     const NAV_TYPE_LIST = 'list';
+    const NAV_TYPE_NAVBAR = 'navbar';
     const TABS_PLACEMENT_ABOVE = '';
     const TABS_PLACEMENT_BELOW = 'below';
     const TABS_PLACEMENT_LEFT = 'left';
@@ -3307,7 +3308,11 @@ EOD;
     {
         self::addCssClass('nav', $htmlOptions);
         if (!empty($type)) {
-            self::addCssClass('nav-' . $type, $htmlOptions);
+            if($type == 'navbar')
+                self::addCssClass('navbar-nav', $htmlOptions);
+            else
+                self::addCssClass('nav-' . $type, $htmlOptions);
+
         }
         $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
         if ($justified) {
