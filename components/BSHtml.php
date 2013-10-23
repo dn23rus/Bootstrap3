@@ -89,7 +89,7 @@ class BSHtml extends CHtml
     const BUTTON_COLOR_SUCCESS = 'success';
     const BUTTON_COLOR_WARNING = 'warning';
     const BUTTON_COLOR_DANGER = 'danger';
-    const BUTTON_COLOR_INVERSE = 'inverse';
+
     const BUTTON_COLOR_LINK = 'link';
     const BUTTON_SIZE_MINI = 'xs';
     const BUTTON_SIZE_SMALL = 'sm';
@@ -139,19 +139,14 @@ class BSHtml extends CHtml
     //
     // LABELS AND BADGES
     // --------------------------------------------------
-    const LABEL_COLOR_DEFAULT = '';
+    const LABEL_COLOR_DEFAULT = 'default';
     const LABEL_COLOR_PRIMARY = 'primary';
     const LABEL_COLOR_SUCCESS = 'success';
     const LABEL_COLOR_WARNING = 'warning';
     const LABEL_COLOR_IMPORTANT = 'important';
     const LABEL_COLOR_INFO = 'info';
     const LABEL_COLOR_DANGER = 'danger';
-    const BADGE_COLOR_DEFAULT = '';
-    const BADGE_COLOR_SUCCESS = 'success';
-    const BADGE_COLOR_WARNING = 'warning';
-    const BADGE_COLOR_IMPORTANT = 'important';
-    const BADGE_COLOR_INFO = 'info';
-    const BADGE_COLOR_INVERSE = 'inverse';
+
 
     //
     // TOOLTIPS AND POPOVERS
