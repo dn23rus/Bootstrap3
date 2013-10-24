@@ -139,19 +139,12 @@ class BSHtml extends CHtml
     //
     // LABELS AND BADGES
     // --------------------------------------------------
-    const LABEL_COLOR_DEFAULT = '';
     const LABEL_COLOR_PRIMARY = 'primary';
     const LABEL_COLOR_SUCCESS = 'success';
     const LABEL_COLOR_WARNING = 'warning';
     const LABEL_COLOR_IMPORTANT = 'important';
     const LABEL_COLOR_INFO = 'info';
     const LABEL_COLOR_DANGER = 'danger';
-    const BADGE_COLOR_DEFAULT = '';
-    const BADGE_COLOR_SUCCESS = 'success';
-    const BADGE_COLOR_WARNING = 'warning';
-    const BADGE_COLOR_IMPORTANT = 'important';
-    const BADGE_COLOR_INFO = 'info';
-    const BADGE_COLOR_INVERSE = 'inverse';
 
     //
     // TOOLTIPS AND POPOVERS
@@ -186,7 +179,6 @@ class BSHtml extends CHtml
     //
     // PROGRESS BARS
     // --------------------------------------------------
-    const PROGRESS_COLOR_DEFAULT = '';
     const PROGRESS_COLOR_INFO = 'info';
     const PROGRESS_COLOR_SUCCESS = 'success';
     const PROGRESS_COLOR_WARNING = 'warning';
@@ -195,9 +187,8 @@ class BSHtml extends CHtml
     //
     // MISC
     // --------------------------------------------------
-    const WELL_SIZE_SMALL = 'small';
-    const WELL_SIZE_DEFAULT = '';
-    const WELL_SIZE_LARGE = 'large';
+    const WELL_SIZE_SMALL = 'sm';
+    const WELL_SIZE_LARGE = 'lg';
     const PULL_LEFT = 'left';
     const PULL_RIGHT = 'right';
     const CLOSE_DISMISS_ALERT = 'alert';
@@ -2220,7 +2211,7 @@ EOD;
         return self::activeControlGroup(self::INPUT_TYPE_EMAIL, $model, $attribute, $htmlOptions);
     }
 
-   /**
+    /**
      * Generates a control group with a telephone field for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
@@ -4159,10 +4150,10 @@ EOD;
         if (!empty($color)) {
             self::addCssClass('progress-bar progress-bar-' . $color, $barOption);
         }
-        if (\bootstrap\helpers\BSArray::popValue('striped', $progressOption, false)) {
+        if (\bootstrap\helpers\BSArray::popValue('striped', $htmlOptions, false)) {
             self::addCssClass('progress-striped', $progressOption);
         }
-        if (\bootstrap\helpers\BSArray::popValue('animated', $progressOption, false)) {
+        if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
             self::addCssClass('active', $progressOption);
         }
 
