@@ -703,14 +703,14 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated form tag.
      */
-    public static function statefulFormTb(
+    public static function statefulFormBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
     )
     {
-        return self::formTb($layout, $action, $method, $htmlOptions)
+        return self::formBs($layout, $action, $method, $htmlOptions)
         . self::tag('div', array('style' => 'display: none'), parent::pageStateField(''));
     }
 
@@ -722,14 +722,14 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated tag.
      */
-    public static function formTb(
+    public static function formBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
     )
     {
-        return self::beginFormTb($layout, $action, $method, $htmlOptions);
+        return self::beginFormBs($layout, $action, $method, $htmlOptions);
     }
 
     /**
@@ -740,7 +740,7 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated tag.
      */
-    public static function beginFormTb(
+    public static function beginFormBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
@@ -3681,7 +3681,7 @@ EOD;
         $inputOptions = \bootstrap\helpers\BSArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
         $name = \bootstrap\helpers\BSArray::popValue('name', $inputOptions, 'search');
         $value = \bootstrap\helpers\BSArray::popValue('value', $inputOptions, '');
-        $output = self::beginFormTb(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
+        $output = self::beginFormBs(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
         $output .= self::searchQueryField($name, $value, $inputOptions);
         $output .= parent::endForm();
         return $output;
