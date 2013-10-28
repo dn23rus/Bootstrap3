@@ -44,9 +44,9 @@ class BsActiveForm extends CActiveForm
         $this->attachBehavior('BsWidget', new BsWidget());
         $this->copyId();
         if ($this->stateful) {
-            echo BSHtml::statefulFormTb($this->layout, $this->action, $this->method, $this->htmlOptions);
+            echo BSHtml::statefulFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
         } else {
-            echo BSHtml::beginFormTb($this->layout, $this->action, $this->method, $this->htmlOptions);
+            echo BSHtml::beginFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
         }
     }
 
