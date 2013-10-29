@@ -89,7 +89,7 @@ class BSHtml extends CHtml
     const BUTTON_COLOR_SUCCESS = 'success';
     const BUTTON_COLOR_WARNING = 'warning';
     const BUTTON_COLOR_DANGER = 'danger';
-    const BUTTON_COLOR_INVERSE = 'inverse';
+
     const BUTTON_COLOR_LINK = 'link';
     const BUTTON_SIZE_MINI = 'xs';
     const BUTTON_SIZE_SMALL = 'sm';
@@ -112,6 +112,7 @@ class BSHtml extends CHtml
     const NAV_TYPE_TABS = 'tabs';
     const NAV_TYPE_PILLS = 'pills';
     const NAV_TYPE_LIST = 'list';
+    const NAV_TYPE_NAVBAR = 'navbar';
     const TABS_PLACEMENT_ABOVE = '';
     const TABS_PLACEMENT_BELOW = 'below';
     const TABS_PLACEMENT_LEFT = 'left';
@@ -120,10 +121,11 @@ class BSHtml extends CHtml
     //
     // NAVBAR
     // --------------------------------------------------
-    const NAVBAR_DISPLAY_NONE = '';
-    const NAVBAR_DISPLAY_FIXEDTOP = 'fixed-top';
-    const NAVBAR_DISPLAY_FIXEDBOTTOM = 'fixed-bottom';
-    const NAVBAR_DISPLAY_STATICTOP = 'static-top';
+    const NAVBAR_POSITION = '';
+    const NAVBAR_POSITION_FIXED_TOP = 'fixed-top';
+    const NAVBAR_POSITION_FIXED_BOTTOM = 'fixed-bottom';
+    const NAVBAR_POSITION_STATIC_TOP = 'static-top';
+    const NAVBAR_COLOR = 'default';
     const NAVBAR_COLOR_INVERSE = 'inverse';
 
     //
@@ -145,6 +147,7 @@ class BSHtml extends CHtml
     const LABEL_COLOR_IMPORTANT = 'important';
     const LABEL_COLOR_INFO = 'info';
     const LABEL_COLOR_DANGER = 'danger';
+
 
     //
     // TOOLTIPS AND POPOVERS
@@ -429,7 +432,7 @@ class BSHtml extends CHtml
     /**
      * @var string the CSS class for displaying error summaries.
      */
-    public static $errorSummaryCss = 'alert alert-block alert-error';
+    public static $errorSummaryCss = 'alert alert-block alert-danger';
 
     //
     // BASE CSS
@@ -697,14 +700,14 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated form tag.
      */
-    public static function statefulFormTb(
+    public static function statefulFormBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
     )
     {
-        return self::formTb($layout, $action, $method, $htmlOptions)
+        return self::formBs($layout, $action, $method, $htmlOptions)
         . self::tag('div', array('style' => 'display: none'), parent::pageStateField(''));
     }
 
@@ -716,14 +719,14 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated tag.
      */
-    public static function formTb(
+    public static function formBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
     )
     {
-        return self::beginFormTb($layout, $action, $method, $htmlOptions);
+        return self::beginFormBs($layout, $action, $method, $htmlOptions);
     }
 
     /**
@@ -734,7 +737,7 @@ class BSHtml extends CHtml
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated tag.
      */
-    public static function beginFormTb(
+    public static function beginFormBs(
         $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
@@ -3303,7 +3306,11 @@ EOD;
     {
         self::addCssClass('nav', $htmlOptions);
         if (!empty($type)) {
-            self::addCssClass('nav-' . $type, $htmlOptions);
+            if($type == 'navbar')
+                self::addCssClass('navbar-nav', $htmlOptions);
+            else
+                self::addCssClass('nav-' . $type, $htmlOptions);
+
         }
         $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
         if ($justified) {
@@ -3480,9 +3487,6 @@ EOD;
         return self::tabbable(self::NAV_TYPE_TABS, $tabs, $htmlOptions);
     }
 
-    // Navbar
-    // http://twitter.github.io/bootstrap/2.3.2/components.html#navbar
-    // --------------------------------------------------
 
     /**
      * Generates a tabbable menu.
@@ -3571,24 +3575,22 @@ EOD;
      * @param string $content the navbar content.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated navbar.
+     *
+     * @see http://getbootstrap.com/components/#navbar
      */
     public static function navbar($content, $htmlOptions = array())
     {
         self::addCssClass('navbar', $htmlOptions);
-        $display = \bootstrap\helpers\BSArray::popValue('display', $htmlOptions);
-        if (!empty($display)) {
-            self::addCssClass('navbar-' . $display, $htmlOptions);
+        $position = \bootstrap\helpers\BSArray::popValue('position', $htmlOptions);
+        if (!empty($position)) {
+            self::addCssClass('navbar-' . $position, $htmlOptions);
         }
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('navbar-' . $color, $htmlOptions);
         }
-        $innerOptions = \bootstrap\helpers\BSArray::popValue('innerOptions', $htmlOptions, array());
-        self::addCssClass('navbar-inner', $innerOptions);
-        $output = self::openTag('div', $htmlOptions);
-        $output .= self::tag('div', $innerOptions, $content);
-        $output .= '</div>';
-        return $output;
+        \bootstrap\helpers\BSArray::defaultValue('role','navigation',$htmlOptions);
+        return self::tag('nav', $htmlOptions, $content);;
     }
 
     /**
@@ -3600,7 +3602,7 @@ EOD;
      */
     public static function navbarBrandLink($label, $url, $htmlOptions = array())
     {
-        self::addCssClass('brand', $htmlOptions);
+        self::addCssClass('navbar-brand', $htmlOptions);
         return self::link($label, $url, $htmlOptions);
     }
 
@@ -3624,7 +3626,7 @@ EOD;
      */
     public static function navbarMenuDivider($htmlOptions = array())
     {
-        self::addCssClass('divider-vertical', $htmlOptions);
+        self::addCssClass('divider', $htmlOptions);
         return self::tag('li', $htmlOptions);
     }
 
@@ -3676,7 +3678,7 @@ EOD;
         $inputOptions = \bootstrap\helpers\BSArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
         $name = \bootstrap\helpers\BSArray::popValue('name', $inputOptions, 'search');
         $value = \bootstrap\helpers\BSArray::popValue('value', $inputOptions, '');
-        $output = self::beginFormTb(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
+        $output = self::beginFormBs(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
         $output .= self::searchQueryField($name, $value, $inputOptions);
         $output .= parent::endForm();
         return $output;
@@ -3690,11 +3692,12 @@ EOD;
      */
     public static function navbarCollapseLink($target, $htmlOptions = array())
     {
-        self::addCssClass('btn btn-navbar', $htmlOptions);
+        self::addCssClass('navbar-toggle', $htmlOptions);
         $htmlOptions['data-toggle'] = 'collapse';
         $htmlOptions['data-target'] = $target;
         $content = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
-        return self::tag('a', $htmlOptions, $content);
+        \bootstrap\helpers\BSArray::defaultValue('type','button',$htmlOptions);
+        return self::tag('button', $htmlOptions, $content);
     }
 
     /**

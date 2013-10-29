@@ -7,7 +7,6 @@
  */
 
 Yii::import('zii.widgets.grid.CGridView');
-Yii::import('bootstrap.helpers.BSHtml');
 Yii::import('bootstrap.widgets.BsDataColumn');
 Yii::import('bootstrap.widgets.BsPager');
 
@@ -41,7 +40,6 @@ class BsGridView extends CGridView
      */
     public $template = "{items}\n{pager}{summary}";
 
-    private $responsive = false;
 
     /**
      * Initializes the widget.
@@ -57,9 +55,6 @@ class BsGridView extends CGridView
 
             foreach ($this->type as $type) {
                 $classes[] = 'table-' . $type;
-                if($type === BSHtml::GRID_TYPE_RESPONSIVE){
-                    $this->responsive  = true;
-                }
             }
         }
         if (!empty($classes)) {
@@ -109,38 +104,5 @@ class BsGridView extends CGridView
         }
         return $column;
     }
-    /**
-     * Renders the data items for the grid view.
-     */
-    public function renderItems()
-    {
-        if($this->dataProvider->getItemCount()>0 || $this->showTableOnEmpty)
-        {
-            echo $this->checkResponsiveHeader();
-            $this->renderTableHeader();
-            ob_start();
-            $this->renderTableBody();
-            $body=ob_get_clean();
-            $this->renderTableFooter();
-            echo $body; // TFOOT must appear before TBODY according to the standard.
-            echo $this->checkResponsiveFooter();
-        }
-        else
-            $this->renderEmptyText();
-    }
-
-    private function checkResponsiveHeader(){
-
-        if($this->responsive)
-            return "<div class='table-responsive'><table class=\"{$this->itemsCssClass}\">\n";
-
-        return "<table class=\"{$this->itemsCssClass}\">\n";
-    }
-
-    private function checkResponsiveFooter(){
-        if($this->responsive)
-            return "</table></div>";
-
-        return "</table>";
-    }
+  
 }
