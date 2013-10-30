@@ -79,12 +79,12 @@ class BsNav extends CWidget
             }
 
         }
-        if (isset($this->scrollspy)) {
-            if (is_string($this->scrollspy)) {
-                $this->scrollspy = array('target' => $this->scrollspy);
-            }
-            $this->widget('bootstrap.widgets.TbScrollspy', $this->scrollspy);
-        }
+//        if (isset($this->scrollspy)) {
+//            if (is_string($this->scrollspy)) {
+//                $this->scrollspy = array('target' => $this->scrollspy);
+//            }
+//            $this->widget('bootstrap.widgets.TbScrollspy', $this->scrollspy);
+//        }
         $this->items = $this->normalizeItems($this->items, $route, $hasActiveChild);
     }
 
