@@ -34,6 +34,8 @@ class BSHtml extends CHtml
     const FORM_LAYOUT_HORIZONTAL = 'horizontal';
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
+    const FORM_LAYOUT_HORIZONTAL_LABEL_CLASS = 'col-lg-2';
+    const FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS = 'col-lg-10';
     const INPUT_TYPE_TEXT = 'textField';
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
@@ -1392,9 +1394,9 @@ EOD;
      */
     public static function controls($controls, $htmlOptions = array())
     {
-        self::addCssClass('form-group', $htmlOptions);
+
         if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
-            self::addCssClass('controls-row', $htmlOptions);
+            self::addCssClass('form-group', $htmlOptions);
         }
         $before = \bootstrap\helpers\BSArray::popValue('before', $htmlOptions, '');
         $after = \bootstrap\helpers\BSArray::popValue('after', $htmlOptions, '');
@@ -1742,8 +1744,10 @@ EOD;
         self::addCssClass('form-group', $groupOptions);
 
         if (!empty($layout)) {
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL && !isset($controlOptions['class'])) {
-                self::addCssClass('col-lg-10', $controlOptions);
+            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,BSHtml::FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS);
+                self::addCssClass($controlClass, $controlOptions);
+
             }
 
         }
