@@ -79,6 +79,7 @@ class BSHtml extends CHtml
     const BUTTON_TYPE_RESET = 'resetButton';
     const BUTTON_TYPE_IMAGE = 'imageButton';
     const BUTTON_TYPE_LINKBUTTON = 'linkButton';
+    const BUTTON_TYPE_NAVBARBUTTON = 'navbutton';
     const BUTTON_TYPE_AJAXLINK = 'ajaxLink';
     const BUTTON_TYPE_AJAXBUTTON = 'ajaxButton';
     const BUTTON_TYPE_INPUTBUTTON = 'inputButton';
@@ -1202,7 +1203,6 @@ class BSHtml extends CHtml
      */
     public static function checkBoxList($name, $select, $data, $htmlOptions = array())
     {
-//        CVarDumper::dump($htmlOptions,10,true);
         $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
         $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
         $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions, 'span');
@@ -1561,7 +1561,6 @@ EOD;
         $output .= $input;
         $output .= $name;
         $output .= '</label></div></div></div>';
-        CVarDumper::dump($output, 10, true);
         return $output;
 
     }
@@ -1756,9 +1755,6 @@ EOD;
             // todo: consider adding support for overriding the label with plain text.
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
         }
-//        CVarDumper::dump($controlOptions,10,true);
-//        CVarDumper::dump($groupOptions,10,true);
-//        CVarDumper::dump($htmlOptions,10,true);
         $output .= self::controls($input . $error . $help, $controlOptions);
         $output .= '</div>';
         return $output;
@@ -1848,16 +1844,10 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         parent::clientChange('change', $htmlOptions);
-//        CVarDumper::dump($htmlOptions,10,true);
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass('form-control', $htmlOptions);
-//        if(isset($htmlOptions['class']) && !empty($htmlOptions['class'])){
-//            $htmlOptions['class'] = $htmlOptions['class'].' form-control';
-//        }else{
-//            $htmlOptions['class'] = ' form-control';
-//        }
 
         $attributesLabel = $model->attributeLabels();
         $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
@@ -1984,8 +1974,6 @@ EOD;
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         $htmlOptions['class'] = 'form-control';
         $htmlOptions['rows'] = '5';
-//        CVarDumper::dump($htmlOptions);
-//        exit;
         return parent::activeTextArea($model, $attribute, $htmlOptions);
     }
 
@@ -2614,6 +2602,12 @@ EOD;
             }
             $items = \bootstrap\helpers\BSArray::popValue('items', $htmlOptions);
         }
+
+        $navbarbtn = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
+        if($navbarbtn === BSHtml::BUTTON_TYPE_NAVBARBUTTON){
+            self::addCssClass('navbar-btn',$htmlOptions);
+        }
+
         $dropdownOptions = $htmlOptions;
         \bootstrap\helpers\BSArray::removeValues(array('groupOptions', 'menuOptions', 'dropup'), $htmlOptions);
         self::addSpanClass($htmlOptions); // must be called here as parent renders buttons
@@ -2811,6 +2805,7 @@ EOD;
             $htmlOptions['role'] = 'menu';
             $output = self::openTag('ul', $htmlOptions);
             foreach ($items as $itemOptions) {
+
                 if (is_string($itemOptions)) {
                     $output .= $itemOptions;
                 } else {
@@ -2838,6 +2833,7 @@ EOD;
                     }
                     $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
                     $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+
                     if (empty($items)) {
                         $itemOptions['linkOptions']['tabindex'] = -1;
                         $output .= self::menuLink($label, $url, $itemOptions);
@@ -3101,7 +3097,6 @@ EOD;
      */
     public static function buttonGroup(array $buttons, $htmlOptions = array())
     {
-//        CVarDumper::dump($htmlOptions,10,true);
         if (!empty($buttons)) {
             self::addCssClass('btn-group', $htmlOptions);
 
@@ -3127,7 +3122,6 @@ EOD;
 
 
                 $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
-//                CVarDumper::dump($buttonOptions,10,true);
                 if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
                     continue;
                 }
@@ -3451,6 +3445,22 @@ EOD;
     {
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
+    }
+    /**
+     * Generates a menu text.
+     * @param string $label the emphasis text.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated emphasis.
+     */
+    public static function menuText($label, $htmlOptions = array())
+    {
+        self::addCssClass('navbar-text', $htmlOptions);
+        $pull = \bootstrap\helpers\BSArray::popValue('pull',$htmlOptions,false);
+
+        if($pull)
+            self::addCssClass('pull-'.$pull,$htmlOptions);
+
+        return self::emphasis($label, $htmlOptions);
     }
 
     /**
@@ -3936,8 +3946,6 @@ EOD;
             $output.="</div>";
         }
         $output.="</div>";
-//        CVarDumper::dump($output);
-//        exit;
         return $output;
     }
 
@@ -4204,7 +4212,6 @@ EOD;
         foreach ($default as $key => $item) {
             $htmlOptions[$key] = $item;
         }
-//        CVarDumper::dump($htmlOptions,10,true);
 
         self::addCssStyle("width: {$width}%;", $htmlOptions);
         $content = \bootstrap\helpers\BSArray::popValue('content', $htmlOptions, '');

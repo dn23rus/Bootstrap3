@@ -7,6 +7,7 @@
  */
 
 Yii::import('bootstrap.behaviors.BsWidget');
+Yii::import('bootstrap.helpers.BSArray');
 Yii::import('bootstrap.components.BSHtml');
 
 /**
@@ -70,12 +71,20 @@ class BsNav extends CWidget
         if ($this->stacked) {
             BSHtml::addCssClass('nav-stacked', $this->htmlOptions);
         }
-        if (isset($this->scrollspy)) {
-            if (is_string($this->scrollspy)) {
-                $this->scrollspy = array('target' => $this->scrollspy);
+        $pull = \bootstrap\helpers\BSArray::popValue('pull', $this->htmlOptions);
+
+        if(!empty($pull)){
+            if($pull === BSHtml::PULL_RIGHT||$pull === BSHtml::PULL_LEFT){
+                BSHtml::addCssClass('pull-'.$pull,$this->htmlOptions);
             }
-            $this->widget('bootstrap.widgets.TbScrollspy', $this->scrollspy);
+
         }
+//        if (isset($this->scrollspy)) {
+//            if (is_string($this->scrollspy)) {
+//                $this->scrollspy = array('target' => $this->scrollspy);
+//            }
+//            $this->widget('bootstrap.widgets.TbScrollspy', $this->scrollspy);
+//        }
         $this->items = $this->normalizeItems($this->items, $route, $hasActiveChild);
     }
 
