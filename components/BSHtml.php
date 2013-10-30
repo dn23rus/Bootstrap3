@@ -3446,6 +3446,22 @@ EOD;
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
+    /**
+     * Generates a menu text.
+     * @param string $label the emphasis text.
+     * @param array $htmlOptions additional HTML options.
+     * @return string the generated emphasis.
+     */
+    public static function menuText($label, $htmlOptions = array())
+    {
+        self::addCssClass('navbar-text', $htmlOptions);
+        $pull = \bootstrap\helpers\BSArray::popValue('pull',$htmlOptions,false);
+
+        if($pull)
+            self::addCssClass('pull-'.$pull,$htmlOptions);
+
+        return self::emphasis($label, $htmlOptions);
+    }
 
     /**
      * Generates a menu header.
