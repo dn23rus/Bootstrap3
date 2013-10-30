@@ -750,24 +750,36 @@ class BsActiveForm extends CActiveForm
         }
         $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $options, array());
         $helpOptions['type'] = $this->helpType;
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions',$options,array());
+
         $options['helpOptions'] = $helpOptions;
-        $options['labelOptions'] = $this->setLabelOptionsByLayout();
+        $options['labelOptions'] = self::setLabelOptionsByLayout($this->layout,$labelOptions);
         $options['formLayout'] = $this->layout;
         return $options;
     }
 
     /**
      * set the label CssClass by Layout
-     * @return array
+     * @param string $layout
+     * @param array $labelOptions
+     * @return array new label options
      */
-    private function setLabelOptionsByLayout(){
-        if(empty($this->layout))
-            return array('class' => 'control-label');
+    static private function setLabelOptionsByLayout($layout,$labelOptions=array()){
 
-        if($this->layout === BSHtml::FORM_LAYOUT_INLINE)
-            return array('class' => 'sr-only');
+        if(empty($layout)){
+            BSHtml::addCssClass('control-label',$labelOptions);
+            return $labelOptions;
+        }
+        if($layout === BSHtml::FORM_LAYOUT_INLINE){
+            BSHtml::addCssClass('control-label',$labelOptions);
+            BSHtml::addCssClass('sr-only',$labelOptions);
+            return $labelOptions;
+        }
+        $labelClass = \bootstrap\helpers\BSArray::popValue('class',$labelOptions,BSHtml::FORM_LAYOUT_HORIZONTAL_LABEL_CLASS);
+        BSHtml::addCssClass('control-label',$labelOptions);
+        BSHtml::addCssClass($labelClass,$labelOptions);
+        return $labelOptions;
 
-        return array('class' => 'col-lg-2 control-label');
     }
 
 }
