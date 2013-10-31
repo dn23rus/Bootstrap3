@@ -1,7 +1,6 @@
 # Yii Bootstrap 3 Module
 
-#### Version 0.0.7
-####Latest Stable Version [![Latest Stable Version](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/v/stable.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
+#### Latest Stable Version 0.0.7
 #####Montly Downloads [![Montly Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/d/monthly.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
 #####Total Downloads [![Total Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/downloads.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
 ## [Demo-Page](http://bootstrap3.pascal-brewing.de/ "")
