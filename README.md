@@ -4,6 +4,10 @@
 ####Latest Stable Version [![Latest Stable Version](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/v/stable.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
 #####Montly Downloads [![Montly Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/d/monthly.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
 #####Total Downloads [![Total Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/downloads.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
+## [Demo-Page](http://bootstrap3.pascal-brewing.de/ "")
+### [Class Reference](http://bootstrap3.pascal-brewing.de/doc "")
+### [Demo-Page-Example Bitbucket](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example "")
+### [Changes](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/commits/all "")
 ### Code
 [Bitbucket][0]
 
@@ -103,7 +107,3 @@ with
     ?>
 ~~~
 [Full Config Example](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/src/bf91414d4a6ff5dd2a6c34d09d309c5a122d97c4/app/config/main.php?at=master "")
-## [Demo-Page](http://bootstrap3.pascal-brewing.de/ "")
-### [Class Reference](http://bootstrap3.pascal-brewing.de/doc "")
-### [Demo-Page-Example Bitbucket](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example "")
-### [Changes](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/commits/all "")
