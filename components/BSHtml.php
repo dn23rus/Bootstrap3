@@ -107,6 +107,7 @@ class BSHtml extends CHtml
     const IMAGE_TYPE_ROUNDED = 'rounded';
     const IMAGE_TYPE_CIRCLE = 'circle';
     const IMAGE_TYPE_THUMBNAIL = 'thumbnail';
+    const IMAGE_TYPE_RESPONSIVE = 'responsive';
 
     //
     // NAV
@@ -3076,6 +3077,19 @@ EOD;
         $htmlOptions['type'] = self::IMAGE_TYPE_THUMBNAIL;
         return self::image($src, $alt, $htmlOptions);
     }
+    /**
+     * Generates an image tag within polaroid frame.
+     * @param string $src the image URL.
+     * @param string $alt the alternative text display.
+     * @param array $htmlOptions additional HTML attributes.
+     * @return string the generated image tag.
+     */
+    public static function imageResponsive($src, $alt = '', $htmlOptions = array())
+    {
+        $htmlOptions['type'] = self::IMAGE_TYPE_RESPONSIVE;
+        return self::image($src, $alt, $htmlOptions);
+    }
+
 
     // Button dropdowns
     // http://twitter.github.io/bootstrap/2.3.2/components.html#buttonDropdowns
