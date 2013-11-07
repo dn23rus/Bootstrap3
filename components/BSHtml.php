@@ -121,6 +121,8 @@ class BSHtml extends CHtml
     const TABS_PLACEMENT_BELOW = 'below';
     const TABS_PLACEMENT_LEFT = 'left';
     const TABS_PLACEMENT_RIGHT = 'right';
+    const NAVBAR_NAV_PULL_RIGHT = 'right';
+    const NAVBAR_NAV_PULL_LEFT = 'left';
 
     //
     // NAVBAR

@@ -115,10 +115,6 @@ class BsNavbar extends CWidget
             echo BSHtml::tag('div',array('class'=>'navbar-header'),$brand) . $items;
         }
         $containerContent = ob_get_clean();
-        $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
-        BSHtml::addCssClass( 'container', $containerOptions);
-
-        $content = BSHtml::tag('div',$containerOptions,$containerContent);
-        echo BSHtml::navbar($content, $this->htmlOptions);
+        echo BSHtml::navbar($containerContent, $this->htmlOptions);
     }
 }
