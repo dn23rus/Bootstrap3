@@ -52,6 +52,12 @@ class BsNavbar extends CWidget
     public $htmlOptions = array();
 
     /**
+     * add from 3.0.2 because navbar fixed top need actually an container
+     * @var bool
+     */
+    public $container = false;
+
+    /**
      * Initializes the widget.
      */
     public function init()
@@ -115,6 +121,13 @@ class BsNavbar extends CWidget
             echo BSHtml::tag('div',array('class'=>'navbar-header'),$brand) . $items;
         }
         $containerContent = ob_get_clean();
+        if (isset($this->position) && $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP) {
+            $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
+            BSHtml::addCssClass('container', $containerOptions);
+            $content = BSHtml::tag('div', $containerOptions, $containerContent);
+            echo BSHtml::navbar($content, $this->htmlOptions);
+            return;
+        }
         echo BSHtml::navbar($containerContent, $this->htmlOptions);
     }
 }
