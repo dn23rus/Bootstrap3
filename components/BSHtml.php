@@ -1721,6 +1721,8 @@ EOD;
      */
     public static function activeControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
     {
+//        CVarDumper::dump($htmlOptions,10,true);
+//        CVarDumper::dump(__LINE__.__FILE__,10,true);
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
         $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
@@ -1758,6 +1760,7 @@ EOD;
             self::addCssClass($color, $groupOptions);
         }
         $output = self::openTag('div', $groupOptions);
+//        CVarDumper::dump($label,10,true);
         if ($label !== false && !is_null($layout)) {
             // todo: consider adding support for overriding the label with plain text.
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
@@ -4460,7 +4463,7 @@ EOD;
      */
     public static function tooltip($label, $url, $content, $htmlOptions = array())
     {
-        $htmlOptions['rel'] = 'tooltip';
+        $htmlOptions['data-toggle'] = 'tooltip';
         return self::tooltipPopover($label, $url, $content, $htmlOptions);
     }
 
@@ -4508,7 +4511,6 @@ EOD;
      */
     public static function popover($label, $title, $content, $htmlOptions = array())
     {
-        $htmlOptions['rel'] = 'popover';
         $htmlOptions['data-content'] = $content;
         $htmlOptions['data-toggle'] = 'popover';
         return self::tooltipPopover($label, '#', $title, $htmlOptions);
