@@ -74,8 +74,8 @@ class BsNav extends CWidget
         $pull = \bootstrap\helpers\BSArray::popValue('pull', $this->htmlOptions);
 
         if(!empty($pull)){
-            if($pull === BSHtml::NAVBAR_NAV_PULL_RIGHT||$pull === BSHtml::NAVBAR_NAV_PULL_LEFT){
-                BSHtml::addCssClass('navbar-'.$pull,$this->htmlOptions);
+            if($pull === BSHtml::PULL_RIGHT||$pull === BSHtml::PULL_LEFT){
+                BSHtml::addCssClass('pull-'.$pull,$this->htmlOptions);
             }
 
         }
