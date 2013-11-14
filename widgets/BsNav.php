@@ -74,17 +74,10 @@ class BsNav extends CWidget
         $pull = \bootstrap\helpers\BSArray::popValue('pull', $this->htmlOptions);
 
         if(!empty($pull)){
-            if($pull === BSHtml::PULL_RIGHT||$pull === BSHtml::PULL_LEFT){
-                BSHtml::addCssClass('pull-'.$pull,$this->htmlOptions);
+            if($pull === BSHtml::NAVBAR_NAV_PULL_RIGHT||$pull === BSHtml::NAVBAR_NAV_PULL_LEFT){
+                BSHtml::addCssClass('navbar-'.$pull,$this->htmlOptions);
             }
-
         }
-//        if (isset($this->scrollspy)) {
-//            if (is_string($this->scrollspy)) {
-//                $this->scrollspy = array('target' => $this->scrollspy);
-//            }
-//            $this->widget('bootstrap.widgets.TbScrollspy', $this->scrollspy);
-//        }
         $this->items = $this->normalizeItems($this->items, $route, $hasActiveChild);
     }
 
