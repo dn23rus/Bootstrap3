@@ -15,9 +15,11 @@ class BsDataColumn extends CDataColumn
 {
     /**
      * @var array HTML options for filter input
-     * @link {TbDataColumn::renderFilterCellContent()}
+     * @link {BsDataColumn::renderFilterCellContent()}
      */
     public $filterInputOptions;
+
+    public $filterHtmlOptions = array();
 
     /**
      * Renders the header cell content.
