@@ -1720,12 +1720,9 @@ EOD;
      */
     public static function activeControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
     {
-//        CVarDumper::dump($htmlOptions,10,true);
-//        CVarDumper::dump(__LINE__,10,true);
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
         $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
-//        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions,false);
         $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
         $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions);
 
@@ -1759,8 +1756,6 @@ EOD;
             self::addCssClass($color, $groupOptions);
         }
         $output = self::openTag('div', $groupOptions);
-//        CVarDumper::dump($label,10,true);
-//        CVarDumper::dump(__LINE__);
         if ($labelOptions !== false && $layout !== self::FORM_LAYOUT_INLINE) {
             // todo: consider adding support for overriding the label with plain text.
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
