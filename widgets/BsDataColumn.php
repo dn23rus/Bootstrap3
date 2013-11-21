@@ -19,6 +19,12 @@ class BsDataColumn extends CDataColumn
      */
     public $filterInputOptions;
 
+    /**
+     * ```php
+     * echo CHtml::openTag('td', $this->filterHtmlOptions);
+     * ```
+     * @var array
+     */
     public $filterHtmlOptions = array();
 
     /**
