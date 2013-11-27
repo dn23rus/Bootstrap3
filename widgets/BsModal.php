@@ -202,12 +202,14 @@ class BsModal extends CWidget
     public function renderModal()
     {
         echo BSHtml::openTag('div', $this->htmlOptions) . PHP_EOL;
+        echo BSHtml::openTag('div', array('class' => 'modal-dialog')) . PHP_EOL;
+        echo BSHtml::openTag('div', array('class' => 'modal-content')) . PHP_EOL;
 
         $this->renderModalHeader();
         $this->renderModalBody();
         $this->renderModalFooter();
 
-        echo '</div>' . PHP_EOL;
+        echo '</div></div></div>' . PHP_EOL;
     }
 
     /**
