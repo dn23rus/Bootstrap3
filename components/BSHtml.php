@@ -1750,12 +1750,14 @@ EOD;
                 self::addCssClass($controlClass, $controlOptions);
 
             }
-
         }
+
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
+
         $output = self::openTag('div', $groupOptions);
+
         if ($labelOptions !== false && $layout !== self::FORM_LAYOUT_INLINE) {
             // todo: consider adding support for overriding the label with plain text.
             $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
