@@ -66,10 +66,10 @@ class BSHtml extends CHtml
     const INPUT_SIZE_XLARGE = 'xlarge';
     const INPUT_SIZE_XXLARGE = 'xxlarge';
     const INPUT_COLOR_DEFAULT = '';
-    const INPUT_COLOR_WARNING = 'warning';
-    const INPUT_COLOR_ERROR = 'error';
-    const INPUT_COLOR_INFO = 'info';
-    const INPUT_COLOR_SUCCESS = 'success';
+    const INPUT_COLOR_WARNING = 'has-warning';
+    const INPUT_COLOR_ERROR = 'has-error';
+    const INPUT_COLOR_INFO = 'has-info';
+    const INPUT_COLOR_SUCCESS = 'has-success';
 
     //
     // BUTTONS
@@ -1852,6 +1852,7 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         parent::clientChange('change', $htmlOptions);
+
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
@@ -2321,6 +2322,7 @@ EOD;
 
     /**
      * Generates a control group with a check box for a model attribute.
+     * @param $model
      * @param string $name the input name.
      * @param string $checked whether the check box is checked.
      * @param array $htmlOptions additional HTML attributes.
@@ -2333,19 +2335,52 @@ EOD;
         $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
         $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
         $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        if (!empty($help)) {
-            $help = self::inputHelp($help, $helpOptions);
+        $error = \bootstrap\helpers\BSArray::popValue('error', $htmlOptions, false);
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions, false);
+        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
+        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
+
+        $output= '';
+        $labelContent = '';
+
+        if($color){
+            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+                self::addCssClass($color,$groupOptions);
+            else
+                self::addCssClass($color,$controlOptions);
         }
+
+        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+            self::addCssClass('form-group',$groupOptions);
+            $output .= parent::openTag('div',$groupOptions);
+            $output .= parent::openTag('div',array('class' => 'col-lg-offset-2'));
+            $output.= parent::openTag('div',array('class' => 'checkbox'));
+        }else{
+            self::addCssClass('checkbox',$controlOptions);
+            $output.= parent::openTag('div',$controlOptions);
+        }
+
 
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>' : '<div class="checkbox"><label>';
-        $output = $header;
-        $output .= $input;
-        $output .= $model->getAttributeLabel($attribute);
-        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '</label></div></div></div>' : '</label></div>';
-        $output .= $footer;
+
+        $labelContent .= $input;
+        $labelContent .= $model->getAttributeLabel($attribute);
+
+        if($error)
+            $labelContent .= $error;
+
+        if (!empty($help) && !$error)
+            $labelContent .= self::inputHelp($help, $helpOptions);
+
+        $output.= parent::tag('label',array(),$labelContent);
+        $output.= parent::closeTag('div');//close <div class="checkbox">
+
+        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+            $output.= parent::closeTag('div');//close <div class="col-lg-offset-2">
+            $output.= parent::closeTag('div');//close <div class="form-group">
+        }
         return $output;
     }
 

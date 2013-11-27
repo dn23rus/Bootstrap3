@@ -138,6 +138,7 @@ class BsActiveForm extends CActiveForm
             BSHtml::addCssStyle('display:none', $htmlOptions);
             $html = BSHtml::help('', $htmlOptions);
         }
+
         $this->attributes[$inputID] = $option;
         return $html;
     }
@@ -179,7 +180,7 @@ class BsActiveForm extends CActiveForm
      */
     public function textField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeTextField($model, $attribute, $htmlOptions);
     }
 
@@ -193,7 +194,7 @@ class BsActiveForm extends CActiveForm
      */
     public function passwordField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activePasswordField($model, $attribute, $htmlOptions);
     }
 
@@ -207,7 +208,7 @@ class BsActiveForm extends CActiveForm
      */
     public function urlField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeUrlField($model, $attribute, $htmlOptions);
     }
 
@@ -221,7 +222,7 @@ class BsActiveForm extends CActiveForm
      */
     public function emailField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeEmailField($model, $attribute, $htmlOptions);
     }
 
@@ -249,7 +250,7 @@ class BsActiveForm extends CActiveForm
      */
     public function numberField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeNumberField($model, $attribute, $htmlOptions);
     }
 
@@ -263,7 +264,7 @@ class BsActiveForm extends CActiveForm
      */
     public function rangeField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeRangeField($model, $attribute, $htmlOptions);
     }
 
@@ -276,7 +277,7 @@ class BsActiveForm extends CActiveForm
      */
     public function dateField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeDateField($model, $attribute, $htmlOptions);
     }
 
@@ -290,7 +291,7 @@ class BsActiveForm extends CActiveForm
      */
     public function textArea($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeTextArea($model, $attribute, $htmlOptions);
     }
 
@@ -304,7 +305,7 @@ class BsActiveForm extends CActiveForm
      */
     public function fileField($model, $attribute, $htmlOptions = array())
     {
-        
+
         return BSHtml::activeFileField($model, $attribute, $htmlOptions);
     }
 
@@ -454,6 +455,7 @@ class BsActiveForm extends CActiveForm
      */
     public function textFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
+
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
         return BSHtml::activeTextFieldControlGroup($model, $attribute, $htmlOptions);
     }
@@ -500,7 +502,7 @@ class BsActiveForm extends CActiveForm
         return BSHtml::activeEmailFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
-   /**
+    /**
      * Generates a control group with an telephone field for a model attribute.
      * @param CModel $model the data model.
      * @param string $attribute the attribute name.
