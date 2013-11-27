@@ -1981,8 +1981,12 @@ EOD;
     public static function activeTextArea($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        $htmlOptions['class'] = 'form-control';
-        $htmlOptions['rows'] = '5';
+        if(!isset($htmlOptions['class']))
+            $htmlOptions['class'] = 'form-control';
+
+        if(!isset($htmlOptions['rows']))
+            $htmlOptions['rows'] = '5';
+
         return parent::activeTextArea($model, $attribute, $htmlOptions);
     }
 
