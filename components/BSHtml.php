@@ -706,7 +706,7 @@ class BSHtml extends CHtml
      * @return string the generated form tag.
      */
     public static function statefulFormBs(
-        $layout = self::FORM_LAYOUT_VERTICAL,
+        $layout = '',
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -725,7 +725,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function formBs(
-        $layout = self::FORM_LAYOUT_VERTICAL,
+        $layout = '',
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -743,7 +743,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function beginFormBs(
-        $layout = self::FORM_LAYOUT_VERTICAL,
+        $layout = '',
         $action = '',
         $method = 'post',
         $htmlOptions = array()
