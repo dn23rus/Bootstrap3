@@ -127,4 +127,19 @@ class BSApi extends CComponent {
         Yii::app()->clientScript->registerScript($id, $script, $position);
     }
 
+    /**
+     * Registers a specific Bootstrap plugin using the given selector and options.
+     * @param string $name the plugin name.
+     * @param string $selector the CSS selector.
+     * @param array $options the JavaScript options for the plugin.
+     * @param int $position the position of the JavaScript code.
+     */
+    public function registerPlugin($name, $selector, $options = array(), $position = CClientScript::POS_END)
+    {
+        $options = !empty($options) ? CJavaScript::encode($options) : '';
+        $script = "jQuery('{$selector}').{$name}({$options});";
+        $id = __CLASS__ . '#Plugin' . self::$counter++;
+        Yii::app()->clientScript->registerScript($id, $script, $position);
+    }
+
 } 
