@@ -102,4 +102,29 @@ class BSApi extends CComponent {
         \Yii::app()->getClientScript()->registerCssFile($this->getAssetsUrl() . "/css/{$cssFile}", $media);
         return $this;
     }
+
+    /**
+     * Registers events using the given selector.
+     * @param string $selector the CSS selector.
+     * @param string[] $events the JavaScript event configuration (name=>handler).
+     * @param int $position the position of the JavaScript code.
+     */
+    public function registerEvents($selector, $events, $position = CClientScript::POS_END)
+    {
+        if (empty($events)) {
+            return;
+        }
+
+        $script = '';
+        foreach ($events as $name => $handler) {
+            $handler = ($handler instanceof CJavaScriptExpression)
+                ? $handler
+                : new CJavaScriptExpression($handler);
+
+            $script .= "jQuery('{$selector}').on('{$name}', {$handler});";
+        }
+        $id = __CLASS__ . '#Events' . self::$counter++;
+        Yii::app()->clientScript->registerScript($id, $script, $position);
+    }
+
 } 
