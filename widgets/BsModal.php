@@ -116,14 +116,19 @@ class BsModal extends CWidget
     public function init()
     {
         $this->attachBehavior('BsWidget', new BsWidget());
-
         \bootstrap\helpers\BSArray::defaultValue('id', $this->getId(), $this->htmlOptions);
         \bootstrap\helpers\BSArray::defaultValue('role', 'dialog', $this->htmlOptions);
         \bootstrap\helpers\BSArray::defaultValue('tabindex', '-1', $this->htmlOptions);
 
-        BSHtml::addCssClass('modal hide', $this->htmlOptions);
+
+        BSHtml::addCssClass('modal', $this->htmlOptions);
+
         if ($this->fade) {
             BSHtml::addCssClass('fade', $this->htmlOptions);
+        }
+
+        if($this->show){
+            BSHtml::addCssClass('in',$this->htmlOptions);
         }
 
         if (is_array($this->footer)) {
@@ -149,6 +154,8 @@ class BsModal extends CWidget
                 }
             }
         }
+        $this->events;
+
     }
 
     /**
