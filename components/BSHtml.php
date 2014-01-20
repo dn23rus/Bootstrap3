@@ -1759,8 +1759,13 @@ EOD;
         $output = self::openTag('div', $groupOptions);
 
         if ($labelOptions !== false && $layout !== self::FORM_LAYOUT_INLINE) {
-            // todo: consider adding support for overriding the label with plain text.
-            $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
+            if (isset($labelOptions['ex']) && empty($labelOptions['ex'])) {
+                // todo: consider adding support for overriding the label with plain text.
+                $output .= parent::activeLabel($model, $attribute, $labelOptions);
+            }
+            else {
+                $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
+            }
         }
 
         $output .= self::controls($input . $error . $help, $controlOptions);
