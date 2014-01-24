@@ -149,7 +149,7 @@ class BSHtml extends CHtml
     const LABEL_COLOR_PRIMARY = 'primary';
     const LABEL_COLOR_SUCCESS = 'success';
     const LABEL_COLOR_WARNING = 'warning';
-    const LABEL_COLOR_IMPORTANT = 'important';
+    const LABEL_COLOR_DEFAULT = 'default';
     const LABEL_COLOR_INFO = 'info';
     const LABEL_COLOR_DANGER = 'danger';
 
