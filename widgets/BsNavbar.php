@@ -122,17 +122,16 @@ class BsNavbar extends CWidget
         }
         $containerContent = ob_get_clean();
         if (isset($this->position) && $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP) {
-
+            $fluid = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, false);
 
             $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
-            $fluid = false;
+            $containerClass = 'container';
 
-            if(isset($containerOptions['fluid'])){
-                $fluid = $containerOptions['fluid'];
-            }
+            if($fluid)
+                $containerClass = 'container-fluid';
 
-            BSHtml::addCssClass(fluid?'container-fluid':'container', $containerOptions);
-
+            BSHtml::addCssClass($containerClass, $containerOptions);
+            
             $content = BSHtml::tag('div', $containerOptions, $containerContent);
             echo BSHtml::navbar($content, $this->htmlOptions);
             return;
