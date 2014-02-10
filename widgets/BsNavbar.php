@@ -130,8 +130,9 @@ class BsNavbar extends CWidget
             if(isset($containerOptions['fluid'])){
                 $fluid = $containerOptions['fluid'];
             }
-            
+
             BSHtml::addCssClass(fluid?'container-fluid':'container', $containerOptions);
+            
             $content = BSHtml::tag('div', $containerOptions, $containerContent);
             echo BSHtml::navbar($content, $this->htmlOptions);
             return;
