@@ -122,7 +122,7 @@ class BsNavbar extends CWidget
         }
         $containerContent = ob_get_clean();
         if (
-            isset($this->position) && $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP
+            isset($this->position) === BSHtml::NAVBAR_POSITION_FIXED_TOP
             || isset($this->position) === BSHtml::NAVBAR_POSITION_STATIC_TOP
         ) {
             $fluid = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, false);
