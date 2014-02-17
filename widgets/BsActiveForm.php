@@ -37,6 +37,26 @@ class BsActiveForm extends CActiveForm
     public $hideInlineErrors = false;
 
     /**
+	 * @var string[] attribute IDs to be used to display error summary.
+	 * @since 1.1.14
+	 */
+	private $_summaryAttributes=array();
+
+	/**
+	 * Runs the widget.
+	 * This registers the necessary javascript code and renders the form close tag.
+	 */
+	public function run()
+	{
+		foreach($this->_summaryAttributes as $attribute) {
+			$this->attributes[$attribute]['summary'] = true;
+		}
+		$options['attributes'] = array_values($this->attributes);
+
+		parent::run();
+	}
+
+    /**
      * Initializes the widget.
      */
     public function init()
@@ -166,7 +186,15 @@ class BsActiveForm extends CActiveForm
             BSHtml::addCssStyle('display:none', $htmlOptions);
             $html = CHtml::tag('div', $htmlOptions, $header . '<ul><li>dummy</li></ul>' . $footer);
         }
+
         $this->summaryID = $htmlOptions['id'];
+
+		foreach (is_array($models) ? $models : array($models) as $model) {
+			foreach ($model->getSafeAttributeNames() as $attribute) {
+				$this->_summaryAttributes[] = CHtml::activeId($model, $attribute);
+			}
+		}
+
         return $html;
     }
 
