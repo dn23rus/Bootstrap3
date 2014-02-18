@@ -33,8 +33,6 @@ class BSHtml extends CHtml
     const FORM_LAYOUT_HORIZONTAL = 'horizontal';
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
-    const FORM_LAYOUT_HORIZONTAL_LABEL_CLASS = 'col-lg-2';
-    const FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS = 'col-lg-10';
     const INPUT_TYPE_TEXT = 'textField';
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
@@ -438,6 +436,9 @@ class BSHtml extends CHtml
      * @var string the CSS class for displaying error summaries.
      */
     public static $errorSummaryCss = 'alert alert-block alert-danger';
+
+    public static $formLayoutHorizontalLabelClass = 'col-lg-2';
+    public static $formLayoutHorizontalControlClass = 'col-lg-10';
 
     //
     // BASE CSS
@@ -1746,7 +1747,7 @@ EOD;
 
         if (!empty($layout)) {
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,BSHtml::FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS);
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
 
             }
