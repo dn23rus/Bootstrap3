@@ -142,6 +142,16 @@ class BSHtml extends CHtml
     const PAGINATION_ALIGN_LEFT = 'left';
     const PAGINATION_ALIGN_CENTER = 'centered';
     const PAGINATION_ALIGN_RIGHT = 'right';
+	
+	//
+    // PANELS
+    // --------------------------------------------------
+	const PANEL_TYPE_DEFAULT = 'panel-default';
+	const PANEL_TYPE_PRIMARY = 'panel-primary';
+    const PANEL_TYPE_SUCCESS = 'panel-success';
+    const PANEL_TYPE_INFO = 'panel-info';
+	const PANEL_TYPE_WARNING = 'panel-warning';
+	const PANEL_TYPE_DANGER = 'panel-danger';
 
     //
     // LABELS AND BADGES
