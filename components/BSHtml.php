@@ -30,6 +30,7 @@ class BSHtml extends CHtml
     //
     // FORM
     // --------------------------------------------------
+    const FORM_LAYOUT_VERTICAL = 'vertical';
     const FORM_LAYOUT_HORIZONTAL = 'horizontal';
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
@@ -707,7 +708,7 @@ class BSHtml extends CHtml
      * @return string the generated form tag.
      */
     public static function statefulFormBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -726,7 +727,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function formBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -744,7 +745,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function beginFormBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -1749,7 +1750,6 @@ EOD;
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
                 $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
-
             }
         }
 
