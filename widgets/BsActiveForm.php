@@ -778,7 +778,7 @@ class BsActiveForm extends CActiveForm
             return $labelOptions;
         }
 
-        $labelClass = \bootstrap\helpers\BSArray::popValue('class',$labelOptions,BSHtml::FORM_LAYOUT_HORIZONTAL_LABEL_CLASS);
+        $labelClass = \bootstrap\helpers\BSArray::popValue('class',$labelOptions,BSHtml::$formLayoutHorizontalLabelClass);
         BSHtml::addCssClass('control-label',$labelOptions);
         BSHtml::addCssClass($labelClass,$labelOptions);
         return $labelOptions;
