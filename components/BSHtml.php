@@ -2886,8 +2886,13 @@ EOD;
                     }
                     $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
                     $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                    $divider = \bootstrap\helpers\BSArray::popValue('divider', $itemOptions, false);
 
-                    if (empty($items)) {
+                    if ($divider) {
+                        $output .= self::menuDivider($itemOptions);
+                    } elseif ($url === false && empty($items)) {
+                        $output .= self::dropDownHeader($label, $itemOptions);
+                    } elseif (empty($items)) {
                         $itemOptions['linkOptions']['tabindex'] = -1;
                         $output .= self::menuLink($label, $url, $itemOptions);
                     } else {
@@ -3509,6 +3514,7 @@ EOD;
      */
     public static function menuHeader($label, $htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3537,6 +3543,7 @@ EOD;
      */
     public static function dropDownHeader($label, $htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('dropdown-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3548,6 +3555,7 @@ EOD;
      */
     public static function menuDivider($htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('divider', $htmlOptions);
         return self::tag('li', $htmlOptions);
     }
