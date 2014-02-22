@@ -66,7 +66,7 @@ class BsButtonColumn extends CButtonColumn
         }
 
         $url = \bootstrap\helpers\BSArray::popValue('url', $button, '#');
-        if (strcmp($url, '#') !== 0) {
+        if ($url !== '#') {
             $url = $this->evaluateExpression($url, array('data' => $data, 'row' => $row));
         }
 
