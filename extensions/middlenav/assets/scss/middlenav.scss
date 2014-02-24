@@ -1,5 +1,5 @@
 /* === Middle navigation buttons === */
-@mixin buttonGradient($borderColor:#68a341,$shadowColor:#a4ca6c,$gradientA:#96c161,$gradientB:#609c3d){
+@mixin buttonGradient($borderColor: #68a341, $shadowColor: #a4ca6c, $gradientA: #96c161, $gradientB: #609c3d) {
   border: 1px solid $borderColor;
   box-shadow: 0 1px 2px 0 #a4ca6c inset;
   -webkit-box-shadow: 0 1px 2px 0 #a4ca6c inset;
@@ -13,7 +13,6 @@
   background: linear-gradient(top, $gradientA 0%, $gradientB 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$gradientA}', endColorstr='#{$gradientB}', GradientType=0);
 }
-
 
 .middleNavR li, .middleNavR li a {
   border-radius: 50%;
@@ -37,6 +36,7 @@
     -moz-box-shadow: 0 2px 3px #b5b5b5, 0px 1px 0 #fff inset;
   }
 }
+
 .middleNavS li, .middleNavS li a {
   border-radius: 3px;
   -moz-border-radius: 3px;
@@ -72,7 +72,6 @@
     box-shadow: none;
   }
 }
-
 
 .middleNavR {
   text-align: center;
@@ -112,10 +111,12 @@
     }
   }
 }
+
 .middleNavR li a > img,
 .middleNavS li a > img {
   padding-top: 23px;
 }
+
 .middleNavR li a > i,
 .middleNavS li a > i {
   padding-top: 20px;
@@ -155,6 +156,7 @@
     }
   }
 }
+
 .middleNavA {
   text-align: center;
   margin: 30px 0 0 0;
@@ -203,7 +205,7 @@
       background: linear-gradient(top, #f4f4f4 0%, #f7f7f7 100%);
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#f7f7f7', GradientType=0);
     }
-    &> span {
+    & > span {
       display: block;
       padding-top: 4px;
       font-weight: bold;
@@ -244,7 +246,7 @@
         padding-bottom: 10px;
       }
     }
-    &> strong {
+    & > strong {
       position: absolute;
       top: -6px;
       right: -6px;
@@ -261,6 +263,7 @@
     }
   }
 }
+
 [class*="middleNav"] li strong {
   position: absolute;
   top: 3px;
@@ -358,7 +361,7 @@
 
 .bDefault, .dualBtn, .searchLine button {
   color: #686868;
-  @include buttonGradient(#c3c3c3,#fff,#f8f8f8,#e8e8e8);
+  @include buttonGradient(#c3c3c3, #fff, #f8f8f8, #e8e8e8);
   text-shadow: none;
 }
 
@@ -391,7 +394,7 @@
 }
 
 .bGreen {
-  @include buttonGradient(#68a341,#a4ca6c,#96c161,#609c3d);
+  @include buttonGradient(#68a341, #a4ca6c, #96c161, #609c3d);
 }
 
 .bGreen:active {
@@ -402,7 +405,7 @@
 }
 
 .bRed {
-  @include buttonGradient(#a95151,#cd8787,#c57979,#a34c4c);
+  @include buttonGradient(#a95151, #cd8787, #c57979, #a34c4c);
 }
 
 .bRed:hover {
@@ -421,7 +424,7 @@
 }
 
 .bBlue {
-  @include buttonGradient(#3e76af,#66b2d2,#5ba5cb,#3a70ab);
+  @include buttonGradient(#3e76af, #66b2d2, #5ba5cb, #3a70ab);
 }
 
 .bBlue:hover {
@@ -440,7 +443,7 @@
 }
 
 .bGreyish {
-  @include buttonGradient(#5e6779,#9ca6b3,#8c97a6,#596171);
+  @include buttonGradient(#5e6779, #9ca6b3, #8c97a6, #596171);
 }
 
 .bGreyish:active {
@@ -451,7 +454,7 @@
 }
 
 .bBlack {
-  @include buttonGradient(#4e4e4e,#959595,#838383,#444444);
+  @include buttonGradient(#4e4e4e, #959595, #838383, #444444);
 }
 
 .bBlack:active {
@@ -462,7 +465,7 @@
 }
 
 .bLightBlue {
-  @include buttonGradient(#5897c3,#84c4dd,#6db5d5,#4a91c0);
+  @include buttonGradient(#5897c3, #84c4dd, #6db5d5, #4a91c0);
 }
 
 .bLightBlue:active {
@@ -473,7 +476,7 @@
 }
 
 .bGold {
-  @include buttonGradient(#c4853e,#ddb65b,#d5a44c,#c07833);
+  @include buttonGradient(#c4853e, #ddb65b, #d5a44c, #c07833);
 }
 
 .bGold:active {
@@ -484,7 +487,7 @@
 }
 
 .bSea {
-  @include buttonGradient(#5a837e,#95b8b6,#7ca6a3,#547b76);
+  @include buttonGradient(#5a837e, #95b8b6, #7ca6a3, #547b76);
 }
 
 .bSea:active {
@@ -495,7 +498,7 @@
 }
 
 .bBrown {
-  @include buttonGradient(#9c6b3c,#c8a85f,#bb934f,#996336);
+  @include buttonGradient(#9c6b3c, #c8a85f, #bb934f, #996336);
 }
 
 .bBrown:active {

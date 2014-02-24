@@ -88,7 +88,7 @@ class BsDataColumn extends CDataColumn
                 } else {
                     $filterInputOptions = array();
                 }
-                if(isset($filterInputOptions['class']))
+                if (isset($filterInputOptions['class']))
                     $filterInputOptions['class'] .= ' form-control';
                 else
                     $filterInputOptions['class'] = 'form-control';

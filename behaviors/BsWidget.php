@@ -50,7 +50,7 @@ class BsWidget extends CBehavior
     /**
      * Registers plugin events with the API.
      * @param string $selector the CSS selector.
-     * @param string[] $events  the JavaScript event configuration (name=>handler).
+     * @param string[] $events the JavaScript event configuration (name=>handler).
      * @param int $position the position of the JavaScript code.
      * @return boolean whether the events were registered.
      */

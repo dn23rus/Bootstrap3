@@ -37,7 +37,7 @@
     <?php
     }
     ?>
-        <?php echo "<?php echo BSHtml::formActions(array(
+    <?php echo "<?php echo BSHtml::formActions(array(
     BSHtml::submitButton('Submit', array('color' => BSHtml::BUTTON_COLOR_PRIMARY)),
 )); ?>\n"; ?>
 

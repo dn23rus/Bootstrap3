@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User: Pascal Brewing
  * Date: 11.09.13
@@ -513,7 +514,7 @@ class BSHtml extends CHtml
      * Adds the grid span class to the given options is applicable.
      * @param array $htmlOptions the HTML attributes.
      */
-    protected static function addSpanClass($htmlOptions=array())
+    protected static function addSpanClass($htmlOptions = array())
     {
         $span = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions);
         if (!empty($span)) {
@@ -819,12 +820,12 @@ class BSHtml extends CHtml
 
         if (!empty($layout)) {
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
             }
-            $labelOptions = self::setLabelOptionsByLayout($layout,$labelOptions);
+            $labelOptions = self::setLabelOptionsByLayout($layout, $labelOptions);
         }
-        
+
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
@@ -1579,24 +1580,24 @@ EOD;
         $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
 
-        $output= '';
+        $output = '';
         $labelContent = '';
 
-        if($color){
-            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
-                self::addCssClass($color,$groupOptions);
+        if ($color) {
+            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+                self::addCssClass($color, $groupOptions);
             else
-                self::addCssClass($color,$controlOptions);
+                self::addCssClass($color, $controlOptions);
         }
 
-        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
-            self::addCssClass('form-group',$groupOptions);
-            $output .= parent::openTag('div',$groupOptions);
-            $output .= parent::openTag('div',array('class' => static::$formLayoutHorizontalOffsetClass.' '.static::$formLayoutHorizontalControlClass));
-            $output.= parent::openTag('div',array('class' => 'checkbox'));
-        }else{
-            self::addCssClass('checkbox',$controlOptions);
-            $output.= parent::openTag('div',$controlOptions);
+        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+            self::addCssClass('form-group', $groupOptions);
+            $output .= parent::openTag('div', $groupOptions);
+            $output .= parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass . ' ' . static::$formLayoutHorizontalControlClass));
+            $output .= parent::openTag('div', array('class' => 'checkbox'));
+        } else {
+            self::addCssClass('checkbox', $controlOptions);
+            $output .= parent::openTag('div', $controlOptions);
         }
 
         $input = isset($htmlOptions['input'])
@@ -1609,12 +1610,12 @@ EOD;
         if (!empty($help) && !$error)
             $labelContent .= self::inputHelp($help, $helpOptions);
 
-        $output.= parent::tag('label',array(),$labelContent);
-        $output.= parent::closeTag('div');//close <div class="checkbox">
+        $output .= parent::tag('label', array(), $labelContent);
+        $output .= parent::closeTag('div'); //close <div class="checkbox">
 
-        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
-            $output.= parent::closeTag('div');//close <div class="col-lg-offset-2">
-            $output.= parent::closeTag('div');//close <div class="form-group">
+        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+            $output .= parent::closeTag('div'); //close <div class="col-lg-offset-2">
+            $output .= parent::closeTag('div'); //close <div class="form-group">
         }
         return $output;
     }
@@ -1796,7 +1797,7 @@ EOD;
 
         if (!empty($layout)) {
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
             }
         }
@@ -1811,8 +1812,7 @@ EOD;
             if (isset($labelOptions['ex']) && empty($labelOptions['ex'])) {
                 // todo: consider adding support for overriding the label with plain text.
                 $output .= parent::activeLabel($model, $attribute, $labelOptions);
-            }
-            else {
+            } else {
                 $output .= parent::activeLabelEx($model, $attribute, $labelOptions);
             }
         }
@@ -2035,10 +2035,10 @@ EOD;
     public static function activeTextArea($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        if(!isset($htmlOptions['class']))
+        if (!isset($htmlOptions['class']))
             $htmlOptions['class'] = 'form-control';
 
-        if(!isset($htmlOptions['rows']))
+        if (!isset($htmlOptions['rows']))
             $htmlOptions['rows'] = '5';
 
         return parent::activeTextArea($model, $attribute, $htmlOptions);
@@ -2369,7 +2369,7 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="'.static::$formLayoutHorizontalOffsetClass.'"><div class="radio"><label>' : '<div class="radio"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="' . static::$formLayoutHorizontalOffsetClass . '"><div class="radio"><label>' : '<div class="radio"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
@@ -2398,24 +2398,24 @@ EOD;
         $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
 
-        $output= '';
+        $output = '';
         $labelContent = '';
 
-        if($color){
-            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
-                self::addCssClass($color,$groupOptions);
+        if ($color) {
+            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+                self::addCssClass($color, $groupOptions);
             else
-                self::addCssClass($color,$controlOptions);
+                self::addCssClass($color, $controlOptions);
         }
 
-        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
-            self::addCssClass('form-group',$groupOptions);
-            $output .= parent::openTag('div',$groupOptions);
-            $output .= parent::openTag('div',array('class' => static::$formLayoutHorizontalOffsetClass.' '.static::$formLayoutHorizontalControlClass));
-            $output.= parent::openTag('div',array('class' => 'checkbox'));
-        }else{
-            self::addCssClass('checkbox',$controlOptions);
-            $output.= parent::openTag('div',$controlOptions);
+        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+            self::addCssClass('form-group', $groupOptions);
+            $output .= parent::openTag('div', $groupOptions);
+            $output .= parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass . ' ' . static::$formLayoutHorizontalControlClass));
+            $output .= parent::openTag('div', array('class' => 'checkbox'));
+        } else {
+            self::addCssClass('checkbox', $controlOptions);
+            $output .= parent::openTag('div', $controlOptions);
         }
 
 
@@ -2426,18 +2426,18 @@ EOD;
         $labelContent .= $input;
         $labelContent .= $model->getAttributeLabel($attribute);
 
-        if($error)
+        if ($error)
             $labelContent .= $error;
 
         if (!empty($help) && !$error)
             $labelContent .= self::inputHelp($help, $helpOptions);
 
-        $output.= parent::tag('label',array(),$labelContent);
-        $output.= parent::closeTag('div');//close <div class="checkbox">
+        $output .= parent::tag('label', array(), $labelContent);
+        $output .= parent::closeTag('div'); //close <div class="checkbox">
 
-        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
-            $output.= parent::closeTag('div');//close <div class="col-lg-offset-2">
-            $output.= parent::closeTag('div');//close <div class="form-group">
+        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+            $output .= parent::closeTag('div'); //close <div class="col-lg-offset-2">
+            $output .= parent::closeTag('div'); //close <div class="form-group">
         }
         return $output;
     }
@@ -2705,8 +2705,8 @@ EOD;
         }
 
         $navbarbtn = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
-        if($navbarbtn === BSHtml::BUTTON_TYPE_NAVBARBUTTON){
-            self::addCssClass('navbar-btn',$htmlOptions);
+        if ($navbarbtn === BSHtml::BUTTON_TYPE_NAVBARBUTTON) {
+            self::addCssClass('navbar-btn', $htmlOptions);
         }
 
         $dropdownOptions = $htmlOptions;
@@ -3178,6 +3178,7 @@ EOD;
         $htmlOptions['type'] = self::IMAGE_TYPE_THUMBNAIL;
         return self::image($src, $alt, $htmlOptions);
     }
+
     /**
      * Generates an image tag within polaroid frame.
      * @param string $src the image URL.
@@ -3308,10 +3309,12 @@ EOD;
      * @param array $htmlOptions
      * @return string
      */
-    public static function alertLink($label = '',$htmlOptions = array()){
-        self::addCssClass('alert-link',$htmlOptions);
-        return self::createButton(self::BUTTON_TYPE_LINK,$label, $htmlOptions);
+    public static function alertLink($label = '', $htmlOptions = array())
+    {
+        self::addCssClass('alert-link', $htmlOptions);
+        return self::createButton(self::BUTTON_TYPE_LINK, $label, $htmlOptions);
     }
+
     /**
      * Generates an button.
      * @param string $label the button label text.
@@ -3419,7 +3422,7 @@ EOD;
     {
         self::addCssClass('nav', $htmlOptions);
         if (!empty($type)) {
-            if($type == 'navbar')
+            if ($type == 'navbar')
                 self::addCssClass('navbar-nav', $htmlOptions);
             else
                 self::addCssClass('nav-' . $type, $htmlOptions);
@@ -3566,6 +3569,7 @@ EOD;
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
+
     /**
      * Generates a menu text.
      * @param string $label the emphasis text.
@@ -3575,10 +3579,10 @@ EOD;
     public static function menuText($label, $htmlOptions = array())
     {
         self::addCssClass('navbar-text', $htmlOptions);
-        $pull = \bootstrap\helpers\BSArray::popValue('pull',$htmlOptions,false);
+        $pull = \bootstrap\helpers\BSArray::popValue('pull', $htmlOptions, false);
 
-        if($pull)
-            self::addCssClass('pull-'.$pull,$htmlOptions);
+        if ($pull)
+            self::addCssClass('pull-' . $pull, $htmlOptions);
 
         return self::emphasis($label, $htmlOptions);
     }
@@ -3721,7 +3725,7 @@ EOD;
         if (!empty($color)) {
             self::addCssClass('navbar-' . $color, $htmlOptions);
         }
-        \bootstrap\helpers\BSArray::defaultValue('role','navigation',$htmlOptions);
+        \bootstrap\helpers\BSArray::defaultValue('role', 'navigation', $htmlOptions);
         return self::tag('nav', $htmlOptions, $content);;
     }
 
@@ -3828,7 +3832,7 @@ EOD;
         $htmlOptions['data-toggle'] = 'collapse';
         $htmlOptions['data-target'] = $target;
         $content = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
-        \bootstrap\helpers\BSArray::defaultValue('type','button',$htmlOptions);
+        \bootstrap\helpers\BSArray::defaultValue('type', 'button', $htmlOptions);
         return self::tag('button', $htmlOptions, $content);
     }
 
@@ -3896,7 +3900,7 @@ EOD;
     {
         $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
-            $label .= self::tag('span',array('class' => 'sr-only'));
+            $label .= self::tag('span', array('class' => 'sr-only'));
             self::addCssClass('active', $htmlOptions);
         }
         if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
@@ -4040,13 +4044,14 @@ EOD;
         return $output;
     }
 
-    public static function rowThumbnails(array $thumbnails,$htmlOptions){
-        if(empty($thumbnails))
+    public static function rowThumbnails(array $thumbnails, $htmlOptions)
+    {
+        if (empty($thumbnails))
             return false;
 
-        $output = self::openTag('div',array('class' => 'row'));
-        $row = \bootstrap\helpers\BSArray::popValue('row',$htmlOptions,false);
-        if(!$row){
+        $output = self::openTag('div', array('class' => 'row'));
+        $row = \bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false);
+        if (!$row) {
             $row = array(
                 'lg' => '3',
                 'md' => '4',
@@ -4054,27 +4059,28 @@ EOD;
                 'xs' => '12'
             );
         }
-        foreach($thumbnails as $timage){
-            $output.=self::openTag('div',array(
+        foreach ($thumbnails as $timage) {
+            $output .= self::openTag('div', array(
                 'class' => self::generateThumbnailRowClass($row)
             ));
-            if(isset($timage['image'])){
+            if (isset($timage['image'])) {
                 $image = $timage['image'];
             }
-            if(isset($timage['url'])){
+            if (isset($timage['url'])) {
                 $url = $timage['url'];
             }
-            $output .=self::thumbnailLink(parent::tag('img',$image),$url);
-            $output.="</div>";
+            $output .= self::thumbnailLink(parent::tag('img', $image), $url);
+            $output .= "</div>";
         }
-        $output.="</div>";
+        $output .= "</div>";
         return $output;
     }
 
-    private static function generateThumbnailRowClass($row){
+    private static function generateThumbnailRowClass($row)
+    {
         $cssCLass = '';
-        foreach($row as $key =>$value){
-            $cssCLass .="col-{$key}-{$value} ";
+        foreach ($row as $key => $value) {
+            $cssCLass .= "col-{$key}-{$value} ";
         }
         return $cssCLass;
     }
@@ -4085,21 +4091,22 @@ EOD;
      * @param array $labelOptions
      * @return array new label options
      */
-    public static function setLabelOptionsByLayout($layout,$labelOptions=array()){
+    public static function setLabelOptionsByLayout($layout, $labelOptions = array())
+    {
 
-        if(empty($layout)){
-            BSHtml::addCssClass('control-label',$labelOptions);
+        if (empty($layout)) {
+            BSHtml::addCssClass('control-label', $labelOptions);
             return $labelOptions;
         }
-        if($layout === BSHtml::FORM_LAYOUT_INLINE){
-            BSHtml::addCssClass('control-label',$labelOptions);
-            BSHtml::addCssClass('sr-only',$labelOptions);
+        if ($layout === BSHtml::FORM_LAYOUT_INLINE) {
+            BSHtml::addCssClass('control-label', $labelOptions);
+            BSHtml::addCssClass('sr-only', $labelOptions);
             return $labelOptions;
         }
 
-        $labelClass = \bootstrap\helpers\BSArray::popValue('class',$labelOptions,BSHtml::$formLayoutHorizontalLabelClass);
-        BSHtml::addCssClass('control-label',$labelOptions);
-        BSHtml::addCssClass($labelClass,$labelOptions);
+        $labelClass = \bootstrap\helpers\BSArray::popValue('class', $labelOptions, BSHtml::$formLayoutHorizontalLabelClass);
+        BSHtml::addCssClass('control-label', $labelOptions);
+        BSHtml::addCssClass($labelClass, $labelOptions);
         return $labelOptions;
 
     }

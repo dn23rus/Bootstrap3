@@ -37,12 +37,12 @@ class BsModal extends CWidget
     public $fade = true;
 
     /**
-     * @var bool $keyboard, closes the modal when escape key is pressed.
+     * @var bool $keyboard , closes the modal when escape key is pressed.
      */
     public $keyboard = true;
 
     /**
-     * @var bool $show, shows the modal when initialized.
+     * @var bool $show , shows the modal when initialized.
      */
     public $show = false;
 
@@ -127,8 +127,8 @@ class BsModal extends CWidget
             BSHtml::addCssClass('fade', $this->htmlOptions);
         }
 
-        if($this->show){
-            BSHtml::addCssClass('in',$this->htmlOptions);
+        if ($this->show) {
+            BSHtml::addCssClass('in', $this->htmlOptions);
         }
 
         if (is_array($this->footer)) {

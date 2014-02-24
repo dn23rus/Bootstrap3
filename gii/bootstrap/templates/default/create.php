@@ -19,7 +19,7 @@ echo "\$this->breadcrumbs=array(
 ?>
 
     $this->menu=array(
-        array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+    array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
     );
     ?>
 <?php echo "<?php echo BSHtml::pageHeader('Create','$this->modelClass') ?>\n"; ?>

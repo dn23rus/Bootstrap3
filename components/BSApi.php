@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User: Pascal Brewing
  * Date: 11.09.13
@@ -6,8 +7,8 @@
  * @package bootstrap.components
  * Class BSApi
  */
-
-class BSApi extends CComponent {
+class BSApi extends CComponent
+{
     // Bootstrap plugins
     const PLUGIN_AFFIX = 'affix';
     const PLUGIN_ALERT = 'alert';
@@ -66,8 +67,8 @@ class BSApi extends CComponent {
             return $this->_assetsUrl;
         } else {
             $forceCopyAssets = true;
-            $path            = \Yii::getPathOfAlias('bootstrap');
-            $assetsUrl       = \Yii::app()->assetManager->publish(
+            $path = \Yii::getPathOfAlias('bootstrap');
+            $assetsUrl = \Yii::app()->assetManager->publish(
                 $path . DIRECTORY_SEPARATOR . 'assets',
                 false,
                 -1,

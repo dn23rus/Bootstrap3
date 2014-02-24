@@ -104,5 +104,5 @@ class BsGridView extends CGridView
         }
         return $column;
     }
-  
+
 }

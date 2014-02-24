@@ -8,7 +8,8 @@
  */
 namespace bootstrap\helpers;
 
-class NavPartial extends \CModel {
+class NavPartial extends \CModel
+{
     public static $view;
     public static $params;
 
@@ -16,7 +17,7 @@ class NavPartial extends \CModel {
     {
         // TODO: Implement attributeNames() method.
         return array(
-          'view' => self::$view
+            'view' => self::$view
         );
     }
 
@@ -24,7 +25,7 @@ class NavPartial extends \CModel {
      * @param $view
      * @return mixed
      */
-    public static  function setView($view)
+    public static function setView($view)
     {
         return self::$view = $view;
     }
@@ -34,7 +35,7 @@ class NavPartial extends \CModel {
      * @param array $params
      * @return array
      */
-    public static function getView($view,array $params = array())
+    public static function getView($view, array $params = array())
     {
         self::setView($view);
         self::setParams($params);
@@ -43,6 +44,7 @@ class NavPartial extends \CModel {
             'params' => self::$params
         );
     }
+
     /**
      * @param mixed $params
      */

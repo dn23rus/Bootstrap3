@@ -37,24 +37,24 @@ class BsActiveForm extends CActiveForm
     public $hideInlineErrors = false;
 
     /**
-	 * @var string[] attribute IDs to be used to display error summary.
-	 * @since 1.1.14
-	 */
-	private $_summaryAttributes=array();
+     * @var string[] attribute IDs to be used to display error summary.
+     * @since 1.1.14
+     */
+    private $_summaryAttributes = array();
 
-	/**
-	 * Runs the widget.
-	 * This registers the necessary javascript code and renders the form close tag.
-	 */
-	public function run()
-	{
-		foreach($this->_summaryAttributes as $attribute) {
-			$this->attributes[$attribute]['summary'] = true;
-		}
-		$options['attributes'] = array_values($this->attributes);
+    /**
+     * Runs the widget.
+     * This registers the necessary javascript code and renders the form close tag.
+     */
+    public function run()
+    {
+        foreach ($this->_summaryAttributes as $attribute) {
+            $this->attributes[$attribute]['summary'] = true;
+        }
+        $options['attributes'] = array_values($this->attributes);
 
-		parent::run();
-	}
+        parent::run();
+    }
 
     /**
      * Initializes the widget.
@@ -85,7 +85,8 @@ class BsActiveForm extends CActiveForm
         $htmlOptions = array(),
         $enableAjaxValidation = true,
         $enableClientValidation = true
-    ) {
+    )
+    {
         if (!$this->enableAjaxValidation) {
             $enableAjaxValidation = false;
         }
@@ -189,11 +190,11 @@ class BsActiveForm extends CActiveForm
 
         $this->summaryID = $htmlOptions['id'];
 
-		foreach (is_array($models) ? $models : array($models) as $model) {
-			foreach ($model->getSafeAttributeNames() as $attribute) {
-				$this->_summaryAttributes[] = CHtml::activeId($model, $attribute);
-			}
-		}
+        foreach (is_array($models) ? $models : array($models) as $model) {
+            foreach ($model->getSafeAttributeNames() as $attribute) {
+                $this->_summaryAttributes[] = CHtml::activeId($model, $attribute);
+            }
+        }
 
         return $html;
     }
@@ -780,12 +781,12 @@ class BsActiveForm extends CActiveForm
         }
         $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $options, array());
         $helpOptions['type'] = $this->helpType;
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions',$options,array());
+        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $options, array());
 
         $options['helpOptions'] = $helpOptions;
-        $options['labelOptions'] = BsHtml::setLabelOptionsByLayout($this->layout,$labelOptions);
+        $options['labelOptions'] = BsHtml::setLabelOptionsByLayout($this->layout, $labelOptions);
         $options['formLayout'] = $this->layout;
         return $options;
     }
-	
+
 }

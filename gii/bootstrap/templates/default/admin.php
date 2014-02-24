@@ -24,17 +24,17 @@ array('icon' => 'glyphicon glyphicon-plus-sign','label'=>'Create <?php echo $thi
 );
 
 Yii::app()->clientScript->registerScript('search',
-    "
-    $('.search-button').click(function(){
-        $('.search-form').toggle();
-            return false;
-        });
-        $('.search-form form').submit(function(){
-            $('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
-            data: $(this).serialize()
-        });
-        return false;
-    });"
+"
+$('.search-button').click(function(){
+$('.search-form').toggle();
+return false;
+});
+$('.search-form form').submit(function(){
+$('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
+data: $(this).serialize()
+});
+return false;
+});"
 );
 ?>
 <?php echo "<?php echo BSHtml::pageHeader('Manage','$label') ?>\n"; ?>
@@ -48,11 +48,13 @@ Yii::app()->clientScript->registerScript('search',
                 &lt;&gt;</b>
             or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
         </p>
+
         <div class="search-form" style="display:none">
             <?php echo "<?php \$this->renderPartial('_search',array(
                 'model'=>\$model,
             )); ?>\n"; ?>
-        </div><!-- search-form -->
+        </div>
+        <!-- search-form -->
 
         <?php echo "<?php"; ?> $this->widget('bootstrap.widgets.BsGridView',array(
         'id'=>'<?php echo $this->class2id($this->modelClass); ?>-grid',

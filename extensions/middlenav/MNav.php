@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User: Pascal Brewing
  * Date: 15.09.13
@@ -6,8 +7,8 @@
  * @package ${DIR}.MNav
  * Class MNav
  */
-
-class MNav extends CInputWidget {
+class MNav extends CInputWidget
+{
     //Types
     const MIDDLE_NAV_R = 'middleNavR';
     const MIDDLE_NAV_A = 'middleNavA';
@@ -36,26 +37,28 @@ class MNav extends CInputWidget {
     /**
      *
      */
-    public function run(){
+    public function run()
+    {
 //        CVarDumper::dump($this->items,10,true);
         $path = Yii::getPathOfAlias('bootstrap.extensions.middlenav.views');
         $this->registerAssetCss('middlenav.css');
 //        $this->prepareItems();
-        $this->renderInternal($path.'/mnav.php',array('items' => $this->prepareItems(),'type' => $this->type));
+        $this->renderInternal($path . '/mnav.php', array('items' => $this->prepareItems(), 'type' => $this->type));
     }
 
-    private function prepareItems(){
+    private function prepareItems()
+    {
         $option = array();
-        foreach($this->items as $item){
+        foreach ($this->items as $item) {
             $label = '';
-            if(isset($item['icon'])){
-                $label .= BSHtml::icon($item['icon'].' glyphicon iconb');
+            if (isset($item['icon'])) {
+                $label .= BSHtml::icon($item['icon'] . ' glyphicon iconb');
             }
 
 
 //            CVarDumper::dump($htmlOptions,10,true);
 
-            if($this->type === MNav::MIDDLE_NAV_A || $this->type === MNav::MIDDLE_NAV_FREE && isset($item['label'])){
+            if ($this->type === MNav::MIDDLE_NAV_A || $this->type === MNav::MIDDLE_NAV_FREE && isset($item['label'])) {
                 $label .= "<span>{$item['label']} </span>";
             }
 
@@ -65,24 +68,24 @@ class MNav extends CInputWidget {
 //            if(isset($item['icon']))
 //                $label .= BSHtml::icon()$item['icon'].' iconb';
 
-            if(isset($item['color']))
+            if (isset($item['color']))
                 $cssclass .= $item['color'];
 
             $htmlOptions['class'] = $cssclass;
 
-            if(isset($item['tooltip']))
+            if (isset($item['tooltip']))
                 $htmlOptions['data-toggle'] = 'tooltip';
 
-            if(isset($item['tooltip']['label']))
+            if (isset($item['tooltip']['label']))
                 $htmlOptions['data-original-title'] = $item['tooltip']['label'];
 
-            if(isset($item['tooltip']['placement']))
+            if (isset($item['tooltip']['placement']))
                 $htmlOptions['data-placement'] = $item['tooltip']['placement'];
 
-            if(isset($item['badge']))
+            if (isset($item['badge']))
                 $htmlOptions['badge'] = $item['badge'];
 
-            if(isset($item['label']))
+            if (isset($item['label']))
                 $htmlOptions['title'] = $item['label'];
 
             $option[] = array(
@@ -95,6 +98,7 @@ class MNav extends CInputWidget {
         }
         return $option;
     }
+
     /**
      * Returns the assets URL.
      * Assets folder has few orphan and very useful utility libraries.
@@ -106,8 +110,8 @@ class MNav extends CInputWidget {
             return $this->_assetsUrl;
         } else {
             $forceCopyAssets = true;
-            $path            = \Yii::getPathOfAlias('bootstrap.extensions.middlenav');
-            $assetsUrl       = \Yii::app()->assetManager->publish(
+            $path = \Yii::getPathOfAlias('bootstrap.extensions.middlenav');
+            $assetsUrl = \Yii::app()->assetManager->publish(
                 $path . DIRECTORY_SEPARATOR . 'assets',
                 false,
                 -1,

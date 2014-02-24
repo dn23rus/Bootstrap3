@@ -7,7 +7,6 @@
  */
 
 
-
 /**
  * Bootstrap navbar widget.
  * @see http://twitter.github.com/bootstrap/components.html#navbar
@@ -113,25 +112,25 @@ class BsNavbar extends CWidget
                 )
             );
             $collapseContent = ob_get_clean();
-            $collapseLink =  BSHtml::navbarCollapseLink('#' . $collapseWidget->getId());
+            $collapseLink = BSHtml::navbarCollapseLink('#' . $collapseWidget->getId());
 
-            echo BSHtml::tag('div',array('class'=>'navbar-header'),$collapseLink . $brand) . $collapseContent;
+            echo BSHtml::tag('div', array('class' => 'navbar-header'), $collapseLink . $brand) . $collapseContent;
 
         } else {
-            echo BSHtml::tag('div',array('class'=>'navbar-header'),$brand) . $items;
+            echo BSHtml::tag('div', array('class' => 'navbar-header'), $brand) . $items;
         }
         $containerContent = ob_get_clean();
         if (
-			isset($this->position) && (
-            $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP ||
-            $this->position === BSHtml::NAVBAR_POSITION_STATIC_TOP)
+            isset($this->position) && (
+                $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP ||
+                $this->position === BSHtml::NAVBAR_POSITION_STATIC_TOP)
         ) {
             $fluid = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, false);
 
             $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
             $containerClass = 'container';
 
-            if($fluid){
+            if ($fluid) {
                 $containerOptions = \bootstrap\helpers\BSArray::removeValue('fluid', $this->htmlOptions, array());
                 $containerClass = 'container-fluid';
             }

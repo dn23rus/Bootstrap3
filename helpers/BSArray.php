@@ -9,7 +9,8 @@
 namespace bootstrap\helpers;
 
 
-class BSArray {
+class BSArray
+{
     /**
      * Returns a specific value from the given array (or the default value if not set).
      * @param string $key the item key.
