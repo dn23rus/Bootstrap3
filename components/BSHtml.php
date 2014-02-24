@@ -141,7 +141,7 @@ class BSHtml extends CHtml
     const PAGINATION_ALIGN_LEFT = 'left';
     const PAGINATION_ALIGN_CENTER = 'centered';
     const PAGINATION_ALIGN_RIGHT = 'right';
-	
+
     //
     // PANELS
     // --------------------------------------------------
@@ -797,8 +797,8 @@ class BSHtml extends CHtml
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
         $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
         $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-		$layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, array());
-		
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, array());
+
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = $label;
             $htmlOptions['labelOptions'] = $labelOptions;
@@ -816,15 +816,15 @@ class BSHtml extends CHtml
             : self::createInput($type, $name, $value, $htmlOptions, $data);
 
         self::addCssClass('form-group', $groupOptions);
-		
-		if (!empty($layout)) {
+
+        if (!empty($layout)) {
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
                 $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
             }
-			$labelOptions = self::setLabelOptionsByLayout($layout,$labelOptions);
+            $labelOptions = self::setLabelOptionsByLayout($layout,$labelOptions);
         }
-		
+        
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
@@ -979,7 +979,7 @@ class BSHtml extends CHtml
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass($addOnClasses, $addOnOptions);
-		self::addCssClass('form-control', $htmlOptions);
+        self::addCssClass('form-control', $htmlOptions);
 
         $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
         $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
@@ -1155,7 +1155,7 @@ class BSHtml extends CHtml
     public static function textArea($name, $value = '', $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
-		self::addCssClass('form-control', $htmlOptions);
+        self::addCssClass('form-control', $htmlOptions);
         return parent::textArea($name, $value, $htmlOptions);
     }
 
@@ -1200,7 +1200,7 @@ class BSHtml extends CHtml
      */
     public static function dropDownList($name, $select, $data, $htmlOptions = array())
     {
-		self::addCssClass('form-control', $htmlOptions);
+        self::addCssClass('form-control', $htmlOptions);
         return parent::dropDownList($name, $select, $data, $htmlOptions);
     }
 
@@ -1571,8 +1571,8 @@ EOD;
     public static function checkBoxControlGroup($name, $checked = false, $htmlOptions = array())
     {
         $type = self::INPUT_TYPE_CHECKBOX;
-		
-		$layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
+
+        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
         $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
         $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
         $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions, false);
@@ -4078,8 +4078,8 @@ EOD;
         }
         return $cssCLass;
     }
-	
-	/**
+
+    /**
      * set the label CssClass by Layout
      * @param string $layout
      * @param array $labelOptions
@@ -4103,7 +4103,7 @@ EOD;
         return $labelOptions;
 
     }
-	
+
     /**
      * Generates a list of thumbnails.
      * @param array $thumbnails the list configuration.
