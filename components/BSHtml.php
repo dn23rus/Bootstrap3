@@ -440,6 +440,7 @@ class BSHtml extends CHtml
 
     public static $formLayoutHorizontalLabelClass = 'col-lg-2';
     public static $formLayoutHorizontalControlClass = 'col-lg-10';
+    public static $formLayoutHorizontalOffsetClass = 'col-lg-offset-2';
 
     //
     // BASE CSS
@@ -786,7 +787,8 @@ class BSHtml extends CHtml
         $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
         $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
         $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-
+		$layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, array());
+		
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = $label;
             $htmlOptions['labelOptions'] = $labelOptions;
@@ -803,7 +805,16 @@ class BSHtml extends CHtml
             ? $htmlOptions['input']
             : self::createInput($type, $name, $value, $htmlOptions, $data);
 
-        self::addCssClass('control-group', $groupOptions);
+        self::addCssClass('form-group', $groupOptions);
+		
+		if (!empty($layout)) {
+            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
+                self::addCssClass($controlClass, $controlOptions);
+            }
+			$labelOptions = self::setLabelOptionsByLayout($layout,$labelOptions);
+        }
+		
         if (!empty($color)) {
             self::addCssClass($color, $groupOptions);
         }
@@ -958,6 +969,7 @@ class BSHtml extends CHtml
         $addOnClasses = self::getAddOnClasses($htmlOptions);
         $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass($addOnClasses, $addOnOptions);
+		self::addCssClass('form-control', $htmlOptions);
 
         $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
         $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
@@ -1133,6 +1145,7 @@ class BSHtml extends CHtml
     public static function textArea($name, $value = '', $htmlOptions = array())
     {
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
+		self::addCssClass('form-control', $htmlOptions);
         return parent::textArea($name, $value, $htmlOptions);
     }
 
@@ -1177,11 +1190,7 @@ class BSHtml extends CHtml
      */
     public static function dropDownList($name, $select, $data, $htmlOptions = array())
     {
-        $displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
-        $htmlOptions = self::normalizeInputOptions($htmlOptions);
-        if (!empty($displaySize)) {
-            $htmlOptions['size'] = $displaySize;
-        }
+		self::addCssClass('form-control', $htmlOptions);
         return parent::dropDownList($name, $select, $data, $htmlOptions);
     }
 
@@ -1552,23 +1561,52 @@ EOD;
     public static function checkBoxControlGroup($name, $checked = false, $htmlOptions = array())
     {
         $type = self::INPUT_TYPE_CHECKBOX;
-
+		
+		$layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
         $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
         $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        if (!empty($help)) {
-            $help = self::inputHelp($help, $helpOptions);
+        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions, false);
+        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
+        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
+
+        $output= '';
+        $labelContent = '';
+
+        if($color){
+            if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+                self::addCssClass($color,$groupOptions);
+            else
+                self::addCssClass($color,$controlOptions);
+        }
+
+        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+            self::addCssClass('form-group',$groupOptions);
+            $output .= parent::openTag('div',$groupOptions);
+            $output .= parent::openTag('div',array('class' => static::$formLayoutHorizontalOffsetClass.' '.static::$formLayoutHorizontalControlClass));
+            $output.= parent::openTag('div',array('class' => 'checkbox'));
+        }else{
+            self::addCssClass('checkbox',$controlOptions);
+            $output.= parent::openTag('div',$controlOptions);
         }
 
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createInput($type, $name, $checked, $htmlOptions);
 
-        $output = '<div class="form-group"><div class="col-lg-offset-2"><div class="checkbox"><label>';
-        $output .= $input;
-        $output .= $name;
-        $output .= '</label></div></div></div>';
-        return $output;
+        $labelContent .= $input;
+        $labelContent .= $name;
 
+        if (!empty($help) && !$error)
+            $labelContent .= self::inputHelp($help, $helpOptions);
+
+        $output.= parent::tag('label',array(),$labelContent);
+        $output.= parent::closeTag('div');//close <div class="checkbox">
+
+        if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
+            $output.= parent::closeTag('div');//close <div class="col-lg-offset-2">
+            $output.= parent::closeTag('div');//close <div class="form-group">
+        }
+        return $output;
     }
 
     /**
@@ -2321,7 +2359,7 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="col-lg-offset-2"><div class="radio"><label>' : '<div class="radio"><label>';
+        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="'.static::$formLayoutHorizontalOffsetClass.'"><div class="radio"><label>' : '<div class="radio"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
@@ -2363,7 +2401,7 @@ EOD;
         if($layout === BSHtml::FORM_LAYOUT_HORIZONTAL){
             self::addCssClass('form-group',$groupOptions);
             $output .= parent::openTag('div',$groupOptions);
-            $output .= parent::openTag('div',array('class' => 'col-lg-offset-2'));
+            $output .= parent::openTag('div',array('class' => static::$formLayoutHorizontalOffsetClass.' '.static::$formLayoutHorizontalControlClass));
             $output.= parent::openTag('div',array('class' => 'checkbox'));
         }else{
             self::addCssClass('checkbox',$controlOptions);
@@ -2597,7 +2635,7 @@ EOD;
         if (is_array($actions)) {
             $actions = implode(' ', $actions);
         }
-        $outPut = parent::openTag('div', array('class' => 'col-lg-offset-2'), array());
+        $outPut = parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass), array());
         $outPut .= self::tag('div', $htmlOptions, $actions);
         $outPut .= parent::closeTag('div');
         return $outPut;
@@ -4030,6 +4068,32 @@ EOD;
         }
         return $cssCLass;
     }
+	
+	/**
+     * set the label CssClass by Layout
+     * @param string $layout
+     * @param array $labelOptions
+     * @return array new label options
+     */
+    public static function setLabelOptionsByLayout($layout,$labelOptions=array()){
+
+        if(empty($layout)){
+            BSHtml::addCssClass('control-label',$labelOptions);
+            return $labelOptions;
+        }
+        if($layout === BSHtml::FORM_LAYOUT_INLINE){
+            BSHtml::addCssClass('control-label',$labelOptions);
+            BSHtml::addCssClass('sr-only',$labelOptions);
+            return $labelOptions;
+        }
+
+        $labelClass = \bootstrap\helpers\BSArray::popValue('class',$labelOptions,BSHtml::$formLayoutHorizontalLabelClass);
+        BSHtml::addCssClass('control-label',$labelOptions);
+        BSHtml::addCssClass($labelClass,$labelOptions);
+        return $labelOptions;
+
+    }
+	
     /**
      * Generates a list of thumbnails.
      * @param array $thumbnails the list configuration.
