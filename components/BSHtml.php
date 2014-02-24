@@ -30,11 +30,10 @@ class BSHtml extends CHtml
     //
     // FORM
     // --------------------------------------------------
+    const FORM_LAYOUT_VERTICAL = 'vertical';
     const FORM_LAYOUT_HORIZONTAL = 'horizontal';
     const FORM_LAYOUT_INLINE = 'inline';
     const FORM_LAYOUT_SEARCH = 'search';
-    const FORM_LAYOUT_HORIZONTAL_LABEL_CLASS = 'col-lg-2';
-    const FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS = 'col-lg-10';
     const INPUT_TYPE_TEXT = 'textField';
     const INPUT_TYPE_PASSWORD = 'passwordField';
     const INPUT_TYPE_URL = 'urlField';
@@ -449,6 +448,9 @@ class BSHtml extends CHtml
      */
     public static $errorSummaryCss = 'alert alert-block alert-danger';
 
+    public static $formLayoutHorizontalLabelClass = 'col-lg-2';
+    public static $formLayoutHorizontalControlClass = 'col-lg-10';
+
     //
     // BASE CSS
     // --------------------------------------------------
@@ -716,7 +718,7 @@ class BSHtml extends CHtml
      * @return string the generated form tag.
      */
     public static function statefulFormBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -735,7 +737,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function formBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -753,7 +755,7 @@ class BSHtml extends CHtml
      * @return string the generated tag.
      */
     public static function beginFormBs(
-        $layout = '',
+        $layout = self::FORM_LAYOUT_VERTICAL,
         $action = '',
         $method = 'post',
         $htmlOptions = array()
@@ -1756,9 +1758,8 @@ EOD;
 
         if (!empty($layout)) {
             if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,BSHtml::FORM_LAYOUT_HORIZONTAL_CONTROL_CLASS);
+                $controlClass = \bootstrap\helpers\BSArray::popValue('class',$controlOptions,self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
-
             }
         }
 
@@ -2895,8 +2896,13 @@ EOD;
                     }
                     $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
                     $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                    $divider = \bootstrap\helpers\BSArray::popValue('divider', $itemOptions, false);
 
-                    if (empty($items)) {
+                    if ($divider) {
+                        $output .= self::menuDivider($itemOptions);
+                    } elseif ($url === false && empty($items)) {
+                        $output .= self::dropDownHeader($label, $itemOptions);
+                    } elseif (empty($items)) {
                         $itemOptions['linkOptions']['tabindex'] = -1;
                         $output .= self::menuLink($label, $url, $itemOptions);
                     } else {
@@ -3518,6 +3524,7 @@ EOD;
      */
     public static function menuHeader($label, $htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3546,6 +3553,7 @@ EOD;
      */
     public static function dropDownHeader($label, $htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('dropdown-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3557,6 +3565,7 @@ EOD;
      */
     public static function menuDivider($htmlOptions = array())
     {
+        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('divider', $htmlOptions);
         return self::tag('li', $htmlOptions);
     }
