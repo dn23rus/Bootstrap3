@@ -6,9 +6,6 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.components.BSHtml');
-Yii::import('bootstrap.behaviors.BsWidget');
-
 /**
  * Bootstrap active form widget.
  */
@@ -19,9 +16,9 @@ class BsActiveForm extends CActiveForm
      */
     public $layout;
     /**
-     * @var string the help type. Valid values are BSHtml::HELP_INLINE and BSHtml::HELP_BLOCK.
+     * @var string the help type. Valid values are BsHtml::HELP_INLINE and BsHtml::HELP_BLOCK.
      */
-    public $helpType = BSHtml::HELP_TYPE_BLOCK;
+    public $helpType = BsHtml::HELP_TYPE_BLOCK;
     /**
      * @var string the CSS class name for error messages.
      */
@@ -64,9 +61,9 @@ class BsActiveForm extends CActiveForm
         $this->attachBehavior('BsWidget', new BsWidget());
         $this->copyId();
         if ($this->stateful) {
-            echo BSHtml::statefulFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
+            echo BsHtml::statefulFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
         } else {
-            echo BSHtml::beginFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
+            echo BsHtml::beginFormBs($this->layout, $this->action, $this->method, $this->htmlOptions);
         }
     }
 
@@ -94,12 +91,12 @@ class BsActiveForm extends CActiveForm
             $enableClientValidation = false;
         }
         if (!$enableAjaxValidation && !$enableClientValidation) {
-            return BSHtml::error($model, $attribute, $htmlOptions);
+            return BsHtml::error($model, $attribute, $htmlOptions);
         }
         $id = CHtml::activeId($model, $attribute);
-        $inputID = \bootstrap\helpers\BSArray::getValue('inputID', $htmlOptions, $id);
+        $inputID = BsArray::getValue('inputID', $htmlOptions, $id);
         unset($htmlOptions['inputID']);
-        \bootstrap\helpers\BSArray::defaultValue('id', $inputID . '_em_', $htmlOptions);
+        BsArray::defaultValue('id', $inputID . '_em_', $htmlOptions);
         $option = array(
             'id' => $id,
             'inputID' => $inputID,
@@ -125,7 +122,7 @@ class BsActiveForm extends CActiveForm
         );
         foreach ($optionNames as $name) {
             if (isset($htmlOptions[$name])) {
-                $option[$name] = \bootstrap\helpers\BSArray::popValue($name, $htmlOptions);
+                $option[$name] = BsArray::popValue($name, $htmlOptions);
             }
         }
 
@@ -133,7 +130,7 @@ class BsActiveForm extends CActiveForm
             $option['status'] = 1;
         }
         if ($enableClientValidation) {
-            $validators = \bootstrap\helpers\BSArray::getValue('clientValidation', $htmlOptions, array());
+            $validators = BsArray::getValue('clientValidation', $htmlOptions, array());
             $attributeName = $attribute;
             if (($pos = strrpos($attribute, ']')) !== false && $pos !== strlen($attribute) - 1) // e.g. [a]name
             {
@@ -153,11 +150,11 @@ class BsActiveForm extends CActiveForm
                     ) . "\n}";
             }
         }
-        $html = BSHtml::error($model, $attribute, $htmlOptions);
+        $html = BsHtml::error($model, $attribute, $htmlOptions);
         if ($html === '') {
             $htmlOptions['type'] = $this->helpType;
-            BSHtml::addCssStyle('display:none', $htmlOptions);
-            $html = BSHtml::help('', $htmlOptions);
+            BsHtml::addCssStyle('display:none', $htmlOptions);
+            $html = BsHtml::help('', $htmlOptions);
         }
 
         $this->attributes[$inputID] = $option;
@@ -175,16 +172,16 @@ class BsActiveForm extends CActiveForm
     public function errorSummary($models, $header = null, $footer = null, $htmlOptions = array())
     {
         if (!$this->enableAjaxValidation && !$this->enableClientValidation) {
-            return BSHtml::errorSummary($models, $header, $footer, $htmlOptions);
+            return BsHtml::errorSummary($models, $header, $footer, $htmlOptions);
         }
-        \bootstrap\helpers\BSArray::defaultValue('id', $this->id . '_es_', $htmlOptions);
-        $html = BSHtml::errorSummary($models, $header, $footer, $htmlOptions);
+        BsArray::defaultValue('id', $this->id . '_es_', $htmlOptions);
+        $html = BsHtml::errorSummary($models, $header, $footer, $htmlOptions);
         if ($html === '') {
             if ($header === null) {
                 $header = '<p>' . Yii::t('yii', 'Please fix the following input errors:') . '</p>';
             }
-            BSHtml::addCssClass(BSHtml::$errorSummaryCss, $htmlOptions);
-            BSHtml::addCssStyle('display:none', $htmlOptions);
+            BsHtml::addCssClass(BsHtml::$errorSummaryCss, $htmlOptions);
+            BsHtml::addCssStyle('display:none', $htmlOptions);
             $html = CHtml::tag('div', $htmlOptions, $header . '<ul><li>dummy</li></ul>' . $footer);
         }
 
@@ -205,12 +202,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activeTextField
+     * @see BsHtml::activeTextField
      */
     public function textField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeTextField($model, $attribute, $htmlOptions);
+        return BsHtml::activeTextField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -219,12 +216,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activePasswordField
+     * @see BsHtml::activePasswordField
      */
     public function passwordField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activePasswordField($model, $attribute, $htmlOptions);
+        return BsHtml::activePasswordField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -233,12 +230,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field
-     * @see BSHtml::activeUrlField
+     * @see BsHtml::activeUrlField
      */
     public function urlField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeUrlField($model, $attribute, $htmlOptions);
+        return BsHtml::activeUrlField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -247,12 +244,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activeEmailField
+     * @see BsHtml::activeEmailField
      */
     public function emailField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeEmailField($model, $attribute, $htmlOptions);
+        return BsHtml::activeEmailField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -261,12 +258,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activeEmailField
+     * @see BsHtml::activeEmailField
      */
     public function telField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeTelField($model, $attribute, $htmlOptions);
+        return BsHtml::activeTelField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -275,12 +272,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activeNumberField
+     * @see BsHtml::activeNumberField
      */
     public function numberField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeNumberField($model, $attribute, $htmlOptions);
+        return BsHtml::activeNumberField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -289,12 +286,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input field.
-     * @see BSHtml::activeRangeField
+     * @see BsHtml::activeRangeField
      */
     public function rangeField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeRangeField($model, $attribute, $htmlOptions);
+        return BsHtml::activeRangeField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -307,7 +304,7 @@ class BsActiveForm extends CActiveForm
     public function dateField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeDateField($model, $attribute, $htmlOptions);
+        return BsHtml::activeDateField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -316,12 +313,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated text area.
-     * @see BSHtml::activeTextArea
+     * @see BsHtml::activeTextArea
      */
     public function textArea($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeTextArea($model, $attribute, $htmlOptions);
+        return BsHtml::activeTextArea($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -330,12 +327,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes
      * @return string the generated input field.
-     * @see BSHtml::activeFileField
+     * @see BsHtml::activeFileField
      */
     public function fileField($model, $attribute, $htmlOptions = array())
     {
 
-        return BSHtml::activeFileField($model, $attribute, $htmlOptions);
+        return BsHtml::activeFileField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -344,11 +341,11 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated radio button.
-     * @see BSHtml::activeRadioButton
+     * @see BsHtml::activeRadioButton
      */
     public function radioButton($model, $attribute, $htmlOptions = array())
     {
-        return BSHtml::activeRadioButton($model, $attribute, $htmlOptions);
+        return BsHtml::activeRadioButton($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -357,11 +354,11 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated check box.
-     * @see BSHtml::activeCheckBox
+     * @see BsHtml::activeCheckBox
      */
     public function checkBox($model, $attribute, $htmlOptions = array())
     {
-        return BSHtml::activeCheckBox($model, $attribute, $htmlOptions);
+        return BsHtml::activeCheckBox($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -371,11 +368,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated drop down list.
-     * @see BSHtml::activeDropDownList
+     * @see BsHtml::activeDropDownList
      */
     public function dropDownList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeDropDownList($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeDropDownList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -385,11 +382,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated list box.
-     * @see BSHtml::activeListBox
+     * @see BsHtml::activeListBox
      */
     public function listBox($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeListBox($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeListBox($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -399,11 +396,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display)
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated radio button list.
-     * @see BSHtml::activeRadioButtonList
+     * @see BsHtml::activeRadioButtonList
      */
     public function radioButtonList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeRadioButtonList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -413,11 +410,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display)
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated radio button list.
-     * @see BSHtml::activeInlineRadioButtonList
+     * @see BsHtml::activeInlineRadioButtonList
      */
     public function inlineRadioButtonList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeInlineRadioButtonList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -427,11 +424,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display)
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated checkbox list.
-     * @see BSHtml::activeCheckBoxList
+     * @see BsHtml::activeCheckBoxList
      */
     public function checkBoxList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeCheckBoxList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -441,11 +438,11 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display)
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated checkbox list.
-     * @see BSHtml::activeInlineCheckBoxList
+     * @see BsHtml::activeInlineCheckBoxList
      */
     public function inlineCheckBoxList($model, $attribute, $data, $htmlOptions = array())
     {
-        return BSHtml::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeInlineCheckBoxList($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -454,11 +451,11 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated field.
-     * @see BSHtml::activeUneditableField
+     * @see BsHtml::activeUneditableField
      */
     public function uneditableField($model, $attribute, $htmlOptions = array())
     {
-        return BSHtml::activeUneditableField($model, $attribute, $htmlOptions);
+        return BsHtml::activeUneditableField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -467,11 +464,11 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated input.
-     * @see BSHtml::activeSearchField
+     * @see BsHtml::activeSearchField
      */
     public function searchQuery($model, $attribute, $htmlOptions = array())
     {
-        return BSHtml::activeSearchQueryField($model, $attribute, $htmlOptions);
+        return BsHtml::activeSearchQueryField($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -480,13 +477,13 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeTextFieldControlGroup
+     * @see BsHtml::activeTextFieldControlGroup
      */
     public function textFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
 
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeTextFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeTextFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -495,12 +492,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activePasswordFieldControlGroup
+     * @see BsHtml::activePasswordFieldControlGroup
      */
     public function passwordFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activePasswordFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activePasswordFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -509,12 +506,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeUrlFieldControlGroup
+     * @see BsHtml::activeUrlFieldControlGroup
      */
     public function urlFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeUrlFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeUrlFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -523,12 +520,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeEmailFieldControlGroup
+     * @see BsHtml::activeEmailFieldControlGroup
      */
     public function emailFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeEmailFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeEmailFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -537,12 +534,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeTelFieldControlGroup
+     * @see BsHtml::activeTelFieldControlGroup
      */
     public function telFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeTelFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeTelFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -551,12 +548,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeNumberFieldControlGroup
+     * @see BsHtml::activeNumberFieldControlGroup
      */
     public function numberFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeNumberFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeNumberFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -565,12 +562,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeRangeFieldControlGroup
+     * @see BsHtml::activeRangeFieldControlGroup
      */
     public function rangeFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeRangeFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeRangeFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -579,12 +576,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeDateFieldControlGroup
+     * @see BsHtml::activeDateFieldControlGroup
      */
     public function dateFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeDateFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeDateFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -593,12 +590,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeTextAreaControlGroup
+     * @see BsHtml::activeTextAreaControlGroup
      */
     public function textAreaControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeTextAreaControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeTextAreaControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -607,12 +604,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeCheckBoxControlGroup
+     * @see BsHtml::activeCheckBoxControlGroup
      */
     public function checkBoxControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeCheckBoxControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeCheckBoxControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -621,12 +618,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeRadioButtonControlGroup
+     * @see BsHtml::activeRadioButtonControlGroup
      */
     public function radioButtonControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeRadioButtonControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeRadioButtonControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -635,12 +632,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeDropDownListControlGroup
+     * @see BsHtml::activeDropDownListControlGroup
      */
     public function dropDownListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeDropDownListControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeDropDownListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -649,12 +646,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeListBoxControlGroup
+     * @see BsHtml::activeListBoxControlGroup
      */
     public function listBoxControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeListBoxControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeListBoxControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -663,12 +660,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeFileFieldControlGroup
+     * @see BsHtml::activeFileFieldControlGroup
      */
     public function fileFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeFileFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeFileFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -678,12 +675,12 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeRadioButtonListControlGroup
+     * @see BsHtml::activeRadioButtonListControlGroup
      */
     public function radioButtonListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -693,12 +690,12 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeInlineCheckBoxListControlGroup
+     * @see BsHtml::activeInlineCheckBoxListControlGroup
      */
     public function inlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeInlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeInlineRadioButtonListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -708,12 +705,12 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeCheckBoxListControlGroup
+     * @see BsHtml::activeCheckBoxListControlGroup
      */
     public function checkBoxListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -723,12 +720,12 @@ class BsActiveForm extends CActiveForm
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeInlineCheckBoxListControlGroup
+     * @see BsHtml::activeInlineCheckBoxListControlGroup
      */
     public function inlineCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeInlineCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions);
+        return BsHtml::activeInlineCheckBoxListControlGroup($model, $attribute, $data, $htmlOptions);
     }
 
     /**
@@ -737,12 +734,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeUneditableFieldControlGroup
+     * @see BsHtml::activeUneditableFieldControlGroup
      */
     public function uneditableFieldControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeUneditableFieldControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeUneditableFieldControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -751,12 +748,12 @@ class BsActiveForm extends CActiveForm
      * @param string $attribute the attribute name.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated row.
-     * @see BSHtml::activeSearchFieldControlGroup
+     * @see BsHtml::activeSearchFieldControlGroup
      */
     public function searchQueryControlGroup($model, $attribute, $htmlOptions = array())
     {
         $htmlOptions = $this->processRowOptions($model, $attribute, $htmlOptions);
-        return BSHtml::activeSearchQueryControlGroup($model, $attribute, $htmlOptions);
+        return BsHtml::activeSearchQueryControlGroup($model, $attribute, $htmlOptions);
     }
 
     /**
@@ -768,20 +765,20 @@ class BsActiveForm extends CActiveForm
      */
     protected function processRowOptions($model, $attribute, $options)
     {
-        $errorOptions = \bootstrap\helpers\BSArray::popValue('errorOptions', $options, array());
+        $errorOptions = BsArray::popValue('errorOptions', $options, array());
         $errorOptions['type'] = $this->helpType;
         $error = $this->error($model, $attribute, $errorOptions);
 
         // kind of a hack for ajax forms but this works for now.
         if (!empty($error) && strpos($error, 'display:none') === false) {
-            $options['color'] = BSHtml::INPUT_COLOR_ERROR;
+            $options['color'] = BsHtml::INPUT_COLOR_ERROR;
         }
         if (!$this->hideInlineErrors) {
             $options['error'] = $error;
         }
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $options, array());
+        $helpOptions = BsArray::popValue('helpOptions', $options, array());
         $helpOptions['type'] = $this->helpType;
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $options, array());
+        $labelOptions = BsArray::popValue('labelOptions', $options, array());
 
         $options['helpOptions'] = $helpOptions;
         $options['labelOptions'] = BsHtml::setLabelOptionsByLayout($this->layout, $labelOptions);

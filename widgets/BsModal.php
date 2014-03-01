@@ -93,7 +93,7 @@ class BsModal extends CWidget
     /**
      * @var string
      */
-    public $closeText = BSHtml::CLOSE_TEXT;
+    public $closeText = BsHtml::CLOSE_TEXT;
 
     /**
      * @var string header content
@@ -116,19 +116,19 @@ class BsModal extends CWidget
     public function init()
     {
         $this->attachBehavior('BsWidget', new BsWidget());
-        \bootstrap\helpers\BSArray::defaultValue('id', $this->getId(), $this->htmlOptions);
-        \bootstrap\helpers\BSArray::defaultValue('role', 'dialog', $this->htmlOptions);
-        \bootstrap\helpers\BSArray::defaultValue('tabindex', '-1', $this->htmlOptions);
+        BsArray::defaultValue('id', $this->getId(), $this->htmlOptions);
+        BsArray::defaultValue('role', 'dialog', $this->htmlOptions);
+        BsArray::defaultValue('tabindex', '-1', $this->htmlOptions);
 
 
-        BSHtml::addCssClass('modal', $this->htmlOptions);
+        BsHtml::addCssClass('modal', $this->htmlOptions);
 
         if ($this->fade) {
-            BSHtml::addCssClass('fade', $this->htmlOptions);
+            BsHtml::addCssClass('fade', $this->htmlOptions);
         }
 
         if ($this->show) {
-            BSHtml::addCssClass('in', $this->htmlOptions);
+            BsHtml::addCssClass('in', $this->htmlOptions);
         }
 
         if (is_array($this->footer)) {
@@ -164,13 +164,13 @@ class BsModal extends CWidget
      */
     public function initOptions()
     {
-        if ($remote = \bootstrap\helpers\BSArray::popValue('remote', $this->options)) {
+        if ($remote = BsArray::popValue('remote', $this->options)) {
             $this->options['remote'] = CHtml::normalizeUrl($remote);
         }
 
-        \bootstrap\helpers\BSArray::defaultValue('backdrop', $this->backdrop, $this->options);
-        \bootstrap\helpers\BSArray::defaultValue('keyboard', $this->keyboard, $this->options);
-        \bootstrap\helpers\BSArray::defaultValue('show', $this->show, $this->options);
+        BsArray::defaultValue('backdrop', $this->backdrop, $this->options);
+        BsArray::defaultValue('keyboard', $this->keyboard, $this->options);
+        BsArray::defaultValue('show', $this->show, $this->options);
     }
 
     /**
@@ -189,17 +189,17 @@ class BsModal extends CWidget
     public function renderButton()
     {
         if (!empty($this->buttonOptions) && is_array($this->buttonOptions)) {
-            \bootstrap\helpers\BSArray::defaultValue('data-toggle', 'modal', $this->buttonOptions);
+            BsArray::defaultValue('data-toggle', 'modal', $this->buttonOptions);
 
             if ($this->remote !== null) {
                 $this->buttonOptions['data-remote'] = CHtml::normalizeUrl($this->remote);
             }
 
             $selector = '#' . $this->htmlOptions['id'];
-            $label = \bootstrap\helpers\BSArray::popValue('label', $this->buttonOptions, 'button');
+            $label = BsArray::popValue('label', $this->buttonOptions, 'button');
             $attr = isset($this->buttonOptions['data-remote']) ? 'data-target' : 'href';
-            \bootstrap\helpers\BSArray::defaultValue($attr, $selector, $this->buttonOptions);
-            echo BSHtml::button($label, $this->buttonOptions);
+            BsArray::defaultValue($attr, $selector, $this->buttonOptions);
+            echo BsHtml::button($label, $this->buttonOptions);
         }
     }
 
@@ -208,9 +208,9 @@ class BsModal extends CWidget
      */
     public function renderModal()
     {
-        echo BSHtml::openTag('div', $this->htmlOptions) . PHP_EOL;
-        echo BSHtml::openTag('div', array('class' => 'modal-dialog')) . PHP_EOL;
-        echo BSHtml::openTag('div', array('class' => 'modal-content')) . PHP_EOL;
+        echo BsHtml::openTag('div', $this->htmlOptions) . PHP_EOL;
+        echo BsHtml::openTag('div', array('class' => 'modal-dialog')) . PHP_EOL;
+        echo BsHtml::openTag('div', array('class' => 'modal-content')) . PHP_EOL;
 
         $this->renderModalHeader();
         $this->renderModalBody();
@@ -226,9 +226,9 @@ class BsModal extends CWidget
     {
         echo '<div class="modal-header">' . PHP_EOL;
         if ($this->closeText) {
-            echo BSHtml::closeButton($this->closeText, array('data-dismiss' => 'modal'));
+            echo BsHtml::closeButton($this->closeText, array('data-dismiss' => 'modal'));
         }
-        echo BSHtml::tag('h3', array(), $this->header);
+        echo BsHtml::tag('h3', array(), $this->header);
         echo '</div>' . PHP_EOL;
     }
 

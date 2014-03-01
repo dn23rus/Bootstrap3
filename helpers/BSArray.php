@@ -3,13 +3,10 @@
  * User: Pascal Brewing
  * @author Pascal Brewing
  * @package bootstrap.helpers
- * Class BSArray
+ * Class BsArray
  */
 
-namespace bootstrap\helpers;
-
-
-class BSArray
+class BsArray
 {
     /**
      * Returns a specific value from the given array (or the default value if not set).

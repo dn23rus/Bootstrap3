@@ -7,8 +7,8 @@
  * @package bootstrap.behaviors
  */
 
-Yii::import('bootstrap.components.BSHtml');
 Yii::import('bootstrap.components.BSApi');
+Yii::import('bootstrap.helpers.BsHtml');
 
 /**
  * Bootstrap widget behavior.
@@ -65,7 +65,7 @@ class BsWidget extends CBehavior
 
     /**
      * Returns the API instance.
-     * @return TbApi the api.
+     * @return BsApi the api.
      */
     private function getApi()
     {

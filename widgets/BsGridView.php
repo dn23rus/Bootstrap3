@@ -7,8 +7,6 @@
  */
 
 Yii::import('zii.widgets.grid.CGridView');
-Yii::import('bootstrap.widgets.BsDataColumn');
-Yii::import('bootstrap.widgets.BsPager');
 
 /**
  * Bootstrap Zii grid view.
@@ -17,8 +15,8 @@ class BsGridView extends CGridView
 {
     /**
      * @var string|array the table style.
-     * Valid values are BSHtml::GRID_TYPE_STRIPED, BSHtml::GRID_TYPE_BORDERED, BSHtml::GRID_TYPE_CONDENSED and/or
-     * BSHtml::GRID_TYPE_HOVER.
+     * Valid values are BsHtml::GRID_TYPE_STRIPED, BsHtml::GRID_TYPE_BORDERED, BsHtml::GRID_TYPE_CONDENSED and/or
+     * BsHtml::GRID_TYPE_HOVER.
      */
     public $type;
     /**

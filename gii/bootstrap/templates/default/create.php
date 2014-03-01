@@ -5,8 +5,8 @@
  */
 ?>
 <?php echo "<?php\n"; ?>
-    /* @var $this <?php echo $this->getControllerClass(); ?> */
-    /* @var $model <?php echo $this->getModelClass(); ?> */
+/* @var $this <?php echo $this->getControllerClass(); ?> */
+/* @var $model <?php echo $this->getModelClass(); ?> */
 <?php echo "?>\n"; ?>
 
 <?php
@@ -18,10 +18,12 @@ echo "\$this->breadcrumbs=array(
 );\n";
 ?>
 
-    $this->menu=array(
-    array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
-    );
-    ?>
-<?php echo "<?php echo BSHtml::pageHeader('Create','$this->modelClass') ?>\n"; ?>
+$this->menu=array(
+    array('icon' => 'glyphicon glyphicon-list','label'=>'List <?php echo $this->modelClass; ?>', 'url'=>array('index')),
+	array('icon' => 'glyphicon glyphicon-tasks','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
+);
+?>
+
+<?php echo "<?php echo BsHtml::pageHeader('Create','$this->modelClass') ?>\n"; ?>
 
 <?php echo "<?php \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>

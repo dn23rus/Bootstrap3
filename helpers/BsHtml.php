@@ -1,13 +1,13 @@
 <?php
-
 /**
  * User: Pascal Brewing
  * Date: 11.09.13
  * Time: 11:22
- * @package bootstrap/components
- * Class BSHtml
+ * @package bootstrap.helpers
+ * Class BsHtml
  */
-class BSHtml extends CHtml
+ 
+class BsHtml extends CHtml
 {
     //
     // TYPOGRAPHY
@@ -481,17 +481,22 @@ class BSHtml extends CHtml
      */
     public static function addCssClass($className, &$htmlOptions)
     {
-        if (is_array($className)) {
-            $className = implode(' ', $className);
+        // Always operate on arrays
+        if (is_string($className)) {
+            $className = explode(' ', $className);
         }
         if (isset($htmlOptions['class'])) {
-            // todo: consider throwing an exception if the class exists instead of skipping the class.
-            if (preg_match("/\b{$className}\b/", $htmlOptions['class']) === 0) {
-                $htmlOptions['class'] .= ' ' . $className;
+            $classes = array_filter(explode(' ', $htmlOptions['class']));
+            foreach ($className as $class) {
+                $class = trim($class);
+                // Don't add the class if it already exists
+                if (array_search($class, $classes) === false) {
+                    $classes[] = $class;
+                }
             }
-        } else {
-            $htmlOptions['class'] = $className;
+            $className = $classes;
         }
+        $htmlOptions['class'] = implode(' ', $className);
     }
 
     /**
@@ -516,7 +521,7 @@ class BSHtml extends CHtml
      */
     protected static function addSpanClass($htmlOptions = array())
     {
-        $span = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions);
+        $span = BsArray::popValue('span', $htmlOptions);
         if (!empty($span)) {
             self::addCssClass('span' . $span, $htmlOptions);
         }
@@ -528,7 +533,7 @@ class BSHtml extends CHtml
      */
     protected static function addPullClass(&$htmlOptions)
     {
-        $pull = \bootstrap\helpers\BSArray::popValue('pull', $htmlOptions);
+        $pull = BsArray::popValue('pull', $htmlOptions);
         if (!empty($pull)) {
             self::addCssClass('pull-' . $pull, $htmlOptions);
         }
@@ -540,7 +545,7 @@ class BSHtml extends CHtml
      */
     protected static function addTextAlignClass(&$htmlOptions)
     {
-        $align = \bootstrap\helpers\BSArray::popValue('textAlign', $htmlOptions);
+        $align = BsArray::popValue('textAlign', $htmlOptions);
         if (!empty($align)) {
             self::addCssClass('text-' . $align, $htmlOptions);
         }
@@ -589,8 +594,8 @@ class BSHtml extends CHtml
      */
     public static function em($text, $htmlOptions = array(), $tag = 'p')
     {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        if (\bootstrap\helpers\BSArray::popValue('muted', $htmlOptions, false)) {
+        $color = BsArray::popValue('color', $htmlOptions);
+        if (BsArray::popValue('muted', $htmlOptions, false)) {
             self::addCssClass('muted', $htmlOptions);
         } else {
             if (!empty($color)) {
@@ -609,7 +614,7 @@ class BSHtml extends CHtml
      */
     public static function emphasis($text, $htmlOptions = array(), $tag = 'p')
     {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('text-' . $color, $htmlOptions);
         }
@@ -643,8 +648,8 @@ class BSHtml extends CHtml
     public static function abbr($text, $word = '', $htmlOptions = array())
     {
         $htmlOptions['title'] = $word;
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
-        if (!empty($type) && $type === BSHtml::TEXT_ABBR_INITIALISM) {
+        $type = BsArray::popValue('type', $htmlOptions, false);
+        if (!empty($type) && $type === BsHtml::TEXT_ABBR_INITIALISM) {
             self::addCssClass('initialism', $htmlOptions);
         }
         return self::tag('abbr', $htmlOptions, $text);
@@ -669,11 +674,11 @@ class BSHtml extends CHtml
      */
     public static function quote($text, $htmlOptions = array())
     {
-        $paragraphOptions = \bootstrap\helpers\BSArray::popValue('paragraphOptions', $htmlOptions, array());
-        $small = \bootstrap\helpers\BSArray::popValue('small', $htmlOptions);
-        $smallOptions = \bootstrap\helpers\BSArray::popValue('smallOptions', $htmlOptions, array());
-        $cite = \bootstrap\helpers\BSArray::popValue('cite', $htmlOptions);
-        $citeOptions = \bootstrap\helpers\BSArray::popValue('citeOptions', $htmlOptions, array());
+        $paragraphOptions = BsArray::popValue('paragraphOptions', $htmlOptions, array());
+        $small = BsArray::popValue('small', $htmlOptions);
+        $smallOptions = BsArray::popValue('smallOptions', $htmlOptions, array());
+        $cite = BsArray::popValue('cite', $htmlOptions);
+        $citeOptions = BsArray::popValue('citeOptions', $htmlOptions, array());
         $cite = isset($cite) ? ' ' . self::tag('cite', $citeOptions, $cite) : '';
         $source = isset($small) ? self::tag('small', $smallOptions, $small . $cite) : '';
         $text = self::tag('p', $paragraphOptions, $text) . $source;
@@ -793,12 +798,12 @@ class BSHtml extends CHtml
      */
     public static function controlGroup($type, $name, $value = '', $htmlOptions = array(), $data = array())
     {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, array());
+        $color = BsArray::popValue('color', $htmlOptions);
+        $groupOptions = BsArray::popValue('groupOptions', $htmlOptions, array());
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+        $label = BsArray::popValue('label', $htmlOptions);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
+        $layout = BsArray::popValue('formLayout', $htmlOptions, array());
 
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = $label;
@@ -806,8 +811,8 @@ class BSHtml extends CHtml
             $label = false;
         }
 
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        $help = BsArray::popValue('help', $htmlOptions, '');
+        $helpOptions = BsArray::popValue('helpOptions', $htmlOptions, array());
         if (!empty($help)) {
             $help = self::inputHelp($help, $helpOptions);
         }
@@ -819,8 +824,8 @@ class BSHtml extends CHtml
         self::addCssClass('form-group', $groupOptions);
 
         if (!empty($layout)) {
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = BsArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
             }
             $labelOptions = self::setLabelOptionsByLayout($layout, $labelOptions);
@@ -847,7 +852,7 @@ class BSHtml extends CHtml
      */
     protected static function inputHelp($help, $htmlOptions)
     {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
+        $type = BsArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
         return $type === self::HELP_TYPE_INLINE
             ? self::help($help, $htmlOptions)
             : self::helpBlock($help, $htmlOptions);
@@ -873,7 +878,7 @@ class BSHtml extends CHtml
      */
     public static function help($text, $htmlOptions = array())
     {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
+        $type = BsArray::popValue('type', $htmlOptions, self::HELP_TYPE_INLINE);
         self::addCssClass('help-' . $type, $htmlOptions);
         return self::tag($type === self::HELP_TYPE_INLINE ? 'span' : 'p', $htmlOptions, $text);
     }
@@ -978,18 +983,18 @@ class BSHtml extends CHtml
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
 
         $addOnClasses = self::getAddOnClasses($htmlOptions);
-        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        $addOnOptions = BsArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass($addOnClasses, $addOnOptions);
         self::addCssClass('form-control', $htmlOptions);
 
-        $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
-        $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
+        $prepend = BsArray::popValue('prepend', $htmlOptions, '');
+        $prependOptions = BsArray::popValue('prependOptions', $htmlOptions, array());
         if (!empty($prepend)) {
             $prepend = self::inputAddOn($prepend, $prependOptions);
         }
 
-        $append = \bootstrap\helpers\BSArray::popValue('append', $htmlOptions, '');
-        $appendOptions = \bootstrap\helpers\BSArray::popValue('appendOptions', $htmlOptions, array());
+        $append = BsArray::popValue('append', $htmlOptions, '');
+        $appendOptions = BsArray::popValue('appendOptions', $htmlOptions, array());
         if (!empty($append)) {
             $append = self::inputAddOn($append, $appendOptions);
         }
@@ -1014,8 +1019,8 @@ class BSHtml extends CHtml
     {
         self::addSpanClass($options);
         self::addTextAlignClass($options);
-        $size = \bootstrap\helpers\BSArray::popValue('size', $options);
-        if (\bootstrap\helpers\BSArray::popValue('block', $options, false)) {
+        $size = BsArray::popValue('size', $options);
+        if (BsArray::popValue('block', $options, false)) {
             self::addCssClass('input-block-level', $options);
         } else {
             if (!empty($size)) {
@@ -1033,10 +1038,10 @@ class BSHtml extends CHtml
     protected static function getAddOnClasses($htmlOptions)
     {
         $classes = array();
-        if (\bootstrap\helpers\BSArray::getValue('append', $htmlOptions)) {
+        if (BsArray::getValue('append', $htmlOptions)) {
             $classes[] = 'input-group';
         }
-        if (\bootstrap\helpers\BSArray::getValue('prepend', $htmlOptions)) {
+        if (BsArray::getValue('prepend', $htmlOptions)) {
             $classes[] = 'input-group';
         }
         return !empty($classes) ? implode(' ', $classes) : $classes;
@@ -1050,7 +1055,7 @@ class BSHtml extends CHtml
      */
     protected static function inputAddOn($addOn, $htmlOptions)
     {
-        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        $addOnOptions = BsArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass('input-group-addon', $addOnOptions);
         return strpos($addOn, 'btn') === false // buttons should not be wrapped in a span
             ? self::tag('span', $addOnOptions, $addOn)
@@ -1188,7 +1193,7 @@ class BSHtml extends CHtml
                 $name .= '[]';
             }
         }
-        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
+        BsArray::defaultValue('displaySize', 4, $htmlOptions);
         return self::dropDownList($name, $select, $data, $htmlOptions);
     }
 
@@ -1229,25 +1234,25 @@ class BSHtml extends CHtml
      */
     public static function checkBoxList($name, $select, $data, $htmlOptions = array())
     {
-        $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
-        $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
-        $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions, 'span');
-        $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $htmlOptions, array());
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $inline = BsArray::popValue('inline', $htmlOptions, false);
+        $separator = BsArray::popValue('separator', $htmlOptions, ' ');
+        $container = BsArray::popValue('container', $htmlOptions, 'span');
+        $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 
         if (substr($name, -2) !== '[]') {
             $name .= '[]';
         }
 
-        $checkAll = \bootstrap\helpers\BSArray::popValue('checkAll', $htmlOptions);
-        $checkAllLast = \bootstrap\helpers\BSArray::popValue('checkAllLast', $htmlOptions);
+        $checkAll = BsArray::popValue('checkAll', $htmlOptions);
+        $checkAllLast = BsArray::popValue('checkAllLast', $htmlOptions);
         if ($checkAll !== null) {
             $checkAllLabel = $checkAll;
             $checkAllLast = $checkAllLast !== null;
         }
 
         $items = array();
-        $baseID = $containerOptions['id'] = \bootstrap\helpers\BSArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
+        $baseID = $containerOptions['id'] = BsArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
         $id = 0;
         $checkAll = true;
 
@@ -1307,8 +1312,8 @@ EOD;
      */
     public static function checkBox($name, $checked = false, $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $label = BsArray::popValue('label', $htmlOptions, false);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
         self::addCssClass('checkbox', $labelOptions);
         $checkBox = parent::checkBox($name, $checked, $htmlOptions);
         return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
@@ -1338,14 +1343,14 @@ EOD;
      */
     public static function radioButtonList($name, $select, $data, $htmlOptions = array())
     {
-        $inline = \bootstrap\helpers\BSArray::popValue('inline', $htmlOptions, false);
-        $separator = \bootstrap\helpers\BSArray::popValue('separator', $htmlOptions, ' ');
-        $container = \bootstrap\helpers\BSArray::popValue('container', $htmlOptions);
-        $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $htmlOptions, array());
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $inline = BsArray::popValue('inline', $htmlOptions, false);
+        $separator = BsArray::popValue('separator', $htmlOptions, ' ');
+        $container = BsArray::popValue('container', $htmlOptions);
+        $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 
         $items = array();
-        $baseID = $containerOptions['id'] = \bootstrap\helpers\BSArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
+        $baseID = $containerOptions['id'] = BsArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
 
         $id = 0;
         foreach ($data as $value => $label) {
@@ -1377,8 +1382,8 @@ EOD;
      */
     public static function radioButton($name, $checked = false, $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $label = BsArray::popValue('label', $htmlOptions, false);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
         self::addCssClass('radio', $labelOptions);
         $radioButton = parent::radioButton($name, $checked, $htmlOptions);
         return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
@@ -1419,11 +1424,11 @@ EOD;
     public static function controls($controls, $htmlOptions = array())
     {
 
-        if (\bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false)) {
+        if (BsArray::popValue('row', $htmlOptions, false)) {
             self::addCssClass('form-group', $htmlOptions);
         }
-        $before = \bootstrap\helpers\BSArray::popValue('before', $htmlOptions, '');
-        $after = \bootstrap\helpers\BSArray::popValue('after', $htmlOptions, '');
+        $before = BsArray::popValue('before', $htmlOptions, '');
+        $after = BsArray::popValue('after', $htmlOptions, '');
         if (is_array($controls)) {
             $controls = implode('', $controls);
         }
@@ -1573,24 +1578,24 @@ EOD;
     {
         $type = self::INPUT_TYPE_CHECKBOX;
 
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions, false);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
+        $layout = BsArray::popValue('formLayout', $htmlOptions, '');
+        $help = BsArray::popValue('help', $htmlOptions, '');
+        $helpOptions = BsArray::popValue('helpOptions', $htmlOptions, array());
+        $color = BsArray::popValue('color', $htmlOptions, false);
+        $groupOptions = BsArray::popValue('groupOptions', $htmlOptions, false);
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, false);
 
         $output = '';
         $labelContent = '';
 
         if ($color) {
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL)
                 self::addCssClass($color, $groupOptions);
             else
                 self::addCssClass($color, $controlOptions);
         }
 
-        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+        if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
             self::addCssClass('form-group', $groupOptions);
             $output .= parent::openTag('div', $groupOptions);
             $output .= parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass . ' ' . static::$formLayoutHorizontalControlClass));
@@ -1613,7 +1618,7 @@ EOD;
         $output .= parent::tag('label', array(), $labelContent);
         $output .= parent::closeTag('div'); //close <div class="checkbox">
 
-        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+        if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
             $output .= parent::closeTag('div'); //close <div class="col-lg-offset-2">
             $output .= parent::closeTag('div'); //close <div class="form-group">
         }
@@ -1771,11 +1776,11 @@ EOD;
      */
     public static function activeControlGroup($type, $model, $attribute, $htmlOptions = array(), $data = array())
     {
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, array());
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
+        $groupOptions = BsArray::popValue('groupOptions', $htmlOptions, array());
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, array());
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
+        $layout = BsArray::popValue('formLayout', $htmlOptions);
 
         if (in_array($type, array(self::INPUT_TYPE_CHECKBOX, self::INPUT_TYPE_RADIOBUTTON))) {
             $htmlOptions['label'] = $model->getAttributeLabel($attribute);
@@ -1783,12 +1788,12 @@ EOD;
             $label = false;
         }
 
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        $help = BsArray::popValue('help', $htmlOptions, '');
+        $helpOptions = BsArray::popValue('helpOptions', $htmlOptions, array());
         if (!empty($help)) {
             $help = self::inputHelp($help, $helpOptions);
         }
-        $error = \bootstrap\helpers\BSArray::popValue('error', $htmlOptions, '');
+        $error = BsArray::popValue('error', $htmlOptions, '');
 
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
@@ -1796,8 +1801,8 @@ EOD;
         self::addCssClass('form-group', $groupOptions);
 
         if (!empty($layout)) {
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
-                $controlClass = \bootstrap\helpers\BSArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
+                $controlClass = BsArray::popValue('class', $controlOptions, self::$formLayoutHorizontalControlClass);
                 self::addCssClass($controlClass, $controlOptions);
             }
         }
@@ -1909,11 +1914,11 @@ EOD;
 
         $htmlOptions = self::normalizeInputOptions($htmlOptions);
         $addOnClasses = self::getAddOnClasses($htmlOptions);
-        $addOnOptions = \bootstrap\helpers\BSArray::popValue('addOnOptions', $htmlOptions, array());
+        $addOnOptions = BsArray::popValue('addOnOptions', $htmlOptions, array());
         self::addCssClass('form-control', $htmlOptions);
 
         $attributesLabel = $model->attributeLabels();
-        $placeHolder = \bootstrap\helpers\BSArray::popValue('placeholder', $htmlOptions, false);
+        $placeHolder = BsArray::popValue('placeholder', $htmlOptions, false);
 
 
         if (!empty($placeHolder)) {
@@ -1924,14 +1929,14 @@ EOD;
 
         self::addCssClass($addOnClasses, $addOnOptions);
 
-        $prepend = \bootstrap\helpers\BSArray::popValue('prepend', $htmlOptions, '');
-        $prependOptions = \bootstrap\helpers\BSArray::popValue('prependOptions', $htmlOptions, array());
+        $prepend = BsArray::popValue('prepend', $htmlOptions, '');
+        $prependOptions = BsArray::popValue('prependOptions', $htmlOptions, array());
         if (!empty($prepend)) {
             $prepend = self::inputAddOn($prepend, $prependOptions);
         }
 
-        $append = \bootstrap\helpers\BSArray::popValue('append', $htmlOptions, '');
-        $appendOptions = \bootstrap\helpers\BSArray::popValue('appendOptions', $htmlOptions, array());
+        $append = BsArray::popValue('append', $htmlOptions, '');
+        $appendOptions = BsArray::popValue('appendOptions', $htmlOptions, array());
         if (!empty($append)) {
             $append = self::inputAddOn($append, $appendOptions);
         }
@@ -2066,8 +2071,8 @@ EOD;
      */
     public static function activeRadioButton($model, $attribute, $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $label = BsArray::popValue('label', $htmlOptions, false);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
         $radioButton = parent::activeRadioButton($model, $attribute, $htmlOptions);
         self::addCssClass('radio', $labelOptions);
         return $label !== false ? self::tag('label', $labelOptions, $radioButton . ' ' . $label) : $radioButton;
@@ -2082,8 +2087,8 @@ EOD;
      */
     public static function activeCheckBox($model, $attribute, $htmlOptions = array())
     {
-        $label = \bootstrap\helpers\BSArray::popValue('label', $htmlOptions, false);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
+        $label = BsArray::popValue('label', $htmlOptions, false);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
         $checkBox = parent::activeCheckBox($model, $attribute, $htmlOptions);
         self::addCssClass('checkbox', $labelOptions);
         return $label !== false ? self::tag('label', $labelOptions, $checkBox . ' ' . $label) : $checkBox;
@@ -2099,7 +2104,7 @@ EOD;
      */
     public static function activeListBox($model, $attribute, $data, $htmlOptions = array())
     {
-        \bootstrap\helpers\BSArray::defaultValue('displaySize', 4, $htmlOptions);
+        BsArray::defaultValue('displaySize', 4, $htmlOptions);
         return self::activeDropDownList($model, $attribute, $data, $htmlOptions);
     }
 
@@ -2112,7 +2117,7 @@ EOD;
      */
     public static function activeDropDownList($model, $attribute, $data, $htmlOptions = array())
     {
-        //$displaySize = \bootstrap\helpers\BSArray::popValue('displaySize', $htmlOptions, 4);
+        //$displaySize = BsArray::popValue('displaySize', $htmlOptions, 4);
         //$htmlOptions = self::normalizeInputOptions($htmlOptions);
 //        if (!empty($displaySize)) {
 //            $htmlOptions['size'] = $displaySize;
@@ -2149,8 +2154,8 @@ EOD;
         if ($model->hasErrors($attribute)) {
             parent::addErrorCss($htmlOptions);
         }
-        $name = \bootstrap\helpers\BSArray::popValue('name', $htmlOptions);
-        $unCheck = \bootstrap\helpers\BSArray::popValue('uncheckValue', $htmlOptions, '');
+        $name = BsArray::popValue('name', $htmlOptions);
+        $unCheck = BsArray::popValue('uncheckValue', $htmlOptions, '');
         $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
         $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
         return $hidden . self::checkBoxList($name, $selection, $data, $htmlOptions);
@@ -2182,8 +2187,8 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         $selection = parent::resolveValue($model, $attribute);
-        $name = \bootstrap\helpers\BSArray::popValue('name', $htmlOptions);
-        $unCheck = \bootstrap\helpers\BSArray::popValue('uncheckValue', $htmlOptions, '');
+        $name = BsArray::popValue('name', $htmlOptions);
+        $unCheck = BsArray::popValue('uncheckValue', $htmlOptions, '');
         $hiddenOptions = isset($htmlOptions['id']) ? array('id' => parent::ID_PREFIX . $htmlOptions['id']) : array('id' => false);
         $hidden = $unCheck !== null ? parent::hiddenField($name, $unCheck, $hiddenOptions) : '';
         return $hidden . self::radioButtonList($name, $selection, $data, $htmlOptions);
@@ -2200,7 +2205,7 @@ EOD;
     {
         parent::resolveNameID($model, $attribute, $htmlOptions);
         $value = parent::resolveValue($model, $attribute);
-        \bootstrap\helpers\BSArray::removeValues(array('name', 'id'), $htmlOptions);
+        BsArray::removeValues(array('name', 'id'), $htmlOptions);
         return self::uneditableField($value, $htmlOptions);
     }
 
@@ -2359,9 +2364,9 @@ EOD;
     {
         $type = self::INPUT_TYPE_RADIOBUTTON;
 
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
+        $layout = BsArray::popValue('formLayout', $htmlOptions, '');
+        $help = BsArray::popValue('help', $htmlOptions, '');
+        $helpOptions = BsArray::popValue('helpOptions', $htmlOptions, array());
         if (!empty($help)) {
             $help = self::inputHelp($help, $helpOptions);
         }
@@ -2369,11 +2374,11 @@ EOD;
         $input = isset($htmlOptions['input'])
             ? $htmlOptions['input']
             : self::createActiveInput($type, $model, $attribute, $htmlOptions);
-        $header = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="' . static::$formLayoutHorizontalOffsetClass . '"><div class="radio"><label>' : '<div class="radio"><label>';
+        $header = $layout === BsHtml::FORM_LAYOUT_HORIZONTAL ? '<div class="form-group"><div class="' . static::$formLayoutHorizontalOffsetClass . '"><div class="radio"><label>' : '<div class="radio"><label>';
         $output = $header;
         $output .= $input;
         $output .= $model->getAttributeLabel($attribute);
-        $footer = $layout === BSHtml::FORM_LAYOUT_HORIZONTAL ? '</label></div></div></div>' : '</label></div>';
+        $footer = $layout === BsHtml::FORM_LAYOUT_HORIZONTAL ? '</label></div></div></div>' : '</label></div>';
         $output .= $footer;
         return $output;
     }
@@ -2390,25 +2395,25 @@ EOD;
     public static function activeCheckBoxControlGroup($model, $attribute, $htmlOptions = array())
     {
         $type = self::INPUT_TYPE_CHECKBOX;
-        $layout = \bootstrap\helpers\BSArray::popValue('formLayout', $htmlOptions, '');
-        $help = \bootstrap\helpers\BSArray::popValue('help', $htmlOptions, '');
-        $helpOptions = \bootstrap\helpers\BSArray::popValue('helpOptions', $htmlOptions, array());
-        $error = \bootstrap\helpers\BSArray::popValue('error', $htmlOptions, false);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions, false);
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, false);
-        $controlOptions = \bootstrap\helpers\BSArray::popValue('controlOptions', $htmlOptions, false);
+        $layout = BsArray::popValue('formLayout', $htmlOptions, '');
+        $help = BsArray::popValue('help', $htmlOptions, '');
+        $helpOptions = BsArray::popValue('helpOptions', $htmlOptions, array());
+        $error = BsArray::popValue('error', $htmlOptions, false);
+        $color = BsArray::popValue('color', $htmlOptions, false);
+        $groupOptions = BsArray::popValue('groupOptions', $htmlOptions, false);
+        $controlOptions = BsArray::popValue('controlOptions', $htmlOptions, false);
 
         $output = '';
         $labelContent = '';
 
         if ($color) {
-            if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL)
+            if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL)
                 self::addCssClass($color, $groupOptions);
             else
                 self::addCssClass($color, $controlOptions);
         }
 
-        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+        if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
             self::addCssClass('form-group', $groupOptions);
             $output .= parent::openTag('div', $groupOptions);
             $output .= parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass . ' ' . static::$formLayoutHorizontalControlClass));
@@ -2435,7 +2440,7 @@ EOD;
         $output .= parent::tag('label', array(), $labelContent);
         $output .= parent::closeTag('div'); //close <div class="checkbox">
 
-        if ($layout === BSHtml::FORM_LAYOUT_HORIZONTAL) {
+        if ($layout === BsHtml::FORM_LAYOUT_HORIZONTAL) {
             $output .= parent::closeTag('div'); //close <div class="col-lg-offset-2">
             $output .= parent::closeTag('div'); //close <div class="form-group">
         }
@@ -2645,8 +2650,8 @@ EOD;
         if (is_array($actions)) {
             $actions = implode(' ', $actions);
         }
-        $outPut = parent::openTag('div', array('class' => static::$formLayoutHorizontalOffsetClass), array());
-        $outPut .= self::tag('div', $htmlOptions, $actions);
+        $outPut = parent::openTag('div', $htmlOptions, array());
+        $outPut .= parent::tag('div', array('class' => static::$formLayoutHorizontalOffsetClass . ' ' . static::$formLayoutHorizontalControlClass), $actions);
         $outPut .= parent::closeTag('div');
         return $outPut;
     }
@@ -2672,45 +2677,45 @@ EOD;
     protected static function btn($type, $label, $htmlOptions = array())
     {
         self::addCssClass('btn', $htmlOptions);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('btn-' . $color, $htmlOptions);
         } else {
             self::addCssClass('btn-default', $htmlOptions);
         }
-        $size = \bootstrap\helpers\BSArray::popValue('size', $htmlOptions);
+        $size = BsArray::popValue('size', $htmlOptions);
         if (!empty($size)) {
             self::addCssClass('btn-' . $size, $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('block', $htmlOptions, false)) {
+        if (BsArray::popValue('block', $htmlOptions, false)) {
             self::addCssClass('btn-block', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
+        if (BsArray::popValue('disabled', $htmlOptions, false)) {
             self::addCssClass('disabled', $htmlOptions);
         }
-        $loading = \bootstrap\helpers\BSArray::popValue('loading', $htmlOptions);
+        $loading = BsArray::popValue('loading', $htmlOptions);
         if (!empty($loading)) {
             $htmlOptions['data-loading-text'] = $loading;
         }
-        if (\bootstrap\helpers\BSArray::popValue('toggle', $htmlOptions, false)) {
+        if (BsArray::popValue('toggle', $htmlOptions, false)) {
             $htmlOptions['data-toggle'] = 'button';
         }
-        $icon = \bootstrap\helpers\BSArray::popValue('icon', $htmlOptions);
-        $iconOptions = \bootstrap\helpers\BSArray::popValue('iconOptions', $htmlOptions, array());
+        $icon = BsArray::popValue('icon', $htmlOptions);
+        $iconOptions = BsArray::popValue('iconOptions', $htmlOptions, array());
         if (strpos($type, 'input') === false) {
             if (!empty($icon)) {
                 $label = self::icon($icon, $iconOptions) . ' ' . $label;
             }
-            $items = \bootstrap\helpers\BSArray::popValue('items', $htmlOptions);
+            $items = BsArray::popValue('items', $htmlOptions);
         }
 
-        $navbarbtn = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, false);
-        if ($navbarbtn === BSHtml::BUTTON_TYPE_NAVBARBUTTON) {
+        $navbarbtn = BsArray::popValue('type', $htmlOptions, false);
+        if ($navbarbtn === BsHtml::BUTTON_TYPE_NAVBARBUTTON) {
             self::addCssClass('navbar-btn', $htmlOptions);
         }
 
         $dropdownOptions = $htmlOptions;
-        \bootstrap\helpers\BSArray::removeValues(array('groupOptions', 'menuOptions', 'dropup'), $htmlOptions);
+        BsArray::removeValues(array('groupOptions', 'menuOptions', 'dropup'), $htmlOptions);
         self::addSpanClass($htmlOptions); // must be called here as parent renders buttons
         self::addPullClass($htmlOptions); // must be called here as parent renders buttons
         return isset($items)
@@ -2747,15 +2752,15 @@ EOD;
      */
     protected static function btnDropdown($type, $label, $items, $htmlOptions)
     {
-        $menuOptions = \bootstrap\helpers\BSArray::popValue('menuOptions', $htmlOptions, array());
-        $groupOptions = \bootstrap\helpers\BSArray::popValue('groupOptions', $htmlOptions, array());
+        $menuOptions = BsArray::popValue('menuOptions', $htmlOptions, array());
+        $groupOptions = BsArray::popValue('groupOptions', $htmlOptions, array());
         self::addCssClass('btn-group', $groupOptions);
-        if (\bootstrap\helpers\BSArray::popValue('dropup', $htmlOptions, false)) {
+        if (BsArray::popValue('dropup', $htmlOptions, false)) {
             self::addCssClass('dropup', $groupOptions);
         }
 
         $output = self::openTag('div', $groupOptions);
-        if (\bootstrap\helpers\BSArray::popValue('split', $htmlOptions, false)) {
+        if (BsArray::popValue('split', $htmlOptions, false)) {
             $output .= self::createButton($type, $label, $htmlOptions);
             $output .= self::dropdownToggleButton('', $htmlOptions);
 
@@ -2778,8 +2783,8 @@ EOD;
      */
     protected static function createButton($type, $label, $htmlOptions)
     {
-        $url = \bootstrap\helpers\BSArray::popValue('url', $htmlOptions, '#');
-        $ajaxOptions = \bootstrap\helpers\BSArray::popValue('ajaxOptions', $htmlOptions, array());
+        $url = BsArray::popValue('url', $htmlOptions, '#');
+        $ajaxOptions = BsArray::popValue('ajaxOptions', $htmlOptions, array());
         switch ($type) {
             case self::BUTTON_TYPE_HTML:
                 return parent::htmlButton($label, $htmlOptions);
@@ -2914,27 +2919,27 @@ EOD;
                         continue;
                     }
                     // todo: consider removing the support for htmlOptions.
-                    $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                    $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                     if (!empty($options)) {
-                        $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                        $itemOptions = BsArray::merge($options, $itemOptions);
                     }
-                    $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
-                    if (\bootstrap\helpers\BSArray::popValue('active', $itemOptions, false)) {
+                    $label = BsArray::popValue('label', $itemOptions, '');
+                    if (BsArray::popValue('active', $itemOptions, false)) {
                         self::addCssClass('active', $itemOptions);
                     }
-                    if (\bootstrap\helpers\BSArray::popValue('disabled', $itemOptions, false)) {
+                    if (BsArray::popValue('disabled', $itemOptions, false)) {
                         self::addCssClass('disabled', $itemOptions);
                     }
                     if (!isset($itemOptions['linkOptions'])) {
                         $itemOptions['linkOptions'] = array();
                     }
-                    $icon = \bootstrap\helpers\BSArray::popValue('icon', $itemOptions);
+                    $icon = BsArray::popValue('icon', $itemOptions);
                     if (!empty($icon)) {
                         $label = self::icon($icon) . ' ' . $label;
                     }
-                    $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
-                    $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
-                    $divider = \bootstrap\helpers\BSArray::popValue('divider', $itemOptions, false);
+                    $items = BsArray::popValue('items', $itemOptions, array());
+                    $url = BsArray::popValue('url', $itemOptions, false);
+                    $divider = BsArray::popValue('divider', $itemOptions, false);
 
                     if ($divider) {
                         $output .= self::menuDivider($itemOptions);
@@ -2964,7 +2969,7 @@ EOD;
      */
     public static function menuLink($label, $url, $htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
         $content = self::link($label, $url, $linkOptions);
         return self::tag('li', $htmlOptions, $content);
     }
@@ -2985,12 +2990,12 @@ EOD;
     protected static function menuDropdown($label, $url, $items, $htmlOptions, $depth = 0)
     {
         self::addCssClass($depth === 0 ? 'dropdown' : 'dropdown-submenu', $htmlOptions);
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
-        $menuOptions = \bootstrap\helpers\BSArray::popValue('menuOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
+        $menuOptions = BsArray::popValue('menuOptions', $htmlOptions, array());
         self::addCssClass('dropdown-menu', $menuOptions);
         if ($depth === 0) {
             $defaultId = parent::ID_PREFIX . parent::$count++;
-            \bootstrap\helpers\BSArray::defaultValue('id', $defaultId, $menuOptions);
+            BsArray::defaultValue('id', $defaultId, $menuOptions);
             $menuOptions['aria-labelledby'] = $menuOptions['id'];
             $menuOptions['role'] = 'menu';
         }
@@ -3146,7 +3151,7 @@ EOD;
      */
     public static function image($src, $alt = '', $htmlOptions = array())
     {
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions);
+        $type = BsArray::popValue('type', $htmlOptions);
         if (!empty($type)) {
             self::addCssClass('img-' . $type, $htmlOptions);
         }
@@ -3220,28 +3225,28 @@ EOD;
         if (!empty($buttons)) {
             self::addCssClass('btn-group', $htmlOptions);
 
-            if (\bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false)) {
+            if (BsArray::popValue('justified', $htmlOptions, false)) {
                 self::addCssClass('btn-group-justified', $htmlOptions);
             }
 
-            if (\bootstrap\helpers\BSArray::popValue('vertical', $htmlOptions, false)) {
+            if (BsArray::popValue('vertical', $htmlOptions, false)) {
                 self::addCssClass('btn-group-vertical', $htmlOptions);
             }
 
-            $toggle = \bootstrap\helpers\BSArray::popValue('toggle', $htmlOptions);
+            $toggle = BsArray::popValue('toggle', $htmlOptions);
             if (!empty($toggle)) {
                 $htmlOptions['data-toggle'] = 'buttons-' . $toggle;
             }
             $parentOptions = array(
-                'color' => BSHtml::BUTTON_COLOR_DEFAULT,
-                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
-                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
+                'color' => BsHtml::BUTTON_COLOR_DEFAULT,
+                'size' => BsArray::popValue('size', $htmlOptions),
+                'disabled' => BsArray::popValue('disabled', $htmlOptions)
             );
             $output = self::openTag('div', $htmlOptions);
             foreach ($buttons as $buttonOptions) {
 
 
-                $own = \bootstrap\helpers\BSArray::popValue('own', $buttonOptions, false);
+                $own = BsArray::popValue('own', $buttonOptions, false);
                 if (isset($buttonOptions['visible']) && $buttonOptions['visible'] === false) {
                     continue;
                 }
@@ -3249,15 +3254,15 @@ EOD;
                     $output .= $own;
                     continue;
                 }
-                $type = \bootstrap\helpers\BSArray::popValue('type', $buttonOptions, false);
+                $type = BsArray::popValue('type', $buttonOptions, false);
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $buttonOptions, array());
+                $options = BsArray::popValue('htmlOptions', $buttonOptions, array());
                 if (!empty($options)) {
-                    $buttonOptions = \bootstrap\helpers\BSArray::merge($options, $buttonOptions);
+                    $buttonOptions = BsArray::merge($options, $buttonOptions);
                 }
-                $buttonLabel = \bootstrap\helpers\BSArray::popValue('label', $buttonOptions, '');
-                $buttonOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
-                $items = \bootstrap\helpers\BSArray::popValue('items', $buttonOptions, array());
+                $buttonLabel = BsArray::popValue('label', $buttonOptions, '');
+                $buttonOptions = BsArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $buttonOptions);
+                $items = BsArray::popValue('items', $buttonOptions, array());
                 if (!empty($items)) {
                     $output .= self::buttonDropdown($buttonLabel, $items, $buttonOptions);
                 } else {
@@ -3288,7 +3293,7 @@ EOD;
     public static function buttonDropdown($label, $items, $htmlOptions = array())
     {
         $htmlOptions['items'] = $items;
-        $type = \bootstrap\helpers\BSArray::popValue('type', $htmlOptions, self::BUTTON_TYPE_LINKBUTTON);
+        $type = BsArray::popValue('type', $htmlOptions, self::BUTTON_TYPE_LINKBUTTON);
         return self::btn($type, $label, $htmlOptions);
     }
 
@@ -3348,25 +3353,25 @@ EOD;
         if (!empty($groups)) {
             self::addCssClass('btn-toolbar', $htmlOptions);
             $parentOptions = array(
-                'color' => \bootstrap\helpers\BSArray::popValue('color', $htmlOptions),
-                'size' => \bootstrap\helpers\BSArray::popValue('size', $htmlOptions),
-                'disabled' => \bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions)
+                'color' => BsArray::popValue('color', $htmlOptions),
+                'size' => BsArray::popValue('size', $htmlOptions),
+                'disabled' => BsArray::popValue('disabled', $htmlOptions)
             );
             $output = self::openTag('div', $htmlOptions);
             foreach ($groups as $groupOptions) {
                 if (isset($groupOptions['visible']) && $groupOptions['visible'] === false) {
                     continue;
                 }
-                $items = \bootstrap\helpers\BSArray::popValue('items', $groupOptions, array());
+                $items = BsArray::popValue('items', $groupOptions, array());
                 if (empty($items)) {
                     continue;
                 }
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $groupOptions, array());
+                $options = BsArray::popValue('htmlOptions', $groupOptions, array());
                 if (!empty($options)) {
-                    $groupOptions = \bootstrap\helpers\BSArray::merge($options, $groupOptions);
+                    $groupOptions = BsArray::merge($options, $groupOptions);
                 }
-                $groupOptions = \bootstrap\helpers\BSArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $groupOptions);
+                $groupOptions = BsArray::copyValues(array('color', 'size', 'disabled'), $parentOptions, $groupOptions);
                 $output .= self::buttonGroup($items, $groupOptions);
             }
             $output .= '</div>';
@@ -3428,11 +3433,11 @@ EOD;
                 self::addCssClass('nav-' . $type, $htmlOptions);
 
         }
-        $justified = \bootstrap\helpers\BSArray::popValue('justified', $htmlOptions, false);
+        $justified = BsArray::popValue('justified', $htmlOptions, false);
         if ($justified) {
             self::addCssClass('nav-justified', $htmlOptions);
         }
-        if ($type !== self::NAV_TYPE_LIST && \bootstrap\helpers\BSArray::popValue('stacked', $htmlOptions, false)) {
+        if ($type !== self::NAV_TYPE_LIST && BsArray::popValue('stacked', $htmlOptions, false)) {
             self::addCssClass('nav-stacked', $htmlOptions);
         }
         return self::menu($items, $htmlOptions);
@@ -3503,28 +3508,28 @@ EOD;
                         continue;
                     }
                     // todo: consider removing the support for htmlOptions.
-                    $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                    $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                     self::addCssClass('list-group-item', $itemOptions);
                     if (!empty($options)) {
-                        $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                        $itemOptions = BsArray::merge($options, $itemOptions);
                     }
-                    $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
+                    $label = BsArray::popValue('label', $itemOptions, '');
 
-                    if (\bootstrap\helpers\BSArray::popValue('active', $itemOptions, false)) {
+                    if (BsArray::popValue('active', $itemOptions, false)) {
                         self::addCssClass('active', $itemOptions);
                     }
-                    if (\bootstrap\helpers\BSArray::popValue('disabled', $itemOptions, false)) {
+                    if (BsArray::popValue('disabled', $itemOptions, false)) {
                         self::addCssClass('disabled', $itemOptions);
                     }
                     if (!isset($itemOptions['linkOptions'])) {
                         $itemOptions['linkOptions'] = array();
                     }
-                    $icon = \bootstrap\helpers\BSArray::popValue('icon', $itemOptions);
+                    $icon = BsArray::popValue('icon', $itemOptions);
                     if (!empty($icon)) {
                         $label = self::icon($icon) . ' ' . $label;
                     }
-                    $items = \bootstrap\helpers\BSArray::popValue('items', $itemOptions, array());
-                    $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                    $items = BsArray::popValue('items', $itemOptions, array());
+                    $url = BsArray::popValue('url', $itemOptions, false);
                     if (empty($items)) {
                         $itemOptions['linkOptions']['tabindex'] = -1;
                         $output .= self::menuLink($label, $url, $itemOptions);
@@ -3550,7 +3555,7 @@ EOD;
     {
         foreach ($items as $i => $itemOptions) {
             if (!isset($itemOptions['url']) && !isset($itemOptions['items'])) {
-                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
+                $label = BsArray::popValue('label', $itemOptions, '');
                 $items[$i] = self::menuHeader($label, $itemOptions);
             }
         }
@@ -3565,7 +3570,7 @@ EOD;
      */
     public static function menuHeader($label, $htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('nav-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3579,7 +3584,7 @@ EOD;
     public static function menuText($label, $htmlOptions = array())
     {
         self::addCssClass('navbar-text', $htmlOptions);
-        $pull = \bootstrap\helpers\BSArray::popValue('pull', $htmlOptions, false);
+        $pull = BsArray::popValue('pull', $htmlOptions, false);
 
         if ($pull)
             self::addCssClass('pull-' . $pull, $htmlOptions);
@@ -3595,7 +3600,7 @@ EOD;
      */
     public static function dropDownHeader($label, $htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('dropdown-header', $htmlOptions);
         return self::tag('li', $htmlOptions, $label);
     }
@@ -3607,7 +3612,7 @@ EOD;
      */
     public static function menuDivider($htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
         self::addCssClass('divider', $htmlOptions);
         return self::tag('li', $htmlOptions);
     }
@@ -3634,12 +3639,12 @@ EOD;
     protected static function tabbable($type, $tabs, $htmlOptions = array())
     {
         self::addCssClass('tabbable', $htmlOptions);
-        $placement = \bootstrap\helpers\BSArray::popValue('placement', $htmlOptions);
+        $placement = BsArray::popValue('placement', $htmlOptions);
         if (!empty($placement)) {
             self::addCssClass('tabs-' . $placement, $htmlOptions);
         }
-        $menuOptions = \bootstrap\helpers\BSArray::popValue('menuOptions', $htmlOptions, array());
-        $contentOptions = \bootstrap\helpers\BSArray::popValue('contentOptions', $htmlOptions, array());
+        $menuOptions = BsArray::popValue('menuOptions', $htmlOptions, array());
+        $contentOptions = BsArray::popValue('contentOptions', $htmlOptions, array());
         self::addCssClass('tab-content', $contentOptions);
         $panes = array();
         $menu = self::nav($type, self::normalizeTabs($tabs, $panes), $menuOptions);
@@ -3665,29 +3670,29 @@ EOD;
                 continue;
             }
             $menuItem = array();
-            $menuItem['icon'] = \bootstrap\helpers\BSArray::popValue('icon', $tabOptions);
-            $menuItem['label'] = \bootstrap\helpers\BSArray::popValue('label', $tabOptions, '');
-            $menuItem['active'] = \bootstrap\helpers\BSArray::getValue('active', $tabOptions, false);
-            $menuItem['disabled'] = \bootstrap\helpers\BSArray::popValue('disabled', $tabOptions, false);
-            $menuItem['itemOptions'] = \bootstrap\helpers\BSArray::popValue('itemOptions', $tabOptions, array());
-            $menuItem['linkOptions'] = \bootstrap\helpers\BSArray::popValue('linkOptions', $tabOptions, array());
-            $items = \bootstrap\helpers\BSArray::popValue('items', $tabOptions, array());
+            $menuItem['icon'] = BsArray::popValue('icon', $tabOptions);
+            $menuItem['label'] = BsArray::popValue('label', $tabOptions, '');
+            $menuItem['active'] = BsArray::getValue('active', $tabOptions, false);
+            $menuItem['disabled'] = BsArray::popValue('disabled', $tabOptions, false);
+            $menuItem['itemOptions'] = BsArray::popValue('itemOptions', $tabOptions, array());
+            $menuItem['linkOptions'] = BsArray::popValue('linkOptions', $tabOptions, array());
+            $items = BsArray::popValue('items', $tabOptions, array());
             if (!empty($items)) {
                 $menuItem['linkOptions']['data-toggle'] = 'dropdown';
                 $menuItem['items'] = self::normalizeTabs($items, $panes, $i);
             } else {
-                $paneOptions = \bootstrap\helpers\BSArray::popValue('paneOptions', $tabOptions, array());
-                $id = $paneOptions['id'] = \bootstrap\helpers\BSArray::popValue('id', $tabOptions, 'tab_' . ++$i);
+                $paneOptions = BsArray::popValue('paneOptions', $tabOptions, array());
+                $id = $paneOptions['id'] = BsArray::popValue('id', $tabOptions, 'tab_' . ++$i);
                 $menuItem['linkOptions']['data-toggle'] = 'tab';
                 $menuItem['url'] = '#' . $id;
                 self::addCssClass('tab-pane', $paneOptions);
-                if (\bootstrap\helpers\BSArray::popValue('fade', $tabOptions, true)) {
+                if (BsArray::popValue('fade', $tabOptions, true)) {
                     self::addCssClass('fade', $paneOptions);
                 }
-                if (\bootstrap\helpers\BSArray::popValue('active', $tabOptions, false)) {
+                if (BsArray::popValue('active', $tabOptions, false)) {
                     self::addCssClass('active in', $paneOptions);
                 }
-                $paneContent = \bootstrap\helpers\BSArray::popValue('content', $tabOptions, '');
+                $paneContent = BsArray::popValue('content', $tabOptions, '');
                 $panes[] = self::tag('div', $paneOptions, $paneContent);
             }
             $menuItems[] = $menuItem;
@@ -3717,15 +3722,15 @@ EOD;
     public static function navbar($content, $htmlOptions = array())
     {
         self::addCssClass('navbar', $htmlOptions);
-        $position = \bootstrap\helpers\BSArray::popValue('position', $htmlOptions);
+        $position = BsArray::popValue('position', $htmlOptions);
         if (!empty($position)) {
             self::addCssClass('navbar-' . $position, $htmlOptions);
         }
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('navbar-' . $color, $htmlOptions);
         }
-        \bootstrap\helpers\BSArray::defaultValue('role', 'navigation', $htmlOptions);
+        BsArray::defaultValue('role', 'navigation', $htmlOptions);
         return self::tag('nav', $htmlOptions, $content);;
     }
 
@@ -3810,10 +3815,10 @@ EOD;
     public static function searchForm($action, $method = 'post', $htmlOptions = array())
     {
         self::addCssClass('form-search', $htmlOptions);
-        $inputOptions = \bootstrap\helpers\BSArray::popValue('inputOptions', $htmlOptions, array());
-        $inputOptions = \bootstrap\helpers\BSArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
-        $name = \bootstrap\helpers\BSArray::popValue('name', $inputOptions, 'search');
-        $value = \bootstrap\helpers\BSArray::popValue('value', $inputOptions, '');
+        $inputOptions = BsArray::popValue('inputOptions', $htmlOptions, array());
+        $inputOptions = BsArray::merge(array('type' => 'text', 'placeholder' => 'Search'), $inputOptions);
+        $name = BsArray::popValue('name', $inputOptions, 'search');
+        $value = BsArray::popValue('value', $inputOptions, '');
         $output = self::beginFormBs(self::FORM_LAYOUT_SEARCH, $action, $method, $htmlOptions);
         $output .= self::searchQueryField($name, $value, $inputOptions);
         $output .= parent::endForm();
@@ -3832,7 +3837,7 @@ EOD;
         $htmlOptions['data-toggle'] = 'collapse';
         $htmlOptions['data-target'] = $target;
         $content = '<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>';
-        \bootstrap\helpers\BSArray::defaultValue('type', 'button', $htmlOptions);
+        BsArray::defaultValue('type', 'button', $htmlOptions);
         return self::tag('button', $htmlOptions, $content);
     }
 
@@ -3863,24 +3868,24 @@ EOD;
     {
         if (!empty($items)) {
             self::addCssClass('pagination', $htmlOptions);
-            $size = \bootstrap\helpers\BSArray::popValue('size', $htmlOptions);
+            $size = BsArray::popValue('size', $htmlOptions);
             if (!empty($size)) {
                 self::addCssClass('pagination-' . $size, $htmlOptions);
             }
-            $align = \bootstrap\helpers\BSArray::popValue('align', $htmlOptions);
+            $align = BsArray::popValue('align', $htmlOptions);
             if (!empty($align)) {
                 self::addCssClass('pagination-' . $align, $htmlOptions);
             }
-            $listOptions = \bootstrap\helpers\BSArray::popValue('listOptions', $htmlOptions, array());
+            $listOptions = BsArray::popValue('listOptions', $htmlOptions, array());
             $output = self::openTag('ul', $htmlOptions, $listOptions);
             foreach ($items as $itemOptions) {
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                 if (!empty($options)) {
-                    $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                    $itemOptions = BsArray::merge($options, $itemOptions);
                 }
-                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
-                $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                $label = BsArray::popValue('label', $itemOptions, '');
+                $url = BsArray::popValue('url', $itemOptions, false);
                 $output .= self::paginationLink($label, $url, $itemOptions);
             }
             $output .= '</ul>';
@@ -3898,12 +3903,12 @@ EOD;
      */
     public static function paginationLink($label, $url, $htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
-        if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
+        if (BsArray::popValue('active', $htmlOptions, false)) {
             $label .= self::tag('span', array('class' => 'sr-only'));
             self::addCssClass('active', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
+        if (BsArray::popValue('disabled', $htmlOptions, false)) {
             self::addCssClass('disabled', $htmlOptions);
         }
         $content = self::link($label, $url, $linkOptions);
@@ -3927,12 +3932,12 @@ EOD;
             $output = self::openTag('ul', $htmlOptions);
             foreach ($links as $itemOptions) {
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                 if (!empty($options)) {
-                    $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                    $itemOptions = BsArray::merge($options, $itemOptions);
                 }
-                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions, '');
-                $url = \bootstrap\helpers\BSArray::popValue('url', $itemOptions, false);
+                $label = BsArray::popValue('label', $itemOptions, '');
+                $url = BsArray::popValue('url', $itemOptions, false);
                 $output .= self::pagerLink($label, $url, $itemOptions);
             }
             $output .= '</ul>';
@@ -3950,14 +3955,14 @@ EOD;
      */
     public static function pagerLink($label, $url, $htmlOptions = array())
     {
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
-        if (\bootstrap\helpers\BSArray::popValue('previous', $htmlOptions, false)) {
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
+        if (BsArray::popValue('previous', $htmlOptions, false)) {
             self::addCssClass('previous', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('next', $htmlOptions, false)) {
+        if (BsArray::popValue('next', $htmlOptions, false)) {
             self::addCssClass('next', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('disabled', $htmlOptions, false)) {
+        if (BsArray::popValue('disabled', $htmlOptions, false)) {
             self::addCssClass('disabled', $htmlOptions);
         }
         $content = self::link($label, $url, $linkOptions);
@@ -3977,7 +3982,7 @@ EOD;
     public static function labelBs($label, $htmlOptions = array())
     {
         self::addCssClass('label', $htmlOptions);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('label-' . $color, $htmlOptions);
         }
@@ -3993,7 +3998,7 @@ EOD;
     public static function badge($label, $htmlOptions = array())
     {
         self::addCssClass('badge', $htmlOptions);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('badge-' . $color, $htmlOptions);
         }
@@ -4010,7 +4015,7 @@ EOD;
     public static function jumbotron($heading, $content, $htmlOptions = array())
     {
         self::addCssClass('jumbotron', $htmlOptions);
-        $headingOptions = \bootstrap\helpers\BSArray::popValue('headingOptions', $htmlOptions, array());
+        $headingOptions = BsArray::popValue('headingOptions', $htmlOptions, array());
         $output = self::openTag('div', $htmlOptions);
         $output .= self::openTag('div', array('class' => 'content'));
         $output .= self::tag('h1', $headingOptions, $heading);
@@ -4034,8 +4039,8 @@ EOD;
     public static function pageHeader($heading, $subtext = '', $htmlOptions = array())
     {
         self::addCssClass('page-header', $htmlOptions);
-        $headerOptions = \bootstrap\helpers\BSArray::popValue('headerOptions', $htmlOptions, array());
-        $subtextOptions = \bootstrap\helpers\BSArray::popValue('subtextOptions', $htmlOptions, array());
+        $headerOptions = BsArray::popValue('headerOptions', $htmlOptions, array());
+        $subtextOptions = BsArray::popValue('subtextOptions', $htmlOptions, array());
         $output = self::openTag('div', $htmlOptions);
         $output .= self::openTag('h1', $headerOptions);
         $output .= parent::encode($heading) . ' ' . self::tag('small', $subtextOptions, $subtext);
@@ -4050,7 +4055,7 @@ EOD;
             return false;
 
         $output = self::openTag('div', array('class' => 'row'));
-        $row = \bootstrap\helpers\BSArray::popValue('row', $htmlOptions, false);
+        $row = BsArray::popValue('row', $htmlOptions, false);
         if (!$row) {
             $row = array(
                 'lg' => '3',
@@ -4095,18 +4100,18 @@ EOD;
     {
 
         if (empty($layout)) {
-            BSHtml::addCssClass('control-label', $labelOptions);
+            BsHtml::addCssClass('control-label', $labelOptions);
             return $labelOptions;
         }
-        if ($layout === BSHtml::FORM_LAYOUT_INLINE) {
-            BSHtml::addCssClass('control-label', $labelOptions);
-            BSHtml::addCssClass('sr-only', $labelOptions);
+        if ($layout === BsHtml::FORM_LAYOUT_INLINE) {
+            BsHtml::addCssClass('control-label', $labelOptions);
+            BsHtml::addCssClass('sr-only', $labelOptions);
             return $labelOptions;
         }
 
-        $labelClass = \bootstrap\helpers\BSArray::popValue('class', $labelOptions, BSHtml::$formLayoutHorizontalLabelClass);
-        BSHtml::addCssClass('control-label', $labelOptions);
-        BSHtml::addCssClass($labelClass, $labelOptions);
+        $labelClass = BsArray::popValue('class', $labelOptions, BsHtml::$formLayoutHorizontalLabelClass);
+        BsHtml::addCssClass('control-label', $labelOptions);
+        BsHtml::addCssClass($labelClass, $labelOptions);
         return $labelOptions;
 
     }
@@ -4121,34 +4126,34 @@ EOD;
     {
         if (!empty($thumbnails)) {
             self::addCssClass('thumbnails', $htmlOptions);
-            $defaultSpan = \bootstrap\helpers\BSArray::popValue('span', $htmlOptions, 3);
+            $defaultSpan = BsArray::popValue('span', $htmlOptions, 3);
             $output = self::openTag('ul', $htmlOptions);
             foreach ($thumbnails as $thumbnailOptions) {
                 if (isset($thumbnailOptions['visible']) && $thumbnailOptions['visible'] === false) {
                     continue;
                 }
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $thumbnailOptions, array());
+                $options = BsArray::popValue('htmlOptions', $thumbnailOptions, array());
                 if (!empty($options)) {
-                    $thumbnailOptions = \bootstrap\helpers\BSArray::merge($options, $thumbnailOptions);
+                    $thumbnailOptions = BsArray::merge($options, $thumbnailOptions);
                 }
-                $thumbnailOptions['itemOptions']['span'] = \bootstrap\helpers\BSArray::popValue('span', $thumbnailOptions, $defaultSpan);
-                $caption = \bootstrap\helpers\BSArray::popValue('caption', $thumbnailOptions, '');
-                $captionOptions = \bootstrap\helpers\BSArray::popValue('captionOptions', $thumbnailOptions, array());
+                $thumbnailOptions['itemOptions']['span'] = BsArray::popValue('span', $thumbnailOptions, $defaultSpan);
+                $caption = BsArray::popValue('caption', $thumbnailOptions, '');
+                $captionOptions = BsArray::popValue('captionOptions', $thumbnailOptions, array());
                 self::addCssClass('caption', $captionOptions);
-                $label = \bootstrap\helpers\BSArray::popValue('label', $thumbnailOptions);
-                $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $thumbnailOptions, array());
+                $label = BsArray::popValue('label', $thumbnailOptions);
+                $labelOptions = BsArray::popValue('labelOptions', $thumbnailOptions, array());
                 if (!empty($label)) {
                     $caption = self::tag('h3', $labelOptions, $label) . $caption;
                 }
                 $content = !empty($caption) ? self::tag('div', $captionOptions, $caption) : '';
-                $image = \bootstrap\helpers\BSArray::popValue('image', $thumbnailOptions);
-                $imageOptions = \bootstrap\helpers\BSArray::popValue('imageOptions', $thumbnailOptions, array());
-                $imageAlt = \bootstrap\helpers\BSArray::popValue('alt', $imageOptions, '');
+                $image = BsArray::popValue('image', $thumbnailOptions);
+                $imageOptions = BsArray::popValue('imageOptions', $thumbnailOptions, array());
+                $imageAlt = BsArray::popValue('alt', $imageOptions, '');
                 if (!empty($image)) {
                     $content = parent::image($image, $imageAlt, $imageOptions) . $content;
                 }
-                $url = \bootstrap\helpers\BSArray::popValue('url', $thumbnailOptions, false);
+                $url = BsArray::popValue('url', $thumbnailOptions, false);
                 $output .= $url !== false
                     ? self::thumbnailLink($content, $url, $thumbnailOptions)
                     : self::thumbnail($content, $thumbnailOptions);
@@ -4173,7 +4178,7 @@ EOD;
      */
     public static function thumbnailLink($content, $url = '#', $htmlOptions = array())
     {
-        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
+        $itemOptions = BsArray::popValue('itemOptions', $htmlOptions, array());
         self::addCssClass('thumbnail', $htmlOptions);
         $content = self::link($content, $url, $htmlOptions);
         return $content;
@@ -4187,7 +4192,7 @@ EOD;
      */
     public static function thumbnail($content, $htmlOptions = array())
     {
-        $itemOptions = \bootstrap\helpers\BSArray::popValue('itemOptions', $htmlOptions, array());
+        $itemOptions = BsArray::popValue('itemOptions', $htmlOptions, array());
         self::addCssClass('thumbnail', $htmlOptions);
         //$output = self::openTag('li', $itemOptions);
         $output = self::tag('div', $htmlOptions, $content);
@@ -4221,17 +4226,17 @@ EOD;
         if (!empty($color)) {
             self::addCssClass('alert-' . $color, $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('in', $htmlOptions, true)) {
+        if (BsArray::popValue('in', $htmlOptions, true)) {
             self::addCssClass('in', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('block', $htmlOptions, false)) {
+        if (BsArray::popValue('block', $htmlOptions, false)) {
             self::addCssClass('alert-block', $htmlOptions);
         }
-        if (\bootstrap\helpers\BSArray::popValue('fade', $htmlOptions, true)) {
+        if (BsArray::popValue('fade', $htmlOptions, true)) {
             self::addCssClass('fade', $htmlOptions);
         }
-        $closeText = \bootstrap\helpers\BSArray::popValue('closeText', $htmlOptions, self::CLOSE_TEXT);
-        $closeOptions = \bootstrap\helpers\BSArray::popValue('closeOptions', $htmlOptions, array());
+        $closeText = BsArray::popValue('closeText', $htmlOptions, self::CLOSE_TEXT);
+        $closeOptions = BsArray::popValue('closeOptions', $htmlOptions, array());
         $closeOptions['dismiss'] = self::CLOSE_DISMISS_ALERT;
         $output = self::openTag('div', $htmlOptions);
         $output .= $closeText !== false ? self::closeLink($closeText, '#', $closeOptions) : '';
@@ -4263,7 +4268,7 @@ EOD;
     protected static function close($tag, $label, $htmlOptions = array())
     {
         self::addCssClass('close', $htmlOptions);
-        $dismiss = \bootstrap\helpers\BSArray::popValue('dismiss', $htmlOptions);
+        $dismiss = BsArray::popValue('dismiss', $htmlOptions);
         if (!empty($dismiss)) {
             $htmlOptions['data-dismiss'] = $dismiss;
         }
@@ -4311,19 +4316,19 @@ EOD;
         $barOption = $htmlOptions;
 
         self::addCssClass('progress', $progressOption);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
 
         if (!empty($color)) {
             self::addCssClass('progress-bar progress-bar-' . $color, $barOption);
         }
-        if (\bootstrap\helpers\BSArray::popValue('striped', $htmlOptions, false)) {
+        if (BsArray::popValue('striped', $htmlOptions, false)) {
             self::addCssClass('progress-striped', $progressOption);
         }
-        if (\bootstrap\helpers\BSArray::popValue('active', $htmlOptions, false)) {
+        if (BsArray::popValue('active', $htmlOptions, false)) {
             self::addCssClass('active', $progressOption);
         }
 
-        $content = \bootstrap\helpers\BSArray::popValue('content', $htmlOptions);
+        $content = BsArray::popValue('content', $htmlOptions);
 
         if (!empty($content)) {
             $barOptions['content'] = $content;
@@ -4347,7 +4352,7 @@ EOD;
     {
         self::addCssClass('progress-bar', $htmlOptions);
 
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color)) {
             self::addCssClass('progress-bar-' . $color, $htmlOptions);
         }
@@ -4369,7 +4374,7 @@ EOD;
         }
 
         self::addCssStyle("width: {$width}%;", $htmlOptions);
-        $content = \bootstrap\helpers\BSArray::popValue('content', $htmlOptions, '');
+        $content = BsArray::popValue('content', $htmlOptions, '');
         return self::tag('div', $htmlOptions, $content);
     }
 
@@ -4406,7 +4411,7 @@ EOD;
                 if (isset($barOptions['visible']) && !$barOptions['visible']) {
                     continue;
                 }
-                $width = \bootstrap\helpers\BSArray::popValue('width', $barOptions, 0);
+                $width = BsArray::popValue('width', $barOptions, 0);
                 $tmp = $totalWidth;
                 $totalWidth += $width;
                 if ($totalWidth > 100) {
@@ -4429,7 +4434,7 @@ EOD;
     public static function bsLabel($label, $htmlOptions = array())
     {
 //        $htmlOptions = self::addCssClass('label', $htmlOptions);
-        $color = \bootstrap\helpers\BSArray::popValue('color', $htmlOptions);
+        $color = BsArray::popValue('color', $htmlOptions);
         if (!empty($color))
             self::addCssClass('label label-' . $color, $htmlOptions);
         else
@@ -4487,14 +4492,14 @@ EOD;
                     continue;
                 }
                 // todo: consider removing the support for htmlOptions.
-                $options = \bootstrap\helpers\BSArray::popValue('htmlOptions', $itemOptions, array());
+                $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                 if (!empty($options)) {
-                    $itemOptions = \bootstrap\helpers\BSArray::merge($options, $itemOptions);
+                    $itemOptions = BsArray::merge($options, $itemOptions);
                 }
-                $image = \bootstrap\helpers\BSArray::popValue('image', $itemOptions);
-                $heading = \bootstrap\helpers\BSArray::popValue('heading', $itemOptions, '');
-                $content = \bootstrap\helpers\BSArray::popValue('content', $itemOptions, '');
-                \bootstrap\helpers\BSArray::defaultValue('tag', $tag, $itemOptions);
+                $image = BsArray::popValue('image', $itemOptions);
+                $heading = BsArray::popValue('heading', $itemOptions, '');
+                $content = BsArray::popValue('content', $itemOptions, '');
+                BsArray::defaultValue('tag', $tag, $itemOptions);
                 $output .= self::media($image, $heading, $content, $itemOptions);
             }
             return $output;
@@ -4512,21 +4517,21 @@ EOD;
      */
     public static function media($image, $heading, $content, $htmlOptions = array())
     {
-        $tag = \bootstrap\helpers\BSArray::popValue('tag', $htmlOptions, 'div');
+        $tag = BsArray::popValue('tag', $htmlOptions, 'div');
         self::addCssClass('media', $htmlOptions);
-        $linkOptions = \bootstrap\helpers\BSArray::popValue('linkOptions', $htmlOptions, array());
-        \bootstrap\helpers\BSArray::defaultValue('pull', self::PULL_LEFT, $linkOptions);
-        $imageOptions = \bootstrap\helpers\BSArray::popValue('imageOptions', $htmlOptions, array());
+        $linkOptions = BsArray::popValue('linkOptions', $htmlOptions, array());
+        BsArray::defaultValue('pull', self::PULL_LEFT, $linkOptions);
+        $imageOptions = BsArray::popValue('imageOptions', $htmlOptions, array());
         self::addCssClass('media-object', $imageOptions);
-        $contentOptions = \bootstrap\helpers\BSArray::popValue('contentOptions', $htmlOptions, array());
+        $contentOptions = BsArray::popValue('contentOptions', $htmlOptions, array());
         self::addCssClass('media-body', $contentOptions);
-        $headingOptions = \bootstrap\helpers\BSArray::popValue('headingOptions', $htmlOptions, array());
+        $headingOptions = BsArray::popValue('headingOptions', $htmlOptions, array());
         self::addCssClass('media-heading', $headingOptions);
-        $items = \bootstrap\helpers\BSArray::popValue('items', $htmlOptions);
+        $items = BsArray::popValue('items', $htmlOptions);
 
         $output = self::openTag($tag, $htmlOptions);
-        $alt = \bootstrap\helpers\BSArray::popValue('alt', $imageOptions, '');
-        $href = \bootstrap\helpers\BSArray::popValue('href', $linkOptions, '#');
+        $alt = BsArray::popValue('alt', $imageOptions, '');
+        $href = BsArray::popValue('href', $linkOptions, '#');
         if (!empty($image)) {
             $output .= self::link(parent::image($image, $alt, $imageOptions), $href, $linkOptions);
         }
@@ -4550,7 +4555,7 @@ EOD;
     public static function well($content, $htmlOptions = array())
     {
         self::addCssClass('well', $htmlOptions);
-        $size = \bootstrap\helpers\BSArray::popValue('size', $htmlOptions);
+        $size = BsArray::popValue('size', $htmlOptions);
         if (!empty($size)) {
             self::addCssClass('well-' . $size, $htmlOptions);
         }
@@ -4610,24 +4615,24 @@ EOD;
     protected static function tooltipPopover($label, $url, $title, $htmlOptions)
     {
         $htmlOptions['title'] = $title;
-        if (\bootstrap\helpers\BSArray::popValue('animation', $htmlOptions)) {
+        if (BsArray::popValue('animation', $htmlOptions)) {
             $htmlOptions['data-animation'] = true;
         }
-        if (\bootstrap\helpers\BSArray::popValue('html', $htmlOptions)) {
+        if (BsArray::popValue('html', $htmlOptions)) {
             $htmlOptions['data-html'] = true;
         }
-        if (\bootstrap\helpers\BSArray::popValue('selector', $htmlOptions)) {
+        if (BsArray::popValue('selector', $htmlOptions)) {
             $htmlOptions['data-selector'] = true;
         }
-        $placement = \bootstrap\helpers\BSArray::popValue('placement', $htmlOptions);
+        $placement = BsArray::popValue('placement', $htmlOptions);
         if (!empty($placement)) {
             $htmlOptions['data-placement'] = $placement;
         }
-        $trigger = \bootstrap\helpers\BSArray::popValue('trigger', $htmlOptions);
+        $trigger = BsArray::popValue('trigger', $htmlOptions);
         if (!empty($trigger)) {
             $htmlOptions['data-trigger'] = $trigger;
         }
-        if (($delay = \bootstrap\helpers\BSArray::popValue('delay', $htmlOptions)) !== null) {
+        if (($delay = BsArray::popValue('delay', $htmlOptions)) !== null) {
             $htmlOptions['data-delay'] = $delay;
         }
         return self::link($label, $url, $htmlOptions);
@@ -4660,29 +4665,29 @@ EOD;
     public static function carousel(array $items, $htmlOptions = array())
     {
         if (!empty($items)) {
-            $id = \bootstrap\helpers\BSArray::getValue('id', $htmlOptions, parent::ID_PREFIX . parent::$count++);
-            \bootstrap\helpers\BSArray::defaultValue('id', $id, $htmlOptions);
+            $id = BsArray::getValue('id', $htmlOptions, parent::ID_PREFIX . parent::$count++);
+            BsArray::defaultValue('id', $id, $htmlOptions);
             $selector = '#' . $id;
             self::addCssClass('carousel', $htmlOptions);
-            if (\bootstrap\helpers\BSArray::popValue('slide', $htmlOptions, true)) {
+            if (BsArray::popValue('slide', $htmlOptions, true)) {
                 self::addCssClass('slide', $htmlOptions);
             }
-            $interval = \bootstrap\helpers\BSArray::popValue('data-interval', $htmlOptions);
+            $interval = BsArray::popValue('data-interval', $htmlOptions);
             if ($interval) {
                 $htmlOptions['data-interval'] = $interval;
             }
-            $pause = \bootstrap\helpers\BSArray::popValue('data-pause', $htmlOptions);
+            $pause = BsArray::popValue('data-pause', $htmlOptions);
             if ($pause) {
                 $htmlOptions['data-pause'] = $pause;
             }
-            $indicatorOptions = \bootstrap\helpers\BSArray::popValue('indicatorOptions', $htmlOptions, array());
-            $innerOptions = \bootstrap\helpers\BSArray::popValue('innerOptions', $htmlOptions, array());
+            $indicatorOptions = BsArray::popValue('indicatorOptions', $htmlOptions, array());
+            $innerOptions = BsArray::popValue('innerOptions', $htmlOptions, array());
             self::addCssClass('carousel-inner', $innerOptions);
-            $prevOptions = \bootstrap\helpers\BSArray::popValue('prevOptions', $htmlOptions, array());
-            $prevLabel = \bootstrap\helpers\BSArray::popValue('label', $prevOptions, '&lsaquo;');
-            $nextOptions = \bootstrap\helpers\BSArray::popValue('nextOptions', $htmlOptions, array());
-            $nextLabel = \bootstrap\helpers\BSArray::popValue('label', $nextOptions, '&rsaquo;');
-            $hidePrevAndNext = \bootstrap\helpers\BSArray::popValue('hidePrevAndNext', $htmlOptions, false);
+            $prevOptions = BsArray::popValue('prevOptions', $htmlOptions, array());
+            $prevLabel = BsArray::popValue('label', $prevOptions, '&lsaquo;');
+            $nextOptions = BsArray::popValue('nextOptions', $htmlOptions, array());
+            $nextLabel = BsArray::popValue('label', $nextOptions, '&rsaquo;');
+            $hidePrevAndNext = BsArray::popValue('hidePrevAndNext', $htmlOptions, false);
             $output = self::openTag('div', $htmlOptions);
             $output .= self::carouselIndicators($selector, count($items), $indicatorOptions);
             $output .= self::openTag('div', $innerOptions);
@@ -4693,15 +4698,15 @@ EOD;
                 if ($i === 0) { // first item should be active
                     self::addCssClass('active', $itemOptions);
                 }
-                $content = \bootstrap\helpers\BSArray::popValue('content', $itemOptions, '');
-                $image = \bootstrap\helpers\BSArray::popValue('image', $itemOptions, '');
-                $imageOptions = \bootstrap\helpers\BSArray::popValue('imageOptions', $itemOptions, array());
-                $imageAlt = \bootstrap\helpers\BSArray::popValue('alt', $imageOptions, '');
+                $content = BsArray::popValue('content', $itemOptions, '');
+                $image = BsArray::popValue('image', $itemOptions, '');
+                $imageOptions = BsArray::popValue('imageOptions', $itemOptions, array());
+                $imageAlt = BsArray::popValue('alt', $imageOptions, '');
                 if (!empty($image)) {
                     $content = parent::image($image, $imageAlt, $imageOptions);
                 }
-                $label = \bootstrap\helpers\BSArray::popValue('label', $itemOptions);
-                $caption = \bootstrap\helpers\BSArray::popValue('caption', $itemOptions);
+                $label = BsArray::popValue('label', $itemOptions);
+                $caption = BsArray::popValue('caption', $itemOptions);
                 $output .= self::carouselItem($content, $label, $caption, $itemOptions);
             }
             $output .= '</div>';
@@ -4748,11 +4753,11 @@ EOD;
     public static function carouselItem($content, $label, $caption, $htmlOptions = array())
     {
         self::addCssClass('item', $htmlOptions);
-        $overlayOptions = \bootstrap\helpers\BSArray::popValue('overlayOptions', $htmlOptions, array());
+        $overlayOptions = BsArray::popValue('overlayOptions', $htmlOptions, array());
         self::addCssClass('carousel-caption', $overlayOptions);
-        $labelOptions = \bootstrap\helpers\BSArray::popValue('labelOptions', $htmlOptions, array());
-        $captionOptions = \bootstrap\helpers\BSArray::popValue('captionOptions', $htmlOptions, array());
-        $url = \bootstrap\helpers\BSArray::popValue('url', $htmlOptions, false);
+        $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
+        $captionOptions = BsArray::popValue('captionOptions', $htmlOptions, array());
+        $url = BsArray::popValue('url', $htmlOptions, false);
         if ($url !== false) {
             $content = self::link($content, $url);
         }

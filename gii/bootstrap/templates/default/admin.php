@@ -19,28 +19,28 @@ echo "\$this->breadcrumbs=array(
 ?>
 
 $this->menu=array(
-array('icon' => 'glyphicon glyphicon-home','label'=>'Manage <?php echo $this->modelClass; ?>', 'url'=>array('admin')),
-array('icon' => 'glyphicon glyphicon-plus-sign','label'=>'Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
+	array('icon' => 'glyphicon glyphicon-list','label'=>'List <?php echo $this->modelClass; ?>', 'url'=>array('index')),
+	array('icon' => 'glyphicon glyphicon-plus-sign','label'=>'Create <?php echo $this->modelClass; ?>', 'url'=>array('create')),
 );
 
-Yii::app()->clientScript->registerScript('search',
-"
+Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
-$('.search-form').toggle();
-return false;
+	$('.search-form').toggle();
+	return false;
 });
 $('.search-form form').submit(function(){
-$('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
-data: $(this).serialize()
+	$('#<?php echo $this->class2id($this->modelClass); ?>-grid').yiiGridView('update', {
+		data: $(this).serialize()
+	});
+	return false;
 });
-return false;
-});"
-);
+");
 ?>
-<?php echo "<?php echo BSHtml::pageHeader('Manage','$label') ?>\n"; ?>
+
+<?php echo "<?php echo BsHtml::pageHeader('Manage','$label') ?>\n"; ?>
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><?php echo "<?php echo BSHtml::button('Advanced search',array('class' =>'search-button', 'icon' => BSHtml::GLYPHICON_SEARCH,'color' => BSHtml::BUTTON_COLOR_PRIMARY), '#'); ?>"; ?></h3>
+        <h3 class="panel-title"><?php echo "<?php echo BsHtml::button('Advanced search',array('class' =>'search-button', 'icon' => BsHtml::GLYPHICON_SEARCH,'color' => BsHtml::BUTTON_COLOR_PRIMARY), '#'); ?>"; ?></h3>
     </div>
     <div class="panel-body">
         <p>
@@ -57,10 +57,10 @@ return false;
         <!-- search-form -->
 
         <?php echo "<?php"; ?> $this->widget('bootstrap.widgets.BsGridView',array(
-        'id'=>'<?php echo $this->class2id($this->modelClass); ?>-grid',
-        'dataProvider'=>$model->search(),
-        'filter'=>$model,
-        'columns'=>array(
+			'id'=>'<?php echo $this->class2id($this->modelClass); ?>-grid',
+			'dataProvider'=>$model->search(),
+			'filter'=>$model,
+			'columns'=>array(
         <?php
         $count = 0;
         foreach ($this->tableSchema->columns as $column) {
@@ -73,10 +73,10 @@ return false;
             echo "\t\t*/\n";
         }
         ?>
-        array(
-        'class'=>'bootstrap.widgets.BsButtonColumn',
-        ),
-        ),
+				array(
+					'class'=>'bootstrap.widgets.BsButtonColumn',
+				),
+			),
         )); ?>
     </div>
 </div>

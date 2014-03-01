@@ -5,9 +5,6 @@
  * @see https://raw.github.com/Crisu83/yiistrap/master/widgets/TbCollapse.php
  */
 
-Yii::import('bootstrap.behaviors.BsWidget');
-
-
 /**
  * Bootstrap collapse widget.
  * @see http://getbootstrap.com/javascript/#collapse
@@ -55,12 +52,12 @@ class BsCollapse extends CWidget
         Yii::app()->clientScript->registerCoreScript('jquery');
         $this->attachBehavior('BsWidget', new BsWidget);
         $this->copyId();
-        BSHtml::addCssClass('collapse', $this->htmlOptions);
+        BsHtml::addCssClass('collapse', $this->htmlOptions);
         if (isset($this->parent)) {
-            \bootstrap\helpers\BSArray::defaultValue('data-parent', $this->parent, $this->htmlOptions);
+            BsArray::defaultValue('data-parent', $this->parent, $this->htmlOptions);
         }
         if (isset($this->toggle) && $this->toggle) {
-            BSHtml::addCssClass('in', $this->htmlOptions);
+            BsHtml::addCssClass('in', $this->htmlOptions);
         }
         if (isset($this->view)) {
             $controller = $this->getController();
@@ -68,7 +65,7 @@ class BsCollapse extends CWidget
                 $this->content = $this->controller->renderPartial($this->view, $this->viewData, true);
             }
         }
-        echo BSHtml::openTag($this->tagName, $this->htmlOptions);
+        echo BsHtml::openTag($this->tagName, $this->htmlOptions);
         echo $this->content;
     }
 
@@ -77,7 +74,7 @@ class BsCollapse extends CWidget
      */
     public function run()
     {
-        echo BSHtml::closeTag($this->tagName);
+        echo BsHtml::closeTag($this->tagName);
         $selector = '#' . $this->htmlOptions['id'];
         $this->registerEvents($selector, $this->events);
     }

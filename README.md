@@ -99,8 +99,8 @@ with
 
     ),
     'components' => array(
-            'bsHtml' => array(
-                'class' => 'bootstrap.components.BSHtml'
+            'BsHtml' => array(
+                'class' => 'bootstrap.components.BsHtml'
             ),
     )
     ?>

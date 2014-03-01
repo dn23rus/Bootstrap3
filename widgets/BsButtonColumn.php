@@ -6,9 +6,6 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.components.BSHtml');
-Yii::import('bootstrap.helpers.BSArray');
-Yii::import('bootstrap.widgets.BsPager');
 Yii::import('zii.widgets.grid.CButtonColumn');
 
 /**
@@ -17,17 +14,17 @@ Yii::import('zii.widgets.grid.CButtonColumn');
 class BsButtonColumn extends CButtonColumn
 {
     /**
-     * @var string the view button icon (defaults to BSHtml::GLYPHICON_EYE_OPEN).
+     * @var string the view button icon (defaults to BsHtml::GLYPHICON_EYE_OPEN).
      */
-    public $viewButtonIcon = BSHtml::GLYPHICON_EYE_OPEN;
+    public $viewButtonIcon = BsHtml::GLYPHICON_EYE_OPEN;
     /**
-     * @var string the update button icon (defaults to BSHtml::GLYPHICON_PENCIL).
+     * @var string the update button icon (defaults to BsHtml::GLYPHICON_PENCIL).
      */
-    public $updateButtonIcon = BSHtml::GLYPHICON_PENCIL;
+    public $updateButtonIcon = BsHtml::GLYPHICON_PENCIL;
     /**
-     * @var string the delete button icon (defaults to BSHtml::GLYPHICON_TRASH).
+     * @var string the delete button icon (defaults to BsHtml::GLYPHICON_TRASH).
      */
-    public $deleteButtonIcon = BSHtml::GLYPHICON_TRASH;
+    public $deleteButtonIcon = BsHtml::GLYPHICON_TRASH;
 
     /**
      * Initializes the default buttons (view, update and delete).
@@ -65,21 +62,21 @@ class BsButtonColumn extends CButtonColumn
             return;
         }
 
-        $url = \bootstrap\helpers\BSArray::popValue('url', $button, '#');
+        $url = BsArray::popValue('url', $button, '#');
         if ($url !== '#') {
             $url = $this->evaluateExpression($url, array('data' => $data, 'row' => $row));
         }
 
-        $imageUrl = \bootstrap\helpers\BSArray::popValue('imageUrl', $button, false);
-        $label = \bootstrap\helpers\BSArray::popValue('label', $button, $id);
-        $options = \bootstrap\helpers\BSArray::popValue('options', $button, array());
+        $imageUrl = BsArray::popValue('imageUrl', $button, false);
+        $label = BsArray::popValue('label', $button, $id);
+        $options = BsArray::popValue('options', $button, array());
 
-        \bootstrap\helpers\BSArray::defaultValue('data-title', $label, $options);
-        \bootstrap\helpers\BSArray::defaultValue('title', $label, $options);
-        \bootstrap\helpers\BSArray::defaultValue('data-toggle', 'tooltip', $options);
+        BsArray::defaultValue('data-title', $label, $options);
+        BsArray::defaultValue('title', $label, $options);
+        BsArray::defaultValue('data-toggle', 'tooltip', $options);
 
-        if ($icon = \bootstrap\helpers\BSArray::popValue('icon', $button, false)) {
-            echo CHtml::link(BSHtml::icon($icon), $url, $options);
+        if ($icon = BsArray::popValue('icon', $button, false)) {
+            echo CHtml::link(BsHtml::icon($icon), $url, $options);
         } else {
             if ($imageUrl && is_string($imageUrl)) {
                 echo CHtml::link(CHtml::image($imageUrl, $label), $url, $options);

@@ -1,13 +1,13 @@
 <?php
-
 /**
  * User: Pascal Brewing
  * Date: 11.09.13
  * Time: 10:59
  * @package bootstrap.components
- * Class BSApi
+ * Class BsApi
  */
-class BSApi extends CComponent
+ 
+class BsApi extends CComponent
 {
     // Bootstrap plugins
     const PLUGIN_AFFIX = 'affix';
@@ -38,12 +38,11 @@ class BSApi extends CComponent
 
     /**
      * Widget's initialization
-     * @throws \CException
      */
     public function init()
     {
         /* ensure all widgets - plugins are accessible to the library */
-        \Yii::import('bootstrap.widgets.*');
+        Yii::import('bootstrap.widgets.*');
 
         /* register css assets */
         foreach ($this->assetsCss as $css) {
@@ -54,7 +53,6 @@ class BSApi extends CComponent
             $this->registerAssetJs($js);
         }
     }
-
 
     /**
      * Returns the assets URL.
@@ -67,8 +65,8 @@ class BSApi extends CComponent
             return $this->_assetsUrl;
         } else {
             $forceCopyAssets = true;
-            $path = \Yii::getPathOfAlias('bootstrap');
-            $assetsUrl = \Yii::app()->assetManager->publish(
+            $path = Yii::getPathOfAlias('bootstrap');
+            $assetsUrl = Yii::app()->assetManager->publish(
                 $path . DIRECTORY_SEPARATOR . 'assets',
                 false,
                 -1,
@@ -88,7 +86,7 @@ class BSApi extends CComponent
      */
     public function registerAssetJs($jsFile, $position = CClientScript::POS_END)
     {
-        \Yii::app()->getClientScript()->registerScriptFile($this->getAssetsUrl() . "/js/{$jsFile}", $position);
+        Yii::app()->getClientScript()->registerScriptFile($this->getAssetsUrl() . "/js/{$jsFile}", $position);
         return $this;
     }
 
@@ -100,7 +98,7 @@ class BSApi extends CComponent
      */
     public function registerAssetCss($cssFile, $media = '')
     {
-        \Yii::app()->getClientScript()->registerCssFile($this->getAssetsUrl() . "/css/{$cssFile}", $media);
+        Yii::app()->getClientScript()->registerCssFile($this->getAssetsUrl() . "/css/{$cssFile}", $media);
         return $this;
     }
 

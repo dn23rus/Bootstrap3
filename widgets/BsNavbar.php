@@ -16,7 +16,7 @@ class BsNavbar extends CWidget
     /**
      * @var string the navbar color.
      */
-    public $color = BSHtml::NAVBAR_COLOR;
+    public $color = BsHtml::NAVBAR_COLOR;
     /**
      * @var string the brand label text.
      */
@@ -32,7 +32,7 @@ class BsNavbar extends CWidget
     /**
      * @var string nanvbar display type.
      */
-    public $position = BSHtml::NAVBAR_POSITION;
+    public $position = BsHtml::NAVBAR_POSITION;
     /**
      * @var boolean whether to enable collapsing of the navbar on narrow screens.
      */
@@ -71,10 +71,10 @@ class BsNavbar extends CWidget
             }
         }
         if (isset($this->color)) {
-            \bootstrap\helpers\BSArray::defaultValue('color', $this->color, $this->htmlOptions);
+            BsArray::defaultValue('color', $this->color, $this->htmlOptions);
         }
-        if (isset($this->position) && $this->position !== BSHtml::NAVBAR_POSITION) {
-            \bootstrap\helpers\BSArray::defaultValue('position', $this->position, $this->htmlOptions);
+        if (isset($this->position) && $this->position !== BsHtml::NAVBAR_POSITION) {
+            BsArray::defaultValue('position', $this->position, $this->htmlOptions);
         }
     }
 
@@ -84,14 +84,14 @@ class BsNavbar extends CWidget
     public function run()
     {
         $brand = $this->brandLabel !== false
-            ? BSHtml::navbarBrandLink($this->brandLabel, $this->brandUrl, $this->brandOptions)
+            ? BsHtml::navbarBrandLink($this->brandLabel, $this->brandUrl, $this->brandOptions)
             : '';
         ob_start();
         foreach ($this->items as $item) {
             if (is_string($item)) {
                 echo $item;
             } else {
-                $widgetClassName = \bootstrap\helpers\BSArray::popValue('class', $item);
+                $widgetClassName = BsArray::popValue('class', $item);
                 if ($widgetClassName !== null) {
                     $this->controller->widget($widgetClassName, $item);
                 }
@@ -100,7 +100,7 @@ class BsNavbar extends CWidget
         $items = ob_get_clean();
         ob_start();
         if ($this->collapse !== false) {
-            BSHtml::addCssClass('collapse navbar-collapse', $this->collapseOptions);
+            BsHtml::addCssClass('collapse navbar-collapse', $this->collapseOptions);
             ob_start();
             /* @var BsCollapse $collapseWidget */
             $collapseWidget = $this->controller->widget(
@@ -112,35 +112,35 @@ class BsNavbar extends CWidget
                 )
             );
             $collapseContent = ob_get_clean();
-            $collapseLink = BSHtml::navbarCollapseLink('#' . $collapseWidget->getId());
+            $collapseLink = BsHtml::navbarCollapseLink('#' . $collapseWidget->getId());
 
-            echo BSHtml::tag('div', array('class' => 'navbar-header'), $collapseLink . $brand) . $collapseContent;
+            echo BsHtml::tag('div', array('class' => 'navbar-header'), $collapseLink . $brand) . $collapseContent;
 
         } else {
-            echo BSHtml::tag('div', array('class' => 'navbar-header'), $brand) . $items;
+            echo BsHtml::tag('div', array('class' => 'navbar-header'), $brand) . $items;
         }
         $containerContent = ob_get_clean();
         if (
             isset($this->position) && (
-                $this->position === BSHtml::NAVBAR_POSITION_FIXED_TOP ||
-                $this->position === BSHtml::NAVBAR_POSITION_STATIC_TOP)
+                $this->position === BsHtml::NAVBAR_POSITION_FIXED_TOP ||
+                $this->position === BsHtml::NAVBAR_POSITION_STATIC_TOP)
         ) {
-            $fluid = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, false);
+            $fluid = BsArray::popValue('containerOptions', $this->htmlOptions, false);
 
-            $containerOptions = \bootstrap\helpers\BSArray::popValue('containerOptions', $this->htmlOptions, array());
+            $containerOptions = BsArray::popValue('containerOptions', $this->htmlOptions, array());
             $containerClass = 'container';
 
             if ($fluid) {
-                $containerOptions = \bootstrap\helpers\BSArray::removeValue('fluid', $this->htmlOptions, array());
+                $containerOptions = BsArray::removeValue('fluid', $this->htmlOptions, array());
                 $containerClass = 'container-fluid';
             }
 
-            BSHtml::addCssClass($containerClass, $containerOptions);
+            BsHtml::addCssClass($containerClass, $containerOptions);
 
-            $content = BSHtml::tag('div', $containerOptions, $containerContent);
-            echo BSHtml::navbar($content, $this->htmlOptions);
+            $content = BsHtml::tag('div', $containerOptions, $containerContent);
+            echo BsHtml::navbar($content, $this->htmlOptions);
             return;
         }
-        echo BSHtml::navbar($containerContent, $this->htmlOptions);
+        echo BsHtml::navbar($containerContent, $this->htmlOptions);
     }
 }

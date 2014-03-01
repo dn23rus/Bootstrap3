@@ -47,13 +47,13 @@ class BsPanel extends CPortlet
     /**
      * @var string the CSS class which defines the Panel's context http://getbootstrap.com/components/#panels-alternatives.
      */
-    public $type = BSHtml::PANEL_TYPE_DEFAULT;
+    public $type = BsHtml::PANEL_TYPE_DEFAULT;
 
     private $_openTag;
 
     public function init()
     {
-        $this->htmlOptions = BSHtml::addClassName($this->type, $this->htmlOptions);
+        $this->htmlOptions = BsHtml::addClassName($this->type, $this->htmlOptions);
         ob_start();
         ob_implicit_flush(false);
 
@@ -93,7 +93,7 @@ class BsPanel extends CPortlet
     {
         if ($this->title !== null) {
             echo "<div class=\"{$this->decorationCssClass}\">\n";
-            echo ($this->titleTag ? BSHtml::tag($this->titleTag,array('class'=>$this->titleCssClass),$this->title) : $this->title) ."\n";
+            echo ($this->titleTag ? BsHtml::tag($this->titleTag,array('class'=>$this->titleCssClass),$this->title) : $this->title) ."\n";
             echo "</div>\n";
         }
     }

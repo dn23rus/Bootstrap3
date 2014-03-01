@@ -6,9 +6,6 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.components.BSHtml');
-Yii::import('bootstrap.behaviors.BsWidget');
-
 /**
  * Bootstrap pager widget.
  * http://twitter.github.com/bootstrap/components.html#pagination
@@ -18,7 +15,7 @@ class BsPager extends CBasePager
     /**
      * @var string the pager size.
      */
-    public $size = BSHtml::PAGINATION_SIZE_SMALL;
+    public $size = BsHtml::PAGINATION_SIZE_SMALL;
     /**
      * @var integer maximum number of page buttons that can be displayed.
      */
@@ -58,7 +55,7 @@ class BsPager extends CBasePager
         $this->attachBehavior('BsWidget', new BsWidget);
         $this->copyId();
         if (isset($this->size)) {
-            \bootstrap\helpers\BSArray::defaultValue('size', $this->size, $this->htmlOptions);
+            BsArray::defaultValue('size', $this->size, $this->htmlOptions);
         }
     }
 
@@ -69,7 +66,7 @@ class BsPager extends CBasePager
     {
         $links = $this->createPageLinks();
         if (!empty($links)) {
-            echo BSHtml::pagination($links, $this->htmlOptions);
+            echo BsHtml::pagination($links, $this->htmlOptions);
         }
     }
 

@@ -6,10 +6,6 @@
  * @package bootstrap/widgets
  */
 
-Yii::import('bootstrap.behaviors.BsWidget');
-Yii::import('bootstrap.helpers.BSArray');
-Yii::import('bootstrap.components.BSHtml');
-
 /**
  * Bootstrap navigation menu widget.
  * @see http://twitter.github.com/bootstrap/components.html#navbar
@@ -69,13 +65,13 @@ class BsNav extends CWidget
         $this->copyId();
         $route = $this->controller->getRoute();
         if ($this->stacked) {
-            BSHtml::addCssClass('nav-stacked', $this->htmlOptions);
+            BsHtml::addCssClass('nav-stacked', $this->htmlOptions);
         }
-        $pull = \bootstrap\helpers\BSArray::popValue('pull', $this->htmlOptions);
+        $pull = BsArray::popValue('pull', $this->htmlOptions);
 
         if (!empty($pull)) {
-            if ($pull === BSHtml::NAVBAR_NAV_PULL_RIGHT || $pull === BSHtml::NAVBAR_NAV_PULL_LEFT) {
-                BSHtml::addCssClass('navbar-' . $pull, $this->htmlOptions);
+            if ($pull === BsHtml::NAVBAR_NAV_PULL_RIGHT || $pull === BsHtml::NAVBAR_NAV_PULL_LEFT) {
+                BsHtml::addCssClass('navbar-' . $pull, $this->htmlOptions);
             }
         }
         $this->items = $this->normalizeItems($this->items, $route, $hasActiveChild);
@@ -87,7 +83,7 @@ class BsNav extends CWidget
     public function run()
     {
         if (!empty($this->items)) {
-            echo BSHtml::nav($this->type, $this->items, $this->htmlOptions);
+            echo BsHtml::nav($this->type, $this->items, $this->htmlOptions);
         }
     }
 
@@ -111,7 +107,7 @@ class BsNav extends CWidget
                 continue;
             }
 
-            \bootstrap\helpers\BSArray::defaultValue('label', '', $item);
+            BsArray::defaultValue('label', '', $item);
 
             if ($this->encodeLabel) {
                 $items[$i]['label'] = CHtml::encode($item['label']);
@@ -159,7 +155,14 @@ class BsNav extends CWidget
      */
     protected function isItemActive($item, $route)
     {
-        if (isset($item['url']) && is_array($item['url']) && !strcasecmp(trim($item['url'][0], '/'), $route)) {
+        $itemUrl = trim($item['url'][0], '/');
+
+        if(substr_count($itemUrl, '/')===0 && isset(Yii::app()->controller->id))
+            $itemUrl = Yii::app()->controller->id . '/' . $itemUrl;
+        elseif(substr_count($itemUrl, '/')===1 && isset(Yii::app()->controller->module->id))
+            $itemUrl = Yii::app()->controller->module->id . '/' . $itemUrl;
+
+        if (isset($item['url']) && is_array($item['url']) && !strcasecmp($itemUrl, $route)) {
             unset($item['url']['#']);
             if (count($item['url']) > 1) {
                 foreach (array_splice($item['url'], 1) as $name => $value) {

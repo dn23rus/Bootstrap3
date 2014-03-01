@@ -10,37 +10,28 @@
 /* @var $form BSActiveForm */
 <?php echo "?>\n"; ?>
 
-<div class="form">
-
-    <?php echo "<?php \$form=\$this->beginWidget('bootstrap.widgets.BsActiveForm', array(
-	'id'=>'" . $this->class2id($this->modelClass) . "-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-	'layout' => BSHtml::FORM_LAYOUT_HORIZONTAL,
+<?php echo "<?php \$form=\$this->beginWidget('bootstrap.widgets.BsActiveForm', array(
+    'id'=>'" . $this->class2id($this->modelClass) . "-form',
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // There is a call to performAjaxValidation() commented in generated controller code.
+    // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation'=>false,
 )); ?>\n"; ?>
 
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
     <?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
 
-    <?php
-    foreach ($this->tableSchema->columns as $column) {
-        if ($column->autoIncrement) {
-            continue;
-        }
-        ?>
-        <?php echo "<?php echo " . $this->generateActiveControlGroup($this->modelClass, $column) . "; ?>\n"; ?>
-
-    <?php
+<?php
+foreach ($this->tableSchema->columns as $column) :
+    if ($column->autoIncrement) {
+        continue;
     }
     ?>
-    <?php echo "<?php echo BSHtml::formActions(array(
-    BSHtml::submitButton('Submit', array('color' => BSHtml::BUTTON_COLOR_PRIMARY)),
-)); ?>\n"; ?>
+    <?php echo "<?php echo " . $this->generateActiveControlGroup($this->modelClass, $column) . "; ?>\n"; ?>
+<?php endforeach; ?>
 
-    <?php echo "<?php \$this->endWidget(); ?>\n"; ?>
+    <?php echo "<?php echo BsHtml::submitButton('Submit', array('color' => BsHtml::BUTTON_COLOR_PRIMARY)); ?>\n"; ?>
 
-</div><!-- form -->
+<?php echo "<?php \$this->endWidget(); ?>\n"; ?>

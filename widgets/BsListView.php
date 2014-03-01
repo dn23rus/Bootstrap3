@@ -38,6 +38,6 @@ class BsListView extends CListView
     public function renderEmptyText()
     {
         $emptyText = $this->emptyText === null ? Yii::t('zii', 'No results found.') : $this->emptyText;
-        echo BSHtml::tag('div', array('class' => 'empty', 'col-md-' => 12), $emptyText);
+        echo BsHtml::tag('div', array('class' => 'empty', 'col-md-' => 12), $emptyText);
     }
 }
