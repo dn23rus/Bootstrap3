@@ -27,32 +27,6 @@ module.exports = function (grunt) {
                     }
                 ]
             }
-        },
-        sass: {                              // Task
-            ibuttondist: {                            // Target
-                options: {                       // Target options
-                    style: 'compact'
-                },
-                files: {                         // Dictionary of files
-                    'extensions/ibutton/resources/css/jquery.ibutton.css': extIbuttonAsset + 'jquery.ibutton.scss'       // 'destination': 'source'
-                }
-            },
-            ibuttonprod: {
-                options: {                       // Target options
-                    style: 'compressed'
-                },
-                files: {                         // Dictionary of files
-                    'extensions/ibutton/resources/css/jquery.ibutton.min.css': extIbuttonAsset + 'jquery.ibutton.scss'       // 'destination': 'source'
-                }
-            }
-        },
-        watch: {
-            ibuttoncss: {
-                files: extIbuttonAsset + 'jquery.ibutton.scss',
-                tasks: ['sass:ibuttondist', 'sass:ibuttonprod']
-
-            }
-
         }
     });
 
