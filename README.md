@@ -1,4 +1,4 @@
-# Yii Bootstrap 3 Module
+# Yii Bootstrap 3 Extension
 
 #### Latest Stable Version 0.0.8
 #####Montly Downloads [![Montly Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/d/monthly.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
