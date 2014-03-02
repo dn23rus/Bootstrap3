@@ -157,8 +157,10 @@ class BsNav extends CWidget
     {
         $itemUrl = trim($item['url'][0], '/');
 
-        if(substr_count($itemUrl, '/')===0 && isset(Yii::app()->controller->id))
-            $itemUrl = Yii::app()->controller->id . '/' . $itemUrl;
+        if(substr_count($itemUrl,'/')===0 && isset(Yii::app()->controller->module->id) && isset(Yii::app()->controller->id))
+            $itemUrl=Yii::app()->controller->module->id.'/'.Yii::app()->controller->id.'/'.$itemUrl;
+        elseif(substr_count($itemUrl,'/')===0 && isset(Yii::app()->controller->id))
+            $itemUrl=Yii::app()->controller->id.'/'.$itemUrl;
         elseif(substr_count($itemUrl, '/')===1 && isset(Yii::app()->controller->module->id))
             $itemUrl = Yii::app()->controller->module->id . '/' . $itemUrl;
 
