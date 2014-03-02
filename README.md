@@ -46,12 +46,12 @@ $cs
     <script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
 <![endif]-->
 ~~~
-### Download the Module
-[Module](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module "bitbucket")
+### Download the Extension
+[Extension](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module "bitbucket")
 Move the Package to your
 ~~~
 [php]
-/protected/modules/
+/protected/extensions/
 ~~~
 Folder or install with Composer
 
@@ -83,26 +83,28 @@ with
 ~~~
 [php]
  <?php
-    'aliases' => array(
-            'bootstrap' => 'application.modules.bootstrap',
-    ),
-    'modules' => array(
-            'bootstrap' => array(
-                'class' => 'bootstrap.BootStrapModule'
-            ),
-            'gii' => array(
-                'generatorPaths' => array('bootstrap.gii'),
-                'class' => 'system.gii.GiiModule',
-                'password' => 'yaa',
-                'ipFilters' => array('127.0.0.1','::1'),
-	),
 
+'aliases' => array(
+    'bootstrap' => 'ext.bootstrap',
+),
+'import'=>array(
+    ...
+    'bootstrap.behaviors.*',
+    'bootstrap.helpers.*',
+    'bootstrap.widgets.*'
+),
+'modules' => array(
+    ...
+    'gii' => array(
+        ...
+        'generatorPaths' => array('bootstrap.gii'),
     ),
-    'components' => array(
-            'BsHtml' => array(
-                'class' => 'bootstrap.components.BsHtml'
-            ),
-    )
-    ?>
+),
+'components' => array(
+	...
+    'bootstrap' => array(
+        'class' => 'bootstrap.components.BsApi'
+    ),
+)
 ~~~
 [Full Config Example](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/src/bf91414d4a6ff5dd2a6c34d09d309c5a122d97c4/app/config/main.php?at=master "")
