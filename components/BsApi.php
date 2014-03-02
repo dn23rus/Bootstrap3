@@ -9,6 +9,7 @@
  
 class BsApi extends CComponent
 {
+    
     // Bootstrap plugins
     const PLUGIN_AFFIX = 'affix';
     const PLUGIN_ALERT = 'alert';

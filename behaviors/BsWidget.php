@@ -7,7 +7,7 @@
  * @package bootstrap.behaviors
  */
 
-Yii::import('bootstrap.components.BSApi');
+Yii::import('bootstrap.components.BsApi');
 Yii::import('bootstrap.helpers.BsHtml');
 
 /**
