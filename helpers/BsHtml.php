@@ -586,7 +586,6 @@ class BsHtml extends CHtml
 
     /**
      * Generates an emphasized text.
-     * @param string $style the text style.
      * @param string $text the text to emphasize.
      * @param array $htmlOptions additional HTML attributes.
      * @param string $tag the HTML tag.
@@ -719,6 +718,7 @@ class BsHtml extends CHtml
 
     /**
      * Generates a stateful form tag.
+     * @param string $layout the form layout.
      * @param mixed $action the form action URL.
      * @param string $method form method (e.g. post, get).
      * @param array $htmlOptions additional HTML attributes.
@@ -1202,6 +1202,7 @@ class BsHtml extends CHtml
      * @param string $name the input name.
      * @param string $select the selected value.
      * @param array $data data for generating the list options (value=>display).
+     * @param array $htmlOptions additional HTML attributes.
      * @return string the generated drop down list.
      */
     public static function dropDownList($name, $select, $data, $htmlOptions = array())
@@ -1235,7 +1236,7 @@ class BsHtml extends CHtml
     public static function checkBoxList($name, $select, $data, $htmlOptions = array())
     {
         $inline = BsArray::popValue('inline', $htmlOptions, false);
-        $separator = BsArray::popValue('separator', $htmlOptions, ' ');
+        $separator = BsArray::popValue('separator', $htmlOptions, "\n");
         $container = BsArray::popValue('container', $htmlOptions, 'span');
         $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
         $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
@@ -1273,15 +1274,15 @@ class BsHtml extends CHtml
             $htmlOptions['value'] = $value;
             $htmlOptions['id'] = $baseID . '_' . $id++;
             $option = self::checkBox($name, $checked, $htmlOptions);
-            $beginLabel=self::openTag('label',$labelOptions);
-            $label=self::label($labelTitle,$htmlOptions['id'],$labelOptions);
+            $beginLabel = self::openTag('label', $labelOptions);
+            $label = self::label($labelTitle, $htmlOptions['id'], $labelOptions);
             $endLabel=self::closeTag('label');
-            $items[] = strtr($template,array(
-                '{input}'=>$option,
-                '{beginLabel}'=>$beginLabel,
-                '{label}'=>$label,
-                '{labelTitle}'=>$labelTitle,
-                '{endLabel}'=>$endLabel,
+            $items[] = strtr($template, array(
+                '{input}' => $option,
+                '{beginLabel}' => $beginLabel,
+                '{label}' => $label,
+                '{labelTitle}' => $labelTitle,
+                '{endLabel}' => $endLabel,
             ));
         }
 
@@ -1289,8 +1290,16 @@ class BsHtml extends CHtml
             $htmlOptions['value'] = 1;
             $htmlOptions['id'] = $id = $baseID . '_all';
             $option = self::checkBox($id, $checkAll, $htmlOptions);
+            $beginLabel = self::openTag('label', $labelOptions);
             $label = self::label($checkAllLabel, $id, $labelOptions);
-            $item = $option . ' ' . $label;
+            $endLabel = self::closeTag('label');
+            $item = strtr($template, array(
+                '{input}' => $option,
+                '{beginLabel}' => $beginLabel,
+                '{label}' => $label,
+                '{labelTitle}' => $checkAllLabel,
+                '{endLabel}' => $endLabel,
+            ));
             if ($checkAllLast) {
                 $items[] = $item;
             } else {
@@ -1356,7 +1365,7 @@ EOD;
     public static function radioButtonList($name, $select, $data, $htmlOptions = array())
     {
         $inline = BsArray::popValue('inline', $htmlOptions, false);
-        $separator = BsArray::popValue('separator', $htmlOptions);
+        $separator = BsArray::popValue('separator', $htmlOptions, "\n");
         $container = BsArray::popValue('container', $htmlOptions);
         $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
         $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
@@ -1381,15 +1390,15 @@ EOD;
             $htmlOptions['value'] = $value;
             $htmlOptions['id'] = $baseID . '_' . $id++;
             $option = self::radioButton($name, $checked, $htmlOptions);
-            $beginLabel=self::openTag('label',$labelOptions);
-            $label=self::label($labelTitle,$htmlOptions['id'],$labelOptions);
-            $endLabel=self::closeTag('label');
-            $items[] = strtr($template,array(
-                '{input}'=>$option,
-                '{beginLabel}'=>$beginLabel,
-                '{label}'=>$label,
-                '{labelTitle}'=>$labelTitle,
-                '{endLabel}'=>$endLabel,
+            $beginLabel = self::openTag('label', $labelOptions);
+            $label = self::label($labelTitle, $htmlOptions['id'], $labelOptions);
+            $endLabel = self::closeTag('label');
+            $items[] = strtr($template, array(
+                '{input}'=> $option,
+                '{beginLabel}' => $beginLabel,
+                '{label}' => $label,
+                '{labelTitle}' => $labelTitle,
+                '{endLabel}' => $endLabel,
             ));
         }
 
@@ -1580,7 +1589,7 @@ EOD;
     /**
      * Generates a control group with a radio button.
      * @param string $name the input name.
-     * @param string $checked whether the radio button is checked.
+     * @param bool $checked whether the radio button is checked.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated control group.
      * @see self::controlGroup
@@ -1593,7 +1602,7 @@ EOD;
     /**
      * Generates a control group with a check box.
      * @param string $name the input name.
-     * @param string $checked whether the check box is checked.
+     * @param bool $checked whether the check box is checked.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated control group.
      * @see self::controlGroup
@@ -2407,8 +2416,7 @@ EOD;
     /**
      * Generates a control group with a check box for a model attribute.
      * @param $model
-     * @param string $name the input name.
-     * @param string $checked whether the check box is checked.
+     * @param string $attribute the attribute.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated control group.
      * @see self::activeControlGroup
@@ -2485,8 +2493,8 @@ EOD;
 
     /**
      * Generates a control group with a list box for a model attribute.
-     * @param string $name the input name.
-     * @param string $select the selected value.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated control group.
@@ -2518,8 +2526,8 @@ EOD;
 
     /**
      * Generates a control group with an inline radio button list for a model attribute.
-     * @param string $name the input name.
-     * @param string $select the selected value.
+     * @param CModel $model the data model.
+     * @param string $attribute the attribute.
      * @param array $data data for generating the list options (value=>display).
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated control group.
@@ -3353,8 +3361,8 @@ EOD;
     }
 
     /**
-     * Generates an image submit button.
-     * @param string $src the image URL
+     * Generates an HTML submit button.
+     * @param string $label label for button
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated button.
      */
@@ -3495,7 +3503,6 @@ EOD;
 
     /**
      * Generates a navigation menu.
-     * @param string $type the menu type.
      * @param array $items the menu items.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated menu.
@@ -3723,7 +3730,7 @@ EOD;
 
     /**
      * Generates a tabbable pills menu.
-     * @param array $tabs the tab configurations.
+     * @param array $pills the pills configurations.
      * @param array $htmlOptions additional HTML attributes.
      * @return string the generated menu.
      */
