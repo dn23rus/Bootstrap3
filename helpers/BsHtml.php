@@ -1240,6 +1240,17 @@ class BsHtml extends CHtml
         $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
         $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
 
+        if($inline) {
+            self::addCssClass('checkbox-inline', $labelOptions);
+            $template = BsArray::popValue('template', $htmlOptions, '{beginLabel}{input}{labelTitle}{endLabel}');
+        } else {
+            $template = BsArray::popValue('template', $htmlOptions, parent::tag(
+                'div',
+                array('class'=>'checkbox'),
+                '{beginLabel}{input}{labelTitle}{endLabel}'
+            ));
+        }
+
         if (substr($name, -2) !== '[]') {
             $name .= '[]';
         }
@@ -1256,21 +1267,22 @@ class BsHtml extends CHtml
         $id = 0;
         $checkAll = true;
 
-        foreach ($data as $value => $label) {
+        foreach ($data as $value => $labelTitle) {
             $checked = !is_array($select) && !strcmp($value, $select) || is_array($select) && in_array($value, $select);
             $checkAll = $checkAll && $checked;
             $htmlOptions['value'] = $value;
             $htmlOptions['id'] = $baseID . '_' . $id++;
-            if ($inline) {
-                $htmlOptions['label'] = $label;
-                self::addCssClass('checkbox-inline', $labelOptions);
-                $htmlOptions['labelOptions'] = $labelOptions;
-                $items[] = self::checkBox($name, $checked, $htmlOptions);
-            } else {
-                self::addCssClass('checkbox', $labelOptions);
-                $option = self::checkBox($name, $checked, $htmlOptions);
-                $items[] = self::label($option . ' ' . $label, false, $labelOptions);
-            }
+            $option = self::checkBox($name, $checked, $htmlOptions);
+            $beginLabel=self::openTag('label',$labelOptions);
+            $label=self::label($labelTitle,$htmlOptions['id'],$labelOptions);
+            $endLabel=self::closeTag('label');
+            $items[] = strtr($template,array(
+                '{input}'=>$option,
+                '{beginLabel}'=>$beginLabel,
+                '{label}'=>$label,
+                '{labelTitle}'=>$labelTitle,
+                '{endLabel}'=>$endLabel,
+            ));
         }
 
         if (isset($checkAllLabel)) {
@@ -1344,29 +1356,41 @@ EOD;
     public static function radioButtonList($name, $select, $data, $htmlOptions = array())
     {
         $inline = BsArray::popValue('inline', $htmlOptions, false);
-        $separator = BsArray::popValue('separator', $htmlOptions, ' ');
+        $separator = BsArray::popValue('separator', $htmlOptions);
         $container = BsArray::popValue('container', $htmlOptions);
         $containerOptions = BsArray::popValue('containerOptions', $htmlOptions, array());
         $labelOptions = BsArray::popValue('labelOptions', $htmlOptions, array());
+
+        if($inline) {
+            self::addCssClass('radio-inline', $labelOptions);
+            $template = BsArray::popValue('template', $htmlOptions, '{beginLabel}{input}{labelTitle}{endLabel}');
+        } else {
+            $template = BsArray::popValue('template', $htmlOptions, parent::tag(
+                'div',
+                array('class'=>'radio'),
+                '{beginLabel}{input}{labelTitle}{endLabel}'
+            ));
+        }
 
         $items = array();
         $baseID = $containerOptions['id'] = BsArray::popValue('baseID', $htmlOptions, parent::getIdByName($name));
 
         $id = 0;
-        foreach ($data as $value => $label) {
+        foreach ($data as $value => $labelTitle) {
             $checked = !strcmp($value, $select);
             $htmlOptions['value'] = $value;
             $htmlOptions['id'] = $baseID . '_' . $id++;
-            if ($inline) {
-                $htmlOptions['label'] = $label;
-                self::addCssClass('radio-inline', $labelOptions);
-                $htmlOptions['labelOptions'] = $labelOptions;
-                $items[] = self::radioButton($name, $checked, $htmlOptions);
-            } else {
-                $option = self::radioButton($name, $checked, $htmlOptions);
-                self::addCssClass('radio', $labelOptions);
-                $items[] = self::label($option . ' ' . $label, false, $labelOptions);
-            }
+            $option = self::radioButton($name, $checked, $htmlOptions);
+            $beginLabel=self::openTag('label',$labelOptions);
+            $label=self::label($labelTitle,$htmlOptions['id'],$labelOptions);
+            $endLabel=self::closeTag('label');
+            $items[] = strtr($template,array(
+                '{input}'=>$option,
+                '{beginLabel}'=>$beginLabel,
+                '{label}'=>$label,
+                '{labelTitle}'=>$labelTitle,
+                '{endLabel}'=>$endLabel,
+            ));
         }
 
         $inputs = implode($separator, $items);
@@ -1612,7 +1636,7 @@ EOD;
         $labelContent .= $input;
         $labelContent .= $name;
 
-        if (!empty($help) && !$error)
+        if (!empty($help))
             $labelContent .= self::inputHelp($help, $helpOptions);
 
         $output .= parent::tag('label', array(), $labelContent);
@@ -2113,15 +2137,12 @@ EOD;
      * @param CModel $model the data model.
      * @param string $attribute the attribute.
      * @param array $data data for generating the list options (value=>display).
+     * @param array $htmlOptions additional HTML attributes.
      * @return string the generated drop down list.
      */
     public static function activeDropDownList($model, $attribute, $data, $htmlOptions = array())
     {
-        //$displaySize = BsArray::popValue('displaySize', $htmlOptions, 4);
-        //$htmlOptions = self::normalizeInputOptions($htmlOptions);
-//        if (!empty($displaySize)) {
-//            $htmlOptions['size'] = $displaySize;
-//        }
+        self::addCssClass('form-control', $htmlOptions);
         return parent::activeDropDownList($model, $attribute, $data, $htmlOptions);
     }
 
