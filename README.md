@@ -13,8 +13,8 @@
 [0]: https://bitbucket.org/DrMabuse/yii-bootstrap-3-module
 ## Download [here](http://getbootstrap.com "bootsrap") the bootstrap package.
 Append in Your Layout:
+
 ~~~
-[php]
 <?php
 $cs = Yii::app()->clientScript;
 $themePath = Yii::app()->theme->baseUrl;
@@ -46,20 +46,19 @@ $cs
     <script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
 <![endif]-->
 ~~~
+
 ### Download the Extension
 [Extension](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module "bitbucket")
 Move the Package to your
-~~~
-[php]
-/protected/extensions/
-~~~
+
+    protected/extensions/
+
 Folder or install with Composer
 
 [Packagist](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module "")
-~~~
-[php]
-"drmabuse/yii-bootstrap-3-module": "dev-master"
-~~~
+
+    "drmabuse/yii-bootstrap-3-module": "dev-master"
+    
 * Set up Git by following the instructions [here](https://help.github.com/articles/set-up-git).
   * Update the configurations in `app/config/` to suit your needs. The `common/config/main.php` is configured to use **sqllite** by default. Change your `common/config/env/dev.php` to suit your database requirements.
   * Composer is required The package includes already a `composer.phar` file.
@@ -74,16 +73,11 @@ Folder or install with Composer
 ### Configure
 configure
 
-
-~~~
-[php]
-/config/main.php
-~~~
+    config/main.php
+    
 with
 ~~~
-[php]
- <?php
-
+<?php
 'aliases' => array(
     'bootstrap' => 'ext.bootstrap',
 ),
