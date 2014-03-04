@@ -1,8 +1,6 @@
 <?php
 /**
- * TbModal class file.
- * @author Antonio Ramirez <ramirez.cobos@gmail.com>
- * @copyright Copyright &copy; Christoffer Niska 2013-
+ * BsModal class file.
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @package bootstrap/widgets
  */
@@ -263,7 +261,7 @@ class BsModal extends CWidget
         // do we render a button? If so, bootstrap will handle its behavior through its
         // mark-up, otherwise, register the plugin.
         if (empty($this->buttonOptions)) {
-            $this->registerPlugin(BSApi::PLUGIN_MODAL, $selector, $this->options);
+            $this->registerPlugin(BsApi::PLUGIN_MODAL, $selector, $this->options);
         }
 
         $this->registerEvents($selector, $this->events);
