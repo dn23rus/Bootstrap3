@@ -1,4 +1,4 @@
-# Yii Bootstrap 3 Module
+# Yii Bootstrap 3 Extension
 
 #### Latest Stable Version 0.0.8
 #####Montly Downloads [![Montly Downloads](https://poser.pugx.org/drmabuse/yii-bootstrap-3-module/d/monthly.png)](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module)
@@ -13,8 +13,8 @@
 [0]: https://bitbucket.org/DrMabuse/yii-bootstrap-3-module
 ## Download [here](http://getbootstrap.com "bootsrap") the bootstrap package.
 Append in Your Layout:
+
 ~~~
-[php]
 <?php
 $cs = Yii::app()->clientScript;
 $themePath = Yii::app()->theme->baseUrl;
@@ -46,20 +46,19 @@ $cs
     <script src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/respond.min.js"></script>
 <![endif]-->
 ~~~
-### Download the Module
-[Module](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module "bitbucket")
+
+### Download the Extension
+[Extension](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module "bitbucket")
 Move the Package to your
-~~~
-[php]
-/protected/modules/
-~~~
+
+    protected/extensions/
+
 Folder or install with Composer
 
 [Packagist](https://packagist.org/packages/drmabuse/yii-bootstrap-3-module "")
-~~~
-[php]
-"drmabuse/yii-bootstrap-3-module": "dev-master"
-~~~
+
+    "drmabuse/yii-bootstrap-3-module": "dev-master"
+    
 * Set up Git by following the instructions [here](https://help.github.com/articles/set-up-git).
   * Update the configurations in `app/config/` to suit your needs. The `common/config/main.php` is configured to use **sqllite** by default. Change your `common/config/env/dev.php` to suit your database requirements.
   * Composer is required The package includes already a `composer.phar` file.
@@ -74,35 +73,32 @@ Folder or install with Composer
 ### Configure
 configure
 
-
-~~~
-[php]
-/config/main.php
-~~~
+    config/main.php
+    
 with
 ~~~
-[php]
- <?php
-    'aliases' => array(
-            'bootstrap' => 'application.modules.bootstrap',
+<?php
+'aliases' => array(
+    'bootstrap' => 'ext.bootstrap',
+),
+'import'=>array(
+    ...
+    'bootstrap.behaviors.*',
+    'bootstrap.helpers.*',
+    'bootstrap.widgets.*'
+),
+'modules' => array(
+    ...
+    'gii' => array(
+        ...
+        'generatorPaths' => array('bootstrap.gii'),
     ),
-    'modules' => array(
-            'bootstrap' => array(
-                'class' => 'bootstrap.BootStrapModule'
-            ),
-            'gii' => array(
-                'generatorPaths' => array('bootstrap.gii'),
-                'class' => 'system.gii.GiiModule',
-                'password' => 'yaa',
-                'ipFilters' => array('127.0.0.1','::1'),
-	),
-
+),
+'components' => array(
+	...
+    'bootstrap' => array(
+        'class' => 'bootstrap.components.BsApi'
     ),
-    'components' => array(
-            'BsHtml' => array(
-                'class' => 'bootstrap.components.BsHtml'
-            ),
-    )
-    ?>
+)
 ~~~
 [Full Config Example](https://bitbucket.org/DrMabuse/yii-bootstrap-3-module-example/src/bf91414d4a6ff5dd2a6c34d09d309c5a122d97c4/app/config/main.php?at=master "")
