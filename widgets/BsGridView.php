@@ -44,6 +44,8 @@ class BsGridView extends CGridView
      */
     public function init()
     {
+	    $baseScriptUrl = $this->baseScriptUrl;
+	    
         parent::init();
         $classes = array('table');
         if (isset($this->type) && !empty($this->type)) {
@@ -63,6 +65,16 @@ class BsGridView extends CGridView
                 $this->itemsCssClass = $classes;
             }
         }
+
+	    if ($baseScriptUrl === null) {
+		    $baseScriptUrl = Yii::app()->getAssetManager()->publish(Yii::getPathOfAlias('bootstrap.widgets.assets')) . '/gridview';
+	    }
+
+	    if ($this->cssFile === false) {
+		    $this->cssFile = $baseScriptUrl . '/styles.css';
+	    }
+
+	    Yii::app()->getClientScript()->registerCssFile($this->cssFile);
     }
 
     /**

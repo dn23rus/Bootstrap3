@@ -23,19 +23,19 @@ class BsPager extends CBasePager
     /**
      * @var string the text label for the next page button.
      */
-    public $nextPageLabel = 'next';
+    public $nextPageLabel;
     /**
      * @var string the text label for the previous page button.
      */
-    public $prevPageLabel = 'prev';
+    public $prevPageLabel;
     /**
      * @var string the text label for the first page button.
      */
-    public $firstPageLabel = 'start';
+    public $firstPageLabel;
     /**
      * @var string the text label for the last page button.
      */
-    public $lastPageLabel = 'end';
+    public $lastPageLabel;
 
     /**
      * @var boolean whether the "first" and "last" buttons should be hidden.
@@ -52,7 +52,7 @@ class BsPager extends CBasePager
      */
     public function init()
     {
-        $this->attachBehavior('BsWidget', new BsWidget);
+	    $this->attachBehavior('BsWidget', new BsWidget);
         $this->copyId();
         if (isset($this->size)) {
             BsArray::defaultValue('size', $this->size, $this->htmlOptions);
@@ -76,6 +76,22 @@ class BsPager extends CBasePager
      */
     protected function createPageLinks()
     {
+	    if ($this->nextPageLabel === null) {
+		    $this->nextPageLabel = Yii::t('yii', 'Next &gt;');
+	    }
+	    
+	    if ($this->prevPageLabel === null) {
+		    $this->prevPageLabel = Yii::t('yii', '&lt; Previous');
+	    }
+	    
+	    if ($this->firstPageLabel === null) {
+		    $this->firstPageLabel = Yii::t('yii', '&lt;&lt; First');
+	    }
+	    
+	    if ($this->lastPageLabel === null) {
+		    $this->lastPageLabel = Yii::t('yii', 'Last &gt;&gt;');
+	    }
+	    
         if (($pageCount = $this->getPageCount()) <= 1) {
             return array();
         }
@@ -126,7 +142,7 @@ class BsPager extends CBasePager
      * Creates a page link.
      * @param string $label the link label text.
      * @param integer $page the page number.
-     * @param boolean $visible whether the link is disabled.
+     * @param boolean $disabled whether the link is disabled.
      * @param boolean $active whether the link is active.
      * @return string the generated link.
      */
