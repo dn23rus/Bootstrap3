@@ -81,7 +81,7 @@ class BsBreadcrumb extends CBreadcrumbs
         if ($this->homeLink === null)
             $links[] = strtr($this->activeLinkTemplate, array(
                 '{url}' => CHtml::normalizeUrl(Yii::app()->homeUrl),
-                '{label}' => 'Home',
+                '{label}' => Yii::t('zii', 'Home'),
             ));
         elseif ($this->homeLink !== false)
             $links[] = $this->homeLink;
