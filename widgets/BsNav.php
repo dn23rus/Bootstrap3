@@ -155,6 +155,9 @@ class BsNav extends CWidget
      */
     protected function isItemActive($item, $route)
     {
+        if (!isset($item['url']) 
+            return false;
+
         $itemUrl = trim($item['url'][0], '/');
 
         if(substr_count($itemUrl,'/')===0 && isset(Yii::app()->controller->module->id) && isset(Yii::app()->controller->id))
