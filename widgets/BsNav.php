@@ -155,7 +155,7 @@ class BsNav extends CWidget
      */
     protected function isItemActive($item, $route)
     {
-        if (!isset($item['url']) 
+        if (!isset($item['url']) || (is_string($item['url']) && trim($item['url']) === ''))
             return false;
 
         $itemUrl = trim($item['url'][0], '/');
