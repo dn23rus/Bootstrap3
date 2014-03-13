@@ -2947,6 +2947,10 @@ EOD;
                     if (isset($itemOptions['visible']) && $itemOptions['visible'] === false) {
                         continue;
                     }
+
+                    //HotFix 06.03.2014
+                    if (is_array($itemOptions) && array_key_exists('itemOptions', $itemOptions)) unset( $itemOptions['itemOptions'] );
+
                     // todo: consider removing the support for htmlOptions.
                     $options = BsArray::popValue('htmlOptions', $itemOptions, array());
                     if (!empty($options)) {
