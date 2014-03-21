@@ -24,6 +24,11 @@ class BsApi extends CComponent
     const PLUGIN_TOOLTIP = 'tooltip';
     const PLUGIN_TRANSITION = 'transition';
     const PLUGIN_TYPEAHEAD = 'typeahead';
+    
+    /**
+    * @var int static counter, used for determining script identifiers
+    */
+    public static $counter = 0;
     /**
      * @var array $assetsJs of javascript library names to be registered when initializing the library.
      */
