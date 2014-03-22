@@ -1,7 +1,6 @@
 {
-    "name": "bootstrap",
+    "name": "Antpolsi/Bootstrap3",
     "version": "0.0.8",
-    "private": true,
     "description": "Yii Bootstrap3 Module",
     "main": "index.js",
     "scripts": {
@@ -9,13 +8,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://DrMabuse@bitbucket.org/DrMabuse/yii-bootstrap-3-module.git"
+        "url": "https://github.com/Antpolis/Bootstrap3.git"
     },
     "keywords": [
         "yii",
         "module"
     ],
-    "author": "Pascal Brewing",
+    "author": "Chris Sim",
     "license": "BSD-3-CLAUSE",
     "devDependencies": {
         "grunt": "~0.4.1",
