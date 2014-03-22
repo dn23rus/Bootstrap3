@@ -1849,8 +1849,7 @@ EOD;
             self::addCssClass($color, $groupOptions);
         }
 
-        $output = self::openTag('div', $groupOptions);
-
+        $output = '';
         if ($labelOptions !== false && $layout !== self::FORM_LAYOUT_INLINE) {
             if (isset($labelOptions['ex']) && empty($labelOptions['ex'])) {
                 // todo: consider adding support for overriding the label with plain text.
@@ -1861,7 +1860,6 @@ EOD;
         }
 
         $output .= self::controls($input . $error . $help, $controlOptions);
-        $output .= '</div>';
         return $output;
     }
 
